@@ -1,0 +1,201 @@
+{
+  "document_kind": "OFFLINE_OPERATOR_WORKSHEET",
+  "session_type": "UNCOUNTED",
+  "approval_status": "PENDING_BILATERAL_APPROVAL",
+  "is_agreement": false,
+  "is_signed": false,
+  "wire_artifact": false,
+  "readiness_result": "BLOCKED_PENDING_HUMAN_INPUT",
+  "authoritative_format_search": {
+    "required_compatibility_sheet_found": false,
+    "note": "The promoted kit pairing declaration is a two-field wire handshake extension, not a compatibility worksheet. This file does not replace or extend it.",
+    "references": [
+      "external/copthief-league-protocol/SPEC.md#72-pairing-declaration--sub_game_number-and-role-promoted",
+      "external/copthief-league-protocol/vectors/pairing_declaration.json",
+      "external/copthief-league-protocol/docs/PAIRING-PLAYBOOK.md#stage-1--first-contact-the-planning-message",
+      "external/Game-P2P-Cop-Chase/src/police_thief/domain/negotiation.py"
+    ]
+  },
+  "teams": {
+    "team_a": {
+      "group_id": "",
+      "group_name": "",
+      "repository_urls": {"police": "", "thief": ""},
+      "exact_advertised_git_commit": "",
+      "role": "",
+      "stable_public_https_mcp_url": "",
+      "identity_evidence": "",
+      "operator_approval": null
+    },
+    "team_b": {
+      "group_id": "",
+      "group_name": "",
+      "repository_urls": {"police": "", "thief": ""},
+      "exact_advertised_git_commit": "",
+      "role": "",
+      "stable_public_https_mcp_url": "",
+      "identity_evidence": "",
+      "operator_approval": null
+    }
+  },
+  "fixture_file_provenance": {
+    "source_path": "interop/fixtures/phase4a5_reference_profile.json",
+    "status": "LOCAL_ONLY_NOT_NEGOTIATED",
+    "derivation": "Path(source_path).read_bytes()",
+    "byte_length": 717,
+    "sha256": "d20b039b48da09cbff7aa540f34863a7466d71b2ca90557b5f4d4c9afb69bc71",
+    "bilateral_config_or_profile_hash": false
+  },
+  "runtime_extended_profile_lock": {
+    "source_path": "interop/fixtures/phase4a5_reference_profile.json",
+    "derivation": "MatchProfile(**json.loads(fixture_bytes)).bytes()",
+    "serializer_owner": "src/police_thief_lab/interop/profile.py::MatchProfile.bytes",
+    "byte_length": 772,
+    "sha256": "0cf0f86401039d3f3044caf4b55b3c472640ea6ea81724a82e9195175a2cb96a",
+    "config_bytes_hex": "7b0a202022626f6172645f636f6e666967223a207b0a2020202022626f6172645f73697a65223a20372c0a2020202022706f6c6963655f7374617274223a205b0a202020202020302c0a202020202020300a202020205d2c0a202020202274686965665f7374617274223a205b0a202020202020332c0a202020202020330a202020205d2c0a2020202022626c6f636b65645f63656c6c73223a205b5d2c0a2020202022626172726965725f71756f7461223a2031340a20207d2c0a202022636f6f7264696e6174655f636f6e76656e74696f6e223a2022726f775f636f6c5f7a65726f5f6261736564222c0a2020227475726e5f70726f66696c65223a20227265666572656e63652d763320616c7465726e6174696e672c205468696566206669727374222c0a2020227363656e745f70726f66696c65223a202273756274726163746976655f6368656279736865765f7631222c0a202022626172726965725f706c6163656d656e745f70726f66696c65223a202241444a4143454e545f4f4e4c59222c0a202022737572766976616c5f6c696d6974223a2033352c0a2020226d6f76655f6c696d6974223a2033352c0a20202274696d656f757473223a207b0a2020202022636f6e6e656374223a2036352e302c0a20202020227475726e223a203138352e302c0a20202020226175646974223a2031352e302c0a20202020227265747279223a20302e32350a20207d2c0a20202261727469666163745f70726f66696c65223a20227265666572656e63652d76332d61727469666163742d312e31222c0a20202261727469666163745f736368656d61223a2022312e31222c0a202022636f6e73656e7375735f73636f7065223a20227265666572656e63655f73796d6d65747269635f6f7574636f6d655f776974686f75745f746965222c0a20202273657474696e67223a20224e657720596f726b222c0a2020226d696e696d756d5f63656e7465725f696e74656e73697479223a20302e352c0a202022737465705f6e756d626572696e67223a202273656e6465725f6c6f63616c220a7d",
+    "advertised_identity_fields": ["config_sha256", "config_bytes_hex"],
+    "lock_strength": "OPTIONAL_STRONGER_EXTENSION",
+    "professor_omission_is_implicit_approval": false,
+    "professor_omission_status": "BLOCKING_PENDING_EXPLICIT_DECISION",
+    "team_a_approves_exact_extended_bytes_and_hash": null,
+    "team_b_approves_exact_extended_bytes_and_hash": null,
+    "team_a_evidence": "",
+    "team_b_evidence": ""
+  },
+  "official_reference_terms_lock": {
+    "derivation": "MatchProfile.reference_terms() then canonical_json(terms).encode('utf-8')",
+    "terms_object": {
+      "board_size": 7,
+      "smell_grid_size": 5,
+      "decay_per_step": 0.1,
+      "emit_intensity": 0.9,
+      "min_center_intensity": 0.5,
+      "max_steps": 35,
+      "barriers_max": 14,
+      "setting": "New York",
+      "hint_max_words": 15,
+      "axis_origin_corner": "top-left",
+      "axis_start_index": 0,
+      "thief_start": [3, 3],
+      "cop_start": [0, 0],
+      "num_games": 1
+    },
+    "byte_length": 284,
+    "sha256": "b97de3f6bb3e3aaed0c3f2e6ab2eee05d65aa1e7853e009ef448c42058c340c0",
+    "schema_1_1_config_artifact_hash_domain": true,
+    "team_a_approves_exact_14_terms": null,
+    "team_b_approves_exact_14_terms": null,
+    "team_a_approves_exact_canonical_terms_hash": null,
+    "team_b_approves_exact_canonical_terms_hash": null,
+    "team_a_evidence": "",
+    "team_b_evidence": ""
+  },
+  "mandatory_rules": {
+    "rule_47": {
+      "mandatory": true,
+      "authority": "RULES_AND_INTEROP_BASELINE.md sections 4.1 and 4.2; official PDF Appendix E Rule 47",
+      "team_a_confirms": null,
+      "team_b_confirms": null,
+      "team_a_evidence": "",
+      "team_b_evidence": ""
+    }
+  },
+  "artifact_and_consensus": {
+    "artifact_schema": "1.1",
+    "mutual_agreement_representation": "object",
+    "consensus_scope_identifier": "reference_symmetric_outcome_without_tie",
+    "consensus_scope_status": "LOCAL_PROPOSAL_PENDING_EXPLICIT_BILATERAL_AGREEMENT",
+    "worked_vector_path": "interop/fixtures/final_consensus_scope_worked_vector.json",
+    "worked_vector_expected_sha256": "e57d51d77fa31327be5e106b57d26342f38269b75845303349bda488f6ce2989",
+    "opponent_accepts_exact_scope_object": null,
+    "opponent_accepts_exact_serialization": null,
+    "opponent_accepts_exact_hash_vector": null,
+    "opponent_tie_treatment": "",
+    "opponent_proposes_different_scope": "",
+    "different_or_missing_response_status": "BLOCKING",
+    "team_a_approval": null,
+    "team_b_approval": null,
+    "team_a_evidence": "",
+    "team_b_evidence": ""
+  },
+  "referenced_interoperability_items": [
+    {
+      "item": "Hcommit",
+      "identifier": "reference-v3",
+      "authority_refs": ["RULES_AND_INTEROP_BASELINE.md#5-hcommit--commitreveal", "docs/INTEROP_DECISIONS.md#hcommit"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "scent",
+      "identifier": "subtractive_chebyshev_v1",
+      "authority_refs": ["RULES_AND_INTEROP_BASELINE.md#6-scent--pheromone-model", "docs/INTEROP_DECISIONS.md#scent"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "turn_order",
+      "identifier": "reference-v3 alternating, Thief first",
+      "authority_refs": ["RULES_AND_INTEROP_BASELINE.md#32-turn-cadence", "docs/INTEROP_DECISIONS.md#turn-resolution"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "step_numbering",
+      "identifier": "sender_local",
+      "authority_refs": ["interop/fixtures/phase4a5_reference_profile.json"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "barrier_placement",
+      "identifier": "ADJACENT_ONLY",
+      "authority_refs": ["RULES_AND_INTEROP_BASELINE.md#43-own-cell-barrier-ambiguity", "interop/fixtures/phase4a5_reference_profile.json"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "MCP_tool_surface",
+      "identifier": "reference-v3",
+      "authority_refs": ["RULES_AND_INTEROP_BASELINE.md#7-fastmcp-wire", "docs/INTEROP_DECISIONS.md#mcp-wire"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "retry_and_deadline",
+      "identifier": "phase4a5_reference_profile.timeouts plus promoted delivery contract",
+      "authority_refs": ["interop/fixtures/phase4a5_reference_profile.json", "external/copthief-league-protocol/vectors/delivery_contract.json"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    },
+    {
+      "item": "artifact_profile",
+      "identifier": "reference-v3-artifact-1.1",
+      "authority_refs": ["interop/fixtures/phase4a5_reference_profile.json", "docs/INTEROP_DECISIONS.md#artifacts"],
+      "team_a_approval": null,
+      "team_b_approval": null,
+      "evidence": ""
+    }
+  ],
+  "scope_boundaries": {
+    "match_profile_contains_transport_endpoints": false,
+    "match_profile_contains_operator_metadata": false,
+    "transport_endpoints_location": "teams.*.stable_public_https_mcp_url",
+    "operator_metadata_location": "teams.*.identity_evidence and pending approval fields"
+  },
+  "readiness_policy": {
+    "template_is_always_blocked": true,
+    "all_required_bilateral_fields_must_be_populated": true,
+    "all_required_bilateral_decisions_must_be_explicitly_accepted": true,
+    "missing_response": "BLOCKING",
+    "different_scope_response": "BLOCKING",
+    "automatic_resolution": false
+  }
+}

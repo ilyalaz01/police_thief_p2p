@@ -1,0 +1,158 @@
+{
+  "architecture": "alternating local-truth token passing; no joint-state simultaneous resolver",
+  "reference_primitive_cases": [
+    {
+      "name": "legal_move",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "thief",
+      "action": "MOVE:N",
+      "accepted": true,
+      "position": [
+        2,
+        3
+      ],
+      "barriers": [],
+      "step": 1
+    },
+    {
+      "name": "stay",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "thief",
+      "action": "HOLD:-",
+      "accepted": true,
+      "position": [
+        3,
+        3
+      ],
+      "barriers": [],
+      "step": 1
+    },
+    {
+      "name": "blocked_move",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "thief",
+      "action": "MOVE:N",
+      "accepted": false,
+      "position": [
+        3,
+        3
+      ],
+      "barriers": [
+        [
+          2,
+          3
+        ]
+      ],
+      "step": 0
+    },
+    {
+      "name": "off_board",
+      "initial": [
+        0,
+        0
+      ],
+      "role": "thief",
+      "action": "MOVE:N",
+      "accepted": false,
+      "position": [
+        0,
+        0
+      ],
+      "barriers": [],
+      "step": 0
+    },
+    {
+      "name": "police_barrier_adjacent",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "police",
+      "action": "BARRIER:N",
+      "accepted": true,
+      "position": [
+        3,
+        3
+      ],
+      "barriers": [
+        [
+          2,
+          3
+        ]
+      ],
+      "step": 1
+    },
+    {
+      "name": "barrier_existing",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "police",
+      "action": "BARRIER:N",
+      "accepted": false,
+      "position": [
+        3,
+        3
+      ],
+      "barriers": [
+        [
+          2,
+          3
+        ]
+      ],
+      "step": 0
+    },
+    {
+      "name": "barrier_quota_zero",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "police",
+      "action": "BARRIER:N",
+      "accepted": false,
+      "position": [
+        3,
+        3
+      ],
+      "barriers": [],
+      "step": 0
+    },
+    {
+      "name": "thief_barrier",
+      "initial": [
+        3,
+        3
+      ],
+      "role": "thief",
+      "action": "BARRIER:N",
+      "accepted": false,
+      "position": [
+        3,
+        3
+      ],
+      "barriers": [],
+      "step": 0
+    }
+  ],
+  "joint_scenarios": {
+    "police into stationary thief": "UNRESOLVED_NOT_MODELED",
+    "thief into stationary police": "UNRESOLVED_NOT_MODELED",
+    "adjacent swap": "UNRESOLVED_NOT_MODELED",
+    "both into same third cell": "UNRESOLVED_NOT_MODELED",
+    "both already same cell": "UNRESOLVED_NOT_MODELED",
+    "barrier vs simultaneous thief departure": "UNRESOLVED_NOT_MODELED",
+    "barrier on simultaneous thief destination": "UNRESOLVED_NOT_MODELED",
+    "capture versus survival on same resolution": "UNRESOLVED_NOT_MODELED"
+  }
+}

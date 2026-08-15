@@ -1,0 +1,84 @@
+# Local repository and coding-agent state
+.git/
+.agents/
+.codex/
+
+# Python environments, bytecode, and tool caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+.tox/
+.nox/
+
+# Coverage, build, and packaging output
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+build/
+dist/
+*.egg-info/
+*.whl
+*.zip
+*.tar
+*.tar.gz
+
+# Editors and operating-system metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# Secrets and operator-local authentication material
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+credentials*.json
+secrets*.json
+id_rsa*
+id_ed25519*
+.netrc
+
+# Tunnel and transient process state
+.cloudflared/
+cloudflared/
+*tunnel*.yml
+*tunnel*.yaml
+*tunnel*.json
+*.pid
+*.sock
+*.log
+tmp/
+temp/
+.tmp/
+
+# Match artifacts and retained operational evidence
+artifacts/
+results/
+logs/
+run-output/
+public-run/
+interop/logs/
+
+# Local-only and restricted sources. The MIT conformance kit is the approved submodule.
+external/*
+!external/copthief-league-protocol/
+sources/
+research/
+experiments/
+police_thief_p2p/
+
+# Historical and operational reports remain local evidence.
+reports/**

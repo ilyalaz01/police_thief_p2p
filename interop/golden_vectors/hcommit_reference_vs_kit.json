@@ -1,0 +1,98 @@
+{
+  "algorithm": "SHA256(UTF8(canonical_json(payload) + '|' + nonce))",
+  "vectors": [
+    {
+      "name": "ascii",
+      "payload": {
+        "step": 1,
+        "hint": "near the bridge",
+        "move": "MOVE:N"
+      },
+      "nonce": "00000000000000000000000000000000",
+      "canonical": "{\"hint\":\"near the bridge\",\"move\":\"MOVE:N\",\"step\":1}",
+      "preimage_utf8_hex": "7b2268696e74223a226e6561722074686520627269646765222c226d6f7665223a224d4f56453a4e222c2273746570223a317d7c3030303030303030303030303030303030303030303030303030303030303030",
+      "expected_sha256": "917d133bce35440e1c18b2387c6083dd128f1f290fdb32f73c234f48e47553e8",
+      "reference_sha256": "917d133bce35440e1c18b2387c6083dd128f1f290fdb32f73c234f48e47553e8",
+      "conformance_sha256": "917d133bce35440e1c18b2387c6083dd128f1f290fdb32f73c234f48e47553e8",
+      "match": true
+    },
+    {
+      "name": "hebrew",
+      "payload": {
+        "step": 2,
+        "hint": "אני ליד הגשר",
+        "move": "STAY"
+      },
+      "nonce": "11111111111111111111111111111111",
+      "canonical": "{\"hint\":\"אני ליד הגשר\",\"move\":\"STAY\",\"step\":2}",
+      "preimage_utf8_hex": "7b2268696e74223a22d790d7a0d79920d79cd799d79320d794d792d7a9d7a8222c226d6f7665223a2253544159222c2273746570223a327d7c3131313131313131313131313131313131313131313131313131313131313131",
+      "expected_sha256": "5d3cefbccff863f70f86d11fd705b82585fee27eb2861d9d09aefced71d9de0b",
+      "reference_sha256": "5d3cefbccff863f70f86d11fd705b82585fee27eb2861d9d09aefced71d9de0b",
+      "conformance_sha256": "5d3cefbccff863f70f86d11fd705b82585fee27eb2861d9d09aefced71d9de0b",
+      "match": true
+    },
+    {
+      "name": "nested",
+      "payload": {
+        "step": 3,
+        "prompt_discussion": {
+          "llm_prompt": "x",
+          "llm_reasoning": [
+            "a",
+            null
+          ],
+          "bluff_classification": true
+        }
+      },
+      "nonce": "22222222222222222222222222222222",
+      "canonical": "{\"prompt_discussion\":{\"bluff_classification\":true,\"llm_prompt\":\"x\",\"llm_reasoning\":[\"a\",null]},\"step\":3}",
+      "preimage_utf8_hex": "7b2270726f6d70745f64697363757373696f6e223a7b22626c7566665f636c617373696669636174696f6e223a747275652c226c6c6d5f70726f6d7074223a2278222c226c6c6d5f726561736f6e696e67223a5b2261222c6e756c6c5d7d2c2273746570223a337d7c3232323232323232323232323232323232323232323232323232323232323232",
+      "expected_sha256": "cbb2e16729c7e5c3bfbc7d8a5b8a44062386172f270a8ba1ef35ee13b8670b70",
+      "reference_sha256": "cbb2e16729c7e5c3bfbc7d8a5b8a44062386172f270a8ba1ef35ee13b8670b70",
+      "conformance_sha256": "cbb2e16729c7e5c3bfbc7d8a5b8a44062386172f270a8ba1ef35ee13b8670b70",
+      "match": true
+    },
+    {
+      "name": "floats",
+      "payload": {
+        "a": 0.0,
+        "b": 0.1,
+        "c": 0.9,
+        "d": 1e-07
+      },
+      "nonce": "33333333333333333333333333333333",
+      "canonical": "{\"a\":0.0,\"b\":0.1,\"c\":0.9,\"d\":1e-07}",
+      "preimage_utf8_hex": "7b2261223a302e302c2262223a302e312c2263223a302e392c2264223a31652d30377d7c3333333333333333333333333333333333333333333333333333333333333333",
+      "expected_sha256": "82f770fa747c3b477503fa69a5b903646031ab7ec1bfa733526933e191a739b6",
+      "reference_sha256": "82f770fa747c3b477503fa69a5b903646031ab7ec1bfa733526933e191a739b6",
+      "conformance_sha256": "82f770fa747c3b477503fa69a5b903646031ab7ec1bfa733526933e191a739b6",
+      "match": true
+    },
+    {
+      "name": "literals",
+      "payload": {
+        "none": null,
+        "bools": [
+          true,
+          false
+        ],
+        "dict": {
+          "z": 1,
+          "a": "🙂"
+        }
+      },
+      "nonce": "44444444444444444444444444444444",
+      "canonical": "{\"bools\":[true,false],\"dict\":{\"a\":\"🙂\",\"z\":1},\"none\":null}",
+      "preimage_utf8_hex": "7b22626f6f6c73223a5b747275652c66616c73655d2c2264696374223a7b2261223a22f09f9982222c227a223a317d2c226e6f6e65223a6e756c6c7d7c3434343434343434343434343434343434343434343434343434343434343434",
+      "expected_sha256": "149ed43abeb619b37ae9ce6d2933bef60e8fe4e72e82da72595687515f8327e0",
+      "reference_sha256": "149ed43abeb619b37ae9ce6d2933bef60e8fe4e72e82da72595687515f8327e0",
+      "conformance_sha256": "149ed43abeb619b37ae9ce6d2933bef60e8fe4e72e82da72595687515f8327e0",
+      "match": true
+    }
+  ],
+  "fuzz": {
+    "seed": 20260812,
+    "cases": 750,
+    "failures": []
+  }
+}

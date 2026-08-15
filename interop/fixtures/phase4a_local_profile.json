@@ -1,0 +1,19 @@
+{
+  "board_config": {
+    "board_size": 7,
+    "police_start": [0, 0],
+    "thief_start": [3, 3],
+    "blocked_cells": [],
+    "barrier_quota": 14
+  },
+  "coordinate_convention": "row_col_zero_based",
+  "turn_profile": "reference-v3 alternating, Thief first",
+  "scent_profile": "subtractive_chebyshev_v1",
+  "barrier_placement_profile": "ADJACENT_ONLY",
+  "survival_limit": 35,
+  "move_limit": 35,
+  "timeouts": {"connect": 10.0, "turn": 3.0, "audit": 5.0, "retry": 0.05},
+  "artifact_profile": "phase4a-localhost-v1",
+  "artifact_schema": "phase4a-1.0",
+  "consensus_scope": "phase4a_symmetric_outcome_without_tie"
+}

@@ -1,0 +1,64 @@
+{
+  "scope_identifier": "reference_symmetric_outcome_without_tie",
+  "status": "LOCAL_PROPOSAL_PENDING_EXPLICIT_BILATERAL_AGREEMENT",
+  "input": {
+    "game_id": "B0-קבוצה-alpha-vs-beta",
+    "aggregate": {
+      "total_score": {"alpha": 20, "קבוצה-beta": 5},
+      "sub_games_won": {"alpha": 1, "קבוצה-beta": 0},
+      "ties": 0,
+      "winner_group": "alpha",
+      "series_tie": false
+    },
+    "sub_games": [
+      {
+        "sub_game_number": 1,
+        "roles": {"alpha": "police", "קבוצה-beta": "thief"},
+        "started_at": "2026-08-15T12:00:00+03:00",
+        "ended_at": "2026-08-15T12:01:02+03:00",
+        "result": "capture",
+        "winner_group": "alpha",
+        "tie": true,
+        "github_commit": {"alpha": "commit A exact", "קבוצה-beta": "commit-B/@{1}"},
+        "tokens": {"alpha": 123, "קבוצה-beta": 456},
+        "score": {"alpha": 20, "קבוצה-beta": 5},
+        "log_files": {
+          "alpha": "alpha/log_B0_g01.json",
+          "קבוצה-beta": "קבוצה-beta/log_B0_g01.json"
+        },
+        "audit": {"log_verified": true, "tampered": false}
+      }
+    ]
+  },
+  "expected_consensus_object": {
+    "game_id": "B0-קבוצה-alpha-vs-beta",
+    "aggregate": {
+      "total_score": {"alpha": 20, "קבוצה-beta": 5},
+      "sub_games_won": {"alpha": 1, "קבוצה-beta": 0},
+      "ties": 0,
+      "winner_group": "alpha",
+      "series_tie": false
+    },
+    "sub_games": [
+      {
+        "sub_game_number": 1,
+        "roles": {"alpha": "police", "קבוצה-beta": "thief"},
+        "result": "capture",
+        "winner_group": "alpha",
+        "score": {"alpha": 20, "קבוצה-beta": 5}
+      }
+    ]
+  },
+  "serializer": {
+    "python_expression": "json.dumps(value, sort_keys=True, ensure_ascii=False)",
+    "key_order": "recursive Unicode-code-point sorting",
+    "ensure_ascii": false,
+    "separators": [", ", ": "],
+    "encoding": "UTF-8"
+  },
+  "expected_preimage_utf8_hex": "7b22616767726567617465223a207b227365726965735f746965223a2066616c73652c20227375625f67616d65735f776f6e223a207b22616c706861223a20312c2022d7a7d791d795d7a6d7942d62657461223a20307d2c202274696573223a20302c2022746f74616c5f73636f7265223a207b22616c706861223a2032302c2022d7a7d791d795d7a6d7942d62657461223a20357d2c202277696e6e65725f67726f7570223a2022616c706861227d2c202267616d655f6964223a202242302dd7a7d791d795d7a6d7942d616c7068612d76732d62657461222c20227375625f67616d6573223a205b7b22726573756c74223a202263617074757265222c2022726f6c6573223a207b22616c706861223a2022706f6c696365222c2022d7a7d791d795d7a6d7942d62657461223a20227468696566227d2c202273636f7265223a207b22616c706861223a2032302c2022d7a7d791d795d7a6d7942d62657461223a20357d2c20227375625f67616d655f6e756d626572223a20312c202277696e6e65725f67726f7570223a2022616c706861227d5d7d",
+  "expected_sha256": "e57d51d77fa31327be5e106b57d26342f38269b75845303349bda488f6ce2989",
+  "excluded_probe_fields": [
+    "started_at", "ended_at", "tokens", "log_files", "audit", "github_commit", "tie"
+  ]
+}

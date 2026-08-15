@@ -1,0 +1,22 @@
+{
+  "board_config": {
+    "board_size": 7,
+    "police_start": [0, 0],
+    "thief_start": [3, 3],
+    "blocked_cells": [],
+    "barrier_quota": 14
+  },
+  "coordinate_convention": "row_col_zero_based",
+  "turn_profile": "reference-v3 alternating, Thief first",
+  "scent_profile": "subtractive_chebyshev_v1",
+  "barrier_placement_profile": "ADJACENT_ONLY",
+  "survival_limit": 35,
+  "move_limit": 35,
+  "timeouts": {"connect": 65.0, "turn": 185.0, "audit": 15.0, "retry": 0.25},
+  "artifact_profile": "reference-v3-artifact-1.1",
+  "artifact_schema": "1.1",
+  "consensus_scope": "reference_symmetric_outcome_without_tie",
+  "setting": "New York",
+  "minimum_center_intensity": 0.5,
+  "step_numbering": "sender_local"
+}

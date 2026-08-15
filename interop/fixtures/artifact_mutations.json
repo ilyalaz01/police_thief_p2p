@@ -1,0 +1,47 @@
+{
+  "logical_object": {
+    "z": 0.9,
+    "א": "raw",
+    "nested": {
+      "b": true,
+      "a": null
+    }
+  },
+  "forms": {
+    "compact_sorted_raw": {
+      "text": "{\"nested\":{\"a\":null,\"b\":true},\"z\":0.9,\"א\":\"raw\"}",
+      "utf8_sha256": "b17eff260d53331114defc61e930c165b03322a516d16db4f04e5a02d861362a"
+    },
+    "reordered_compact": {
+      "text": "{\"nested\":{\"b\":true,\"a\":null},\"א\":\"raw\",\"z\":0.9}",
+      "utf8_sha256": "a6a2bc9197cdd2accdb355ad28a37ea3c5e993bb97b3cb47845a651bc1ac7f27"
+    },
+    "spaced_sorted": {
+      "text": "{\"nested\": {\"a\": null, \"b\": true}, \"z\": 0.9, \"א\": \"raw\"}",
+      "utf8_sha256": "09240fbeb102c057fcfe17dcd761a0e532c7f89bb017f4fdceebd94a6e02876c"
+    },
+    "escaped_unicode": {
+      "text": "{\"nested\":{\"a\":null,\"b\":true},\"z\":0.9,\"\\u05d0\":\"raw\"}",
+      "utf8_sha256": "6f62d5b5564726065dc5f603f526c3ca953b1ed56179b1d673144fd3a567c4b7"
+    },
+    "pretty_no_newline": {
+      "text": "{\n  \"z\": 0.9,\n  \"א\": \"raw\",\n  \"nested\": {\n    \"b\": true,\n    \"a\": null\n  }\n}",
+      "utf8_sha256": "e2c2aeaf33b7994d26d55efc45be20c4534b7cc62d1484b19ebac6097ea1862d"
+    },
+    "pretty_newline": {
+      "text": "{\n  \"z\": 0.9,\n  \"א\": \"raw\",\n  \"nested\": {\n    \"b\": true,\n    \"a\": null\n  }\n}\n",
+      "utf8_sha256": "60c347ded008960054201bdd4ff0f8a42b7fa76ae1483bd4a596f6ea9efd4497"
+    }
+  },
+  "semantic_equality_after_parse": {
+    "compact_sorted_raw": true,
+    "reordered_compact": true,
+    "spaced_sorted": true,
+    "escaped_unicode": true,
+    "pretty_no_newline": true,
+    "pretty_newline": true
+  },
+  "reference_disk_writer": "ensure_ascii=False, indent=2, insertion order, no EOF newline",
+  "canonical_object_hash": "sort_keys=True, ensure_ascii=False, compact separators",
+  "consensus_hash": "sort_keys=True, ensure_ascii=False, default spaced separators"
+}
