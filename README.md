@@ -31,6 +31,9 @@ interop runtime: profile, negotiation, turns, audit, replay
 FastMCP transport and official artifacts
 ```
 
+Release Engineering and Offline Operations is an independent subsystem specified in
+`docs/RELEASE_ENGINEERING_WORKSTREAM.md`.
+
 ## Installation
 
 Requirements: Python 3.11 or later, Git, and `uv`.
@@ -58,3 +61,10 @@ is absent.
 The repository contains no live credentials, tunnel configuration, private audit bodies, or
 counted-match authorization. Real-team play requires the explicit gates in
 `docs/REAL_TEAM_WARMUP_RUNBOOK.md`.
+
+Development workflow and review requirements are documented in `CONTRIBUTING.md`.
+
+## License
+
+Project-authored code is licensed under the MIT License. The conformance kit is an independently
+versioned MIT-licensed Git submodule.
