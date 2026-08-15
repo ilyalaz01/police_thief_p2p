@@ -1,0 +1,4 @@
+[submodule "external/copthief-league-protocol"]
+	path = external/copthief-league-protocol
+	url = https://github.com/Imreec/copthief-league-protocol
+	branch = main
