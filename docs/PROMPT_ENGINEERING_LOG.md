@@ -31,6 +31,7 @@ commit/PR.
 | Phase 4D1C.1 correction | Restore normal formatting while preserving production and test AST manifests. | Line limits need explicit anti-compression checks, including physical length and unsuppressed lint gates. |
 | Phase 4D1D Phase 3B split | Pin 27 seeded model/usage/depth combinations, public API, diagnostics and errors before extracting models, replies and scoring. | Strategy refactors need output-level vectors, not only ordinary unit coverage. |
 | Phase 4D1D runtime split | Pin runtime signatures/conversions and rerun isolated-process, terminal, audit/replay and schema 1.1 flows while separating responsibilities. | Unicode defaults and module-global patch points are observable contracts; compare them explicitly before accepting a structural split. |
+| Phase 4D2A operational config | Commit a failing config-contract test, then add a strict loader, CLI preflight, safe example and value-redacting scan under CFG-001/ADR-006. | Keep operational metadata outside MatchProfile bytes; strict version/mode rejection before side effects is safer than implicit migration. |
 
 ## Template for every future significant prompt
 

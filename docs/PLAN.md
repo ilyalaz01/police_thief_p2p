@@ -143,7 +143,10 @@ flowchart LR
   audit, artifact, and state/conversion responsibilities are isolated in `runtime_*.py` modules.
 - `interop/crypto.py`, `replay.py`, `artifacts.py`: frozen commitment API, audit/replay, official
   artifact and consensus functions.
-- `peer_cli.py`: argument parsing and delegation to `run_peer`; it also performs profile timeout
+- `configuration.py`: strict versioned operational-startup loader and value-redacting secret scan;
+  it is deliberately outside MatchProfile and frozen game/interoperability bytes.
+- `peer_cli.py`: argument parsing and delegation to `run_peer`; it validates optional operational
+  configuration before profile/runtime side effects and still performs profile timeout
   extraction/endpoint validation, so the SDK facade is partial rather than a sole entry point.
 
 Current package structure is feature/layer hybrid under `src/police_thief_lab`; tests are flat,
@@ -168,15 +171,15 @@ Daemon-server lifecycle and call monitoring are limited. Duplicate traffic canno
 
 Extension points already implemented: `DecisionBackend`, `ScentModel`, policy factories,
 `BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: partial SDK, flat
-tests, absent rate/backpressure controls, hard-coded/default configuration, runtime lifecycle
-complexity, and negotiated scope ambiguity. REF-001 closed with no Python source/test file above
-150 counted lines.
+tests, absent rate/backpressure controls, runtime lifecycle complexity, and negotiated scope
+ambiguity. REF-001 closed with no Python source/test file above 150 counted lines. CFG-001 closed
+with a strict versioned operational boundary; fixed game/profile values remain non-configurable.
 
-## Proposed architecture (not implemented or accepted)
+## Remaining proposed architecture
 
 Proposals only: a complete SDK facade ([ADR-003](adr/ADR-003-sdk-facade-plan.md)); applicability
 and design of gatekeeper controls ([ADR-004](adr/ADR-004-api-gatekeeper-applicability.md));
-completed semantics-preserving splits ([ADR-005](adr/ADR-005-150-line-refactoring-strategy.md)); versioned
-configuration ([ADR-006](adr/ADR-006-versioned-configuration-boundary.md)); and offline release
-tooling per [workstream](RELEASE_ENGINEERING_WORKSTREAM.md). None may silently change frozen or
-negotiated behavior.
+and offline release tooling per [workstream](RELEASE_ENGINEERING_WORKSTREAM.md). REF-001's
+semantics-preserving splits are implemented, and
+[ADR-006](adr/ADR-006-versioned-configuration-boundary.md) is implemented and accepted. No
+remaining proposal may silently change frozen or negotiated behavior.
