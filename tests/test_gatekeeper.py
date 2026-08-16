@@ -14,7 +14,7 @@ from police_thief_lab.gatekeeper import (
     RateLimitConfig,
     load_rate_limit_config,
 )
-from police_thief_lab.interop.transport import McpPeerClient
+from police_thief_lab.interop.transport import McpPeerClient, PeerInboxes
 
 ROOT = Path(__file__).parents[1]
 
@@ -140,3 +140,29 @@ def test_mcp_client_routes_every_transport_attempt_through_injected_gatekeeper(
     client.call("receive_turn", {"step": 1})
     assert operations == ["fastmcp.receive_turn"]
     gate.close()
+
+
+def test_inbound_peer_queues_apply_bounded_fifo_backpressure_without_dropping() -> None:
+    inboxes = PeerInboxes(max_depth=1)
+    inboxes.turns.put({"step": 1})
+    second_completed = threading.Event()
+
+    def put_second() -> None:
+        inboxes.turns.put({"step": 2})
+        second_completed.set()
+
+    producer = threading.Thread(target=put_second)
+    producer.start()
+    time.sleep(0.01)
+    assert not second_completed.is_set()
+    assert inboxes.queue_status() == {
+        "agreements": 0,
+        "turns": 1,
+        "audits": 0,
+        "controls": 0,
+        "maximum": 1,
+    }
+    assert inboxes.turns.get(timeout=1.0) == {"step": 1}
+    producer.join(1.0)
+    assert second_completed.is_set()
+    assert inboxes.turns.get(timeout=1.0) == {"step": 2}

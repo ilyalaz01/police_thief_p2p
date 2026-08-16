@@ -13,14 +13,38 @@ from typing import Any
 from fastmcp import Client, FastMCP
 
 from ..gatekeeper import ApiGatekeeper, default_gatekeeper
+from ..gatekeeper_models import default_rate_limit_path, load_rate_limit_config
 
 
 @dataclass(slots=True)
 class PeerInboxes:
-    agreements: queue.Queue = field(default_factory=queue.Queue)
-    turns: queue.Queue = field(default_factory=queue.Queue)
-    audits: queue.Queue = field(default_factory=queue.Queue)
-    controls: queue.Queue = field(default_factory=queue.Queue)
+    max_depth: int | None = None
+    agreements: queue.Queue = field(init=False)
+    turns: queue.Queue = field(init=False)
+    audits: queue.Queue = field(init=False)
+    controls: queue.Queue = field(init=False)
+
+    def __post_init__(self) -> None:
+        depth = self.max_depth
+        if depth is None:
+            depth = load_rate_limit_config(default_rate_limit_path(), "fastmcp").queue_max
+        if depth < 1:
+            raise ValueError("peer inbox depth must be positive")
+        self.max_depth = depth
+        self.agreements = queue.Queue(depth)
+        self.turns = queue.Queue(depth)
+        self.audits = queue.Queue(depth)
+        self.controls = queue.Queue(depth)
+
+    def queue_status(self) -> dict[str, int]:
+        """Return sanitized queue depths without inspecting retained messages."""
+        return {
+            "agreements": self.agreements.qsize(),
+            "turns": self.turns.qsize(),
+            "audits": self.audits.qsize(),
+            "controls": self.controls.qsize(),
+            "maximum": int(self.max_depth),
+        }
 
 
 def build_server(role: str, inboxes: PeerInboxes) -> FastMCP:
