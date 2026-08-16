@@ -19,8 +19,10 @@ redaction. Current `McpPeerClient` centralizes FastMCP calls, retry count/interv
 ## Selection, evidence, and gaps
 
 The selected implemented approach is synchronous outbound FastMCP calls plus one daemon server
-thread and four queues, coordinated by `PeerRuntime`. Evidence: `tests/test_phase4a_interop.py`,
-`test_phase4b_transport.py`, local/public phase reports, and
+thread and four queues, coordinated by `PeerRuntime`. Evidence:
+`tests/test_phase4a_runtime_network.py`, `tests/test_phase4a_runtime_rules.py`,
+`tests/test_phase4b_network.py`, `tests/test_phase4b_identity_gates.py`, the
+[Phase 4D1A test mapping](audits/PHASE4D1A_TEST_SPLIT.md), local/public phase reports, and
 [interop decisions](INTEROP_DECISIONS.md). Alternatives—async orchestration, a generic API
 gatekeeper, or brokered transport—remain unselected.
 
@@ -36,4 +38,3 @@ Definition of Done for a future change: ADR accepted, contract characterization 
 bounded-load tests, race review, existing transport/Hcommit/conformance/frozen checks green, and
 human escalation on any semantic difference. Negotiated/frozen boundaries are defined by
 [the authority baseline](../RULES_AND_INTEROP_BASELINE.md) and profiles.
-
