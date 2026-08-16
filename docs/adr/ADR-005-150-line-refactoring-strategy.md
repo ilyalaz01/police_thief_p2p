@@ -14,12 +14,18 @@ character is not `#`, excluding the external dependency tree. Exactly these file
 | `tests/test_phase4a_interop.py` | 305 | Safer mechanical split by protocol/runtime scenario, preserving assertions. |
 | `tests/test_phase4b_transport.py` | 441 | Safer mechanical split by transport/public-gate scenario, preserving fixtures/assertions. |
 
-Decision: accept only the Phase 4D1A test split. The two test modules were mechanically divided
+Decision: accept the Phase 4D1A test split. The two test modules were mechanically divided
 by their existing concerns, shared helpers were centralized once, and the real two-process test
 was isolated. The normalized 135-case collection multiset and the 46-entry AST definition
 manifest remained identical; branch coverage remained 90.81%; every new test/support module is
-at most 142 counted lines. The four production-file treatments remain proposals and are not
-selected by this decision.
+at most 142 counted lines.
+
+Also accept the Phase 4D1B belief-only slice: after contract characterization, `_open_cells`,
+`_field_error`, and `_entropy` moved unchanged to a private support module and were imported back
+under the same names. `belief.py` fell from 154 to 133 counted lines and `belief_support.py`
+contains 26. Public imports, signatures/defaults, exceptions, exports, deterministic vectors,
+mathematics, policies, and frozen behavior remained unchanged. The runtime, phase3b, and artifact
+treatments remain proposals and are not selected by this decision.
 
 For any later interoperability/strategy proposal, capture imports, public symbols, seeded
 outputs, exception text where contractual, artifacts, and wire bytes before moving code. Never
@@ -28,3 +34,6 @@ compress code to meet the limit.
 Phase 4D1A acceptance evidence is recorded in
 `../audits/PHASE4D1A_TEST_SPLIT.md`: 135/135 tests, 90.81% branch coverage, Ruff zero, Hcommit 5/5,
 conformance 125/125, frozen 7/7, and exactly four unchanged production violations remaining.
+Phase 4D1B evidence is recorded in `../audits/PHASE4D1B_BELIEF_SPLIT.md`: 144/144 tests, 91.06%
+branch coverage, the same frozen/conformance gates, and exactly three production violations
+remaining.

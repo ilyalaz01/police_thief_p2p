@@ -48,12 +48,13 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 - Milestone: D1; Priority: P1; Status: IN_PROGRESS; Owner role: Core Architecture
 - Dependencies: accepted test-only slice of ADR-005 and characterization evidence; Evidence:
-  Phase 4D1A commits and `docs/audits/PHASE4D1A_TEST_SPLIT.md` removed both test violations.
+  Phase 4D1A commits and `docs/audits/PHASE4D1A_TEST_SPLIT.md` removed both test violations;
+  Phase 4D1B commits and `docs/audits/PHASE4D1B_BELIEF_SPLIT.md` removed the belief violation.
 - Definition of Done: all project-authored Python files are ≤150 nonblank/non-comment lines,
   without compression, semantic drift, coverage loss, or frozen-hash change.
 - Validation commands: line-count audit from ADR-005; `uv run pytest`; `uv run ruff check src tests`.
-- Hard stop/escalation: the test-only slice is complete; four production proposals remain
-  unselected and require separate review before any source movement.
+- Hard stop/escalation: the test-only and belief-helper slices are complete; three production
+  proposals remain unselected and require separate review before any source movement.
 
 ## DOCS-002 — Complete docstrings and building-block contracts
 

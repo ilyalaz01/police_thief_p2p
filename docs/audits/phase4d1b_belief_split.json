@@ -1,0 +1,61 @@
+{
+  "phase": "4D1B",
+  "result": "GREEN_CHARACTERIZATION_DRIVEN_REFACTOR",
+  "ref_001_status": "IN_PROGRESS",
+  "commits": [
+    {"id": "0177c96", "subject": "test: characterize belief policy contract"},
+    {"id": "273a723", "subject": "refactor: extract private belief calculation helpers"},
+    {"id": "THIS_COMMIT", "subject": "docs: record phase4d1b belief split evidence"}
+  ],
+  "mechanical_boundary": {
+    "source": "src/police_thief_lab/policies/belief.py",
+    "destination": "src/police_thief_lab/policies/belief_support.py",
+    "moved_unchanged": ["_open_cells", "_field_error", "_entropy"],
+    "private_names_imported_back": true
+  },
+  "line_counts": {
+    "before_belief": 154,
+    "after_belief": 133,
+    "belief_support": 26
+  },
+  "contract": {
+    "public_belief_names": ["BeliefDiagnostics", "BeliefEstimator", "CurrentScentBelief", "TrajectoryBeamBelief", "scent_weights"],
+    "current_scent_signature": "() -> 'None'",
+    "trajectory_signature": "(history_k: 'int' = 6, beam_width: 'int' = 128) -> 'None'",
+    "scent_weights_signature": "(observation: 'Observation') -> 'dict[Position, float]'",
+    "invalid_constructor_exception": "history_k and beam_width must be positive",
+    "policies_all_entries": 21,
+    "policies_all_unchanged": true
+  },
+  "vectors": {
+    "encoding": "sorted position/value and trajectory lists as compact sorted-key JSON; elapsed time excluded",
+    "current_positive": "815223cd2f4dd8c6d2e51fac2ce1879f04ec05733af1f2d4642840dcfde422aa",
+    "current_empty": "4a00b8abf1902a917730683133aed588d4b976dcedeed30d6677a10ace584100",
+    "trajectory_initial": "2fe7e6590d5e2d9bfdefd564b01fd9d03ef502eba68329d623d785b62974c5be",
+    "trajectory_multiple": "0cd0fc67b1b1b49c458da3779f9e5ebfa1ecd05a0ad959b44a53f09c2626463b",
+    "before_after_match": true
+  },
+  "gates": {
+    "pytest": "PASS_144_OF_144_NO_SKIP_NO_XFAIL",
+    "branch_coverage_percent": 91.06,
+    "characterization_and_phase3": "PASS_20_OF_20",
+    "existing_phase3a_phase3b": "PASS_12_OF_12",
+    "ruff": "PASS_ZERO_ERRORS",
+    "hcommit": "PASS_5_OF_5",
+    "conformance": "PASS_125_OF_125",
+    "frozen_manifest": "PASS_7_OF_7",
+    "forbidden_path_diff": "PASS_EMPTY"
+  },
+  "remaining_over_150": {
+    "src/police_thief_lab/interop/runtime.py": 565,
+    "src/police_thief_lab/policies/phase3b.py": 303,
+    "src/police_thief_lab/interop/artifacts.py": 168
+  },
+  "hard_stop_attestations": {
+    "mathematics_or_policy_changed": false,
+    "public_api_or_exception_changed": false,
+    "frozen_or_interop_changed": false,
+    "external_activity_or_gameplay": false,
+    "merge_push_or_tag": false
+  }
+}
