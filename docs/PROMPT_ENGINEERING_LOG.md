@@ -24,6 +24,7 @@ commit/PR.
 | Interop verification/Phase 4A | Resolve byte contracts and complete local two-peer flow. | Similar-looking serialization domains and reference/book behavior must remain named. |
 | Phase 4B/4C reports | Validate transport gates and prepare blocked human worksheets. | Technical validation never substitutes for bilateral approval or authorization. |
 | Phase 4D0 audit | Recover requirements, architecture, quality and task governance. | Retrospective documentation must state its timing and leave technical gaps open. |
+| Phase 4D1A test split | Mechanically split oversized interoperability tests under REF-001. | Path-normalized collection and AST manifests make organization-only moves independently verifiable. |
 
 ## Template for every future significant prompt
 
@@ -42,4 +43,3 @@ Copy one entry; summaries are preferred over sensitive prompt bodies.
 - Decision: accepted/rejected/proposed plus rationale and approver evidence
 - Commit/PR link: immutable identifier when one exists
 - Lessons learned: reusable prompting/process guidance
-

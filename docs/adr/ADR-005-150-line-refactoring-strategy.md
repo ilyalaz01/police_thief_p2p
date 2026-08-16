@@ -1,6 +1,6 @@
 # ADR-005: 150-line refactoring strategy
 
-Status: PROPOSED
+Status: ACCEPTED
 
 Context: an independent repository scan counted each nonblank line whose first non-whitespace
 character is not `#`, excluding the external dependency tree. Exactly these files exceed 150:
@@ -14,11 +14,17 @@ character is not `#`, excluding the external dependency tree. Exactly these file
 | `tests/test_phase4a_interop.py` | 305 | Safer mechanical split by protocol/runtime scenario, preserving assertions. |
 | `tests/test_phase4b_transport.py` | 441 | Safer mechanical split by transport/public-gate scenario, preserving fixtures/assertions. |
 
-Proposal: split tests first, then the smallest non-frozen production candidate; never compress.
-For interoperability/strategy files, capture imports, public symbols, seeded outputs, exception
-text where contractual, artifacts, and wire bytes before moving code. No split is selected here.
+Decision: accept only the Phase 4D1A test split. The two test modules were mechanically divided
+by their existing concerns, shared helpers were centralized once, and the real two-process test
+was isolated. The normalized 135-case collection multiset and the 46-entry AST definition
+manifest remained identical; branch coverage remained 90.81%; every new test/support module is
+at most 142 counted lines. The four production-file treatments remain proposals and are not
+selected by this decision.
 
-All seven frozen hashes must remain unchanged; therefore frozen files cannot be refactored under
-this proposal. Acceptance requires the same counting command/result ≤150, full suite/coverage,
-Ruff, 5/5 Hcommit, 125/125 conformance, and frozen 7/7.
+For any later interoperability/strategy proposal, capture imports, public symbols, seeded
+outputs, exception text where contractual, artifacts, and wire bytes before moving code. Never
+compress code to meet the limit.
 
+Phase 4D1A acceptance evidence is recorded in
+`../audits/PHASE4D1A_TEST_SPLIT.md`: 135/135 tests, 90.81% branch coverage, Ruff zero, Hcommit 5/5,
+conformance 125/125, frozen 7/7, and exactly four unchanged production violations remaining.

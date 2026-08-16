@@ -46,12 +46,14 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## REF-001 — Split files over 150 lines
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: accepted ADR-005, characterization tests; Evidence for DONE: not applicable.
+- Milestone: D1; Priority: P1; Status: IN_PROGRESS; Owner role: Core Architecture
+- Dependencies: accepted test-only slice of ADR-005 and characterization evidence; Evidence:
+  Phase 4D1A commits and `docs/audits/PHASE4D1A_TEST_SPLIT.md` removed both test violations.
 - Definition of Done: all project-authored Python files are ≤150 nonblank/non-comment lines,
   without compression, semantic drift, coverage loss, or frozen-hash change.
 - Validation commands: line-count audit from ADR-005; `uv run pytest`; `uv run ruff check src tests`.
-- Hard stop/escalation: split tests first; escalate runtime/artifact/strategy movement for review.
+- Hard stop/escalation: the test-only slice is complete; four production proposals remain
+  unselected and require separate review before any source movement.
 
 ## DOCS-002 — Complete docstrings and building-block contracts
 
@@ -196,4 +198,3 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   bilateral evidence, with separate authorization for any activity.
 - Validation commands: offline worksheet validation only; no gameplay command is authorized.
 - Hard stop/escalation: missing/different response blocks; do not contact, tunnel, or play.
-

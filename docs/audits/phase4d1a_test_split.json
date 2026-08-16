@@ -1,0 +1,68 @@
+{
+  "phase": "4D1A",
+  "result": "GREEN_TEST_ONLY_SLICE",
+  "ref_001_status": "IN_PROGRESS",
+  "tst_001_status": "PLANNED",
+  "commits": [
+    {"id": "9a13ac4", "subject": "test: split phase4a interoperability checks"},
+    {"id": "784b5cb", "subject": "test: split phase4b transport checks"},
+    {"id": "THIS_COMMIT", "subject": "docs: record phase4d1a test split evidence"}
+  ],
+  "original_line_counts": {
+    "tests/test_phase4a_interop.py": 305,
+    "tests/test_phase4b_transport.py": 441
+  },
+  "result_line_counts": {
+    "tests/interop_test_support.py": 108,
+    "tests/test_phase4a_boundary_audit_artifacts.py": 52,
+    "tests/test_phase4a_crypto_protocol.py": 33,
+    "tests/test_phase4a_process.py": 42,
+    "tests/test_phase4a_runtime_network.py": 91,
+    "tests/test_phase4a_runtime_rules.py": 79,
+    "tests/test_phase4b_artifact_builders.py": 104,
+    "tests/test_phase4b_artifact_commits.py": 42,
+    "tests/test_phase4b_cli_preflight.py": 41,
+    "tests/test_phase4b_identity_gates.py": 142,
+    "tests/test_phase4b_network.py": 127,
+    "tests/test_phase4b_runtime_artifacts.py": 95
+  },
+  "collection": {
+    "before": 135,
+    "after": 135,
+    "normalized_multisets_identical": true,
+    "skips": 0,
+    "xfails": 0
+  },
+  "ast_definition_manifest": {
+    "algorithm": "sorted path-independent multiset of ast.dump(include_attributes=False)",
+    "before_entries": 46,
+    "after_entries": 46,
+    "before_sha256": "dba16e31190e505495bf00406335613d3cbbaf4b35765325bd5844cbe2a9a012",
+    "after_sha256": "dba16e31190e505495bf00406335613d3cbbaf4b35765325bd5844cbe2a9a012",
+    "identical": true
+  },
+  "gates": {
+    "pytest": "PASS_135_OF_135",
+    "branch_coverage_percent": 90.81,
+    "ruff": "PASS_ZERO_ERRORS",
+    "hcommit": "PASS_5_OF_5",
+    "conformance": "PASS_125_OF_125",
+    "frozen_manifest": "PASS_7_OF_7",
+    "governance": "PASS_6_OF_6",
+    "maximum_new_python_counted_lines": 142,
+    "forbidden_path_diff": "PASS_EMPTY"
+  },
+  "remaining_over_150": {
+    "src/police_thief_lab/interop/runtime.py": 565,
+    "src/police_thief_lab/policies/phase3b.py": 303,
+    "src/police_thief_lab/interop/artifacts.py": 168,
+    "src/police_thief_lab/policies/belief.py": 154
+  },
+  "hard_stop_attestations": {
+    "production_or_external_change": false,
+    "semantic_test_change": false,
+    "new_test_skip_or_xfail": false,
+    "external_activity_or_gameplay": false,
+    "merge_push_or_tag": false
+  }
+}
