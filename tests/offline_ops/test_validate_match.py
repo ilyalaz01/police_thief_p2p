@@ -8,6 +8,7 @@ both safe and gives genuine confidence in the argv/exit-code wiring.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from tests.offline_ops.artifact_fixtures import write_valid_match_fixture
@@ -51,6 +52,45 @@ def test_unexpected_file_fails_hygiene_and_never_invokes_the_checker(tmp_path: P
     hygiene, conformance = report.checks
     assert hygiene.status == CheckStatus.FAIL
     assert conformance.status == CheckStatus.SKIPPED
+
+
+def test_a_missing_required_artifact_kind_fails_via_the_composed_checker(tmp_path: Path) -> None:
+    write_valid_match_fixture(tmp_path)
+    next(tmp_path.glob("declaration_*.json")).unlink()
+
+    report = validate_match.run(tmp_path)
+
+    assert report.exit_code == ExitCode.MATCH_VALIDATION_FAILED
+    hygiene, conformance = report.checks
+    assert hygiene.status == CheckStatus.PASS
+    assert conformance.status == CheckStatus.FAIL
+
+
+def test_two_matches_mixed_in_one_directory_fails_via_the_composed_checker(
+    tmp_path: Path,
+) -> None:
+    write_valid_match_fixture(tmp_path)
+    (tmp_path / "declaration_charlie-vs-delta.json").write_text(
+        json.dumps(
+            {
+                "game_id": "charlie-vs-delta",
+                "game_uid": "22222222-2222-4222-8222-222222222222",
+                "num_sub_games": 1,
+                "groups": {
+                    "group_1": {"group_id": "charlie"},
+                    "group_2": {"group_id": "delta"},
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    report = validate_match.run(tmp_path)
+
+    assert report.exit_code == ExitCode.MATCH_VALIDATION_FAILED
+    hygiene, conformance = report.checks
+    assert hygiene.status == CheckStatus.PASS
+    assert conformance.status == CheckStatus.FAIL
 
 
 def test_malformed_json_fails_via_the_composed_checker(tmp_path: Path) -> None:

@@ -312,10 +312,10 @@ phase below is DONE and the Phase 4 sign-off criteria hold.
   versions pinned explicitly; no secrets, no artifact upload) and `docs/RELEASE_ENGINEERING.md`
   (setup, all four commands, output format, the full exit-code recovery table, and security
   limits). 9 new tests (89 total in `tests/offline_ops/`), including a dedicated
-  `test_ci_workflow.py` that checks the workflow text directly (no new YAML-parser dependency,
-  which would require an out-of-boundary `pyproject.toml` edit) for the exact documented
-  entry-point string, read-only permissions, pinned 40-hex-char SHAs, no `secrets.` usage, and no
-  duplicated in-workflow reimplementation of pytest/Ruff/verify_vectors.
+  `tests/offline_ops/test_ci_workflow.py` that checks the workflow text directly (no new
+  YAML-parser dependency, which would require an out-of-boundary `pyproject.toml` edit) for
+  the exact documented entry-point string, read-only permissions, pinned 40-hex-char SHAs, no
+  `secrets.` usage, and no duplicated in-workflow reimplementation of pytest/Ruff/verify_vectors.
   - No separate `docs/audits/PHASE4*`-style audit file was created: `docs/audits/**` is not in
     `RELEASE_ENGINEERING_WORKSTREAM.md`'s module boundary, so this Phase 4 entry (plus Phases
     1–3 above and the commit history on `feature/release-engineering`) is the workstream's audit

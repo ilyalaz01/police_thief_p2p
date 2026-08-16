@@ -36,7 +36,9 @@ class CommandRunner(Protocol):
 
     def __call__(
         self, argv: Sequence[str], *, cwd: Path, timeout_seconds: float
-    ) -> CommandOutcome: ...
+    ) -> CommandOutcome:
+        """Match ``run_command``'s signature; see its docstring for the contract."""
+        ...
 
 
 def run_command(argv: Sequence[str], *, cwd: Path, timeout_seconds: float) -> CommandOutcome:
