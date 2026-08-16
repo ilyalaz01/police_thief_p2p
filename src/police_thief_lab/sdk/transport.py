@@ -12,7 +12,14 @@ from ..interop.profile import MatchProfile
 from ..interop.protocol import Equivocation, ProtocolViolation, TurnInbox, TurnMessage
 from ..interop.runtime import PeerRuntime
 from ..interop.runtime import run_peer as _run_peer
-from ..interop.runtime_models import DeadlineTracker, PeerPhase, require_real_team_git_commit
+from ..interop.runtime_models import (
+    DeadlineTracker,
+    LocalGameState,
+    PeerPhase,
+    action_to_wire,
+    config_from_profile,
+    require_real_team_git_commit,
+)
 from ..interop.transport import (
     McpPeerClient,
     PeerInboxes,
@@ -87,6 +94,7 @@ class TransportSDK:
     DeadlineTracker = DeadlineTracker
     EndpointConfig = EndpointConfig
     Equivocation = Equivocation
+    LocalGameState = LocalGameState
     MatchProfile = MatchProfile
     McpPeerClient = McpPeerClient
     PeerInboxes = PeerInboxes
@@ -97,6 +105,8 @@ class TransportSDK:
     TurnInbox = TurnInbox
     TurnMessage = TurnMessage
     build_server = staticmethod(build_server)
+    action_to_wire = staticmethod(action_to_wire)
+    config_from_profile = staticmethod(config_from_profile)
     discover_tools = staticmethod(discover_tools)
     launch_peer = staticmethod(launch_peer)
     redact_secrets = staticmethod(redact_secrets)
