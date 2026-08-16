@@ -256,8 +256,23 @@ phase below is DONE and the Phase 4 sign-off criteria hold.
 
 ### RE-001 Phase 3 — `validate-match` and `package-match` commands
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Milestone: D2; Priority: P1; Status: DONE; Owner: Nadav
 - Dependencies: RE-001 Phase 1, Phase 2.
+- Evidence: `tools/offline_ops/match_artifacts/` (naming grammar, pathlib-only hygiene walker,
+  redacted manifest/report + atomic packager — named to avoid the pre-existing root `.gitignore`
+  rule for `artifacts/` output directories, which is outside this workstream's module boundary
+  to edit) and `tools/offline_ops/fs_safety.py` (shared symlink/escape check, also now reused by
+  `secrets/scanner.py`); rewritten `commands/validate_match.py` /
+  `commands/package_match.py`, composing (never reimplementing) the existing MIT-licensed
+  `external/copthief-league-protocol/tools/check_artifacts.py` checker via subprocess. 28 new
+  tests in `tests/offline_ops/` (80 total), including real end-to-end subprocess calls against
+  the composed checker (fast/stdlib-only/non-recursive, unlike quality-gate's `pytest` check).
+  Manually verified against the submodule's own real 14-file, 6-sub-game example match
+  (`external/copthief-league-protocol/examples/pairing-artifacts/`): `validate-match` correctly
+  rejects the directory as-is (the `README.md` alongside it is a fail-closed `unexpected_file`),
+  and both commands pass end-to-end once given only the JSON artifacts, producing a correct
+  byte-identical package with a sanitized manifest/report (spot-checked: no file bodies or
+  identity data, only filenames/sizes/hashes/statuses).
 - Definition of Done:
   - `validate-match PATH` validates one schema 1.1 four-artifact directory through the existing
     MIT checker only; rejects missing, duplicate, unexpected, malformed, oversized, symlinked,

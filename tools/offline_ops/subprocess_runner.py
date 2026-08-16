@@ -12,6 +12,7 @@ import subprocess
 import time
 from collections.abc import Sequence
 from pathlib import Path
+from typing import Protocol
 
 
 @dataclasses.dataclass(frozen=True)
@@ -28,6 +29,14 @@ class CommandOutcome:
     returncode: int | None
     timed_out: bool
     duration_seconds: float
+
+
+class CommandRunner(Protocol):
+    """Callable shape of ``run_command``, injectable for deterministic tests."""
+
+    def __call__(
+        self, argv: Sequence[str], *, cwd: Path, timeout_seconds: float
+    ) -> CommandOutcome: ...
 
 
 def run_command(argv: Sequence[str], *, cwd: Path, timeout_seconds: float) -> CommandOutcome:

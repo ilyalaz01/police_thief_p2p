@@ -12,6 +12,7 @@ import fnmatch
 from collections.abc import Iterator
 from pathlib import Path
 
+from tools.offline_ops.fs_safety import escapes_root
 from tools.offline_ops.secrets.patterns import (
     ARTIFACT_NAME_PREFIXES,
     CACHE_AND_TEMP_NAME_PATTERNS,
@@ -82,21 +83,13 @@ def _scan_entry(root: Path, entry: Path) -> list[SecretFinding]:
 
     if entry.is_symlink():
         return [SecretFinding(relative, "symlink")]
-    if _escapes_root(root, entry):
+    if escapes_root(root, entry):
         return [SecretFinding(relative, "path_traversal")]
     if _matches_any(entry.name, CACHE_AND_TEMP_NAME_PATTERNS):
         return [SecretFinding(relative, "cache_or_temp_file")]
     if _matches_any(entry.name, TUNNEL_CONFIG_NAME_PATTERNS):
         return [SecretFinding(relative, "tunnel_configuration")]
     return _scan_content(root, entry, relative)
-
-
-def _escapes_root(root: Path, entry: Path) -> bool:
-    try:
-        entry.resolve().relative_to(root.resolve())
-    except ValueError:
-        return True
-    return False
 
 
 def _matches_any(name: str, patterns: tuple[str, ...]) -> bool:

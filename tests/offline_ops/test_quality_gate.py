@@ -1,14 +1,17 @@
 """quality-gate must compose checks and pick the correct overall exit code.
 
-Every subprocess is faked here: quality-gate's real argv list shells out
-to a full recursive ``uv run pytest``, which must never run inside this
-suite's own test run.
+The five composed subprocess checks are faked here via ``command_runner``:
+one of them shells out to a full recursive ``uv run pytest``, which must
+never run inside this suite's own test run. ``match_path`` is exercised
+for real instead: it composes validate-match's fast, non-recursive,
+stdlib-only checker, so a genuine subprocess call there is safe.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
 
+from tests.offline_ops.artifact_fixtures import write_valid_match_fixture
 from tools.offline_ops.commands import quality_gate
 from tools.offline_ops.exit_codes import ExitCode
 from tools.offline_ops.models import CheckStatus
@@ -104,13 +107,29 @@ def test_a_secret_outside_the_excluded_test_directory_still_fails(tmp_path: Path
     assert report.exit_code == ExitCode.SECRET_SCAN_FAILED
 
 
-def test_requested_match_path_is_validated_and_reported(tmp_path: Path) -> None:
+def test_an_invalid_match_path_is_reported_and_fails_the_gate(tmp_path: Path) -> None:
+    empty_match_dir = tmp_path / "match"
+    empty_match_dir.mkdir()
     report = quality_gate.run(
-        match_path=tmp_path,
+        match_path=empty_match_dir,
         repo_root=tmp_path,
         scan_target=tmp_path,
         command_runner=_make_runner({}),
     )
     match_artifact = next(c for c in report.checks if c.check_id == "match_artifact")
-    assert match_artifact.status == CheckStatus.UNAVAILABLE
-    assert report.exit_code == ExitCode.VALIDATOR_UNAVAILABLE
+    assert match_artifact.status == CheckStatus.FAIL
+    assert report.exit_code == ExitCode.MATCH_VALIDATION_FAILED
+
+
+def test_a_valid_match_path_passes_the_gate(tmp_path: Path) -> None:
+    match_dir = tmp_path / "match"
+    write_valid_match_fixture(match_dir)
+    report = quality_gate.run(
+        match_path=match_dir,
+        repo_root=tmp_path,
+        scan_target=tmp_path,
+        command_runner=_make_runner({}),
+    )
+    match_artifact = next(c for c in report.checks if c.check_id == "match_artifact")
+    assert match_artifact.status == CheckStatus.PASS
+    assert report.exit_code == ExitCode.SUCCESS

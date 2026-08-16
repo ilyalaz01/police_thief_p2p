@@ -3,7 +3,8 @@
 ``quality-gate`` is deliberately never invoked end-to-end here: it shells
 out to a real, slow, recursive ``uv run pytest``. Its dispatch/aggregation
 logic is covered in isolation in ``test_quality_gate.py`` with an injected
-command runner instead.
+command runner instead. ``validate-match``/``package-match`` compose a
+fast, stdlib-only, non-recursive checker, so they are exercised for real.
 """
 
 from __future__ import annotations
@@ -13,6 +14,7 @@ from pathlib import Path
 
 import pytest
 
+from tests.offline_ops.artifact_fixtures import write_valid_match_fixture
 from tools.offline_ops.cli import build_parser, main
 from tools.offline_ops.exit_codes import ExitCode
 
@@ -44,15 +46,18 @@ def test_quality_gate_flags_parse_without_executing_anything() -> None:
     assert args.timeout == 5.0
 
 
-@pytest.mark.parametrize(
-    "argv",
-    [
-        ["validate-match", "some/match/dir"],
-        ["package-match", "some/match/dir", "--output", "some/out/dir"],
-    ],
-)
-def test_phase3_stub_commands_return_validator_unavailable(argv: list[str]) -> None:
-    assert main(argv) == ExitCode.VALIDATOR_UNAVAILABLE
+def test_validate_match_passes_on_a_valid_fixture(tmp_path: Path) -> None:
+    write_valid_match_fixture(tmp_path)
+    assert main(["validate-match", str(tmp_path)]) == ExitCode.SUCCESS
+
+
+def test_package_match_writes_a_package_for_a_valid_fixture(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    write_valid_match_fixture(source)
+    output = tmp_path / "package"
+
+    assert main(["package-match", str(source), "--output", str(output)]) == ExitCode.SUCCESS
+    assert (output / "package_manifest.json").exists()
 
 
 def test_scan_secrets_passes_on_an_empty_directory(tmp_path: Path) -> None:
@@ -61,14 +66,14 @@ def test_scan_secrets_passes_on_an_empty_directory(tmp_path: Path) -> None:
 
 def test_paths_containing_spaces_are_accepted(capsys: pytest.CaptureFixture[str]) -> None:
     exit_code = main(["validate-match", "dir with spaces/match one"])
-    assert exit_code == ExitCode.VALIDATOR_UNAVAILABLE
+    assert exit_code == ExitCode.MATCH_VALIDATION_FAILED
     payload = json.loads(capsys.readouterr().out)
     assert payload["command"] == "validate-match"
 
 
 def test_report_is_rendered_as_sanitized_json(capsys: pytest.CaptureFixture[str]) -> None:
-    main(["package-match", "some/path", "--output", "some/out"])
+    main(["package-match", "some/nonexistent/path", "--output", "some/out"])
     payload = json.loads(capsys.readouterr().out)
     assert payload["command"] == "package-match"
-    assert payload["exit_code"] == ExitCode.VALIDATOR_UNAVAILABLE
-    assert payload["checks"][0]["status"] == "unavailable"
+    assert payload["exit_code"] == ExitCode.MATCH_VALIDATION_FAILED
+    assert payload["checks"][0]["status"] == "fail"

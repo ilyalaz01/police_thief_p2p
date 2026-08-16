@@ -8,16 +8,14 @@ artifact, and the repository secret scan.
 
 from __future__ import annotations
 
-import dataclasses
 from collections.abc import Sequence
 from pathlib import Path
-from typing import Protocol
 
 from tools.offline_ops.checks.base import outcome_to_check
 from tools.offline_ops.commands import scan_secrets, validate_match
 from tools.offline_ops.exit_codes import ExitCode
 from tools.offline_ops.models import CheckResult, CheckStatus, GateReport
-from tools.offline_ops.subprocess_runner import CommandOutcome, run_command
+from tools.offline_ops.subprocess_runner import CommandRunner, run_command
 
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 _DEFAULT_TIMEOUT_SECONDS = 600.0
@@ -69,14 +67,6 @@ _FAILURE_PRIORITY: tuple[ExitCode, ...] = (
     ExitCode.MATCH_VALIDATION_FAILED,
     ExitCode.QUALITY_CHECK_FAILED,
 )
-
-
-class CommandRunner(Protocol):
-    """Callable shape of ``run_command``, injectable for deterministic tests."""
-
-    def __call__(
-        self, argv: Sequence[str], *, cwd: Path, timeout_seconds: float
-    ) -> CommandOutcome: ...
 
 
 def run(
@@ -134,8 +124,16 @@ def _match_artifact_check(match_path: Path | None) -> CheckResult:
             duration_seconds=0.0,
             exit_code=int(ExitCode.SUCCESS),
         )
-    result = validate_match.run(match_path).checks[0]
-    return dataclasses.replace(result, check_id="match_artifact")
+    report = validate_match.run(match_path)
+    status = CheckStatus.PASS if report.exit_code == int(ExitCode.SUCCESS) else CheckStatus.FAIL
+    summary = ", ".join(f"{check.check_id}={check.status.value}" for check in report.checks)
+    return CheckResult(
+        check_id="match_artifact",
+        status=status,
+        explanation=f"validate-match: {summary}",
+        duration_seconds=sum(check.duration_seconds for check in report.checks),
+        exit_code=report.exit_code,
+    )
 
 
 def _overall_exit_code(checks: Sequence[CheckResult]) -> int:
