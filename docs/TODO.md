@@ -222,8 +222,19 @@ phase below is DONE and the Phase 4 sign-off criteria hold.
 
 ### RE-001 Phase 2 — `quality-gate` and `scan-secrets` commands
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Milestone: D2; Priority: P1; Status: DONE; Owner: Nadav
 - Dependencies: RE-001 Phase 1.
+- Evidence: `tools/offline_ops/subprocess_runner.py`, `checks/base.py`, `secrets/` (patterns +
+  pathlib-only pruning walker), and rewritten `commands/quality_gate.py` /
+  `commands/scan_secrets.py`; 34 new tests in `tests/offline_ops/`. Manually verified end-to-end
+  against the real repository via `uv run python -m tools.offline_ops.cli quality-gate`: it
+  correctly composes pytest/Ruff/Hcommit/frozen-manifest/conformance-kit/secret-scan, passes on
+  the five currently-green validators, and fails closed (exit 3) only because of four pre-existing
+  unrelated `pytest` failures (a Windows/cp1255-codepage bug reading a UTF-8 fixture, confirmed
+  present before this workstream and outside its module boundary). `scan-secrets` initially flagged
+  this tool's own synthetic test fixtures as findings when run against the whole repo; fixed by
+  excluding `tests/offline_ops` from quality-gate's default scan target (see
+  `_SECRET_SCAN_EXCLUDE_RELATIVE_DIRS` in `commands/quality_gate.py`), covered by dedicated tests.
 - Definition of Done:
   - `quality-gate` composes, without reimplementing: project pytest with configured branch
     coverage, Ruff, Hcommit golden vectors, frozen production-file manifest check,

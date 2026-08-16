@@ -28,7 +28,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    subparsers.add_parser("quality-gate", help="Run the composed local quality gate.")
+    quality = subparsers.add_parser("quality-gate", help="Run the composed local quality gate.")
+    quality.add_argument("--match-path", type=Path, default=None)
+    quality.add_argument("--timeout", type=float, default=600.0)
 
     validate = subparsers.add_parser(
         "validate-match", help="Validate one schema 1.1 match artifact directory."
@@ -50,7 +52,7 @@ def build_parser() -> argparse.ArgumentParser:
 def _dispatch(args: argparse.Namespace) -> GateReport:
     """Route parsed arguments to the matching command module's ``run``."""
     if args.command == "quality-gate":
-        return quality_gate.run()
+        return quality_gate.run(match_path=args.match_path, timeout_seconds=args.timeout)
     if args.command == "validate-match":
         return validate_match.run(args.path)
     if args.command == "package-match":
