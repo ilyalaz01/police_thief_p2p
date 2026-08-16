@@ -30,6 +30,10 @@ DOCS = {
 ALLOWED_TASK = {"DONE", "IN_PROGRESS", "PLANNED", "BLOCKED"}
 ALLOWED_ADR = {"PROPOSED", "ACCEPTED", "SUPERSEDED", "REJECTED"}
 GAP_STATUSES = {"PARTIAL", "MISSING", "BLOCKED_BY_HIGHER_AUTHORITY"}
+LIVE_DOCUMENTS = DOCS - {
+    "docs/adr/README.md",
+    "docs/audits/PHASE4D0_GUIDELINES_RECOVERY.md",
+}
 
 
 def read(relative: str) -> str:
@@ -100,3 +104,20 @@ def test_readme_markdown_links_resolve_locally() -> None:
     local = [target.split("#", 1)[0] for target in links if "://" not in target]
     assert local
     assert all((ROOT / target).exists() for target in local)
+
+
+def test_live_documented_test_paths_exist() -> None:
+    references = {
+        match
+        for path in LIVE_DOCUMENTS
+        for match in re.findall(r"`((?:tests/)?test_[A-Za-z0-9_./-]+\.py)`", read(path))
+    }
+    assert references
+    missing = sorted(
+        reference
+        for reference in references
+        if not (
+            ROOT / (reference if reference.startswith("tests/") else f"tests/{reference}")
+        ).is_file()
+    )
+    assert missing == []
