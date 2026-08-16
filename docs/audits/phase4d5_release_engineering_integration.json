@@ -1,0 +1,96 @@
+{
+  "phase": "4D5",
+  "status": "GREEN",
+  "scope": [
+    "RE-001",
+    "SEC-001"
+  ],
+  "accepted_main_sha": "117aca9eced206c53deeb77f6929f1bffce8073c",
+  "old_partner_branch": {
+    "name": "feature/release-engineering",
+    "sha": "2d3063f6fb08d6f60bf5f2883dedac9a915b1f35"
+  },
+  "old_pr_11": {
+    "state_before_integration": "open",
+    "merged": false,
+    "closed_without_merge_by_this_integration": true
+  },
+  "clean_port_paths": [
+    ".github/workflows/quality-gate.yml",
+    "tools/offline_ops/**",
+    "tests/offline_ops/**",
+    "docs/RELEASE_ENGINEERING.md"
+  ],
+  "commits": {
+    "port": "a28c7e2",
+    "path_reconciliation": "a461104",
+    "utf8_encoding_fix": "f70a0f3",
+    "docs_reconciliation": "884687e"
+  },
+  "red_evidence_pr11_ci": {
+    "pytest": "fail",
+    "hcommit_vectors": "fail_exit_4",
+    "frozen_manifest": "fail_exit_4",
+    "conformance_kit": "pass",
+    "ruff": "pass",
+    "scan_secrets": "pass"
+  },
+  "windows_cp1255_red_evidence": {
+    "test_reference_artifacts_map_two_exact_group_commits": "unicode_decode_error",
+    "test_reference_runtime_artifacts_score_uid_and_consensus_end_to_end_capture": "unicode_decode_error",
+    "test_reference_runtime_artifacts_score_uid_and_consensus_end_to_end_survival": "unicode_decode_error",
+    "test_public_helpers_constants_signatures_and_moved_ast_are_exact": "assertion_error_not_encoding"
+  },
+  "windows_utf8_fix_result": {
+    "fixed": 3,
+    "still_red_unrelated": 1
+  },
+  "focused_offline_ops": {
+    "collected": 96,
+    "passed": 96,
+    "failed": 0,
+    "skipped": 0,
+    "symlink_skips": 0
+  },
+  "governance": {
+    "collected": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "full_tests": {
+    "collected": 294,
+    "passed": 288,
+    "failed": 1,
+    "skipped": 5,
+    "xfailed": 0
+  },
+  "coverage": {
+    "branch_percent": 94.07,
+    "required_percent": 85.0
+  },
+  "ruff_errors": 0,
+  "hcommit": "5/5",
+  "conformance": "125/125",
+  "frozen_manifest": "7/7",
+  "python_150_line_violations": 0,
+  "quality_gate_real_run": {
+    "exit_code": 3,
+    "checks": {
+      "pytest": "fail",
+      "ruff": "pass",
+      "hcommit_vectors": "pass",
+      "frozen_manifest": "pass",
+      "conformance_kit": "pass",
+      "match_artifact": "skipped_no_path_requested",
+      "scan_secrets": "pass"
+    }
+  },
+  "known_open_items": [
+    "test_public_helpers_constants_signatures_and_moved_ast_are_exact: pre-existing, platform-independent AST-hash mismatch, present on main outside this branch, unrelated to RE-001/SEC-001, out of scope to fix here",
+    "hcommit_vectors/frozen_manifest exit-code-4 symptom on the original PR #11 GitHub Actions run: investigated extensively including matched-environment Linux/WSL reproduction, not reproduced, cause unconfirmed"
+  ],
+  "kickoff_and_guidelines_absent": true,
+  "old_flat_tests_restored": false,
+  "game_strategy_wire_artifact_frozen_external_operational_changed": false,
+  "final_worktree_clean": true
+}
