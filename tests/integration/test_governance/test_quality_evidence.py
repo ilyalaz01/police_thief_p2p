@@ -39,6 +39,10 @@ CRITICAL_CASES = {
         "tests/integration/test_configuration/test_gatekeeper.py",
         "test_inbound_peer_queues_apply_bounded_fifo_backpressure_without_dropping",
     ),
+    "LIFECYCLE-RACE": (
+        "tests/integration/test_configuration/test_gatekeeper_lifecycle.py",
+        "test_execute_admission_and_close_cannot_strand_work",
+    ),
     "LOCAL-PROCESS": (
         "tests/system/test_phase4a_process.py",
         "test_two_real_independent_processes_complete_localhost_game",
@@ -79,4 +83,16 @@ def test_quality_audit_is_machine_readable_and_operation_safe() -> None:
     assert audit["frozen_manifest"] == "7/7"
     assert audit["hcommit"] == "5/5"
     assert audit["conformance"] == "125/125"
+    assert all(not audit["operations"][key] for key in audit["operations"])
+
+
+def test_concurrency_audit_records_bounded_ownership_without_operations() -> None:
+    audit_path = PROJECT_ROOT / "docs/audits/phase4d4_concurrency_lifecycle.json"
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    assert audit["phase"] == "4D4"
+    assert audit["status"] == "GREEN"
+    assert audit["focused_tests"] == {"passed": 3, "failed": 0}
+    assert audit["red_evidence"] == {"passed": 1, "failed": 2}
+    assert audit["capacity"] == "concurrent_max + queue_max"
+    assert audit["frozen_manifest"] == "7/7"
     assert all(not audit["operations"][key] for key in audit["operations"])

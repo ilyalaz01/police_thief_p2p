@@ -172,11 +172,15 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## CON-001 — Analyze concurrency, lifecycle and capacity
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: API-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D2; Priority: P1; Status: DONE; Owner role: Core Architecture
+- Dependencies: API-001; Evidence: Phase 4D4 RED/GREEN commits,
+  `docs/CONCURRENCY_AND_CAPACITY.md`, and
+  `docs/audits/PHASE4D4_CONCURRENCY_LIFECYCLE.md`.
 - Definition of Done: thread/queue ownership, shutdown, race, capacity, resource cleanup and
   exception paths are tested and documented with bounded behavior.
-- Validation commands: deterministic concurrency/load tests plus transport suite.
+- Validation commands: `uv run pytest -q
+  tests/integration/test_configuration/test_gatekeeper_lifecycle.py --no-cov`; `uv run pytest`;
+  `uv run ruff check src tests`.
 - Hard stop/escalation: preserve ordering/deadlines and avoid network-dependent unit tests.
 
 ## SEC-001 — Establish automated security/privacy checks

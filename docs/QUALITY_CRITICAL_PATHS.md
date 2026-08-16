@@ -18,6 +18,7 @@ part of this suite.
 | `AUDIT-REPLAY` | Changed nonce/payload or illegal replay is rejected without strategy leakage | `tests/integration/test_artifacts/test_phase4a_boundary_audit_artifacts.py::test_tampered_nonce_payload_and_replay_are_rejected` |
 | `ARTIFACT-HASH-DOMAINS` | Fixture, extended runtime profile, and canonical terms retain distinct exact hashes | `tests/integration/test_artifacts/test_profile_hash_domains.py::test_three_hash_domains_have_exact_distinct_lengths_bytes_and_hashes` |
 | `BACKPRESSURE` | A full inbound queue refuses excess work without dropping or reordering accepted items | `tests/integration/test_configuration/test_gatekeeper.py::test_inbound_peer_queues_apply_bounded_fifo_backpressure_without_dropping` |
+| `LIFECYCLE-RACE` | Execute and close serialize admission so no accepted call is stranded; timed-out shutdown later reaps workers | `tests/integration/test_configuration/test_gatekeeper_lifecycle.py::test_execute_admission_and_close_cannot_strand_work` |
 | `LOCAL-PROCESS` | Two independent loopback peers complete one full offline game | `tests/system/test_phase4a_process.py::test_two_real_independent_processes_complete_localhost_game` |
 | `GIT-IDENTITY-GATE` | Real-team mode rejects unresolved commit identity before gameplay | `tests/integration/test_interop/test_phase4b_identity_gates.py::test_real_team_gate_refuses_unresolved_local_commit_before_listener` |
 | `CONSENSUS-SCOPE` | The local proposal produces pinned bytes and hash without an implicit tie | `tests/integration/test_artifacts/test_final_consensus_scope.py::test_final_consensus_scope_worked_vector_exact_bytes_and_hash` |
@@ -28,7 +29,7 @@ part of this suite.
 - A percentage alone does not close a row; expected success and failure behavior must remain
   asserted by a live test.
 - A renamed or removed test must update this map in the same change. Governance tests verify the
-  nine highest-risk primary references automatically.
+  ten highest-risk primary references automatically.
 - A skipped, unavailable, externally dependent, or nondeterministic check is not release evidence.
 - New negotiated semantics require explicit bilateral agreement and authority review before this
   map or any implementation changes.
