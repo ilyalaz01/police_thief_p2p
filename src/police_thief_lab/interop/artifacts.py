@@ -1,15 +1,14 @@
 """Reference-compatible artifacts with deliberately separate serialization scopes."""
-# ruff: noqa: E501 -- schema prose is pinned verbatim to the professor reference.
+# ruff: noqa: E501,I001 -- pinned prose and compatibility re-exports remain verbatim.
 
 from __future__ import annotations
 
 import hashlib
-import json
 import uuid
-from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+from .artifact_encoding import LINKS_REMARK as LINKS_REMARK, _ended_at, _group, _hardware as _hardware, artifact_links, canonical_sha256, consensus_sha256, pretty_bytes
 from .crypto import canonical_json
 
 SCHEMA_VERSION = "1.1"
@@ -18,22 +17,6 @@ SCHEMA_DECLARATION = "Static declaration for the WHOLE game (the full series of 
 SCHEMA_CONFIG = "Agreed game configuration for one match. Values come from the master parameter table (Appendix F). Per the appendix's mandatory rules both teams must hold BYTE-IDENTICAL values, lock them cryptographically (config_sha256), give the file a unique name per game, and attach it to GitHub. 'status' recap: minimum = may only be raised; permanent = must not change; negotiation = any agreed value."
 SCHEMA_LOG = "Per-sub-game match log consumed by the Replay Viewer for cryptographic audit. Each step is committed as SHA-256(State || Move || Intent || Nonce) and later revealed; nonces are revealed only at the final audit (book ch5 commit-reveal, ch7 replay). Static team metadata (hardware, members, repos, model) is NOT repeated here — it lives in 1-pre-game-declaration.json; join by game_uid. Step 0 is the signed step-zero record carrying only what changes per sub-game (github_commit). The 'prompt_discussion' block records the natural-language exchange and the LLM prompt/reasoning behind each hint (book ch6 prompt engineering)."
 SCHEMA_RESULT = "Summary and final result for the WHOLE game (all sub-games) between two teams. It condenses the per-sub-game logs into a per-group score for every sub-game plus the aggregate outcome the lecturer needs to build the league standings. Static team metadata (identity, members, repos, MCP, hardware, model) is NOT repeated here — it lives in 1-pre-game-declaration.json and is referenced via game_id / group_id. Both teams must agree on this result and each sends its own copy to the lecturer (book ch9)."
-LINKS_REMARK = "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are examples for game_id=S01R02-team07-vs-team13."
-
-
-def pretty_bytes(value: dict[str, Any]) -> bytes:
-    return json.dumps(value, ensure_ascii=False, indent=2).encode("utf-8")
-
-
-def canonical_sha256(value: Any) -> str:
-    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
-
-
-def consensus_sha256(value: Any) -> str:
-    serialized = json.dumps(value, sort_keys=True, ensure_ascii=False)
-    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
-
-
 def derive_game_ids(terms: dict[str, Any], group_a: str, group_b: str) -> tuple[str, str]:
     """Derive the pinned shared human id and UUID from negotiated terms and groups."""
     pair = sorted([group_a, group_b])
@@ -83,27 +66,6 @@ def final_consensus_scope(game_id: str, aggregate: dict[str, Any],
     }
 
 
-def artifact_links(game_id: str) -> dict[str, str]:
-    return {"_remark": LINKS_REMARK, "declaration": f"declaration_{game_id}.json",
-            "config": f"config_{game_id}_g<NN>.json", "log": f"log_{game_id}_g<NN>.json",
-            "result": f"result_{game_id}.json"}
-
-
-def _hardware(spec: dict[str, Any]) -> dict[str, Any]:
-    return {"cpu_type": spec.get("cpu_type"), "cpu_freq_mhz": spec.get("cpu_freq_mhz"),
-            "cpu_cores": spec.get("cpu_cores"), "ram_gb": spec.get("ram_gb"),
-            "gpu_model": spec.get("gpu_type"), "vram_gb": spec.get("vram_gb")}
-
-
-def _group(identity: dict[str, Any]) -> dict[str, Any]:
-    block = {"group_id": identity["group_id"], "group_name": identity["group_name"],
-             "members": identity["members"], "repos": identity["repos"],
-             "mcp_servers": identity["mcp_servers"], "llm_model": identity["llm_model"],
-             "hardware_spec": _hardware(identity["spec"])}
-    block["signature"] = consensus_sha256(block)
-    return block
-
-
 def build_declaration(game_id: str, game_uid: str, timezone: str, game_started_at: str,
                       game_ended_at: str, num_sub_games: int, max_tokens_per_game: int,
                       own: dict[str, Any], opponent: dict[str, Any]) -> dict[str, Any]:
@@ -124,13 +86,6 @@ def build_config_artifact(shared_terms: dict[str, Any], game_id: str, game_uid: 
                      "config_name": f"config_{game_id}_g{sub_game_number:02d}.json",
                      "config_sha256": canonical_sha256(shared_terms)})
     return artifact
-
-
-def _ended_at(started_at: str, duration_seconds: float) -> str:
-    try:
-        return (datetime.fromisoformat(started_at) + timedelta(seconds=duration_seconds)).isoformat()
-    except (TypeError, ValueError):
-        return started_at
 
 
 def build_log(summary: dict[str, Any], game_id: str, game_uid: str, group_id: str,
