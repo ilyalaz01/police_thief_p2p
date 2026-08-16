@@ -20,7 +20,7 @@ signatures, exceptions, deterministic outputs, and byte contracts.
 | `sdk.policies` | Police/Thief policy constructors and observation-only diagnostics |
 | `sdk.evaluation` | Single games, batches, cross-play, JSON and Markdown rendering |
 | `sdk.artifacts` | Commit/reveal, audit/replay, scores, hashes, schema 1.1 artifacts |
-| `sdk.transport` | Match profiles, protocol types, endpoints, FastMCP and peer launch |
+| `sdk.transport` | Match profiles, protocol types, Gatekeeper, endpoints, FastMCP and peer launch |
 | `sdk.configuration` | Versioned operational config and sanitized secret scanning |
 
 ## Local deterministic example

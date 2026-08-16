@@ -33,6 +33,7 @@ commit/PR.
 | Phase 4D1D runtime split | Pin runtime signatures/conversions and rerun isolated-process, terminal, audit/replay and schema 1.1 flows while separating responsibilities. | Unicode defaults and module-global patch points are observable contracts; compare them explicitly before accepting a structural split. |
 | Phase 4D2A operational config | Commit a failing config-contract test, then add a strict loader, CLI preflight, safe example and value-redacting scan under CFG-001/ADR-006. | Keep operational metadata outside MatchProfile bytes; strict version/mode rejection before side effects is safer than implicit migration. |
 | Phase 4D2B SDK facade | Commit a failing single-entry inventory, then compose six concern-specific services and reduce CLI to typed delegation under SDK-001/ADR-003. | Alias proven implementations instead of wrapping behavior; separate facade completeness from future Gatekeeper policy. |
+| Phase 4D2C API Gatekeeper | Commit a failing centralized-call contract, then add file-loaded rates, bounded FIFO/backpressure/drain/value-free metrics and gate every FastMCP attempt under API-001/ADR-004. | Preserve higher-authority retry ownership while gating each attempt; bound inbound mailboxes without dropping or reordering messages. |
 
 ## Template for every future significant prompt
 

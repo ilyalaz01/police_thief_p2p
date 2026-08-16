@@ -14,6 +14,8 @@ artifacts.
 - official schema 1.1 artifact builders;
 - one documented `PoliceThiefSDK` entry point for domain, policy, evaluation, artifact, transport,
   and configuration operations;
+- centralized versioned FastMCP rate admission, bounded FIFO queues/backpressure, drain, and
+  sanitized monitoring;
 - local and public self-play validation;
 - more than 90% branch coverage and 125/125 conformance vectors.
 
@@ -93,9 +95,9 @@ Retrospective baseline created after the validated prototype.
 These documents did not exist before the prototype and do not claim otherwise.
 
 Phase 4D0 established the retrospective documentation/governance baseline. Later accepted changes
-closed the 150-line, versioned-configuration, and SDK-entry-point gaps, but this does not mean full
-Software Project Guidelines compliance, real-team readiness, or counted-match readiness; overall
-compliance remains **PARTIAL**.
+closed the 150-line, versioned-configuration, SDK-entry-point, and API-Gatekeeper gaps, but this
+does not mean full Software Project Guidelines compliance, real-team readiness, or counted-match
+readiness; overall compliance remains **PARTIAL**.
 
 - [Product requirements](docs/PRD.md)
 - [As-built architecture plan](docs/PLAN.md)

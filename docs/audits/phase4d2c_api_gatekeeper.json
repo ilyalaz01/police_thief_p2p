@@ -1,0 +1,60 @@
+{
+  "phase": "4D2C",
+  "status": "GREEN",
+  "todo": "API-001",
+  "todo_status": "DONE",
+  "commits": [
+    "73a21a8",
+    "3e8ff80",
+    "c06debe",
+    "c46bea2",
+    "0f5f566"
+  ],
+  "red_evidence": "collection failed because police_thief_lab.gatekeeper did not exist",
+  "applicability": {
+    "production_external_client": "FastMCP",
+    "outbound_call_sites": [
+      "discover_tools",
+      "McpPeerClient._invoke"
+    ],
+    "other_production_external_api_clients": 0,
+    "retry_owner": "McpPeerClient higher-authority frozen transport contract"
+  },
+  "controls": {
+    "rate_config": "config/rate_limits.v1.json",
+    "schema_version": "1.0",
+    "outbound_fifo_bounded": true,
+    "inbound_fifo_bounded": true,
+    "backpressure": true,
+    "drain": true,
+    "sanitized_bounded_monitoring": true,
+    "payloads_retained_in_monitoring": false
+  },
+  "acceptance": {
+    "focused_tests": "29/29 passed across Gatekeeper/config/transport runs",
+    "pytest": "187/187 passed; no skips or xfails",
+    "branch_coverage_percent": 93.91,
+    "ruff": "passed",
+    "hcommit": "5/5",
+    "conformance": "125/125",
+    "frozen_manifest": "7/7 exact",
+    "b0_b1": "7/7",
+    "professor_differential": "passed without skip",
+    "python_files_scanned": 92,
+    "line_limit_violations": 0,
+    "maximum_counted_lines": 150,
+    "tracked_secret_scan_findings": 0
+  },
+  "excluded_operations": [
+    "public_transport",
+    "tunnel",
+    "external_team_contact",
+    "gmail",
+    "operational_warmup",
+    "league_reporting",
+    "counted_match",
+    "strategy_experiment",
+    "new_ai_ml",
+    "dependency_change"
+  ]
+}
