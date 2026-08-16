@@ -12,7 +12,7 @@ import time
 from pathlib import Path
 
 import pytest
-from test_phase4a_interop import free_port, profile
+from interop_test_support import free_port, profile
 
 from police_thief_lab.interop.artifacts import (
     build_config_artifact,
