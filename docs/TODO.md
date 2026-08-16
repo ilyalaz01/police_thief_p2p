@@ -198,9 +198,12 @@ phase below is DONE and the Phase 4 sign-off criteria hold.
 
 ### RE-001 Phase 1 — CLI foundation, result model, and module scaffolding
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Milestone: D2; Priority: P1; Status: DONE; Owner: Nadav
 - Dependencies: QLT-001, SEC-001 design approval; module boundary defined in
   `RELEASE_ENGINEERING_WORKSTREAM.md`.
+- Evidence: `tools/offline_ops/` (exit codes, typed result model, JSON reporting, CLI dispatch,
+  four command stubs) and `tests/offline_ops/` (18 tests); `uv run pytest tests/offline_ops
+  --no-cov` and `uv run ruff check tools/offline_ops tests/offline_ops` both pass.
 - Definition of Done:
   - `tools/offline_ops/` package created with one cross-platform Python CLI entry point using
     only `pathlib` and `subprocess` argument arrays (no shell strings, no network calls).
