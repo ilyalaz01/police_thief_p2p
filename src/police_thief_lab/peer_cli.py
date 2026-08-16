@@ -6,9 +6,7 @@ import argparse
 import os
 from pathlib import Path
 
-from .configuration import load_operational_config
-from .interop.network import EndpointConfig
-from .interop.runtime import run_peer
+from .sdk import PeerLaunchRequest, PoliceThiefSDK
 
 
 def main() -> int:
@@ -34,45 +32,24 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=1)
     args = parser.parse_args()
-    if args.operational_config is not None:
-        operational = load_operational_config(args.operational_config)
-        requested_mode = "real_team" if args.real_team else "self_test"
-        if operational.operation_mode != requested_mode:
-            raise ValueError(
-                "operational config mode does not match the requested peer operation"
-            )
-    advertised = args.advertised_url or f"http://{args.host}:{args.port}/mcp"
-    # Parse the profile before starting a listener so malformed public settings fail fast.
-    import json
-
-    timeouts = json.loads(args.profile.read_text(encoding="utf-8"))["timeouts"]
-    EndpointConfig(
-        args.host,
-        args.port,
-        advertised,
-        args.opponent_url,
-        timeouts["connect"],
-        timeouts["turn"],
-        timeouts["retry"],
-        int(timeouts.get("retry_count", 100)),
-        timeouts["audit"],
-        args.public,
+    request = PeerLaunchRequest(
+        role=args.role,
+        profile=args.profile,
+        host=args.host,
+        port=args.port,
+        opponent_url=args.opponent_url,
+        artifacts=args.artifacts,
+        output=args.output,
+        advertised_url=args.advertised_url,
+        seed=args.seed,
+        group_id=args.group_id,
+        group_name=args.group_name,
+        git_commit=args.git_commit,
+        real_team=args.real_team,
+        public=args.public,
+        operational_config=args.operational_config,
     )
-    return run_peer(
-        args.role,
-        args.profile,
-        args.host,
-        args.port,
-        advertised,
-        args.opponent_url,
-        args.artifacts,
-        args.output,
-        args.seed,
-        args.group_id,
-        args.group_name,
-        args.git_commit,
-        args.real_team,
-    )
+    return PoliceThiefSDK().transport.launch_peer(request)
 
 
 if __name__ == "__main__":
