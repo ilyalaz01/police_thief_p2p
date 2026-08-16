@@ -18,6 +18,7 @@ DOCS = {
     "docs/TODO.md",
     "docs/GUIDELINES_COMPLIANCE_MATRIX.md",
     "docs/QUALITY_PLAN.md",
+    "docs/QUALITY_CRITICAL_PATHS.md",
     "docs/TESTING.md",
     "docs/PROMPT_ENGINEERING_LOG.md",
     "docs/PRD_GAME_CORE_AND_OBSERVABILITY.md",
@@ -28,6 +29,7 @@ DOCS = {
     "docs/PRD_RELEASE_ENGINEERING.md",
     "docs/adr/README.md",
     "docs/audits/PHASE4D0_GUIDELINES_RECOVERY.md",
+    "docs/audits/PHASE4D3_TEST_QUALITY.md",
 }
 ALLOWED_TASK = {"DONE", "IN_PROGRESS", "PLANNED", "BLOCKED"}
 ALLOWED_ADR = {"PROPOSED", "ACCEPTED", "SUPERSEDED", "REJECTED"}

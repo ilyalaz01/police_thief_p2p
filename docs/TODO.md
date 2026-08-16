@@ -78,17 +78,19 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## TST-001 — Reorganize and document test layers
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Shared Review
-- Dependencies: accepted ADR-005; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Shared Review
+- Dependencies: accepted ADR-005; Evidence: Phase 4D3 RED/GREEN commits and
+  `docs/audits/PHASE4D3_TEST_QUALITY.md`.
 - Definition of Done: unit/integration/system tests have documented boundaries, source mapping,
   shared fixtures, success/error cases, and preserved collection/coverage.
-- Validation commands: `uv run pytest --collect-only`; `uv run pytest`.
+- Validation commands: `uv run pytest --collect-only -q --no-cov`; `uv run pytest`.
 - Hard stop/escalation: preserve test intent and existing tests during migration.
 
 ## QLT-001 — Enforce coverage, path evidence, Ruff and failure reports
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Shared Review
-- Dependencies: TST-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Shared Review
+- Dependencies: TST-001; Evidence: `docs/QUALITY_CRITICAL_PATHS.md`, Phase 4D3 RED/GREEN commits,
+  and `docs/audits/phase4d3_test_quality.json`.
 - Definition of Done: ≥85% branch coverage remains enforced, critical-path cases are mapped,
   Ruff is zero, and sanitized pass/failure reports have a retention policy.
 - Validation commands: `uv run pytest`; `uv run ruff check src tests`.

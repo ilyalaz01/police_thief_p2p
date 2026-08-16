@@ -40,6 +40,21 @@ coverage; Ruff zero; Hcommit 5/5; conformance 125/125; frozen 7/7; governance/li
 checks; version/changelog/config compatibility; and no unresolved P0 release blocker. Phase 4D0
 documentation GREEN is not overall release or match readiness.
 
+### Sanitized report retention
+
+Local pytest may emit JUnit XML into an ignored temporary or operator-selected report directory.
+The committed audit retains only command identity, tool/version, commit, counts, duration,
+coverage percentage, status, and a non-sensitive failure category.
+The committed audit must not contain raw stdout or stderr.
+It also excludes test payloads, artifact bodies, paths outside the repository, endpoints,
+credentials, authorization headers, nonces, or match commit identity values.
+
+A failed run remains retained in the phase audit until a linked successful rerun supersedes it;
+the linked successful rerun never deletes or relabels the earlier failure. Detailed temporary
+JUnit XML may be deleted after the sanitized summary is reviewed. Missing, skipped, timed-out, or
+unavailable required validators are failures, not passes. The release-engineering workstream may
+automate this policy but may not weaken or duplicate the underlying validators.
+
 ## Pull-request checklist
 
 - Requirements/TODO/ADR and authority are linked; scope and exclusions are explicit.
@@ -50,4 +65,3 @@ documentation GREEN is not overall release or match readiness.
 - User docs, risk, rollback/recovery, remaining blockers, owner, and evidence are current.
 - At least Shared Review approves; higher-risk interoperability changes obtain architecture and
   explicit human/negotiation review.
-
