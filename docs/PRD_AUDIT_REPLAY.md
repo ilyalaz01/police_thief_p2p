@@ -19,7 +19,8 @@ audit behavior are frozen; details remain authoritative in [interop decisions](I
 
 The current approach isolates `canonical_json`, `hcommit`, `seal`, `verify_records`,
 `verify_audit`, and `replay_sequence`. Evidence: five golden vectors, tamper tests,
-`test_turns_and_replay.py`, `test_phase4a_interop.py`, and 125/125 conformance vectors.
+`tests/test_turns_and_replay.py`, `tests/test_phase4a_boundary_audit_artifacts.py`, the
+[Phase 4D1A test mapping](audits/PHASE4D1A_TEST_SPLIT.md), and 125/125 conformance vectors.
 Alternatives such as a different canonical serializer, nonce placement, signature scheme, or
 consensus preimage are rejected for the frozen profile.
 
@@ -32,4 +33,3 @@ Definition of Done: byte vectors remain exact, failure evidence is sanitized, au
 tests cover success/error paths, conformance and seven frozen hashes pass, and no negotiated
 scope changes without explicit agreement. Frozen boundary includes crypto, serialization,
 deadline, audit, replay, and result semantics.
-

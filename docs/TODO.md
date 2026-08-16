@@ -41,7 +41,7 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Definition of Done: applicable external calls are inventoried; approved admission/rate policy,
   bounded queues, backpressure, drain and sanitized monitoring are tested without changing frozen
   retries, deadlines, duplicates, ordering, or stale/equivocation behavior.
-- Validation commands: `uv run pytest tests/test_phase4a_interop.py tests/test_phase4b_transport.py`.
+- Validation commands: `uv run pytest -q -k "phase4a or phase4b" --no-cov`.
 - Hard stop/escalation: stop at any wire/deadline semantic drift or unresolved applicability.
 
 ## REF-001 — Split files over 150 lines

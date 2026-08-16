@@ -25,6 +25,7 @@ commit/PR.
 | Phase 4B/4C reports | Validate transport gates and prepare blocked human worksheets. | Technical validation never substitutes for bilateral approval or authorization. |
 | Phase 4D0 audit | Recover requirements, architecture, quality and task governance. | Retrospective documentation must state its timing and leave technical gaps open. |
 | Phase 4D1A test split | Mechanically split oversized interoperability tests under REF-001. | Path-normalized collection and AST manifests make organization-only moves independently verifiable. |
+| Phase 4D1A.1 correction | Repair live test references and specify the AST digest preimage. | Governance should validate live backticked test paths, and evidence hashes need exact framing rules. |
 
 ## Template for every future significant prompt
 

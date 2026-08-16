@@ -57,3 +57,33 @@ No production, frozen, profile, serialization-domain, artifact, policy, runtime,
 transport, gameplay, external, fixture/vector/log, dependency, or lockfile behavior changed.
 No network, external contact, gameplay, merge, push, or tag occurred. Production proposals remain
 unselected; this report ends the Phase 4D1A slice.
+
+## Phase 4D1A.1 reproducibility correction
+
+The recorded digest was independently reproduced from Phase 4D0 Git objects and the current
+split files. The canonical preimage is framed as follows:
+
+1. Read `tests/test_phase4a_interop.py` and `tests/test_phase4b_transport.py` from Git object
+   `f28895debe3762e3905602d37a040ace7cb9234d`; read the 12 current files listed in the mapping
+   above from the worktree.
+2. Walk each parsed module with `ast.walk`. For every `FunctionDef` or `AsyncFunctionDef`, emit
+   `{"kind": type(node).__name__, "name": node.name, "dump": ast.dump(node,
+   include_attributes=False)}`. Classes are not separate entries, but their methods are found by
+   the walk.
+3. Sort the complete entry multiset by `(name, kind, dump)`. Serialize the one enclosing array
+   with `json.dumps(entries, ensure_ascii=False, sort_keys=True, separators=(",", ":"))`.
+4. UTF-8 encode that single JSON string. JSON commas delimit entries; there is no additional
+   record delimiter and no final newline. SHA-256 is computed over those exact bytes.
+
+This produces 46 entries and
+`dba16e31190e505495bf00406335613d3cbbaf4b35765325bd5844cbe2a9a012` for both sides. Phase
+4D1A.1 also added a governance regression for backticked paths in live documents and corrected
+the stale live Phase 4A/4B references. The original filenames remain above because this audit
+intentionally records the source-to-destination mapping.
+
+Correction validation: 136/136 tests passed with no skips or xfails; configured branch coverage
+remained 90.81%; governance passed 7/7; Ruff was clean; Hcommit remained 5/5; conformance remained
+125/125; and the frozen manifest remained 7/7. Split test/support counts remained at most 142,
+the over-150 roster remained the same four production files, and the Phase 4D1A accepted-base
+diff contained no forbidden source, external, interoperability, dependency, lockfile, or split
+test/support changes.
