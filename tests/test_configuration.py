@@ -128,3 +128,39 @@ def test_invalid_operational_config_stops_cli_before_peer_side_effects(
     )
     with pytest.raises(ValueError, match="unsupported operational config schema"):
         peer_cli.main()
+
+
+def test_environment_selected_mode_mismatch_stops_cli_before_peer_side_effects(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    from police_thief_lab import peer_cli
+
+    monkeypatch.setenv("POLICE_THIEF_CONFIG_PATH", str(TRACKED_CONFIG))
+    monkeypatch.setattr(
+        peer_cli,
+        "run_peer",
+        lambda *_args: (_ for _ in ()).throw(AssertionError("peer side effect started")),
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "peer_cli",
+            "--role",
+            "police",
+            "--real-team",
+            "--profile",
+            str(tmp_path / "unused-profile.json"),
+            "--port",
+            "8801",
+            "--opponent-url",
+            "http://127.0.0.1:8802/mcp",
+            "--artifacts",
+            str(tmp_path / "artifacts"),
+            "--output",
+            str(tmp_path / "result.json"),
+        ],
+    )
+    with pytest.raises(ValueError, match="config mode does not match"):
+        peer_cli.main()

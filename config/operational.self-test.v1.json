@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "package_version": "1.0.0",
+  "operation_mode": "self_test",
+  "secret_source": "environment_only",
+  "retain_sensitive_values": false
+}
