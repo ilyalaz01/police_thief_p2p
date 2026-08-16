@@ -186,12 +186,107 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## RE-001 — Implement offline release-engineering workstream
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner role: Release Engineering
+Umbrella task tracked as four sequential phases. RE-001 as a whole is DONE only when every
+phase below is DONE and the Phase 4 sign-off criteria hold.
+
+- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
 - Dependencies: QLT-001, SEC-001 design approval; Evidence for DONE: not applicable.
 - Definition of Done: every criterion in `RELEASE_ENGINEERING_WORKSTREAM.md` passes locally and
   via the same thin CI entry, with deterministic sanitized reports and stable exit codes.
 - Validation commands: workstream commands plus full project/conformance/frozen gates.
 - Hard stop/escalation: remain inside its module boundary; missing validators fail closed.
+
+### RE-001 Phase 1 — CLI foundation, result model, and module scaffolding
+
+- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Dependencies: QLT-001, SEC-001 design approval; module boundary defined in
+  `RELEASE_ENGINEERING_WORKSTREAM.md`.
+- Definition of Done:
+  - `tools/offline_ops/` package created with one cross-platform Python CLI entry point using
+    only `pathlib` and `subprocess` argument arrays (no shell strings, no network calls).
+  - A typed result model (per-check id, status, sanitized explanation, duration, exit code)
+    exists and is the single source every report renderer uses.
+  - CLI dispatches `quality-gate`, `validate-match`, `package-match`, `scan-secrets`
+    subcommands; unimplemented behavior still honors the exit-code contract (invalid
+    invocation/configuration returns 2).
+  - Every file under `tools/offline_ops/**` and `tests/offline_ops/**` stays ≤150
+    non-blank/non-comment lines, fully typed, with docstrings on every module/class/function.
+  - No file outside the workstream module boundary is created or modified.
+- Validation commands: `uv run ruff check tools/offline_ops tests/offline_ops`;
+  `uv run pytest tests/offline_ops --no-cov`.
+- Hard stop/escalation: any edit outside the module boundary, any shell-string subprocess call,
+  or any network call stops the phase immediately.
+
+### RE-001 Phase 2 — `quality-gate` and `scan-secrets` commands
+
+- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Dependencies: RE-001 Phase 1.
+- Definition of Done:
+  - `quality-gate` composes, without reimplementing: project pytest with configured branch
+    coverage, Ruff, Hcommit golden vectors, frozen production-file manifest check,
+    conformance-kit `verify_vectors.py`, optional match-artifact validation, and the
+    repository/package secret scan.
+  - A missing, skipped, timed-out, or unrunnable required validator is never reported as PASS;
+    it produces exit code 6.
+  - `scan-secrets PATH` fails closed on credentials, authorization headers, access tokens,
+    private keys, tunnel configuration, caches, temp files, unexpected files, path traversal,
+    and non-artifact nonce material, using only synthetic fixtures in tests.
+  - Exit codes 0/2/3/4/6 are covered by deterministic tests, including subprocess paths
+    containing spaces and simulated timeouts/missing dependencies.
+  - Reports (JSON + Markdown) render from the Phase 1 typed result model and retain no raw
+    stdout/stderr from sensitive inputs.
+- Validation commands: `uv run pytest tests/offline_ops -k "quality_gate or scan_secrets"
+  --no-cov`; `uv run ruff check tools/offline_ops tests/offline_ops`.
+- Hard stop/escalation: any reimplementation of pytest/Ruff/Hcommit/conformance logic (instead
+  of composing the existing validators) reopens this phase.
+
+### RE-001 Phase 3 — `validate-match` and `package-match` commands
+
+- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Dependencies: RE-001 Phase 1, Phase 2.
+- Definition of Done:
+  - `validate-match PATH` validates one schema 1.1 four-artifact directory through the existing
+    MIT checker only; rejects missing, duplicate, unexpected, malformed, oversized, symlinked,
+    or path-escaping files with exit code 5.
+  - Reports never reproduce JSON bodies, identity blocks, audit records, commit values, MCP
+    URLs, or nonce values; terminal-audit nonces stay confined to the unchanged validated log
+    artifact.
+  - `package-match PATH --output PATH` validates first, then atomically writes exactly the four
+    validated artifacts byte-for-byte unchanged, one redacted JSON manifest, and one equivalent
+    redacted Markdown report; never overwrites an existing output path (exit code 7 on write
+    failure).
+  - Tests cover invalid JSON, missing/extra/duplicate files, symlink/traversal/file-count/
+    per-file-size/total-size rejection, atomic creation, and overwrite refusal, using
+    deterministic synthetic fixtures only.
+- Validation commands: `uv run pytest tests/offline_ops -k "validate_match or package_match"
+  --no-cov`; `uv run ruff check tools/offline_ops tests/offline_ops`.
+- Hard stop/escalation: any modification to artifact bytes, any new interpretation of
+  schema/consensus semantics, or any leaked nonce/secret in a report reopens this phase.
+
+### RE-001 Phase 4 — CI wrapper, documentation, and full-project compliance sign-off
+
+- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Dependencies: RE-001 Phase 1–3.
+- Definition of Done:
+  - `.github/workflows/**` contains a thin wrapper invoking the same local `quality-gate` entry
+    point, with read-only repository contents permission, pinned action revisions and
+    dependency inputs, no repository secrets, and no peer/tunnel/mail/league/gameplay
+    operation; uploads no match artifact or private report.
+  - `docs/RELEASE_ENGINEERING.md` documents setup, exact commands, output format, recovery from
+    each exit code, and security limits.
+  - Existing project tests, coverage (≥85% branch), Ruff, Hcommit golden vectors,
+    conformance-kit vectors, and frozen-hash checks remain green after the workstream merges.
+  - The full deterministic offline test list from the "Required tests" section of
+    `RELEASE_ENGINEERING_WORKSTREAM.md` passes, including CI invoking the same local entry
+    point.
+  - RE-001 status flips to `DONE` only after this sign-off, with evidence linked (commits plus
+    an audit doc, matching the project's existing Phase 4D* audit convention).
+- Validation commands: `uv run pytest`; `uv run ruff check src tests tools/offline_ops`;
+  `uv run python external/copthief-league-protocol/verify_vectors.py`; workstream
+  `quality-gate` self-check.
+- Hard stop/escalation: any drift in frozen game/wire/artifact/strategy behavior, any CI-only
+  second implementation of the gate, or any secret/network usage in CI reopens this phase and
+  blocks sign-off.
 
 ## GIT-001 — Adopt reviewed branch/PR/release governance
 
