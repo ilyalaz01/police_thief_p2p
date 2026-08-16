@@ -15,9 +15,9 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 1 Dedicated PRDs | COMPLIANT | Six mechanism PRDs | Must remain live as mechanisms change | GOV-001 | Required-file/link test |
 | 1 Recommended layout | PARTIAL | `src`, `tests`, `docs`, `interop`, `reports`, `config`; `pyproject.toml`, `uv.lock`, `.env-example` | `results`, `assets`, and `notebooks` absent; tests remain flat | TST-001 | Approved test/research layout evidence |
 | 2 Modular structure | PARTIAL | Feature/layer package structure; REF-001 split evidence | Building-block contracts remain incomplete | DOCS-002 | Public-block contract inventory and review |
-| 2 150-line rule | COMPLIANT | ADR-005; Phase 4D1A–D1D audits; permanent regression test | Zero `src/` or `tests/` Python violations across 78 files | REF-001 | 170-test acceptance and independent count audit |
+| 2 150-line rule | COMPLIANT | ADR-005; Phase 4D1A–D1D audits; permanent regression test | Zero `src/` or `tests/` Python violations across 87 files | REF-001 | 174-test acceptance and independent count audit |
 | 2 Docstrings/comments/quality | PARTIAL | Many module/class/function docstrings; Ruff configured | Complete public-symbol/docstring/WHY audit absent | DOCS-002 | Automated inventory and review |
-| 3 SDK/OOP | PARTIAL | Root exports core SDK-like surface; protocols/backends | Evaluation/interop/artifacts not all reachable via sole facade; duplication audit absent | SDK-001 | Accepted facade and consumer tests |
+| 3 SDK/OOP | COMPLIANT | `PoliceThiefSDK` plus six cohesive services; CLI delegates a typed request | Legacy imports remain compatibility-only; public inventory test guards new operations | SDK-001 | Phase 4D2B facade, identity, and consumer-boundary tests |
 | 4 Gatekeeper/rate/queues | PARTIAL | `McpPeerClient` central retry/deadline; `PeerInboxes` queues | No rate limit, bounded depth, backpressure, drain, monitoring | API-001 | Accepted ADR plus bounded load/failure tests |
 | 5 TDD and organization | PARTIAL | Extensive deterministic tests and coverage enforcement | Historical pre-code TDD unprovable; tests flat; mapping incomplete | TST-001 | Future RED/GREEN evidence and layered collection |
 | 5 Coverage/edge/failure reports | PARTIAL | pytest branch coverage ≥85 configured; edge tests/reports | Critical path map and retained automated failure-report policy incomplete | QLT-001 | Green coverage report and path/failure inventory |
@@ -37,7 +37,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 14 Concurrency/thread safety | PARTIAL | daemon server thread and `queue.Queue`; transport tests | Unbounded capacity, shutdown/resource/race documentation incomplete | CON-001 | Lifecycle/load/race tests and diagram |
 | 15 Building blocks | PARTIAL | PLAN module/I/O descriptions and typed interfaces | Per-public-block setup/validation/edge contracts incomplete | DOCS-002 | Audited block contracts |
 | 16 Final checklist | PARTIAL | Detailed group mapping below | Multiple technical/research/operations gaps remain | GOV-001 | All group items separately satisfied |
-| 17 Quick-reference enforcement | PARTIAL | pytest/Ruff/coverage/frozen/vector/config/line-limit commands | SDK/gatekeeper and unified release automation incomplete | RE-001 | Unified fail-closed offline quality gate |
+| 17 Quick-reference enforcement | PARTIAL | pytest/Ruff/coverage/frozen/vector/config/SDK/line-limit commands | Gatekeeper and unified release automation incomplete | RE-001 | Unified fail-closed offline quality gate |
 | 18 References | NOT_APPLICABLE_WITH_RATIONALE | Guidelines supply a bibliography | Bibliography is source context, not an implementation requirement | GOV-001 | Rationale retained |
 | 19 Applicability note | BLOCKED_BY_HIGHER_AUTHORITY | Baseline authority order and ADR-001 | Generic advice cannot override rules/frozen/negotiated semantics | HUM-001 | Higher-authority clarification or explicit agreement |
 
@@ -46,7 +46,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | Checklist group/item | Status | Current evidence | Exact gap / rationale | TODO | Acceptance evidence required |
 |---|---|---|---|---|---|
 | 16.1 Documentation & structure | PARTIAL | Governance set, six PRDs, six Mermaid diagrams, prompt log | README incomplete; prompt history necessarily retrospective | DOC-001 | Manual review plus governance tests |
-| 16.2 SDK architecture | PARTIAL | Core package exports | Not a single facade for all business logic | SDK-001 | Accepted ADR/interface tests |
+| 16.2 SDK architecture | COMPLIANT | Root `PoliceThiefSDK`, six services, typed CLI delegation | New operations must extend the guarded inventory | SDK-001 | Phase 4D2B interface/consumer tests |
 | 16.2 OOP/no duplication | PARTIAL | Protocols/dataclasses/shared helpers | Project-wide duplication analysis absent | PKG-001 | Static/review evidence |
 | 16.2 API gatekeeper/rates/queues | PARTIAL | Central client retries and queues | Missing rate/bounds/backpressure/monitoring | API-001 | Bounded deterministic tests |
 | 16.2 ≤150/docstrings/style | PARTIAL | Zero line-limit violations; Ruff clean | Complete public-symbol/docstring inventory remains incomplete | DOCS-002 | Docstring/block audit plus Ruff |
