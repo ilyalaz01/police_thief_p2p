@@ -1,5 +1,5 @@
 """Reference-compatible artifacts with deliberately separate serialization scopes."""
-# ruff: noqa: E501,I001 -- pinned prose and compatibility re-exports remain verbatim.
+# ruff: noqa: E501 -- schema prose is pinned verbatim to the professor reference.
 
 from __future__ import annotations
 
@@ -8,7 +8,16 @@ import uuid
 from pathlib import Path
 from typing import Any
 
-from .artifact_encoding import LINKS_REMARK as LINKS_REMARK, _ended_at, _group, _hardware as _hardware, artifact_links, canonical_sha256, consensus_sha256, pretty_bytes
+from .artifact_encoding import LINKS_REMARK as LINKS_REMARK
+from .artifact_encoding import (
+    _ended_at,
+    _group,
+    artifact_links,
+    canonical_sha256,
+    consensus_sha256,
+    pretty_bytes,
+)
+from .artifact_encoding import _hardware as _hardware
 from .crypto import canonical_json
 
 SCHEMA_VERSION = "1.1"
