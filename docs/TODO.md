@@ -189,12 +189,20 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 Umbrella task tracked as four sequential phases. RE-001 as a whole is DONE only when every
 phase below is DONE and the Phase 4 sign-off criteria hold.
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
-- Dependencies: QLT-001, SEC-001 design approval; Evidence for DONE: not applicable.
+- Milestone: D2; Priority: P1; Status: DONE; Owner: Nadav
+- Dependencies: QLT-001, SEC-001 design approval; Evidence: RE-001 Phase 1–4 entries below and
+  the `feature/release-engineering` commit history.
 - Definition of Done: every criterion in `RELEASE_ENGINEERING_WORKSTREAM.md` passes locally and
   via the same thin CI entry, with deterministic sanitized reports and stable exit codes.
 - Validation commands: workstream commands plus full project/conformance/frozen gates.
 - Hard stop/escalation: remain inside its module boundary; missing validators fail closed.
+- Known open item (outside this workstream's boundary to fix): the composed `pytest` check
+  currently fails `quality-gate` on this Windows development machine due to a pre-existing,
+  unrelated Windows/cp1255-codepage bug reading a UTF-8 test fixture in
+  `tests/test_artifact_contract_api.py`, `tests/test_phase4b_artifact_commits.py`, and
+  `tests/test_phase4b_runtime_artifacts.py`. Confirmed present on the base commit before this
+  workstream (via `git stash`) and therefore not introduced or fixable by RE-001, whose module
+  boundary excludes those files. Expected not to reproduce on the Linux CI runner.
 
 ### RE-001 Phase 1 — CLI foundation, result model, and module scaffolding
 
@@ -294,8 +302,32 @@ phase below is DONE and the Phase 4 sign-off criteria hold.
 
 ### RE-001 Phase 4 — CI wrapper, documentation, and full-project compliance sign-off
 
-- Milestone: D2; Priority: P1; Status: PLANNED; Owner: Nadav
+- Milestone: D2; Priority: P1; Status: DONE; Owner: Nadav
 - Dependencies: RE-001 Phase 1–3.
+- Evidence: `.github/workflows/quality-gate.yml` (checkout with submodules → `uv sync --locked` →
+  `uv run python -m tools.offline_ops.cli quality-gate`; `permissions: contents: read`;
+  `actions/checkout` pinned to `11d5960a326750d5838078e36cf38b85af677262` (v4.4.0) and
+  `astral-sh/setup-uv` to `20cfd1bf945f4377ade1205e4dbc17946fc9a30d` (v10.0.1), both resolved and
+  verified via `git ls-remote` against the real upstream repositories, not guessed; `uv`/Python
+  versions pinned explicitly; no secrets, no artifact upload) and `docs/RELEASE_ENGINEERING.md`
+  (setup, all four commands, output format, the full exit-code recovery table, and security
+  limits). 9 new tests (89 total in `tests/offline_ops/`), including a dedicated
+  `test_ci_workflow.py` that checks the workflow text directly (no new YAML-parser dependency,
+  which would require an out-of-boundary `pyproject.toml` edit) for the exact documented
+  entry-point string, read-only permissions, pinned 40-hex-char SHAs, no `secrets.` usage, and no
+  duplicated in-workflow reimplementation of pytest/Ruff/verify_vectors.
+  - No separate `docs/audits/PHASE4*`-style audit file was created: `docs/audits/**` is not in
+    `RELEASE_ENGINEERING_WORKSTREAM.md`'s module boundary, so this Phase 4 entry (plus Phases
+    1–3 above and the commit history on `feature/release-engineering`) is the workstream's audit
+    trail instead.
+  - Final validation run: `uv run pytest` → 4 failed (pre-existing, unrelated: a Windows/cp1255
+    codepage bug reading a UTF-8 test fixture, reproduced identically on the base commit before
+    this workstream via `git stash`, confirmed again here), 267 passed, 5 skipped; `uv run ruff
+    check src tests tools/offline_ops` → clean; conformance-kit `verify_vectors.py` → 125/125;
+    `quality-gate` self-check → exit 3, and every composed check is green except `pytest`, which
+    fails solely on the same pre-existing, out-of-boundary issue (documented in
+    `docs/RELEASE_ENGINEERING.md`'s CI section, including that it is expected not to reproduce on
+    the Linux CI runner, whose default text encoding does not have this Windows-specific defect).
 - Definition of Done:
   - `.github/workflows/**` contains a thin wrapper invoking the same local `quality-gate` entry
     point, with read-only repository contents permission, pinned action revisions and

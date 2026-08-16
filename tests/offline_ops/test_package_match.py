@@ -58,6 +58,29 @@ def test_existing_output_is_never_overwritten(tmp_path: Path) -> None:
     assert (output / "sentinel.txt").read_text(encoding="utf-8") == "do not touch"
 
 
+def test_a_nonce_in_the_log_artifact_stays_confined_and_out_of_reports(tmp_path: Path) -> None:
+    """A revealed commit-reveal nonce legitimately lives in a terminal-audit
+    log artifact (RULES_AND_INTEROP_BASELINE.md ~5). It must stay only in
+    that unchanged, byte-identical packaged file, never in the generated
+    manifest/report, and must not itself trip the secret scanner.
+    """
+    source = tmp_path / "source"
+    write_valid_match_fixture(source)
+    log_file = next(source.glob("log_*.json"))
+    revealed_nonce = "b3f1c2a9-revealed-audit-nonce-should-stay-confined"
+    doc = json.loads(log_file.read_text(encoding="utf-8"))
+    doc["records"] = [{"step": 1, "nonce": revealed_nonce}]
+    log_file.write_text(json.dumps(doc, indent=2), encoding="utf-8")
+    output = tmp_path / "package"
+
+    report = package_match.run(source, output)
+
+    assert report.exit_code == ExitCode.SUCCESS
+    assert revealed_nonce in (output / log_file.name).read_text(encoding="utf-8")
+    assert revealed_nonce not in (output / "package_manifest.json").read_text(encoding="utf-8")
+    assert revealed_nonce not in (output / "package_report.md").read_text(encoding="utf-8")
+
+
 def test_packaged_artifact_bytes_match_the_source_exactly(tmp_path: Path) -> None:
     source = tmp_path / "source"
     write_valid_match_fixture(source)
