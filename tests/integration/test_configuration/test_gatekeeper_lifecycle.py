@@ -1,4 +1,4 @@
-"""RED contracts for Gatekeeper lifecycle races, cleanup, and capacity."""
+"""Contracts for Gatekeeper lifecycle races, cleanup, and capacity."""
 
 from __future__ import annotations
 

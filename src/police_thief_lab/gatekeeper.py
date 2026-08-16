@@ -7,7 +7,6 @@ import threading
 import time
 from collections import deque
 from collections.abc import Callable
-from dataclasses import dataclass, field
 from functools import lru_cache
 from typing import Any
 
@@ -20,17 +19,7 @@ from .gatekeeper_models import (
     load_rate_limit_config,
 )
 from .gatekeeper_rate import RateWindow
-
-
-@dataclass(slots=True)
-class _WorkItem:
-    api_call: Callable[..., Any]
-    args: tuple[Any, ...]
-    kwargs: dict[str, Any]
-    operation: str
-    done: threading.Event = field(default_factory=threading.Event)
-    result: Any = None
-    error: BaseException | None = None
+from .gatekeeper_work import WorkItem
 
 
 class ApiGatekeeper:
@@ -45,11 +34,12 @@ class ApiGatekeeper:
     ) -> None:
         self.config = config
         self._clock, self._sleep = clock, sleep
-        self._queue: queue.Queue[_WorkItem | None] = queue.Queue(config.queue_max)
+        self._queue: queue.Queue[WorkItem] = queue.Queue(config.queue_max)
         self._lock = threading.Lock()
         self._metrics: deque[CallMetric] = deque(maxlen=config.monitoring_max)
         self._rate = RateWindow(config, clock, sleep)
         self._in_flight = self._completed = self._failed = self._rate_waits = 0
+        self._pending = 0
         self._high_watermark = 0
         self._closed = False
         self._workers = tuple(
@@ -67,14 +57,15 @@ class ApiGatekeeper:
         **kwargs: Any,
     ) -> Any:
         """Queue one call or emit explicit backpressure when the bounded queue is full."""
-        if self._closed:
-            raise RuntimeError("gatekeeper is closed")
-        item = _WorkItem(api_call, args, kwargs, operation)
-        try:
-            self._queue.put_nowait(item)
-        except queue.Full as exc:
-            raise GatekeeperBackpressure("gatekeeper queue is full") from exc
+        item = WorkItem(api_call, args, kwargs, operation)
         with self._lock:
+            if self._closed:
+                raise RuntimeError("gatekeeper is closed")
+            try:
+                self._queue.put_nowait(item)
+            except queue.Full as exc:
+                raise GatekeeperBackpressure("gatekeeper queue is full") from exc
+            self._pending += 1
             self._high_watermark = max(self._high_watermark, self._queue.qsize())
         item.done.wait()
         result, error = item.result, item.error
@@ -87,10 +78,13 @@ class ApiGatekeeper:
 
     def _worker(self) -> None:
         while True:
-            item = self._queue.get()
-            if item is None:
-                self._queue.task_done()
-                return
+            try:
+                item = self._queue.get(timeout=0.01)
+            except queue.Empty:
+                with self._lock:
+                    if self._closed and self._pending == 0:
+                        return
+                continue
             if self._rate.wait():
                 with self._lock:
                     self._rate_waits += 1
@@ -107,6 +101,7 @@ class ApiGatekeeper:
                 self._in_flight -= 1
                 self._completed += outcome == "success"
                 self._failed += outcome == "failure"
+                self._pending -= 1
                 self._metrics.append(
                     CallMetric(
                         item.operation,
@@ -133,25 +128,24 @@ class ApiGatekeeper:
 
     def drain(self, timeout: float) -> bool:
         """Wait until queued and active calls complete, bounded by a caller timeout."""
-        deadline = time.monotonic() + timeout
-        while time.monotonic() < deadline:
-            status = self.get_queue_status()
-            if status.queued == 0 and status.in_flight == 0:
-                return True
-            time.sleep(0.001)
+        deadline = self._clock() + timeout
+        while self._clock() < deadline:
+            with self._lock:
+                if self._pending == 0:
+                    return True
+            self._sleep(0.001)
         return False
 
     def close(self) -> None:
         """Drain completed work and stop daemon workers without discarding queued calls."""
-        if self._closed:
-            return
-        self._closed = True
+        with self._lock:
+            self._closed = True
         if not self.drain(1.0):
             raise TimeoutError("gatekeeper drain deadline")
-        for _worker in self._workers:
-            self._queue.put(None)
         for worker in self._workers:
             worker.join(1.0)
+        if any(worker.is_alive() for worker in self._workers):
+            raise TimeoutError("gatekeeper worker shutdown deadline")
 
 
 @lru_cache(maxsize=1)
