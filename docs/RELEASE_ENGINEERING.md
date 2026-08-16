@@ -51,8 +51,8 @@ Composes, without reimplementing:
 | --- | --- |
 | `pytest` | `uv run pytest` (full suite, configured branch coverage) |
 | `ruff` | `uv run ruff check src tests` |
-| `hcommit_vectors` | the Hcommit golden-vector test in `tests/test_phase4a_crypto_protocol.py` |
-| `frozen_manifest` | the frozen seven-file hash test in `tests/test_frozen_manifest.py` |
+| `hcommit_vectors` | the Hcommit golden-vector test in `tests/integration/test_interop/test_phase4a_crypto_protocol.py` |
+| `frozen_manifest` | the frozen seven-file hash test in `tests/integration/test_governance/test_frozen_manifest.py` |
 | `conformance_kit` | `external/copthief-league-protocol/verify_vectors.py` |
 | `match_artifact` | `validate-match` on `--match-path`, or `SKIPPED` if omitted |
 | `scan_secrets` | this tool's own scanner over the repository, excluding `tests/offline_ops` (see [Security limits](#security-limits)) |

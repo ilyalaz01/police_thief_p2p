@@ -29,7 +29,7 @@ _SUBPROCESS_CHECKS: tuple[tuple[str, tuple[str, ...]], ...] = (
             "uv",
             "run",
             "pytest",
-            "tests/test_phase4a_crypto_protocol.py::"
+            "tests/integration/test_interop/test_phase4a_crypto_protocol.py::"
             "test_all_hcommit_golden_vectors_and_extra_fields",
             "--no-cov",
         ),
@@ -40,7 +40,8 @@ _SUBPROCESS_CHECKS: tuple[tuple[str, tuple[str, ...]], ...] = (
             "uv",
             "run",
             "pytest",
-            "tests/test_frozen_manifest.py::test_authoritative_seven_frozen_file_hashes",
+            "tests/integration/test_governance/test_frozen_manifest.py::"
+            "test_authoritative_seven_frozen_file_hashes",
             "--no-cov",
         ),
     ),
