@@ -27,6 +27,7 @@ commit/PR.
 | Phase 4D1A test split | Mechanically split oversized interoperability tests under REF-001. | Path-normalized collection and AST manifests make organization-only moves independently verifiable. |
 | Phase 4D1A.1 correction | Repair live test references and specify the AST digest preimage. | Governance should validate live backticked test paths, and evidence hashes need exact framing rules. |
 | Phase 4D1B belief split | Characterize the belief contract, then extract three private pure helpers. | Pin outputs, signatures, exceptions, exports, and diagnostics before moving strategy calculations. |
+| Phase 4D1C artifact split | Characterize schema, writer, hash, and consensus bytes before moving encoding helpers. | Introspected signatures and AST/constant manifests catch context-sensitive movement errors such as annotation evaluation. |
 
 ## Template for every future significant prompt
 
