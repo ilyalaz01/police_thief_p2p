@@ -19,7 +19,8 @@ redaction. Current `McpPeerClient` centralizes FastMCP calls, retry count/interv
 ## Selection, evidence, and gaps
 
 The selected implemented approach is synchronous outbound FastMCP calls plus one daemon server
-thread and four queues, coordinated by `PeerRuntime`. Evidence:
+thread and four queues, coordinated by the public `PeerRuntime` assembled from responsibility
+mixins. Evidence:
 `tests/test_phase4a_runtime_network.py`, `tests/test_phase4a_runtime_rules.py`,
 `tests/test_phase4b_network.py`, `tests/test_phase4b_identity_gates.py`, the
 [Phase 4D1A test mapping](audits/PHASE4D1A_TEST_SPLIT.md), local/public phase reports, and

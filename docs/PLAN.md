@@ -139,7 +139,8 @@ flowchart LR
 - `interop/profile.py`: `MatchProfile` bytes/hash, 14 reference terms, agreement validation.
 - `interop/protocol.py`: `TurnMessage`, `TurnInbox`, violations/equivocation.
 - `interop/transport.py`: `PeerInboxes`, four-tool server, discovery, `McpPeerClient`.
-- `interop/runtime.py`: phase/state orchestration and `run_peer`; largest risk concentration.
+- `interop/runtime.py`: public `PeerRuntime` assembly and `run_peer`; lifecycle, board, sending,
+  audit, artifact, and state/conversion responsibilities are isolated in `runtime_*.py` modules.
 - `interop/crypto.py`, `replay.py`, `artifacts.py`: frozen commitment API, audit/replay, official
   artifact and consensus functions.
 - `peer_cli.py`: argument parsing and delegation to `run_peer`; it also performs profile timeout
@@ -166,16 +167,16 @@ missing turns/audits become deterministic technical failure. Queues are thread-s
 Daemon-server lifecycle and call monitoring are limited. Duplicate traffic cannot renew turn time.
 
 Extension points already implemented: `DecisionBackend`, `ScentModel`, policy factories,
-`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: six oversized files,
-partial SDK, concentrated runtime responsibilities, flat tests, absent rate/backpressure controls,
-hard-coded/default configuration, and negotiated scope ambiguity.
+`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: partial SDK, flat
+tests, absent rate/backpressure controls, hard-coded/default configuration, runtime lifecycle
+complexity, and negotiated scope ambiguity. REF-001 closed with no Python source/test file above
+150 counted lines.
 
 ## Proposed architecture (not implemented or accepted)
 
 Proposals only: a complete SDK facade ([ADR-003](adr/ADR-003-sdk-facade-plan.md)); applicability
 and design of gatekeeper controls ([ADR-004](adr/ADR-004-api-gatekeeper-applicability.md));
-semantics-preserving splits ([ADR-005](adr/ADR-005-150-line-refactoring-strategy.md)); versioned
+completed semantics-preserving splits ([ADR-005](adr/ADR-005-150-line-refactoring-strategy.md)); versioned
 configuration ([ADR-006](adr/ADR-006-versioned-configuration-boundary.md)); and offline release
 tooling per [workstream](RELEASE_ENGINEERING_WORKSTREAM.md). None may silently change frozen or
 negotiated behavior.
-

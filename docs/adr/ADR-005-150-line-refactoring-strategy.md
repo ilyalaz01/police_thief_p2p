@@ -32,7 +32,23 @@ profile-domain, professor-differential, and AST characterization, `LINKS_REMARK`
 formatting helpers moved unchanged to `artifact_encoding.py` and were imported back under the
 same names. `artifacts.py` fell from 168 to 139 counted lines; the support module contains 35.
 All schema 1.1 objects, bytes, ordering, IDs, scores, ties, fallbacks, hashes, filenames, and
-consensus scope remained exact. Runtime and phase3b remain unselected proposals.
+consensus scope remained exact. Runtime and Phase 3B were selected only in the later slice below.
+
+Also accept the Phase 4D1D Phase 3B slice: a 48,145-byte characterization preimage pins public
+imports and signatures, constructor failures, diagnostics, tactical output, and 27 combinations
+of opponent model, belief usage, and depth. Its SHA-256 is
+`6966c3d4694911039181bed20568832ee6f1228a636a3f5b7d141fb48bb70457`. Models, reply enumeration,
+and scoring methods were separated into three normally formatted modules. `phase3b.py` fell from
+303 to 130 counted lines and every new production/test module is at most 117.
+
+Also accept the Phase 4D1D runtime slice: exact public and private method signatures, conversion
+helpers, provenance failures, Unicode defaults, terminal precedence, process isolation,
+audit/replay, schema 1.1 artifacts, and consensus results were characterized before separating
+lifecycle, board, sending, audit, artifact, and model responsibilities. The 2,327-byte runtime
+contract hashes to `fc86adbbc506b2edd489926a31b97fd2e56a781a9eeb1c29291e9a509d912f67`.
+`runtime.py` fell from 565 to exactly 150 counted lines; its six support modules range from 63 to
+104. Public `PeerRuntime` remains defined in `runtime.py`, compatibility names remain available,
+and the runtime-local `start_server` patch point remains effective.
 
 For any later interoperability/strategy proposal, capture imports, public symbols, seeded
 outputs, exception text where contractual, artifacts, and wire bytes before moving code. Never
@@ -47,3 +63,6 @@ remaining.
 Phase 4D1C evidence is recorded in `../audits/PHASE4D1C_ARTIFACT_SPLIT.md`: 148/148 tests, 91.17%
 branch coverage, pinned-professor/B0/B1 byte gates, and exactly two production violations
 remaining.
+Phase 4D1D evidence is recorded in `../audits/PHASE4D1D_PRODUCTION_SPLITS.md`: 158/158 tests,
+93.29% branch coverage, Ruff zero, Hcommit 5/5, conformance 125/125, frozen 7/7, and zero
+`src/` or `tests/` Python files above 150 counted lines. REF-001 is complete.

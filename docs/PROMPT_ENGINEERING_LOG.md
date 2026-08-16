@@ -29,6 +29,8 @@ commit/PR.
 | Phase 4D1B belief split | Characterize the belief contract, then extract three private pure helpers. | Pin outputs, signatures, exceptions, exports, and diagnostics before moving strategy calculations. |
 | Phase 4D1C artifact split | Characterize schema, writer, hash, and consensus bytes before moving encoding helpers. | Introspected signatures and AST/constant manifests catch context-sensitive movement errors such as annotation evaluation. |
 | Phase 4D1C.1 correction | Restore normal formatting while preserving production and test AST manifests. | Line limits need explicit anti-compression checks, including physical length and unsuppressed lint gates. |
+| Phase 4D1D Phase 3B split | Pin 27 seeded model/usage/depth combinations, public API, diagnostics and errors before extracting models, replies and scoring. | Strategy refactors need output-level vectors, not only ordinary unit coverage. |
+| Phase 4D1D runtime split | Pin runtime signatures/conversions and rerun isolated-process, terminal, audit/replay and schema 1.1 flows while separating responsibilities. | Unicode defaults and module-global patch points are observable contracts; compare them explicitly before accepting a structural split. |
 
 ## Template for every future significant prompt
 
