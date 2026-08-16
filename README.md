@@ -12,6 +12,8 @@ artifacts.
 - four-tool reference-compatible FastMCP transport;
 - bounded retries, deadlines, duplicate handling, audit, and replay;
 - official schema 1.1 artifact builders;
+- one documented `PoliceThiefSDK` entry point for domain, policy, evaluation, artifact, transport,
+  and configuration operations;
 - local and public self-play validation;
 - more than 90% branch coverage and 125/125 conformance vectors.
 
@@ -56,6 +58,23 @@ The professor-owned reference implementation is not redistributed. Exact profess
 tests run only in an authorized local workspace and report an explicit skip when that dependency
 is absent.
 
+## SDK entry point
+
+```python
+from police_thief_lab import PoliceThiefSDK
+
+sdk = PoliceThiefSDK()
+config = sdk.domain.GameConfig()
+result = sdk.evaluation.run_game(
+    config,
+    seed=7,
+    police_factory=sdk.policies.ScentTacticalPolice,
+    thief_factory=sdk.policies.RandomLegalThief,
+)
+```
+
+The [SDK manual](docs/SDK.md) lists the six services and the typed CLI delegation boundary.
+
 ## Operational safety
 
 The repository contains no live credentials, tunnel configuration, private audit bodies, or
@@ -74,9 +93,9 @@ Retrospective baseline created after the validated prototype.
 These documents did not exist before the prototype and do not claim otherwise.
 
 Phase 4D0 established the retrospective documentation/governance baseline. Later accepted changes
-closed the 150-line and versioned-configuration gaps, but this does not mean full Software Project
-Guidelines compliance, real-team readiness, or counted-match readiness; overall compliance remains
-**PARTIAL**.
+closed the 150-line, versioned-configuration, and SDK-entry-point gaps, but this does not mean full
+Software Project Guidelines compliance, real-team readiness, or counted-match readiness; overall
+compliance remains **PARTIAL**.
 
 - [Product requirements](docs/PRD.md)
 - [As-built architecture plan](docs/PLAN.md)
@@ -84,6 +103,7 @@ Guidelines compliance, real-team readiness, or counted-match readiness; overall 
 - [Guidelines compliance matrix](docs/GUIDELINES_COMPLIANCE_MATRIX.md)
 - [Quality plan](docs/QUALITY_PLAN.md)
 - [Operational configuration](docs/CONFIGURATION.md)
+- [SDK entry point](docs/SDK.md)
 - [Architecture decision records](docs/adr/README.md)
 - [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
 - [Release engineering workstream specification](docs/RELEASE_ENGINEERING_WORKSTREAM.md)

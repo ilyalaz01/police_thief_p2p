@@ -77,7 +77,7 @@ In scope: deterministic core, observations, policies/evaluation, current local t
 commit-reveal, audit/replay, artifact builders, tests, research evidence, and governance.
 
 Out of scope: rule changes, new strategy/AI/ML/search, GUI, production deployment, Gmail, tunnels,
-league reporting, opponent contact, and any uncounted or counted match. Future SDK, gatekeeper,
+league reporting, opponent contact, and any uncounted or counted match. Future gatekeeper,
 structured tests, CI, notebook, UX, and release work remains planned in [TODO](TODO.md).
 
 The competitive/interoperability boundary is frozen: game rules, scoring, policies/profiles,
@@ -95,19 +95,20 @@ Assumptions: Python/`uv` are available; pinned public kit remains present; fixtu
 their named profiles. Dependencies: FastMCP 3.4.3 and development tools in `pyproject.toml`.
 Constraints include two-process isolation, no network in ordinary tests, and explicit human
 approval for external activity. Risks include professor/kit scope differences, unbounded inboxes,
-an incomplete SDK, flat tests, and private research evidence that cannot simply be published.
+flat tests, and private research evidence that cannot simply be published.
 
 ## Evidence boundary and timeline
 
 Proven by current code/tests/reports: deterministic core and observation isolation; policy
 evaluation; local two-peer FastMCP; duplicate/equivocation behavior; Hcommit/replay/audit;
 schema 1.1 builders; a strict versioned operational configuration boundary; >90% historical
-branch coverage; 125/125 vectors; frozen champion/hashes. Public transport validation is
-historical evidence, not current authorization or readiness.
+branch coverage; a single SDK consumer facade with typed CLI delegation; 125/125 vectors; frozen
+champion/hashes. Public transport validation is historical evidence, not current authorization or
+readiness.
 
-Planned, not selected or implemented: full SDK facade, API gatekeeper controls, structured tests,
-CI/offline release tooling, reproducible public research package, notebook/visuals, comprehensive
-CLI UX, cost/ISO analysis, and bilateral readiness.
+Planned, not selected or implemented: API gatekeeper controls, structured tests, CI/offline release
+tooling, reproducible public research package, notebook/visuals, comprehensive CLI UX, cost/ISO
+analysis, and bilateral readiness.
 
 Milestones: D0 governance baseline (this phase); D1 smallest technical compliance milestone after
 review; D2 release/offline operations; D3 research/quality publication; D4 human-gated bilateral

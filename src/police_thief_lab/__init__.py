@@ -18,6 +18,7 @@ from .models import (
 )
 from .rules import IllegalAction
 from .scent import ReferenceSubtractiveChebyshevV1, ScentModel
+from .sdk import PeerLaunchRequest, PoliceThiefSDK
 from .simulator import DecisionBackend, Simulator, replay
 
 __version__ = "1.0.0"
@@ -31,6 +32,8 @@ __all__ = [
     "IllegalAction",
     "MoveType",
     "Observation",
+    "PeerLaunchRequest",
+    "PoliceThiefSDK",
     "Position",
     "ReferenceSubtractiveChebyshevV1",
     "Role",

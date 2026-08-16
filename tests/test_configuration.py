@@ -98,11 +98,12 @@ def test_invalid_operational_config_stops_cli_before_peer_side_effects(
     tmp_path: Path,
 ) -> None:
     from police_thief_lab import peer_cli
+    from police_thief_lab.sdk import transport as sdk_transport
 
     invalid = _write_config(tmp_path, schema_version="2.0")
     monkeypatch.setattr(
-        peer_cli,
-        "run_peer",
+        sdk_transport,
+        "_run_peer",
         lambda *_args: (_ for _ in ()).throw(AssertionError("peer side effect started")),
     )
     monkeypatch.setattr(
@@ -135,11 +136,12 @@ def test_environment_selected_mode_mismatch_stops_cli_before_peer_side_effects(
     tmp_path: Path,
 ) -> None:
     from police_thief_lab import peer_cli
+    from police_thief_lab.sdk import transport as sdk_transport
 
     monkeypatch.setenv("POLICE_THIEF_CONFIG_PATH", str(TRACKED_CONFIG))
     monkeypatch.setattr(
-        peer_cli,
-        "run_peer",
+        sdk_transport,
+        "_run_peer",
         lambda *_args: (_ for _ in ()).throw(AssertionError("peer side effect started")),
     )
     monkeypatch.setattr(

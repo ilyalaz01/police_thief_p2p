@@ -27,12 +27,15 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## SDK-001 — Decide and implement complete SDK facade
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: accepted ADR-003; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Core Architecture
+- Dependencies: accepted ADR-003; Evidence: Phase 4D2B commits and
+  `docs/audits/PHASE4D2B_SDK_FACADE.md`.
 - Definition of Done: every business operation has an approved stable facade, consumers delegate,
   characterization tests pass, and frozen imports/behavior remain compatible.
-- Validation commands: `uv run pytest`; `uv run ruff check src tests`.
-- Hard stop/escalation: escalate any required game, wire, artifact, strategy, or hash change.
+- Validation commands: `uv run pytest`; `uv run ruff check src tests`;
+  `uv run pytest -q tests/test_sdk_contract.py --no-cov`.
+- Hard stop/escalation: a consumer bypass, missing public operation, changed legacy identity,
+  game/wire/artifact/strategy/hash drift, or SDK-side authorization claim reopens SDK-001.
 
 ## API-001 — Decide gatekeeper scope and controls
 

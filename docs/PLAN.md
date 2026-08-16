@@ -132,6 +132,8 @@ flowchart LR
 
 ## Modules and interfaces
 
+- `sdk/*`: the documented single consumer entry point, split into domain, policy, evaluation,
+  artifact, transport, and configuration services; existing modules remain implementations.
 - `models`, `rules`, `scent`, `turns`, `simulator`: domain types, legal actions, scent protocol,
   transition model, `DecisionBackend`, role observations, `Simulator`, and `replay`.
 - `policies/*`: interchangeable observed-state decision backends; tactical champion is frozen.
@@ -145,9 +147,9 @@ flowchart LR
   artifact and consensus functions.
 - `configuration.py`: strict versioned operational-startup loader and value-redacting secret scan;
   it is deliberately outside MatchProfile and frozen game/interoperability bytes.
-- `peer_cli.py`: argument parsing and delegation to `run_peer`; it validates optional operational
-  configuration before profile/runtime side effects and still performs profile timeout
-  extraction/endpoint validation, so the SDK facade is partial rather than a sole entry point.
+- `peer_cli.py`: argument parsing plus one typed `PeerLaunchRequest` delegation. The SDK transport
+  service validates optional operational configuration, reads profile timeouts, validates the
+  endpoint, and invokes the existing runtime behind that boundary.
 
 Current package structure is feature/layer hybrid under `src/police_thief_lab`; tests are flat,
 experiments are executable evidence generators, reports are recorded evidence, `interop` holds
@@ -170,16 +172,18 @@ missing turns/audits become deterministic technical failure. Queues are thread-s
 Daemon-server lifecycle and call monitoring are limited. Duplicate traffic cannot renew turn time.
 
 Extension points already implemented: `DecisionBackend`, `ScentModel`, policy factories,
-`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: partial SDK, flat
-tests, absent rate/backpressure controls, runtime lifecycle complexity, and negotiated scope
-ambiguity. REF-001 closed with no Python source/test file above 150 counted lines. CFG-001 closed
-with a strict versioned operational boundary; fixed game/profile values remain non-configurable.
+`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: flat tests, absent
+rate/backpressure controls, runtime lifecycle complexity, and negotiated scope ambiguity. REF-001
+closed with no Python source/test file above 150 counted lines. CFG-001 closed with a strict
+versioned operational boundary; SDK-001 closed with a single documented facade. Fixed game/profile
+values remain non-configurable.
 
 ## Remaining proposed architecture
 
-Proposals only: a complete SDK facade ([ADR-003](adr/ADR-003-sdk-facade-plan.md)); applicability
-and design of gatekeeper controls ([ADR-004](adr/ADR-004-api-gatekeeper-applicability.md));
-and offline release tooling per [workstream](RELEASE_ENGINEERING_WORKSTREAM.md). REF-001's
+Proposals only: applicability and design of gatekeeper controls
+([ADR-004](adr/ADR-004-api-gatekeeper-applicability.md)) and offline release tooling per
+[workstream](RELEASE_ENGINEERING_WORKSTREAM.md). The
+[SDK facade](adr/ADR-003-sdk-facade-plan.md) is implemented and accepted. REF-001's
 semantics-preserving splits are implemented, and
 [ADR-006](adr/ADR-006-versioned-configuration-boundary.md) is implemented and accepted. No
 remaining proposal may silently change frozen or negotiated behavior.
