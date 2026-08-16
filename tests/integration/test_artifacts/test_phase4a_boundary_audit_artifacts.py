@@ -4,8 +4,6 @@ import json
 from dataclasses import fields
 from pathlib import Path
 
-from interop_test_support import profile
-
 from police_thief_lab import GameConfig, Observation, Role, Simulator
 from police_thief_lab.interop.artifacts import (
     canonical_sha256,
@@ -16,6 +14,7 @@ from police_thief_lab.interop.artifacts import (
 from police_thief_lab.interop.crypto import canonical_json, seal, verify_records
 from police_thief_lab.interop.replay import replay_sequence, verify_audit
 from police_thief_lab.policies.tactical import ScentTacticalPolice
+from tests.support.interop_test_support import profile
 
 
 def test_strategy_boundary_contains_only_legal_observation() -> None:

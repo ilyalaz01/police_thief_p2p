@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path
 
 from police_thief_lab.interop.artifacts import build_config_artifact
 from police_thief_lab.interop.crypto import canonical_json
 from police_thief_lab.interop.profile import MatchProfile
+from tests.support.project_paths import PROJECT_ROOT
 
-ROOT = Path(__file__).parents[1]
+ROOT = PROJECT_ROOT
 PROFILE_PATH = ROOT / "interop/fixtures/phase4a5_reference_profile.json"
 WORKSHEET_PATH = ROOT / "interop/templates/real_team_uncounted_compatibility_worksheet.json"
 

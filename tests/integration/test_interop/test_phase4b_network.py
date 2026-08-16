@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-from interop_test_support import profile
 
 from police_thief_lab.interop.network import (
     EndpointConfig,
@@ -16,6 +15,8 @@ from police_thief_lab.interop.network import (
 from police_thief_lab.interop.runtime import DeadlineTracker, PeerRuntime
 from police_thief_lab.interop.transport import McpPeerClient
 from police_thief_lab.models import Role
+from tests.support.interop_test_support import profile
+from tests.support.project_paths import PROJECT_ROOT
 
 
 def endpoint(public: bool = True) -> EndpointConfig:
@@ -110,7 +111,7 @@ def test_secret_redaction_and_safe_url() -> None:
     ],
 )
 def test_retained_phase4b_evidence_has_no_recursive_secret_values(name: str) -> None:
-    evidence_path = Path(__file__).parents[1] / "reports" / name
+    evidence_path = PROJECT_ROOT / "reports" / name
     if not evidence_path.exists():
         pytest.skip("retained operational evidence is intentionally absent from this checkout")
     evidence = json.loads(evidence_path.read_text())
@@ -130,7 +131,7 @@ def test_retained_phase4b_evidence_has_no_recursive_secret_values(name: str) -> 
 
 
 def test_phase4b3_evidence_tree_has_no_url_credentials_or_secret_values() -> None:
-    root = Path(__file__).parents[1]
+    root = PROJECT_ROOT
     files = [root / "reports/phase4b3_public_preflight.json"] + list(
         (root / "interop/logs/phase4b3-public").glob("*")
     )

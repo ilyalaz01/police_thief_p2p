@@ -7,8 +7,9 @@ from pathlib import Path
 from police_thief_lab.interop.profile import MatchProfile
 from police_thief_lab.interop.runtime import PeerRuntime
 from police_thief_lab.models import Direction, MoveType, Role
+from tests.support.project_paths import PROJECT_ROOT
 
-ROOT = Path(__file__).parents[1]
+ROOT = PROJECT_ROOT
 
 
 def frame(step: int, commit: str = "a" * 64, hint: str = "שלום 🙂") -> dict:

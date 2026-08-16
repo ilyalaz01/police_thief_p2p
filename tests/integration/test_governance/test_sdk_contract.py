@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import ast
-from pathlib import Path
 
 from police_thief_lab import PoliceThiefSDK
 from police_thief_lab.evaluation import cross_play
@@ -12,8 +11,9 @@ from police_thief_lab.interop.crypto import hcommit
 from police_thief_lab.interop.runtime import run_peer
 from police_thief_lab.policies import ScentTacticalPolice
 from police_thief_lab.rules import legal_actions
+from tests.support.project_paths import PROJECT_ROOT
 
-ROOT = Path(__file__).parents[1]
+ROOT = PROJECT_ROOT
 
 EXPECTED = {
     "domain": {

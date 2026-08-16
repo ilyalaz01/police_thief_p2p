@@ -5,10 +5,9 @@ import inspect
 import json
 from pathlib import Path
 
-from artifact_contract_hashes import SCHEMA_HASHES
-from artifact_contract_support import _sha
-
 from police_thief_lab.interop import artifacts
+from tests.support.artifact_contract_hashes import SCHEMA_HASHES
+from tests.support.artifact_contract_support import _sha
 
 
 def test_public_helpers_constants_signatures_and_moved_ast_are_exact() -> None:

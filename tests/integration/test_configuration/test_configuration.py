@@ -6,7 +6,6 @@ import tomllib
 from pathlib import Path
 
 import pytest
-from interop_test_support import profile
 
 from police_thief_lab import __version__
 from police_thief_lab.configuration import (
@@ -14,8 +13,9 @@ from police_thief_lab.configuration import (
     load_operational_config,
     scan_configuration_secrets,
 )
+from tests.support.interop_test_support import profile
+from tests.support.project_paths import PROJECT_ROOT as ROOT
 
-ROOT = Path(__file__).parents[1]
 TRACKED_CONFIG = ROOT / "config/operational.self-test.v1.json"
 
 

@@ -5,10 +5,10 @@ import time
 from pathlib import Path
 
 import pytest
-from interop_test_support import free_port, profile
 
 from police_thief_lab.interop.runtime import PeerRuntime
 from police_thief_lab.interop.transport import McpPeerClient, discover_tools, start_server
+from tests.support.interop_test_support import free_port, profile
 
 
 def test_cli_run_peer_creates_missing_output_parent(

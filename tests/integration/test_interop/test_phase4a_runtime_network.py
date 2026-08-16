@@ -3,12 +3,11 @@
 import threading
 from pathlib import Path
 
-from interop_test_support import free_port, profile
-
 from police_thief_lab import Role
 from police_thief_lab.interop.profile import MatchProfile
 from police_thief_lab.interop.runtime import PeerRuntime
 from police_thief_lab.interop.transport import McpPeerClient, start_server
+from tests.support.interop_test_support import free_port, profile
 
 
 def test_complete_network_runtime_in_two_isolated_peer_objects(tmp_path: Path) -> None:

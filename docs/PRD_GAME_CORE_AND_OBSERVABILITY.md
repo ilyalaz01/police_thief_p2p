@@ -20,8 +20,10 @@ seven frozen files, alternating Thief-first semantics, scoring, scent interface,
 ## Approach, alternatives, and evidence
 
 The selected current approach is immutable typed models, pure rule helpers, `Simulator`, and
-`ReferenceV3Alternating`, with a `DecisionBackend` protocol. Evidence: `tests/test_rules.py`,
-`test_models.py`, `test_observation.py`, `test_turns_and_replay.py`, and frozen-manifest tests.
+`ReferenceV3Alternating`, with a `DecisionBackend` protocol. Evidence:
+`tests/unit/test_game/test_rules.py`, `tests/unit/test_game/test_models.py`,
+`tests/unit/test_game/test_observation.py`, `tests/unit/test_game/test_turns_and_replay.py`, and
+frozen-manifest tests.
 Rejected for the current profile: a simultaneous shared-world resolver, because it conflicts with
 the executable reference cadence; a full-truth policy interface, because it violates isolation.
 
@@ -36,4 +38,3 @@ observation leakage, replay, and both placement modes.
 Definition of Done for future changes: authority reviewed, RED/GREEN evidence recorded, all core
 and frozen tests green, no semantic/hash drift, public interfaces documented, and any negotiation
 impact recorded in an ADR and profile review.
-

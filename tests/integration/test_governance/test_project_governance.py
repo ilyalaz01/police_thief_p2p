@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import json
 import re
-from pathlib import Path
 
-ROOT = Path(__file__).parents[1]
+from tests.support.project_paths import PROJECT_ROOT
+
+ROOT = PROJECT_ROOT
 NOTICE_LINES = (
     "Retrospective baseline created after the validated prototype.",
     "These documents did not exist before the prototype and do not claim otherwise.",
@@ -17,6 +18,7 @@ DOCS = {
     "docs/TODO.md",
     "docs/GUIDELINES_COMPLIANCE_MATRIX.md",
     "docs/QUALITY_PLAN.md",
+    "docs/TESTING.md",
     "docs/PROMPT_ENGINEERING_LOG.md",
     "docs/PRD_GAME_CORE_AND_OBSERVABILITY.md",
     "docs/PRD_POLICY_EVALUATION.md",
@@ -110,7 +112,10 @@ def test_live_documented_test_paths_exist() -> None:
     references = {
         match
         for path in LIVE_DOCUMENTS
-        for match in re.findall(r"`((?:tests/)?test_[A-Za-z0-9_./-]+\.py)`", read(path))
+        for match in re.findall(
+            r"`((?:tests/)?(?:[A-Za-z0-9_.-]+/)*test_[A-Za-z0-9_.-]+\.py)`",
+            read(path),
+        )
     }
     assert references
     missing = sorted(

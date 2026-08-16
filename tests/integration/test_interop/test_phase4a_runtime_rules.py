@@ -3,14 +3,13 @@
 import json
 from pathlib import Path
 
-from interop_test_support import ROOT, frame, free_port, profile
-
 from police_thief_lab import Position, Role
 from police_thief_lab.interop.crypto import seal
 from police_thief_lab.interop.profile import MatchProfile
 from police_thief_lab.interop.replay import replay_sequence
 from police_thief_lab.interop.runtime import DeadlineTracker, PeerRuntime
 from police_thief_lab.interop.transport import PeerInboxes
+from tests.support.interop_test_support import ROOT, frame, free_port, profile
 
 
 def test_rule46_and_rule47_terminal_are_processed_before_strategy(

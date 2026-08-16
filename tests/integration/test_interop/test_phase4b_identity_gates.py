@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 import pytest
-from interop_test_support import profile
 
 from police_thief_lab.interop.artifacts import (
     consensus_sha256,
@@ -14,6 +13,7 @@ from police_thief_lab.interop.artifacts import (
 )
 from police_thief_lab.interop.runtime import UNRESOLVED_GIT_COMMIT, PeerRuntime
 from police_thief_lab.models import Role
+from tests.support.interop_test_support import profile
 
 
 def test_protocol_layer_is_transport_endpoint_agnostic(tmp_path: Path) -> None:

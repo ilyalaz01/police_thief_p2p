@@ -3,9 +3,6 @@
 import json
 from pathlib import Path
 
-from artifact_contract_hashes import LOCAL_FILES, OBJECT_HASHES, PRETTY_HASHES, REFERENCE_FILES
-from artifact_contract_support import _inputs, _objects, _sha
-
 from police_thief_lab.interop import artifacts
 from police_thief_lab.interop.artifacts import (
     LINKS_REMARK,
@@ -21,6 +18,13 @@ from police_thief_lab.interop.artifacts import (
     write_artifacts,
     write_reference_v3_artifacts,
 )
+from tests.support.artifact_contract_hashes import (
+    LOCAL_FILES,
+    OBJECT_HASHES,
+    PRETTY_HASHES,
+    REFERENCE_FILES,
+)
+from tests.support.artifact_contract_support import _inputs, _objects, _sha
 
 
 def test_builder_object_pretty_canonical_and_consensus_bytes_are_exact() -> None:

@@ -5,7 +5,6 @@ import json
 import os
 import subprocess
 import sys
-from pathlib import Path
 
 import pytest
 
@@ -15,6 +14,7 @@ from police_thief_lab.interop.artifacts import (
     build_log,
     build_result,
 )
+from tests.support.project_paths import PROJECT_ROOT
 
 
 def _identity(group: str, url: str) -> dict:
@@ -74,7 +74,7 @@ def _artifact_inputs() -> dict:
 
 
 def test_all_four_artifacts_exactly_match_pinned_professor_builders() -> None:
-    professor_src = Path(__file__).parents[1] / "external/Game-P2P-Cop-Chase/src"
+    professor_src = PROJECT_ROOT / "external/Game-P2P-Cop-Chase/src"
     if not professor_src.exists():
         pytest.skip("professor-owned reference implementation is not redistributed")
     data = _artifact_inputs()

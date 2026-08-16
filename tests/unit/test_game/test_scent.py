@@ -1,14 +1,14 @@
 """Golden tests for the negotiated reference scent profile."""
 
 import json
-from pathlib import Path
 
 import pytest
 
 from police_thief_lab import Position, ReferenceSubtractiveChebyshevV1
 from police_thief_lab.scent import scent_model_for
+from tests.support.project_paths import PROJECT_ROOT
 
-FIXTURE = Path(__file__).parents[1] / "interop" / "fixtures" / "scent_reference_scenarios.json"
+FIXTURE = PROJECT_ROOT / "interop" / "fixtures" / "scent_reference_scenarios.json"
 
 
 def _matrix(field: tuple[tuple[Position, float], ...], size: int = 7) -> list[list[float]]:

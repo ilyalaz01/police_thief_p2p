@@ -3,10 +3,10 @@
 import json
 
 import pytest
-from interop_test_support import ROOT, frame, profile
 
 from police_thief_lab.interop.crypto import canonical_json, hcommit
 from police_thief_lab.interop.protocol import Equivocation, ProtocolViolation, TurnInbox
+from tests.support.interop_test_support import ROOT, frame, profile
 
 
 def test_all_hcommit_golden_vectors_and_extra_fields() -> None:

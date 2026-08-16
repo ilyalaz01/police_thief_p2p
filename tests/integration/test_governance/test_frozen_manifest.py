@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import hashlib
-from pathlib import Path
 
-ROOT = Path(__file__).parents[1]
+from tests.support.project_paths import PROJECT_ROOT
+
+ROOT = PROJECT_ROOT
 AUTHORITATIVE_FROZEN_SHA256 = {
     "src/police_thief_lab/models.py":
         "ab0714497d6720d1d06eede6a7b9ea52ebb5b559bddece17de1caecfd6898410",

@@ -5,13 +5,13 @@ import json
 from pathlib import Path
 
 import pytest
-from interop_test_support import _reference_runtime_profile, _run_reference_pair
 
 from police_thief_lab.interop.artifacts import (
     consensus_sha256,
     derive_game_ids,
     final_consensus_scope,
 )
+from tests.support.interop_test_support import _reference_runtime_profile, _run_reference_pair
 
 
 @pytest.mark.parametrize(

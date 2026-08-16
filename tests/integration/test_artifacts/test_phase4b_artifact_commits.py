@@ -3,9 +3,8 @@
 import json
 from pathlib import Path
 
-from interop_test_support import _run_reference_pair
-
 from police_thief_lab.interop.artifacts import consensus_sha256, final_consensus_scope
+from tests.support.interop_test_support import _run_reference_pair
 
 
 def test_reference_artifacts_map_two_exact_group_commits(tmp_path: Path) -> None:

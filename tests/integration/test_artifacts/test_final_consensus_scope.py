@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path
 
 from police_thief_lab.interop.artifacts import consensus_sha256, final_consensus_scope
+from tests.support.project_paths import PROJECT_ROOT
 
-ROOT = Path(__file__).parents[1]
+ROOT = PROJECT_ROOT
 VECTOR_PATH = ROOT / "interop/fixtures/final_consensus_scope_worked_vector.json"
 IMPLEMENTED_SCOPE = "reference_symmetric_outcome_without_tie"
 UNDEFINED_SCOPE = "reference_symmetric_rows_as_supplied_no_implicit_tie"

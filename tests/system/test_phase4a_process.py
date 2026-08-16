@@ -5,7 +5,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from interop_test_support import ROOT, free_port
+from tests.support.interop_test_support import ROOT, free_port
 
 
 def test_two_real_independent_processes_complete_localhost_game(tmp_path: Path) -> None:

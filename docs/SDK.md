@@ -72,5 +72,5 @@ runbook before any process, network, tunnel, opponent, or league activity.
 
 Legacy module imports remain available to avoid breaking validated tests and integrations. New
 consumer code should use the root facade. New business operations must be exposed through one
-service and added to `tests/test_sdk_contract.py`; CLI/UI code must continue to contain only input
-handling and SDK delegation.
+service and added to `tests/integration/test_governance/test_sdk_contract.py`; CLI/UI code must
+continue to contain only input handling and SDK delegation.

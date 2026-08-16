@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import threading
 import time
-from pathlib import Path
 
 import pytest
 
@@ -15,8 +14,9 @@ from police_thief_lab.gatekeeper import (
     load_rate_limit_config,
 )
 from police_thief_lab.interop.transport import McpPeerClient, PeerInboxes
+from tests.support.project_paths import PROJECT_ROOT
 
-ROOT = Path(__file__).parents[1]
+ROOT = PROJECT_ROOT
 
 
 def _config(**overrides: int) -> RateLimitConfig:

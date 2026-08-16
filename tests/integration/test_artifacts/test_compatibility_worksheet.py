@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
-ROOT = Path(__file__).parents[1]
+from tests.support.project_paths import PROJECT_ROOT
+
+ROOT = PROJECT_ROOT
 TEMPLATE_PATH = ROOT / "interop/templates/real_team_uncounted_compatibility_worksheet.json"
 PROFILE_PATH = ROOT / "interop/fixtures/phase4a5_reference_profile.json"
 B0_PATH = ROOT / "interop/fixtures/final_consensus_scope_worked_vector.json"

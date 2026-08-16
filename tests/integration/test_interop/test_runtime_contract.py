@@ -5,7 +5,6 @@ import inspect
 import json
 
 import pytest
-from interop_test_support import profile
 
 from police_thief_lab import Action, Direction, Position
 from police_thief_lab.interop import runtime
@@ -21,6 +20,7 @@ from police_thief_lab.interop.runtime import (
     require_real_team_git_commit,
     run_peer,
 )
+from tests.support.interop_test_support import profile
 
 
 def _runtime_contract() -> bytes:
