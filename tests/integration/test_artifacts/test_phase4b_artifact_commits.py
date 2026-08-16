@@ -20,8 +20,8 @@ def test_reference_artifacts_map_two_exact_group_commits(tmp_path: Path) -> None
         log_path = next(
             Path(path) for path in runtime_result["artifacts"] if Path(path).name.startswith("log_")
         )
-        result = json.loads(result_path.read_text())
-        log = json.loads(log_path.read_text())
+        result = json.loads(result_path.read_text(encoding="utf-8"))
+        log = json.loads(log_path.read_text(encoding="utf-8"))
         assert result["sub_games"][0]["github_commit"] == expected
         assert log["summary"]["group_id"] in expected
         assert log["summary"]["opponent_group_id"] in expected

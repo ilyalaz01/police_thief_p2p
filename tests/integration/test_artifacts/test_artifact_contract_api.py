@@ -78,7 +78,7 @@ def test_public_helpers_constants_signatures_and_moved_ast_are_exact() -> None:
     nodes = {}
     paths = (Path(artifacts.__file__), Path(artifacts.__file__).with_name("artifact_encoding.py"))
     for path in (path for path in paths if path.exists()):
-        for node in ast.parse(path.read_text()).body:
+        for node in ast.parse(path.read_text(encoding="utf-8")).body:
             if isinstance(node, ast.FunctionDef) and node.name in moved:
                 nodes[node.name] = ast.dump(node, include_attributes=False)
             if isinstance(node, ast.Assign) and any(
