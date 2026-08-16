@@ -98,7 +98,7 @@ def test_exclude_relative_dirs_prunes_given_paths(tmp_path: Path) -> None:
     assert findings == []
 
 
-def test_symlink_escaping_the_root_is_detected(tmp_path: Path) -> None:
+def test_symlink_escaping_the_root_is_path_traversal_not_plain_symlink(tmp_path: Path) -> None:
     outside = tmp_path.parent / "outside_target.txt"
     outside.write_text("not a secret", encoding="utf-8")
     scan_root = tmp_path / "scan_root"
@@ -109,6 +109,20 @@ def test_symlink_escaping_the_root_is_detected(tmp_path: Path) -> None:
     except OSError:
         pytest.skip("symlink creation requires elevated privilege on this platform")
     try:
-        assert "symlink" in _categories(scan_root)
+        assert _categories(scan_root) == {"path_traversal"}
     finally:
         outside.unlink(missing_ok=True)
+
+
+def test_symlink_that_stays_inside_root_is_a_plain_symlink_finding(tmp_path: Path) -> None:
+    scan_root = tmp_path / "scan_root"
+    scan_root.mkdir()
+    target = scan_root / "real_file.txt"
+    target.write_text("not a secret", encoding="utf-8")
+    link = scan_root / "internal_link.txt"
+    try:
+        link.symlink_to(target)
+    except OSError:
+        pytest.skip("symlink creation requires elevated privilege on this platform")
+    findings = {f.relative_path: f.category for f in scan_path(scan_root)}
+    assert findings["internal_link.txt"] == "symlink"

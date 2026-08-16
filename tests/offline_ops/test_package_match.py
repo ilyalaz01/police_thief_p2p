@@ -58,6 +58,18 @@ def test_existing_output_is_never_overwritten(tmp_path: Path) -> None:
     assert (output / "sentinel.txt").read_text(encoding="utf-8") == "do not touch"
 
 
+def test_existing_output_as_a_plain_file_is_never_overwritten(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    write_valid_match_fixture(source)
+    output = tmp_path / "package"
+    output.write_text("pre-existing plain file, not a directory", encoding="utf-8")
+
+    report = package_match.run(source, output)
+
+    assert report.exit_code == ExitCode.OUTPUT_WRITE_FAILED
+    assert output.read_text(encoding="utf-8") == "pre-existing plain file, not a directory"
+
+
 def test_a_nonce_in_the_log_artifact_stays_confined_and_out_of_reports(tmp_path: Path) -> None:
     """A revealed commit-reveal nonce legitimately lives in a terminal-audit
     log artifact (RULES_AND_INTEROP_BASELINE.md ~5). It must stay only in

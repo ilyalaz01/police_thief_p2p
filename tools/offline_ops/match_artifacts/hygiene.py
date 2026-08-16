@@ -56,10 +56,14 @@ def scan_artifact_directory(root: Path) -> list[HygieneFinding]:
 def _scan_entry(root: Path, entry: Path) -> list[HygieneFinding]:
     relative = entry.name
 
-    if entry.is_symlink():
-        return [HygieneFinding(relative, "symlink")]
+    # Escape is checked before a bare symlink check: for a top-level-only
+    # scan, only a symlink can ever resolve outside root, so an escaping
+    # symlink is classified by the more specific, more severe category
+    # ("path_traversal"); a symlink that stays inside root is "symlink".
     if escapes_root(root, entry):
         return [HygieneFinding(relative, "path_traversal")]
+    if entry.is_symlink():
+        return [HygieneFinding(relative, "symlink")]
     if entry.is_dir():
         return [HygieneFinding(relative, "unexpected_file")]
     if not ARTIFACT_NAME_RE.match(entry.name):

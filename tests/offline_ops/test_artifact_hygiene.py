@@ -63,7 +63,13 @@ def test_file_count_at_the_cap_is_not_flagged(tmp_path: Path) -> None:
     assert len(list(tmp_path.iterdir())) <= MAX_FILE_COUNT
 
 
-def test_symlink_is_detected(tmp_path: Path) -> None:
+def test_a_symlink_escaping_root_is_path_traversal_not_plain_symlink(tmp_path: Path) -> None:
+    """An escaping symlink gets the more specific, more severe category.
+
+    For a top-level-only scan, escape is only reachable via a symlink, so
+    the check order matters: escape must be classified as ``path_traversal``
+    rather than being masked by a bare ``symlink`` finding.
+    """
     outside = tmp_path.parent / "hygiene_outside.json"
     outside.write_text("{}", encoding="utf-8")
     root = tmp_path / "root"
@@ -74,6 +80,21 @@ def test_symlink_is_detected(tmp_path: Path) -> None:
     except OSError:
         pytest.skip("symlink creation requires elevated privilege on this platform")
     try:
-        assert "symlink" in _categories(root)
+        categories = _categories(root)
+        assert categories == {"path_traversal"}
     finally:
         outside.unlink(missing_ok=True)
+
+
+def test_a_symlink_that_stays_inside_root_is_a_plain_symlink_finding(tmp_path: Path) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    target = root / "result_x.json"
+    target.write_text("{}", encoding="utf-8")
+    link = root / "declaration_x.json"
+    try:
+        link.symlink_to(target)
+    except OSError:
+        pytest.skip("symlink creation requires elevated privilege on this platform")
+    findings = {f.relative_path: f.category for f in scan_artifact_directory(root)}
+    assert findings["declaration_x.json"] == "symlink"

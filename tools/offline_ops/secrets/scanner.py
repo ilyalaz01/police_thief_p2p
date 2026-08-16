@@ -81,10 +81,14 @@ def _iter_files(root: Path, exclude_relative_dirs: frozenset[str]) -> Iterator[P
 def _scan_entry(root: Path, entry: Path) -> list[SecretFinding]:
     relative = str(entry.relative_to(root))
 
-    if entry.is_symlink():
-        return [SecretFinding(relative, "symlink")]
+    # Escape is checked before a bare symlink check so an escaping symlink
+    # gets the more specific, more severe category rather than being
+    # masked by a generic "symlink" finding (see match_artifacts/hygiene.py
+    # for the same ordering and why it matters).
     if escapes_root(root, entry):
         return [SecretFinding(relative, "path_traversal")]
+    if entry.is_symlink():
+        return [SecretFinding(relative, "symlink")]
     if _matches_any(entry.name, CACHE_AND_TEMP_NAME_PATTERNS):
         return [SecretFinding(relative, "cache_or_temp_file")]
     if _matches_any(entry.name, TUNNEL_CONFIG_NAME_PATTERNS):
