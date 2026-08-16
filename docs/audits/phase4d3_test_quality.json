@@ -1,0 +1,78 @@
+{
+  "phase": "4D3",
+  "status": "GREEN",
+  "scope": [
+    "TST-001",
+    "QLT-001"
+  ],
+  "accepted_base": "0959cc0a4025d7d88078cf251d00396b699a72e2",
+  "red_evidence": {
+    "layer_contract": {
+      "failed": 4,
+      "categories": [
+        "missing layer directories",
+        "flat test modules",
+        "root support modules",
+        "missing test map"
+      ]
+    },
+    "quality_contract": {
+      "failed": 3,
+      "categories": [
+        "missing critical-path map",
+        "missing retention policy",
+        "missing machine-readable audit"
+      ]
+    },
+    "ruff_preflight": {
+      "failed": 1,
+      "category": "unused import in new quality contract",
+      "superseded_by": "zero-error final Ruff rerun"
+    }
+  },
+  "collection": {
+    "baseline_tests": 187,
+    "preserved_legacy_tests": 187,
+    "new_governance_tests": 7,
+    "normalization": "basename::node-id sorted with LF terminator",
+    "baseline_sha256": "ea5099929541c00e8f666c8d76bfd7f2570ac3cb6d5819adbd649fa432f266e6",
+    "current_legacy_sha256": "ea5099929541c00e8f666c8d76bfd7f2570ac3cb6d5819adbd649fa432f266e6"
+  },
+  "tests": {
+    "collected": 194,
+    "passed": 194,
+    "failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "duration_seconds": 43.51
+  },
+  "coverage": {
+    "kind": "statement_and_branch",
+    "branch_percent": 93.91,
+    "required_percent": 85.0
+  },
+  "ruff": {
+    "scope": "src tests",
+    "errors": 0
+  },
+  "hcommit": "5/5",
+  "conformance": "125/125",
+  "frozen_manifest": "7/7",
+  "evidence_scan": {
+    "files": 5,
+    "findings": 0,
+    "json_valid": true
+  },
+  "production_source_changed": false,
+  "partner_owned_paths_changed": false,
+  "operations": {
+    "public_network": false,
+    "tunnel": false,
+    "gameplay": false,
+    "gmail": false,
+    "external_team_contact": false,
+    "league_reporting": false,
+    "counted_match": false,
+    "strategy_change": false
+  }
+}

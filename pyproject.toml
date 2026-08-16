@@ -25,6 +25,12 @@ packages = ["src/police_thief_lab"]
 [tool.pytest.ini_options]
 addopts = "--strict-markers --cov=police_thief_lab --cov-branch --cov-report=term-missing --cov-fail-under=85"
 testpaths = ["tests"]
+markers = [
+  "unit: isolated deterministic behavior without process or file boundaries",
+  "integration: contracts across project components or local file boundaries",
+  "system: complete local multi-component or process flows",
+  "offline_ops: separately owned release-engineering workstream tests",
+]
 
 [tool.ruff]
 exclude = ["external", "experiments"]

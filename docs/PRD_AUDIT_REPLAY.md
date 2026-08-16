@@ -19,7 +19,8 @@ audit behavior are frozen; details remain authoritative in [interop decisions](I
 
 The current approach isolates `canonical_json`, `hcommit`, `seal`, `verify_records`,
 `verify_audit`, and `replay_sequence`. Evidence: five golden vectors, tamper tests,
-`tests/test_turns_and_replay.py`, `tests/test_phase4a_boundary_audit_artifacts.py`, the
+`tests/unit/test_game/test_turns_and_replay.py`,
+`tests/integration/test_artifacts/test_phase4a_boundary_audit_artifacts.py`, the
 [Phase 4D1A test mapping](audits/PHASE4D1A_TEST_SPLIT.md), and 125/125 conformance vectors.
 Alternatives such as a different canonical serializer, nonce placement, signature scheme, or
 consensus preimage are rejected for the frozen profile.

@@ -22,7 +22,8 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Dependencies: GOV-001, CFG-001, UX-001; Evidence for DONE: not applicable while PLANNED.
 - Definition of Done: document install, all modes/options/workflows/examples/configuration,
   troubleshooting, contribution, license and credits without overstating readiness.
-- Validation commands: `uv run pytest tests/test_project_governance.py --no-cov`.
+- Validation commands:
+  `uv run pytest tests/integration/test_governance/test_project_governance.py --no-cov`.
 - Hard stop/escalation: do not invent configuration or operational readiness.
 
 ## SDK-001 — Decide and implement complete SDK facade
@@ -33,7 +34,7 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Definition of Done: every business operation has an approved stable facade, consumers delegate,
   characterization tests pass, and frozen imports/behavior remain compatible.
 - Validation commands: `uv run pytest`; `uv run ruff check src tests`;
-  `uv run pytest -q tests/test_sdk_contract.py --no-cov`.
+  `uv run pytest -q tests/integration/test_governance/test_sdk_contract.py --no-cov`.
 - Hard stop/escalation: a consumer bypass, missing public operation, changed legacy identity,
   game/wire/artifact/strategy/hash drift, or SDK-side authorization claim reopens SDK-001.
 
@@ -45,8 +46,9 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Definition of Done: applicable external calls are inventoried; approved admission/rate policy,
   bounded queues, backpressure, drain and sanitized monitoring are tested without changing frozen
   retries, deadlines, duplicates, ordering, or stale/equivocation behavior.
-- Validation commands: `uv run pytest -q tests/test_gatekeeper.py
-  tests/test_gatekeeper_config.py --no-cov`; `uv run pytest`; `uv run ruff check src tests`.
+- Validation commands: `uv run pytest -q tests/integration/test_configuration/test_gatekeeper.py
+  tests/integration/test_configuration/test_gatekeeper_config.py --no-cov`; `uv run pytest`;
+  `uv run ruff check src tests`.
 - Hard stop/escalation: an external-call bypass, unversioned/hard-coded limit, retained value,
   dropped/reordered queue item, or frozen retry/deadline/wire drift reopens API-001 and stops.
 
@@ -76,17 +78,19 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## TST-001 — Reorganize and document test layers
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Shared Review
-- Dependencies: accepted ADR-005; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Shared Review
+- Dependencies: accepted ADR-005; Evidence: Phase 4D3 RED/GREEN commits and
+  `docs/audits/PHASE4D3_TEST_QUALITY.md`.
 - Definition of Done: unit/integration/system tests have documented boundaries, source mapping,
   shared fixtures, success/error cases, and preserved collection/coverage.
-- Validation commands: `uv run pytest --collect-only`; `uv run pytest`.
+- Validation commands: `uv run pytest --collect-only -q --no-cov`; `uv run pytest`.
 - Hard stop/escalation: preserve test intent and existing tests during migration.
 
 ## QLT-001 — Enforce coverage, path evidence, Ruff and failure reports
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Shared Review
-- Dependencies: TST-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Shared Review
+- Dependencies: TST-001; Evidence: `docs/QUALITY_CRITICAL_PATHS.md`, Phase 4D3 RED/GREEN commits,
+  and `docs/audits/phase4d3_test_quality.json`.
 - Definition of Done: ≥85% branch coverage remains enforced, critical-path cases are mapped,
   Ruff is zero, and sanitized pass/failure reports have a retention policy.
 - Validation commands: `uv run pytest`; `uv run ruff check src tests`.
@@ -100,7 +104,7 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Definition of Done: approved versioned config loader validates compatibility before side effects;
   `.env-example`, ignore rules and secret scan exist; code/package/config versions are coherent.
 - Validation commands: `uv run pytest`; `uv run ruff check src tests`;
-  `uv run pytest -q tests/test_configuration.py --no-cov`.
+  `uv run pytest -q tests/integration/test_configuration/test_configuration.py --no-cov`.
 - Hard stop/escalation: any fixed-rule/profile/hash change, retained secret value, implicit schema
   migration, or operational side effect during validation reopens CFG-001 and stops.
 

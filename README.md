@@ -104,6 +104,8 @@ readiness; overall compliance remains **PARTIAL**.
 - [Live task source of truth](docs/TODO.md)
 - [Guidelines compliance matrix](docs/GUIDELINES_COMPLIANCE_MATRIX.md)
 - [Quality plan](docs/QUALITY_PLAN.md)
+- [Test architecture](docs/TESTING.md)
+- [Critical-path test map](docs/QUALITY_CRITICAL_PATHS.md)
 - [Operational configuration](docs/CONFIGURATION.md)
 - [SDK entry point](docs/SDK.md)
 - [Architecture decision records](docs/adr/README.md)

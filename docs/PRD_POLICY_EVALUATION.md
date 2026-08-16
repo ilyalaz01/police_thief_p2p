@@ -18,8 +18,9 @@ change in this phase; the Police champion is frozen; research reports are eviden
 
 Current modules provide baseline/tactical/partition/belief/search policies and an evaluation
 runner/matrix. This is selected as the implemented laboratory, not as a claim that every policy
-is optimal. Evidence: `tests/test_evaluation.py`, `test_phase2_5.py`, `test_phase3a.py`,
-`test_phase3b.py`, experiment scripts, and phase reports.
+is optimal. Evidence: `tests/integration/test_evaluation/test_evaluation.py`,
+`tests/unit/test_policies/test_phase2_5.py`, `tests/unit/test_policies/test_phase3a.py`,
+`tests/unit/test_policies/test_phase3b.py`, experiment scripts, and phase reports.
 
 Alternatives include exhaustive belief search, neural policies, and online learning; none is
 selected. Unresolved work: safely publish reproducible datasets, sensitivity analysis,

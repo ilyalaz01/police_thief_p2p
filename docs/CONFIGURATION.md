@@ -80,8 +80,9 @@ Rule 47, consensus scope, or any frozen policy. Those remain governed by the rep
 ## Validation
 
 ```bash
-uv run pytest -q tests/test_configuration.py --no-cov
-uv run pytest -q tests/test_gatekeeper.py tests/test_gatekeeper_config.py --no-cov
+uv run pytest -q tests/integration/test_configuration/test_configuration.py --no-cov
+uv run pytest -q tests/integration/test_configuration/test_gatekeeper.py \
+  tests/integration/test_configuration/test_gatekeeper_config.py --no-cov
 uv run pytest
 uv run ruff check src tests
 ```
