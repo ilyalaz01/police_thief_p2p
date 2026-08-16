@@ -7,7 +7,10 @@ phase3b.py still exceed 150 counted lines. No later production slice is selected
 
 - `f11b67a` — `test: characterize artifact byte and consensus contracts`
 - `8984125` — `refactor: extract artifact encoding helpers`
-- `docs: record phase4d1c artifact split evidence` — this report commit
+- `92f526c` — `docs: record phase4d1c artifact split evidence`
+- `87fca2e` — `style: expand artifact compatibility imports`
+- `7963023` — `test: split artifact contract without compression`
+- `docs: correct phase4d1c formatting evidence` — this correction commit
 
 `LINKS_REMARK`, `pretty_bytes`, `canonical_sha256`, `consensus_sha256`, `artifact_links`,
 `_hardware`, `_group`, and `_ended_at` moved without body/value changes from `artifacts.py` to
@@ -68,3 +71,35 @@ No schema prose/version/field/order, filename, default, timestamp, score, aggreg
 serialization, tie handling, scope, Rule 47, runtime, professor, conformance-kit, fixture, vector,
 log, transport, crypto, profile, strategy, dependency, lockfile, or gameplay behavior changed.
 No network, external contact, gameplay, merge, push, or tag occurred.
+
+## Phase 4D1C.1 formatting correction
+
+The Phase 4D1C semantic acceptance was green, but its initial `artifacts.py` import and
+`tests/test_artifact_contract.py` layout violated the explicit no-compression requirement. This
+correction expands the compatibility imports and replaces that test file with normally formatted
+modules. It changes no production executable AST, test function AST, assertion, fixture value,
+hash, or collected case.
+
+Collection framing is independently reproducible: take each `pytest --collect-only -q --no-cov`
+output line containing `::`, remove only the source path through the first `::`, sort the resulting
+identifiers, serialize them as compact JSON with separators `(',', ':')` and
+`ensure_ascii=False`, encode as UTF-8 with no delimiter or final newline, then SHA-256 the bytes.
+Before and after contain 148 entries and hash to
+`ee75bcee8c8b79457c56927b5d8cb6d8bba198905c97f06c89288fc49fbf4d6b`.
+
+The test-function manifest walks every `FunctionDef` and `AsyncFunctionDef` in the original file
+or its four replacements, dumps each with `ast.dump(..., include_attributes=False)`, sorts the
+seven dump strings, serializes and encodes with the same compact-JSON/UTF-8/no-final-newline
+framing, and hashes to
+`3d512d38eb1ff571df531df4fb4466e0aaab1300a062556584da9da3a372c86e` before and after.
+For the production check, parsing `artifacts.py`, removing top-level `Import` and `ImportFrom`
+nodes, and dumping the remaining `Module` with `include_attributes=False` hashes to
+`9b56ed24a9106e8af8197498e580eea96419cad260a3a03f4970a11d25809f35` before and after.
+
+Corrected counted-line totals are 148 for `artifacts.py`, 34 for
+`artifact_contract_hashes.py`, 74 for `artifact_contract_support.py`, 89 for
+`test_artifact_contract_api.py`, and 108 for `test_artifact_contract_bytes.py`. Their maximum
+physical test/support line lengths are respectively 98, 92, 98, and 99 characters. The corrected
+full suite passes 148/148 with no skips or xfails and 91.18% branch coverage. Standard Ruff,
+unsuppressed I001 for `artifacts.py`, unsuppressed E501 for all replacement files, the professor
+differential, B0/B1 7/7, Hcommit 5/5, conformance 125/125, and frozen manifest 7/7 all pass.

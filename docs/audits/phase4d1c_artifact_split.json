@@ -5,7 +5,10 @@
   "commits": [
     {"id": "f11b67a", "subject": "test: characterize artifact byte and consensus contracts"},
     {"id": "8984125", "subject": "refactor: extract artifact encoding helpers"},
-    {"id": "THIS_COMMIT", "subject": "docs: record phase4d1c artifact split evidence"}
+    {"id": "92f526c", "subject": "docs: record phase4d1c artifact split evidence"},
+    {"id": "87fca2e", "subject": "style: expand artifact compatibility imports"},
+    {"id": "7963023", "subject": "test: split artifact contract without compression"},
+    {"id": "THIS_COMMIT", "subject": "docs: correct phase4d1c formatting evidence"}
   ],
   "mechanical_boundary": {
     "source": "src/police_thief_lab/interop/artifacts.py",
@@ -40,7 +43,45 @@
     "local_sha256": ["71d2edca2b6f239bdba387c7fe3348ee66be702421670608fcd5a5e1c28f47e8", "66e1743da003d1636d160b4ade9bf25a7b6f1046478de483bd6c9ca4c6dd5184", "e933c34bc23c39d19b56988ff04b10bebdbb33619d7fa2d9108969c1771b8a47", "e67a41ef2f45ecd3bece62a63c4748d0fd1f52ac6f8449648fc04d390d36233f"]
   },
   "behavior": {"game_id": "alpha-vs-beta", "game_uid": "9715936d-696a-8856-ff12-1b57c46c9df3", "capture_score": {"alpha": 20, "beta": 5}, "survival_score": {"alpha": 5, "beta": 10}, "fallback_preserved": true},
-  "gates": {"pytest": "PASS_148_OF_148_NO_SKIP_NO_XFAIL", "branch_coverage_percent": 91.17, "professor_four_builder_differential": "PASS_NO_SKIP", "b0_b1": "PASS_7_OF_7", "ruff": "PASS_ZERO_ERRORS", "hcommit": "PASS_5_OF_5", "conformance": "PASS_125_OF_125", "frozen_manifest": "PASS_7_OF_7", "forbidden_path_diff": "PASS_EMPTY"},
+  "formatting_correction": {
+    "reason": "Semantic acceptance was green, but the initial layout violated the no-compression requirement.",
+    "collection_manifest": {
+      "entries_before": 148,
+      "entries_after": 148,
+      "normalization": "retain collect-output lines containing ::, remove source path through first ::, sort identifiers",
+      "framing": "compact JSON separators comma/colon, ensure_ascii=false, UTF-8, no delimiter, no final newline",
+      "before_sha256": "ee75bcee8c8b79457c56927b5d8cb6d8bba198905c97f06c89288fc49fbf4d6b",
+      "after_sha256": "ee75bcee8c8b79457c56927b5d8cb6d8bba198905c97f06c89288fc49fbf4d6b"
+    },
+    "test_function_ast_manifest": {
+      "entries_before": 7,
+      "entries_after": 7,
+      "selection": "all FunctionDef and AsyncFunctionDef nodes in original or replacement modules",
+      "framing": "ast.dump include_attributes=false strings, sorted, compact JSON, UTF-8, no delimiter, no final newline",
+      "before_sha256": "3d512d38eb1ff571df531df4fb4466e0aaab1300a062556584da9da3a372c86e",
+      "after_sha256": "3d512d38eb1ff571df531df4fb4466e0aaab1300a062556584da9da3a372c86e"
+    },
+    "artifacts_executable_ast": {
+      "selection": "parsed Module excluding top-level Import and ImportFrom nodes",
+      "framing": "ast.dump include_attributes=false, UTF-8, no final newline",
+      "before_sha256": "9b56ed24a9106e8af8197498e580eea96419cad260a3a03f4970a11d25809f35",
+      "after_sha256": "9b56ed24a9106e8af8197498e580eea96419cad260a3a03f4970a11d25809f35"
+    },
+    "line_counts": {
+      "src/police_thief_lab/interop/artifacts.py": 148,
+      "tests/artifact_contract_hashes.py": 34,
+      "tests/artifact_contract_support.py": 74,
+      "tests/test_artifact_contract_api.py": 89,
+      "tests/test_artifact_contract_bytes.py": 108
+    },
+    "test_support_max_physical_line_lengths": {
+      "tests/artifact_contract_hashes.py": 98,
+      "tests/artifact_contract_support.py": 92,
+      "tests/test_artifact_contract_api.py": 98,
+      "tests/test_artifact_contract_bytes.py": 99
+    }
+  },
+  "gates": {"pytest": "PASS_148_OF_148_NO_SKIP_NO_XFAIL", "branch_coverage_percent": 91.18, "professor_four_builder_differential": "PASS_NO_SKIP", "b0_b1": "PASS_7_OF_7", "ruff": "PASS_ZERO_ERRORS", "ruff_i001_ignore_noqa": "PASS", "test_support_e501_ignore_noqa": "PASS", "hcommit": "PASS_5_OF_5", "conformance": "PASS_125_OF_125", "frozen_manifest": "PASS_7_OF_7", "forbidden_path_diff": "PASS_EMPTY"},
   "remaining_over_150": {"src/police_thief_lab/interop/runtime.py": 565, "src/police_thief_lab/policies/phase3b.py": 303},
   "hard_stop_attestations": {"artifact_or_consensus_behavior_changed": false, "runtime_profile_crypto_changed": false, "external_fixture_vector_log_changed": false, "network_gameplay_merge_push_tag": false}
 }
