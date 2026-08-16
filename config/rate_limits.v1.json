@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "services": {
+    "fastmcp": {
+      "requests_per_minute": 6000,
+      "requests_per_hour": 100000,
+      "concurrent_max": 1,
+      "queue_max": 256,
+      "monitoring_max": 512
+    }
+  }
+}
