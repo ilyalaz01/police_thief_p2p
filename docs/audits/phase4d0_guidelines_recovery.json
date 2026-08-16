@@ -1,0 +1,72 @@
+{
+  "phase": "4D0",
+  "scope": "documentation_and_governance_only",
+  "retrospective_status": "RETROSPECTIVE_AFTER_VALIDATED_PROTOTYPE",
+  "phase_result": "GREEN_DOCUMENTATION_GOVERNANCE_ONLY",
+  "overall_guidelines_compliance": "PARTIAL",
+  "created_documents": [
+    "docs/PRD.md",
+    "docs/PRD_GAME_CORE_AND_OBSERVABILITY.md",
+    "docs/PRD_POLICY_EVALUATION.md",
+    "docs/PRD_P2P_INTEROPERABILITY.md",
+    "docs/PRD_AUDIT_REPLAY.md",
+    "docs/PRD_ARTIFACTS_AND_CONSENSUS.md",
+    "docs/PRD_RELEASE_ENGINEERING.md",
+    "docs/PLAN.md",
+    "docs/TODO.md",
+    "docs/GUIDELINES_COMPLIANCE_MATRIX.md",
+    "docs/QUALITY_PLAN.md",
+    "docs/PROMPT_ENGINEERING_LOG.md",
+    "docs/adr/README.md",
+    "docs/adr/ADR-001-source-authority-and-frozen-core.md",
+    "docs/adr/ADR-002-retrospective-documentation-recovery.md",
+    "docs/adr/ADR-003-sdk-facade-plan.md",
+    "docs/adr/ADR-004-api-gatekeeper-applicability.md",
+    "docs/adr/ADR-005-150-line-refactoring-strategy.md",
+    "docs/adr/ADR-006-versioned-configuration-boundary.md",
+    "docs/audits/PHASE4D0_GUIDELINES_RECOVERY.md",
+    "docs/audits/phase4d0_guidelines_recovery.json"
+  ],
+  "compliance_counts_by_status": {
+    "COMPLIANT": 6,
+    "PARTIAL": 36,
+    "MISSING": 6,
+    "NOT_APPLICABLE_WITH_RATIONALE": 1,
+    "BLOCKED_BY_HIGHER_AUTHORITY": 1
+  },
+  "detected_over_150_line_files": {
+    "src/police_thief_lab/interop/runtime.py": 565,
+    "src/police_thief_lab/policies/phase3b.py": 303,
+    "src/police_thief_lab/interop/artifacts.py": 168,
+    "src/police_thief_lab/policies/belief.py": 154,
+    "tests/test_phase4b_transport.py": 441,
+    "tests/test_phase4a_interop.py": 305
+  },
+  "validation_results": {
+    "pytest": "135/135 passed (134-test coverage batch plus independently isolated two-process system test)",
+    "aggregate_branch_coverage_percent": 90.80727951469902,
+    "existing_baseline_branch_coverage_percent": 90.81,
+    "ruff": "PASS_ZERO_ERRORS",
+    "hcommit": "PASS_5_OF_5",
+    "conformance": "PASS_125_OF_125",
+    "governance_tests": "PASS_6_OF_6",
+    "new_json_parse": "PASS",
+    "markdown_relative_links": "PASS_25_FILES_ZERO_BROKEN",
+    "python_line_count_recomputed": "PASS_AUDIT_COMPLETE",
+    "scoped_security_privacy_scan": "PASS_NO_SECRET_PRIVATE_PATH_PERSONAL_MESSAGE_OPERATIONAL_NONCE_OR_NEW_LIVE_ENDPOINT",
+    "frozen_hash_comparison": "PASS_7_OF_7_UNCHANGED"
+  },
+  "frozen_manifest_result": "PASS_7_OF_7",
+  "remaining_technical_milestones": [
+    "SDK-001", "API-001", "REF-001", "TST-001", "CFG-001", "RE-001"
+  ],
+  "hard_stop_attestations": {
+    "production_source_modified": false,
+    "existing_tests_modified": false,
+    "frozen_semantics_or_hashes_modified": false,
+    "technical_remediation_implemented": false,
+    "external_contact_or_gameplay": false,
+    "private_or_professor_material_published": false,
+    "remote_git_state_modified": false
+  }
+}
