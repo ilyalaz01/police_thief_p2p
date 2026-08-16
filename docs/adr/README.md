@@ -11,5 +11,4 @@ already established by authoritative repository evidence; proposed records selec
 - [ADR-003](ADR-003-sdk-facade-plan.md): SDK facade plan — PROPOSED
 - [ADR-004](ADR-004-api-gatekeeper-applicability.md): gatekeeper applicability — PROPOSED
 - [ADR-005](ADR-005-150-line-refactoring-strategy.md): 150-line refactoring — PROPOSED
-- [ADR-006](ADR-006-versioned-configuration-boundary.md): versioned configuration — PROPOSED
-
+- [ADR-006](ADR-006-versioned-configuration-boundary.md): versioned configuration — ACCEPTED

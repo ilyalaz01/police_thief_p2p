@@ -1,0 +1,49 @@
+{
+  "phase": "4D2A",
+  "status": "GREEN",
+  "todo": "CFG-001",
+  "todo_status": "DONE",
+  "commits": [
+    "e9f94a8",
+    "0685780"
+  ],
+  "red_evidence": "collection failed with ModuleNotFoundError: police_thief_lab.configuration",
+  "contract": {
+    "schema_version": "1.0",
+    "package_version": "1.0.0",
+    "operation_modes": [
+      "offline",
+      "self_test",
+      "real_team"
+    ],
+    "secret_source": "environment_only",
+    "retain_sensitive_values": false,
+    "counted_mode_supported": false,
+    "match_profile_changed": false
+  },
+  "acceptance": {
+    "focused_tests": "20/20 passed",
+    "pytest": "170/170 passed; no skips or xfails",
+    "branch_coverage_percent": 93.15,
+    "ruff": "passed",
+    "hcommit": "5/5",
+    "conformance": "125/125",
+    "frozen_manifest": "7/7 exact",
+    "b0_b1": "7/7",
+    "professor_differential": "passed without skip",
+    "match_profile_bytes_and_hash": "exact",
+    "tracked_secret_scan_findings": 0
+  },
+  "excluded_operations": [
+    "public_network",
+    "tunnel",
+    "gmail",
+    "opponent_contact",
+    "gameplay",
+    "league_reporting",
+    "counted_match",
+    "strategy_experiment",
+    "new_ai_ml",
+    "dependency_change"
+  ]
+}

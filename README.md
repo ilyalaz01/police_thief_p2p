@@ -62,6 +62,10 @@ The repository contains no live credentials, tunnel configuration, private audit
 counted-match authorization. Real-team play requires the explicit gates in
 `docs/REAL_TEAM_WARMUP_RUNBOOK.md`.
 
+Optional startup classification uses the strict versioned JSON boundary documented in
+[Operational configuration](docs/CONFIGURATION.md). The tracked self-test example contains no
+credentials and cannot authorize public, real-team, or counted activity.
+
 Development workflow and review requirements are documented in `CONTRIBUTING.md`.
 
 ## Documentation and governance
@@ -69,15 +73,17 @@ Development workflow and review requirements are documented in `CONTRIBUTING.md`
 Retrospective baseline created after the validated prototype.
 These documents did not exist before the prototype and do not claim otherwise.
 
-Phase 4D0 establishes documentation/governance only. Its acceptance does not mean full Software
-Project Guidelines compliance, real-team readiness, or counted-match readiness; overall
-compliance remains **PARTIAL** and technical work remains unimplemented.
+Phase 4D0 established the retrospective documentation/governance baseline. Later accepted changes
+closed the 150-line and versioned-configuration gaps, but this does not mean full Software Project
+Guidelines compliance, real-team readiness, or counted-match readiness; overall compliance remains
+**PARTIAL**.
 
 - [Product requirements](docs/PRD.md)
 - [As-built architecture plan](docs/PLAN.md)
 - [Live task source of truth](docs/TODO.md)
 - [Guidelines compliance matrix](docs/GUIDELINES_COMPLIANCE_MATRIX.md)
 - [Quality plan](docs/QUALITY_PLAN.md)
+- [Operational configuration](docs/CONFIGURATION.md)
 - [Architecture decision records](docs/adr/README.md)
 - [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
 - [Release engineering workstream specification](docs/RELEASE_ENGINEERING_WORKSTREAM.md)

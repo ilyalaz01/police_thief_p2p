@@ -88,12 +88,15 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## CFG-001 — Versioned configuration and secret boundary
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: accepted ADR-006; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Core Architecture
+- Dependencies: accepted ADR-006; Evidence: Phase 4D2A commits and
+  `docs/audits/PHASE4D2A_VERSIONED_CONFIGURATION.md`.
 - Definition of Done: approved versioned config loader validates compatibility before side effects;
   `.env-example`, ignore rules and secret scan exist; code/package/config versions are coherent.
-- Validation commands: `uv run pytest`; approved secret/config validation commands.
-- Hard stop/escalation: never migrate fixed rules or alter frozen profile/config bytes.
+- Validation commands: `uv run pytest`; `uv run ruff check src tests`;
+  `uv run pytest -q tests/test_configuration.py --no-cov`.
+- Hard stop/escalation: any fixed-rule/profile/hash change, retained secret value, implicit schema
+  migration, or operational side effect during validation reopens CFG-001 and stops.
 
 ## PKG-001 — Audit package/API/path/dependency organization
 
