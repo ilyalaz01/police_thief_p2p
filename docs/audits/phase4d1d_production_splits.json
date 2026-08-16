@@ -1,0 +1,67 @@
+{
+  "phase": "4D1D",
+  "status": "GREEN",
+  "todo": "REF-001",
+  "todo_status": "DONE",
+  "commits": [
+    "689aac0f045c06693b7ddf17fc8cb0572edb9172",
+    "cae53ddb601d3b8c19f2f7c33baf8a7b4428a120",
+    "46844a84180696acbbd0ba505000e5619f2d96e4",
+    "e4ef336ada33c6c75e2eb71a7ea2db3012861af4"
+  ],
+  "characterization": {
+    "phase3b": {
+      "bytes": 48145,
+      "sha256": "6966c3d4694911039181bed20568832ee6f1228a636a3f5b7d141fb48bb70457",
+      "model_usage_depth_combinations": 27
+    },
+    "runtime": {
+      "bytes": 2327,
+      "sha256": "fc86adbbc506b2edd489926a31b97fd2e56a781a9eeb1c29291e9a509d912f67"
+    }
+  },
+  "counted_lines": {
+    "src/police_thief_lab/policies/phase3b.py": 130,
+    "src/police_thief_lab/policies/phase3b_models.py": 32,
+    "src/police_thief_lab/policies/phase3b_replies.py": 71,
+    "src/police_thief_lab/policies/phase3b_scoring.py": 86,
+    "tests/test_phase3b_contract.py": 117,
+    "src/police_thief_lab/interop/runtime.py": 150,
+    "src/police_thief_lab/interop/runtime_artifacts.py": 104,
+    "src/police_thief_lab/interop/runtime_audit.py": 96,
+    "src/police_thief_lab/interop/runtime_board.py": 63,
+    "src/police_thief_lab/interop/runtime_lifecycle.py": 102,
+    "src/police_thief_lab/interop/runtime_models.py": 75,
+    "src/police_thief_lab/interop/runtime_sending.py": 103,
+    "tests/test_runtime_contract.py": 95
+  },
+  "acceptance": {
+    "pytest": "158/158 passed; no skips or xfails",
+    "branch_coverage_percent": 93.29,
+    "runtime_focused": "33/33 passed",
+    "ruff": "passed",
+    "hcommit": "5/5",
+    "conformance": "125/125",
+    "frozen_manifest": "7/7 exact",
+    "b0_b1": "7/7",
+    "professor_differential": "passed without skip",
+    "python_files_scanned": 76,
+    "line_limit_violations": 0,
+    "maximum_counted_lines": 150
+  },
+  "excluded_operations": [
+    "public_network",
+    "tunnel",
+    "gmail",
+    "opponent_contact",
+    "gameplay",
+    "league_reporting",
+    "counted_match",
+    "strategy_experiment",
+    "new_ai_ml",
+    "dependency_change",
+    "merge",
+    "push",
+    "tag"
+  ]
+}

@@ -23,8 +23,8 @@ is optimal. Evidence: `tests/test_evaluation.py`, `test_phase2_5.py`, `test_phas
 
 Alternatives include exhaustive belief search, neural policies, and online learning; none is
 selected. Unresolved work: safely publish reproducible datasets, sensitivity analysis,
-notebooks/visualizations, formal performance budgets, and high-risk splits of `belief.py` and
-`phase3b.py`.
+notebooks/visualizations, and formal performance budgets. The characterized `belief.py` and
+`phase3b.py` structural splits are complete under REF-001.
 
 Metrics: identical seeded results; 100% returned actions legal; no hidden-state path; paired win,
 capture, survival, score, turns, and latency summaries. Tests cover seed repetition, ablations,
@@ -33,4 +33,3 @@ strong opponents, budgeted search, oracle exclusion, and legality.
 Definition of Done: predeclared hypothesis/config/seeds, TDD evidence, raw-to-summary provenance,
 timing and sensitivity results, review for leakage, full quality gates, and no frozen-policy hash
 change. Frozen boundary: rules, observations, champion, profiles, and interoperability semantics.
-

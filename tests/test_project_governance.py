@@ -121,3 +121,16 @@ def test_live_documented_test_paths_exist() -> None:
         ).is_file()
     )
     assert missing == []
+
+
+def test_source_and_test_modules_stay_within_150_counted_lines() -> None:
+    violations = {}
+    for directory in (ROOT / "src", ROOT / "tests"):
+        for path in directory.rglob("*.py"):
+            counted = sum(
+                bool(line.strip()) and not line.lstrip().startswith("#")
+                for line in path.read_text(encoding="utf-8").splitlines()
+            )
+            if counted > 150:
+                violations[path.relative_to(ROOT).as_posix()] = counted
+    assert violations == {}

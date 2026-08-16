@@ -46,16 +46,18 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## REF-001 — Split files over 150 lines
 
-- Milestone: D1; Priority: P1; Status: IN_PROGRESS; Owner role: Core Architecture
-- Dependencies: accepted test-only slice of ADR-005 and characterization evidence; Evidence:
-  Phase 4D1A commits and `docs/audits/PHASE4D1A_TEST_SPLIT.md` removed both test violations;
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Core Architecture
+- Dependencies: accepted test-only slice of ADR-005 and characterization evidence; Evidence: Phase
+  4D1A commits and `docs/audits/PHASE4D1A_TEST_SPLIT.md` removed both test violations;
   Phase 4D1B commits and `docs/audits/PHASE4D1B_BELIEF_SPLIT.md` removed the belief violation;
-  Phase 4D1C commits and `docs/audits/PHASE4D1C_ARTIFACT_SPLIT.md` removed the artifact violation.
+  Phase 4D1C commits and `docs/audits/PHASE4D1C_ARTIFACT_SPLIT.md` removed the artifact violation;
+  Phase 4D1D commits and `docs/audits/PHASE4D1D_PRODUCTION_SPLITS.md` removed the Phase 3B and
+  runtime violations and added the permanent 150-line regression gate.
 - Definition of Done: all project-authored Python files are ≤150 nonblank/non-comment lines,
   without compression, semantic drift, coverage loss, or frozen-hash change.
 - Validation commands: line-count audit from ADR-005; `uv run pytest`; `uv run ruff check src tests`.
-- Hard stop/escalation: the test, belief, and artifact slices are complete; runtime and phase3b
-  proposals remain unselected and require separate review before any source movement.
+- Hard stop/escalation: any future violation, compressed formatting, public-contract drift,
+  strategy/output change, wire/artifact change, or frozen-hash change reopens REF-001 and stops.
 
 ## DOCS-002 — Complete docstrings and building-block contracts
 

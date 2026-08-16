@@ -14,8 +14,8 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 1 PRD/PLAN/TODO | COMPLIANT | `docs/PRD.md`, `PLAN.md`, `TODO.md` | Retrospective limitation disclosed | GOV-001 | Phase 4D0 audit and governance tests |
 | 1 Dedicated PRDs | COMPLIANT | Six mechanism PRDs | Must remain live as mechanisms change | GOV-001 | Required-file/link test |
 | 1 Recommended layout | PARTIAL | `src`, `tests`, `docs`, `interop`, `reports`; `pyproject.toml`, `uv.lock` | `config`, `results`, `assets`, `notebooks`, `.env-example` absent; tests flat | CFG-001 | Approved layout/config/test evidence |
-| 2 Modular structure | PARTIAL | Feature/layer package structure | Six oversized files and incomplete building-block docs | REF-001 | Independent count ≤150 and contract docs |
-| 2 150-line rule | PARTIAL | ADR-005 independently lists six exact violations | Counts: 565, 303, 168, 154, 441, 305 | REF-001 | Count audit plus semantic/frozen gates |
+| 2 Modular structure | PARTIAL | Feature/layer package structure; REF-001 split evidence | Building-block contracts remain incomplete | DOCS-002 | Public-block contract inventory and review |
+| 2 150-line rule | COMPLIANT | ADR-005; Phase 4D1A–D1D audits; permanent regression test | Zero `src/` or `tests/` Python violations across 76 files | REF-001 | 158-test acceptance and independent count audit |
 | 2 Docstrings/comments/quality | PARTIAL | Many module/class/function docstrings; Ruff configured | Complete public-symbol/docstring/WHY audit absent | DOCS-002 | Automated inventory and review |
 | 3 SDK/OOP | PARTIAL | Root exports core SDK-like surface; protocols/backends | Evaluation/interop/artifacts not all reachable via sole facade; duplication audit absent | SDK-001 | Accepted facade and consumer tests |
 | 4 Gatekeeper/rate/queues | PARTIAL | `McpPeerClient` central retry/deadline; `PeerInboxes` queues | No rate limit, bounded depth, backpressure, drain, monitoring | API-001 | Accepted ADR plus bounded load/failure tests |
@@ -49,7 +49,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 16.2 SDK architecture | PARTIAL | Core package exports | Not a single facade for all business logic | SDK-001 | Accepted ADR/interface tests |
 | 16.2 OOP/no duplication | PARTIAL | Protocols/dataclasses/shared helpers | Project-wide duplication analysis absent | PKG-001 | Static/review evidence |
 | 16.2 API gatekeeper/rates/queues | PARTIAL | Central client retries and queues | Missing rate/bounds/backpressure/monitoring | API-001 | Bounded deterministic tests |
-| 16.2 ≤150/docstrings/style | PARTIAL | Ruff; ADR count | Six violations; docstring inventory incomplete | REF-001 | Count, doc audit, Ruff |
+| 16.2 ≤150/docstrings/style | PARTIAL | Zero line-limit violations; Ruff clean | Complete public-symbol/docstring inventory remains incomplete | DOCS-002 | Docstring/block audit plus Ruff |
 | 16.3 TDD | PARTIAL | Existing tests | Historical sequence unprovable | TST-001 | Future linked RED/GREEN commits |
 | 16.3 Coverage/Ruff | COMPLIANT | ≥85 branch gate and Ruff config/runs | Continue enforcement | QLT-001 | Recorded green commands |
 | 16.3 Edge cases/reports | PARTIAL | Interop/failure tests and phase reports | Formal expected-output/failure retention incomplete | QLT-001 | Critical-path and sanitized report evidence |
@@ -64,4 +64,3 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 16.6 Building blocks | PARTIAL | PLAN responsibilities | Complete I/O/setup contracts absent | DOCS-002 | Documentation audit |
 | 16.6 ISO 25010 | MISSING | No consolidated assessment | Eight characteristics unassessed | ISO-001 | Evidence matrix |
 | 16.6 Git/license/attribution/deploy | PARTIAL | MIT, submodule credit, history, CONTRIBUTING | PR/release/deployment evidence incomplete | GIT-001 | Reviewed release record |
-
