@@ -15,7 +15,7 @@ artifacts.
 - one documented `PoliceThiefSDK` entry point for domain, policy, evaluation, artifact, transport,
   and configuration operations;
 - centralized versioned FastMCP rate admission, bounded FIFO queues/backpressure, drain, and
-  sanitized monitoring;
+  sanitized monitoring, with race-safe shutdown and measured capacity;
 - local and public self-play validation;
 - more than 90% branch coverage and 125/125 conformance vectors.
 
@@ -106,6 +106,7 @@ readiness; overall compliance remains **PARTIAL**.
 - [Quality plan](docs/QUALITY_PLAN.md)
 - [Test architecture](docs/TESTING.md)
 - [Critical-path test map](docs/QUALITY_CRITICAL_PATHS.md)
+- [Concurrency, lifecycle, and capacity](docs/CONCURRENCY_AND_CAPACITY.md)
 - [Operational configuration](docs/CONFIGURATION.md)
 - [SDK entry point](docs/SDK.md)
 - [Architecture decision records](docs/adr/README.md)

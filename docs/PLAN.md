@@ -154,9 +154,10 @@ flowchart LR
   service validates optional operational configuration, reads profile timeouts, validates the
   endpoint, and invokes the existing runtime behind that boundary.
 
-Current package structure is feature/layer hybrid under `src/police_thief_lab`; tests are flat,
-experiments are executable evidence generators, reports are recorded evidence, `interop` holds
-fixtures/templates/vectors/log evidence, and `external` holds pinned dependencies/submodules.
+Current package structure is feature/layer hybrid under `src/police_thief_lab`; tests use documented
+unit, integration, and system layers. Experiments are executable evidence generators, reports are
+recorded evidence, `interop` holds fixtures/templates/vectors/log evidence, and `external` holds
+pinned dependencies/submodules.
 
 ## Data, boundaries, and failure behavior
 
@@ -172,13 +173,16 @@ is unavailable/nonredistributable; the MIT kit is an external pinned boundary an
 Illegal actions raise or are handled by named runtime behavior; malformed frames and equivocation
 fail; profile mismatch stops before play; outbound retry stops at count or monotonic deadline;
 missing turns/audits become deterministic technical failure. Queues are thread-safe and bounded by
-the versioned FastMCP rate policy.
-Daemon-server lifecycle remains limited. Gatekeeper monitoring is bounded and value-free. Duplicate
-traffic cannot renew turn time.
+the versioned FastMCP rate policy. Gatekeeper admission and close are atomic, accepted work is
+counted across queue/worker transitions, and workers self-reap after a visible close timeout once
+pending calls finish. The daemon FastMCP server is deliberately owned by the peer process and has
+no claimed in-process restart contract. Gatekeeper monitoring is bounded and value-free. Duplicate
+traffic cannot renew turn time. The complete ownership and capacity contract is documented in
+[Concurrency, lifecycle, and capacity](CONCURRENCY_AND_CAPACITY.md).
 
 Extension points already implemented: `DecisionBackend`, `ScentModel`, policy factories,
-`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: flat tests, runtime
-lifecycle complexity, and negotiated scope ambiguity. REF-001
+`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Residual risks are the
+process-scoped FastMCP server lifecycle and negotiated scope ambiguity. REF-001
 closed with no Python source/test file above 150 counted lines. CFG-001 closed with a strict
 versioned operational boundary; SDK-001 closed with a single documented facade. Fixed game/profile
 values remain non-configurable.

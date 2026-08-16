@@ -34,7 +34,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 11 Extensibility/maintainability | PARTIAL | `DecisionBackend`, `ScentModel`, profiles/policy factories | Lifecycle/hooks/middleware/compatibility policy incomplete | EXT-001 | Extension contract and tests |
 | 12 ISO/IEC 25010 | MISSING | Quality traits appear across tests/docs | No systematic eight-characteristic assessment | ISO-001 | Evidence-backed internal assessment |
 | 13 Package organization | PARTIAL | src layout, pyproject, `__init__`, `__version__` | Author metadata/export/path/dependency audit incomplete | PKG-001 | Package checklist evidence |
-| 14 Concurrency/thread safety | PARTIAL | bounded Gatekeeper workers/FIFO inboxes; daemon server thread; transport tests | Complete shutdown/resource/race analysis remains incomplete | CON-001 | Lifecycle/load/race tests and diagram |
+| 14 Concurrency/thread safety | COMPLIANT | Process-owned FastMCP daemon; bounded Gatekeeper workers/FIFO inboxes; atomic admission/close; deterministic race, cleanup and capacity tests | In-process FastMCP restart is deliberately unsupported; peer-process termination owns server cleanup | CON-001 | Phase 4D4 lifecycle/load/race audit and ownership diagram |
 | 15 Building blocks | PARTIAL | PLAN module/I/O descriptions and typed interfaces | Per-public-block setup/validation/edge contracts incomplete | DOCS-002 | Audited block contracts |
 | 16 Final checklist | PARTIAL | Detailed group mapping below | Multiple technical/research/operations gaps remain | GOV-001 | All group items separately satisfied |
 | 17 Quick-reference enforcement | PARTIAL | pytest/Ruff/coverage/frozen/vector/config/SDK/Gatekeeper/line-limit commands | Unified release automation incomplete | RE-001 | Unified fail-closed offline quality gate |
@@ -60,7 +60,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 16.5 Token cost | MISSING | None | No measured applicable cost analysis | COST-001 | Reviewed calculations |
 | 16.6 Extension points | PARTIAL | Policy/scent interfaces | Compatibility/lifecycle policy incomplete | EXT-001 | Contract/tests |
 | 16.6 Professional package | PARTIAL | Installable src package | Package checklist gaps | PKG-001 | Package audit |
-| 16.6 Parallel/thread safety | PARTIAL | Queues/thread tests | Capacity/lifecycle/backpressure incomplete | CON-001 | Load/race evidence |
+| 16.6 Parallel/thread safety | COMPLIANT | Exact worker-plus-queue capacity, backpressure, shutdown and post-timeout reaping are tested | Server lifetime remains intentionally process-scoped | CON-001 | Phase 4D4 deterministic load/race evidence |
 | 16.6 Building blocks | PARTIAL | PLAN responsibilities | Complete I/O/setup contracts absent | DOCS-002 | Documentation audit |
 | 16.6 ISO 25010 | MISSING | No consolidated assessment | Eight characteristics unassessed | ISO-001 | Evidence matrix |
 | 16.6 Git/license/attribution/deploy | PARTIAL | MIT, submodule credit, history, CONTRIBUTING | PR/release/deployment evidence incomplete | GIT-001 | Reviewed release record |

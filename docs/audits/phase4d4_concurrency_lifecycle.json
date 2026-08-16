@@ -1,0 +1,54 @@
+{
+  "phase": "4D4",
+  "status": "GREEN",
+  "scope": [
+    "CON-001"
+  ],
+  "accepted_base": "6b048d3a412f17dd8af965890d55d58acd5286e3",
+  "commits": {
+    "red": "4b66434cd4f0feb03245884e70335773626615d7",
+    "green": "77e387092a1e912914fa890f5fcf889df93c4724"
+  },
+  "red_evidence": {
+    "passed": 1,
+    "failed": 2
+  },
+  "focused_tests": {
+    "passed": 3,
+    "failed": 0
+  },
+  "capacity": "concurrent_max + queue_max",
+  "full_tests": {
+    "collected": 198,
+    "passed": 198,
+    "failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "duration_seconds": 40.11
+  },
+  "coverage": {
+    "branch_percent": 94.07,
+    "required_percent": 85.0
+  },
+  "ruff_errors": 0,
+  "hcommit": "5/5",
+  "conformance": "125/125",
+  "frozen_manifest": "7/7",
+  "evidence_scan": {
+    "files": 3,
+    "findings": 0,
+    "json_valid": true
+  },
+  "partner_owned_paths_changed": false,
+  "operations": {
+    "public_network": false,
+    "tunnel": false,
+    "gameplay": false,
+    "gmail": false,
+    "external_team_contact": false,
+    "league_reporting": false,
+    "counted_match": false,
+    "strategy_change": false,
+    "new_ai_ml_search": false
+  }
+}
