@@ -64,6 +64,24 @@ counted-match authorization. Real-team play requires the explicit gates in
 
 Development workflow and review requirements are documented in `CONTRIBUTING.md`.
 
+## Documentation and governance
+
+Retrospective baseline created after the validated prototype.
+These documents did not exist before the prototype and do not claim otherwise.
+
+Phase 4D0 establishes documentation/governance only. Its acceptance does not mean full Software
+Project Guidelines compliance, real-team readiness, or counted-match readiness; overall
+compliance remains **PARTIAL** and technical work remains unimplemented.
+
+- [Product requirements](docs/PRD.md)
+- [As-built architecture plan](docs/PLAN.md)
+- [Live task source of truth](docs/TODO.md)
+- [Guidelines compliance matrix](docs/GUIDELINES_COMPLIANCE_MATRIX.md)
+- [Quality plan](docs/QUALITY_PLAN.md)
+- [Architecture decision records](docs/adr/README.md)
+- [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
+- [Release engineering workstream specification](docs/RELEASE_ENGINEERING_WORKSTREAM.md)
+
 ## License
 
 Project-authored code is licensed under the MIT License. The conformance kit is an independently
