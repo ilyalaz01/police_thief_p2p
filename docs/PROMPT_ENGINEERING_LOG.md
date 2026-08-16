@@ -26,6 +26,7 @@ commit/PR.
 | Phase 4D0 audit | Recover requirements, architecture, quality and task governance. | Retrospective documentation must state its timing and leave technical gaps open. |
 | Phase 4D1A test split | Mechanically split oversized interoperability tests under REF-001. | Path-normalized collection and AST manifests make organization-only moves independently verifiable. |
 | Phase 4D1A.1 correction | Repair live test references and specify the AST digest preimage. | Governance should validate live backticked test paths, and evidence hashes need exact framing rules. |
+| Phase 4D1B belief split | Characterize the belief contract, then extract three private pure helpers. | Pin outputs, signatures, exceptions, exports, and diagnostics before moving strategy calculations. |
 
 ## Template for every future significant prompt
 
