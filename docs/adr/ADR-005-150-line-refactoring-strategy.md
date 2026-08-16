@@ -27,6 +27,13 @@ contains 26. Public imports, signatures/defaults, exceptions, exports, determini
 mathematics, policies, and frozen behavior remained unchanged. The runtime, phase3b, and artifact
 treatments remain proposals and are not selected by this decision.
 
+Also accept the Phase 4D1C artifact-encoding slice: after byte, schema, writer, consensus,
+profile-domain, professor-differential, and AST characterization, `LINKS_REMARK` plus seven
+formatting helpers moved unchanged to `artifact_encoding.py` and were imported back under the
+same names. `artifacts.py` fell from 168 to 139 counted lines; the support module contains 35.
+All schema 1.1 objects, bytes, ordering, IDs, scores, ties, fallbacks, hashes, filenames, and
+consensus scope remained exact. Runtime and phase3b remain unselected proposals.
+
 For any later interoperability/strategy proposal, capture imports, public symbols, seeded
 outputs, exception text where contractual, artifacts, and wire bytes before moving code. Never
 compress code to meet the limit.
@@ -36,4 +43,7 @@ Phase 4D1A acceptance evidence is recorded in
 conformance 125/125, frozen 7/7, and exactly four unchanged production violations remaining.
 Phase 4D1B evidence is recorded in `../audits/PHASE4D1B_BELIEF_SPLIT.md`: 144/144 tests, 91.06%
 branch coverage, the same frozen/conformance gates, and exactly three production violations
+remaining.
+Phase 4D1C evidence is recorded in `../audits/PHASE4D1C_ARTIFACT_SPLIT.md`: 148/148 tests, 91.17%
+branch coverage, pinned-professor/B0/B1 byte gates, and exactly two production violations
 remaining.
