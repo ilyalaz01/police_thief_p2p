@@ -7,6 +7,14 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from ..configuration import load_operational_config
+from ..gatekeeper import (
+    ApiGatekeeper,
+    GatekeeperBackpressure,
+    QueueStatus,
+    RateLimitConfig,
+    default_gatekeeper,
+    load_rate_limit_config,
+)
 from ..interop.network import EndpointConfig, redact_secrets, redact_url, validate_mcp_url
 from ..interop.profile import MatchProfile
 from ..interop.protocol import Equivocation, ProtocolViolation, TurnInbox, TurnMessage
@@ -92,8 +100,10 @@ class TransportSDK:
     """Stable peer, profile, protocol, endpoint, and runtime entry points."""
 
     DeadlineTracker = DeadlineTracker
+    ApiGatekeeper = ApiGatekeeper
     EndpointConfig = EndpointConfig
     Equivocation = Equivocation
+    GatekeeperBackpressure = GatekeeperBackpressure
     LocalGameState = LocalGameState
     MatchProfile = MatchProfile
     McpPeerClient = McpPeerClient
@@ -102,13 +112,17 @@ class TransportSDK:
     PeerPhase = PeerPhase
     PeerRuntime = PeerRuntime
     ProtocolViolation = ProtocolViolation
+    QueueStatus = QueueStatus
+    RateLimitConfig = RateLimitConfig
     TurnInbox = TurnInbox
     TurnMessage = TurnMessage
     build_server = staticmethod(build_server)
     action_to_wire = staticmethod(action_to_wire)
     config_from_profile = staticmethod(config_from_profile)
     discover_tools = staticmethod(discover_tools)
+    default_gatekeeper = staticmethod(default_gatekeeper)
     launch_peer = staticmethod(launch_peer)
+    load_rate_limit_config = staticmethod(load_rate_limit_config)
     redact_secrets = staticmethod(redact_secrets)
     redact_url = staticmethod(redact_url)
     require_real_team_git_commit = staticmethod(require_real_team_git_commit)

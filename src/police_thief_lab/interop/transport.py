@@ -12,13 +12,39 @@ from typing import Any
 
 from fastmcp import Client, FastMCP
 
+from ..gatekeeper import ApiGatekeeper, default_gatekeeper
+from ..gatekeeper_models import default_rate_limit_path, load_rate_limit_config
+
 
 @dataclass(slots=True)
 class PeerInboxes:
-    agreements: queue.Queue = field(default_factory=queue.Queue)
-    turns: queue.Queue = field(default_factory=queue.Queue)
-    audits: queue.Queue = field(default_factory=queue.Queue)
-    controls: queue.Queue = field(default_factory=queue.Queue)
+    max_depth: int | None = None
+    agreements: queue.Queue = field(init=False)
+    turns: queue.Queue = field(init=False)
+    audits: queue.Queue = field(init=False)
+    controls: queue.Queue = field(init=False)
+
+    def __post_init__(self) -> None:
+        depth = self.max_depth
+        if depth is None:
+            depth = load_rate_limit_config(default_rate_limit_path(), "fastmcp").queue_max
+        if depth < 1:
+            raise ValueError("peer inbox depth must be positive")
+        self.max_depth = depth
+        self.agreements = queue.Queue(depth)
+        self.turns = queue.Queue(depth)
+        self.audits = queue.Queue(depth)
+        self.controls = queue.Queue(depth)
+
+    def queue_status(self) -> dict[str, int]:
+        """Return sanitized queue depths without inspecting retained messages."""
+        return {
+            "agreements": self.agreements.qsize(),
+            "turns": self.turns.qsize(),
+            "audits": self.audits.qsize(),
+            "controls": self.controls.qsize(),
+            "maximum": int(self.max_depth),
+        }
 
 
 def build_server(role: str, inboxes: PeerInboxes) -> FastMCP:
@@ -64,23 +90,30 @@ def start_server(role: str, host: str, port: int) -> PeerInboxes:
     return inboxes
 
 
-def discover_tools(url: str) -> list[str]:
+def discover_tools(url: str, gatekeeper: ApiGatekeeper | None = None) -> list[str]:
     """Perform a real FastMCP initialize/list-tools exchange and return tool names."""
     async def discover() -> list[str]:
         async with Client(url) as client:
             return sorted(tool.name for tool in await client.list_tools())
 
-    return asyncio.run(discover())
+    gate = gatekeeper or default_gatekeeper()
+    return gate.execute(lambda: asyncio.run(discover()), operation="fastmcp.discover_tools")
 
 
 class McpPeerClient:
     def __init__(
-        self, url: str, connect_timeout: float, retry: float, retry_count: int = 100
+        self,
+        url: str,
+        connect_timeout: float,
+        retry: float,
+        retry_count: int = 100,
+        gatekeeper: ApiGatekeeper | None = None,
     ) -> None:
         self.url, self.connect_timeout, self.retry = url, connect_timeout, retry
         self.retry_count = retry_count
         self.last_attempts = 0
         self.last_attempt_ms: list[float] = []
+        self.gatekeeper = gatekeeper or default_gatekeeper()
 
     def _invoke(self, tool: str, argument: str, value: dict[str, Any]) -> None:
         async def invoke() -> None:
@@ -100,7 +133,13 @@ class McpPeerClient:
             attempt_started = time.perf_counter()
             self.last_attempts += 1
             try:
-                self._invoke(tool, argument, copy.deepcopy(frozen))
+                self.gatekeeper.execute(
+                    self._invoke,
+                    tool,
+                    argument,
+                    copy.deepcopy(frozen),
+                    operation=f"fastmcp.{tool}",
+                )
                 self.last_attempt_ms.append((time.perf_counter() - attempt_started) * 1000)
                 return (time.perf_counter() - started) * 1000
             except Exception as exc:

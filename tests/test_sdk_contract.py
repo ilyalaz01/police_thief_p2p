@@ -36,7 +36,8 @@ EXPECTED = {
         "verify_audit", "verify_records", "write_artifacts", "write_reference_v3_artifacts",
     },
     "transport": {
-        "EndpointConfig", "MatchProfile", "McpPeerClient", "PeerInboxes", "PeerRuntime",
+        "ApiGatekeeper", "EndpointConfig", "MatchProfile", "McpPeerClient", "PeerInboxes",
+        "PeerRuntime",
         "TurnInbox", "TurnMessage", "action_to_wire", "build_server", "config_from_profile",
         "discover_tools", "launch_peer", "redact_secrets", "redact_url", "run_peer",
         "start_server", "validate_mcp_url",

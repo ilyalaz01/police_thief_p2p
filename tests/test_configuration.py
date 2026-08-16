@@ -90,7 +90,13 @@ def test_secret_scan_reports_location_and_category_without_value(tmp_path: Path)
 
 
 def test_tracked_config_and_environment_example_pass_secret_scan() -> None:
-    assert scan_configuration_secrets((TRACKED_CONFIG, ROOT / ".env-example")) == ()
+    assert scan_configuration_secrets(
+        (
+            TRACKED_CONFIG,
+            ROOT / "config/rate_limits.v1.json",
+            ROOT / ".env-example",
+        )
+    ) == ()
 
 
 def test_invalid_operational_config_stops_cli_before_peer_side_effects(

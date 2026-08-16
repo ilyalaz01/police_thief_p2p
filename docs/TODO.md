@@ -39,13 +39,16 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## API-001 — Decide gatekeeper scope and controls
 
-- Milestone: D1; Priority: P0; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: accepted ADR-004, CFG-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P0; Status: DONE; Owner role: Core Architecture
+- Dependencies: accepted ADR-004, CFG-001; Evidence: Phase 4D2C commits and
+  `docs/audits/PHASE4D2C_API_GATEKEEPER.md`.
 - Definition of Done: applicable external calls are inventoried; approved admission/rate policy,
   bounded queues, backpressure, drain and sanitized monitoring are tested without changing frozen
   retries, deadlines, duplicates, ordering, or stale/equivocation behavior.
-- Validation commands: `uv run pytest -q -k "phase4a or phase4b" --no-cov`.
-- Hard stop/escalation: stop at any wire/deadline semantic drift or unresolved applicability.
+- Validation commands: `uv run pytest -q tests/test_gatekeeper.py
+  tests/test_gatekeeper_config.py --no-cov`; `uv run pytest`; `uv run ruff check src tests`.
+- Hard stop/escalation: an external-call bypass, unversioned/hard-coded limit, retained value,
+  dropped/reordered queue item, or frozen retry/deadline/wire drift reopens API-001 and stops.
 
 ## REF-001 — Split files over 150 lines
 

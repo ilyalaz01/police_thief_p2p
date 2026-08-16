@@ -44,10 +44,24 @@ The CLI validates configuration before reading the match profile or creating pee
 objects. Self-test invocation requires `self_test`; `--real-team` requires `real_team`. Omitting
 the operational config preserves the existing CLI behavior.
 
+## Rate-limit policy
+
+`config/rate_limits.v1.json` is a separate strict schema for external-call capacity. It currently
+defines the `fastmcp` minute/hour limits, worker concurrency, bounded queue depth, and bounded
+monitoring retention. Override only its path, not individual values, with:
+
+```bash
+POLICE_THIEF_RATE_LIMITS_PATH=config/rate_limits.v1.json
+```
+
+Malformed, missing, unknown, incompatible, boolean, zero, and negative fields fail closed. The
+same queue depth bounds inbound peer mailboxes. The rate file cannot contain URLs, credentials,
+game/profile fields, retry/deadline values, or authorization. Frozen retries remain profile-owned.
+
 ## Secrets and `.env-example`
 
 The current offline and self-test workflows require no credentials. `.env-example` therefore
-contains only the optional config-path setting. The application does not automatically load
+contains only optional operational/rate config paths. The application does not automatically load
 `.env`; an operator may create a locally ignored `.env` for their own shell tooling.
 
 If a future approved workflow needs a secret, the value must come from the process environment,
@@ -67,6 +81,7 @@ Rule 47, consensus scope, or any frozen policy. Those remain governed by the rep
 
 ```bash
 uv run pytest -q tests/test_configuration.py --no-cov
+uv run pytest -q tests/test_gatekeeper.py tests/test_gatekeeper_config.py --no-cov
 uv run pytest
 uv run ruff check src tests
 ```

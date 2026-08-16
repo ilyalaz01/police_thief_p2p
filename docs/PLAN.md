@@ -38,8 +38,9 @@ flowchart LR
 ```
 
 Each peer is an independent process with local truth. Each server runs in one daemon thread;
-`PeerInboxes` provides four thread-safe, currently unbounded `queue.Queue`s. Outbound calls are
-synchronous and create an async FastMCP client per attempt. There is no shared peer memory.
+`PeerInboxes` provides four configured bounded FIFO queues with blocking backpressure. Outbound
+FastMCP attempts pass through one process-wide configured Gatekeeper before creating an async
+client. There is no shared peer memory.
 
 ## Main components
 
@@ -141,6 +142,8 @@ flowchart LR
 - `interop/profile.py`: `MatchProfile` bytes/hash, 14 reference terms, agreement validation.
 - `interop/protocol.py`: `TurnMessage`, `TurnInbox`, violations/equivocation.
 - `interop/transport.py`: `PeerInboxes`, four-tool server, discovery, `McpPeerClient`.
+- `gatekeeper*.py`: versioned FastMCP rate policy, bounded FIFO workers, backpressure, drain, and
+  sanitized metrics; frozen retry scheduling remains in `McpPeerClient`.
 - `interop/runtime.py`: public `PeerRuntime` assembly and `run_peer`; lifecycle, board, sending,
   audit, artifact, and state/conversion responsibilities are isolated in `runtime_*.py` modules.
 - `interop/crypto.py`, `replay.py`, `artifacts.py`: frozen commitment API, audit/replay, official
@@ -168,21 +171,22 @@ is unavailable/nonredistributable; the MIT kit is an external pinned boundary an
 
 Illegal actions raise or are handled by named runtime behavior; malformed frames and equivocation
 fail; profile mismatch stops before play; outbound retry stops at count or monotonic deadline;
-missing turns/audits become deterministic technical failure. Queues are thread-safe but unbounded.
-Daemon-server lifecycle and call monitoring are limited. Duplicate traffic cannot renew turn time.
+missing turns/audits become deterministic technical failure. Queues are thread-safe and bounded by
+the versioned FastMCP rate policy.
+Daemon-server lifecycle remains limited. Gatekeeper monitoring is bounded and value-free. Duplicate
+traffic cannot renew turn time.
 
 Extension points already implemented: `DecisionBackend`, `ScentModel`, policy factories,
-`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: flat tests, absent
-rate/backpressure controls, runtime lifecycle complexity, and negotiated scope ambiguity. REF-001
+`BarrierPlacementMode`, evaluation scenarios, and named match profiles. Risks: flat tests, runtime
+lifecycle complexity, and negotiated scope ambiguity. REF-001
 closed with no Python source/test file above 150 counted lines. CFG-001 closed with a strict
 versioned operational boundary; SDK-001 closed with a single documented facade. Fixed game/profile
 values remain non-configurable.
 
 ## Remaining proposed architecture
 
-Proposals only: applicability and design of gatekeeper controls
-([ADR-004](adr/ADR-004-api-gatekeeper-applicability.md)) and offline release tooling per
-[workstream](RELEASE_ENGINEERING_WORKSTREAM.md). The
+Proposals only: offline release tooling per [workstream](RELEASE_ENGINEERING_WORKSTREAM.md). The
+[FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md) and the
 [SDK facade](adr/ADR-003-sdk-facade-plan.md) is implemented and accepted. REF-001's
 semantics-preserving splits are implemented, and
 [ADR-006](adr/ADR-006-versioned-configuration-boundary.md) is implemented and accepted. No
