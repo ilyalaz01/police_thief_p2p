@@ -1,0 +1,48 @@
+name: Release Engineering Quality Gate
+
+# Thin CI wrapper: the only job here is checkout + dependency sync + the
+# same local `quality-gate` entry point documented in
+# docs/RELEASE_ENGINEERING.md. No check is reimplemented for CI; a local
+# and a CI run of `uv run python -m tools.offline_ops.cli quality-gate`
+# execute the identical Python code path.
+#
+# Per docs/RELEASE_ENGINEERING_WORKSTREAM.md "CI contract": read-only
+# repository contents permission, pinned action revisions and dependency
+# inputs, no repository secrets, no peer/tunnel/mail/league/gameplay
+# operation, and no upload of any match artifact or private report.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-gate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository (including the pinned conformance-kit submodule)
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Install uv and a matching Python
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.11.9"
+          python-version: "3.12"
+
+      - name: Sync locked dependencies (uv.lock, no network beyond the package index)
+        run: uv sync --locked
+
+      - name: Run the offline-ops quality gate
+        run: uv run python -m tools.offline_ops.cli quality-gate

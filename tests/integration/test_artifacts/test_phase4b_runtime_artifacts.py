@@ -30,7 +30,7 @@ def test_reference_runtime_artifacts_score_uid_and_consensus_end_to_end(
         docs = {}
         for raw_path in runtime_result["artifacts"]:
             path = Path(raw_path)
-            docs[path.name.split("_", 1)[0]] = json.loads(path.read_text())
+            docs[path.name.split("_", 1)[0]] = json.loads(path.read_text(encoding="utf-8"))
         assert set(docs) == {"declaration", "config", "log", "result"}
         assert all(doc["schema_version"] == "1.1" for doc in docs.values())
         result = docs["result"]

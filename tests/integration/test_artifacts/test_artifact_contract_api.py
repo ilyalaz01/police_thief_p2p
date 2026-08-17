@@ -10,6 +10,20 @@ from tests.support.artifact_contract_hashes import SCHEMA_HASHES
 from tests.support.artifact_contract_support import _sha
 
 
+def _stable_ast_dump(value: object) -> str:
+    """Match Python 3.13's empty-field-neutral AST representation on 3.11+."""
+    if isinstance(value, ast.AST):
+        fields = (
+            f"{name}={_stable_ast_dump(field_value)}"
+            for name, field_value in ast.iter_fields(value)
+            if field_value is not None and field_value != []
+        )
+        return f"{type(value).__name__}({', '.join(fields)})"
+    if isinstance(value, list):
+        return f"[{', '.join(_stable_ast_dump(item) for item in value)}]"
+    return repr(value)
+
+
 def test_public_helpers_constants_signatures_and_moved_ast_are_exact() -> None:
     assert {
         name: _sha(getattr(artifacts, name).encode()) for name in SCHEMA_HASHES
@@ -78,14 +92,14 @@ def test_public_helpers_constants_signatures_and_moved_ast_are_exact() -> None:
     nodes = {}
     paths = (Path(artifacts.__file__), Path(artifacts.__file__).with_name("artifact_encoding.py"))
     for path in (path for path in paths if path.exists()):
-        for node in ast.parse(path.read_text()).body:
+        for node in ast.parse(path.read_text(encoding="utf-8")).body:
             if isinstance(node, ast.FunctionDef) and node.name in moved:
-                nodes[node.name] = ast.dump(node, include_attributes=False)
+                nodes[node.name] = _stable_ast_dump(node)
             if isinstance(node, ast.Assign) and any(
                 isinstance(target, ast.Name) and target.id == "LINKS_REMARK"
                 for target in node.targets
             ):
-                nodes["LINKS_REMARK"] = ast.dump(node, include_attributes=False)
+                nodes["LINKS_REMARK"] = _stable_ast_dump(node)
     encoded = json.dumps(nodes, sort_keys=True, separators=(",", ":")).encode()
     assert (len(nodes), _sha(encoded)) == (
         8,

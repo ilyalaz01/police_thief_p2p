@@ -112,6 +112,7 @@ readiness; overall compliance remains **PARTIAL**.
 - [Architecture decision records](docs/adr/README.md)
 - [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
 - [Release engineering workstream specification](docs/RELEASE_ENGINEERING_WORKSTREAM.md)
+- [Release engineering operator manual](docs/RELEASE_ENGINEERING.md)
 
 ## License
 
