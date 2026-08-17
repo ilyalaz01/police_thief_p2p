@@ -10,7 +10,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | Guideline item | Status | Current evidence | Exact gap / applicability | TODO | Acceptance evidence required |
 |---|---|---|---|---|---|
 | 0 Professional model/SDLC | PARTIAL | `CONTRIBUTING.md`; retrospective PRD/PLAN/TODO | Formal planning followed prototype; future lifecycle evidence absent | GIT-001 | Reviewed future change demonstrates ordered governance/TDD |
-| 1 README | PARTIAL | Root README install/verification/safety plus governance index | Not a complete manual for options, config, examples and troubleshooting | DOC-001 | User-manual review and link/governance test |
+| 1 README | COMPLIANT | Root manual covers requirements, install, offline example, architecture, every peer option, operation classes, config, outputs, quality gate, recovery, contribution, credits and honest submission limits | Current shared-repository manual is complete; role-specific academic copies remain a separate official-submission task | DOC-001 | Phase 4D6 guarded section/option/link tests |
 | 1 PRD/PLAN/TODO | COMPLIANT | `docs/PRD.md`, `PLAN.md`, `TODO.md` | Retrospective limitation disclosed | GOV-001 | Phase 4D0 audit and governance tests |
 | 1 Dedicated PRDs | COMPLIANT | Six mechanism PRDs | Must remain live as mechanisms change | GOV-001 | Required-file/link test |
 | 1 Recommended layout | PARTIAL | Layered `src`, `tests/unit`, `tests/integration`, `tests/system`, `docs`, `interop`, `reports`, `config`; `pyproject.toml`, `uv.lock`, `.env-example` | `results`, `assets`, and `notebooks` remain absent | VIS-001 | Phase 4D3 test evidence plus future approved research layout |
@@ -29,7 +29,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 7 uv-only workflow | COMPLIANT | `pyproject.toml`, `uv.lock`, documented `uv` commands | External submodule owns its own requirements and is outside project package authority | PKG-001 | Repository workflow scan and uv gates |
 | 8 Research/sensitivity | PARTIAL | Experiments and phase reports | Safe reproducible publication, formal sensitivity and citations incomplete | RES-001 | Published inputs/seeds/results/analysis |
 | 8 Notebooks/visualization | MISSING | Markdown reports only | `notebooks/`, reproducible figures and professional visuals absent | VIS-001 | Clean notebook rerun and accessible artifacts |
-| 9 UI/CLI UX | PARTIAL | `peer_cli.py`, runbook, argparse help | Comprehensive workflow, errors, screenshots/applicability/accessibility absent | UX-001 | UX spec/tests and GUI rationale |
+| 9 UI/CLI UX | PARTIAL | Guarded descriptive peer help, complete CLI workflow/options/recovery table, explicit operation classification and authorization boundary | Official Live GUI, Replay view, public-safe screenshots and accessibility evidence remain absent | GUI-001 | Offline GUI/replay tests and reviewed screenshots |
 | 10 Costs/pricing | MISSING | No applicable measured cost report | Compute/storage/network/token applicability and forecast absent | COST-001 | Reproducible measured cost analysis |
 | 11 Extensibility/maintainability | PARTIAL | `DecisionBackend`, `ScentModel`, profiles/policy factories | Lifecycle/hooks/middleware/compatibility policy incomplete | EXT-001 | Extension contract and tests |
 | 12 ISO/IEC 25010 | MISSING | Quality traits appear across tests/docs | No systematic eight-characteristic assessment | ISO-001 | Evidence-backed internal assessment |
@@ -37,7 +37,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 14 Concurrency/thread safety | COMPLIANT | Process-owned FastMCP daemon; bounded Gatekeeper workers/FIFO inboxes; atomic admission/close; deterministic race, cleanup and capacity tests | In-process FastMCP restart is deliberately unsupported; peer-process termination owns server cleanup | CON-001 | Phase 4D4 lifecycle/load/race audit and ownership diagram |
 | 15 Building blocks | PARTIAL | PLAN module/I/O descriptions and typed interfaces | Per-public-block setup/validation/edge contracts incomplete | DOCS-002 | Audited block contracts |
 | 16 Final checklist | PARTIAL | Detailed group mapping below | Multiple technical/research/operations gaps remain | GOV-001 | All group items separately satisfied |
-| 17 Quick-reference enforcement | COMPLIANT | `tools/offline_ops` `quality-gate` composes pytest/Ruff/Hcommit/frozen-manifest/conformance-kit/secret-scan into one fail-closed CLI and CI check; 96 offline-ops tests | Composed `pytest` check currently reports FAIL solely from an unrelated pre-existing AST-hash defect in `tests/integration/test_artifacts/test_artifact_contract_api.py`, not a release-automation gap | RE-001 | `uv run python -m tools.offline_ops.cli quality-gate`; `docs/RELEASE_ENGINEERING.md` |
+| 17 Quick-reference enforcement | COMPLIANT | `tools/offline_ops` `quality-gate` composes pytest/Ruff/Hcommit/frozen-manifest/conformance-kit/secret-scan into one fail-closed CLI and CI check; 96 offline-ops tests | Phase 4D5 corrected the cross-Python test serializer; the real composed gate and public Python 3.12 CI pass | RE-001 | `uv run python -m tools.offline_ops.cli quality-gate`; `docs/RELEASE_ENGINEERING.md` |
 | 18 References | NOT_APPLICABLE_WITH_RATIONALE | Guidelines supply a bibliography | Bibliography is source context, not an implementation requirement | GOV-001 | Rationale retained |
 | 19 Applicability note | BLOCKED_BY_HIGHER_AUTHORITY | Baseline authority order and ADR-001 | Generic advice cannot override rules/frozen/negotiated semantics | HUM-001 | Higher-authority clarification or explicit agreement |
 
@@ -45,7 +45,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 
 | Checklist group/item | Status | Current evidence | Exact gap / rationale | TODO | Acceptance evidence required |
 |---|---|---|---|---|---|
-| 16.1 Documentation & structure | PARTIAL | Governance set, six PRDs, six Mermaid diagrams, prompt log | README incomplete; prompt history necessarily retrospective | DOC-001 | Manual review plus governance tests |
+| 16.1 Documentation & structure | COMPLIANT | Complete shared manual, governance set, six PRDs, seven Mermaid views, prompt log, and official-readiness ledger | Retrospective history remains disclosed rather than fabricated; final role-repository assembly is tracked separately | DOC-001 | Phase 4D6 manual/governance tests |
 | 16.2 SDK architecture | COMPLIANT | Root `PoliceThiefSDK`, six services, typed CLI delegation | New operations must extend the guarded inventory | SDK-001 | Phase 4D2B interface/consumer tests |
 | 16.2 OOP/no duplication | PARTIAL | Protocols/dataclasses/shared helpers | Project-wide duplication analysis absent | PKG-001 | Static/review evidence |
 | 16.2 API gatekeeper/rates/queues | COMPLIANT | Versioned centralized FastMCP gate; bounded FIFO/backpressure/drain/metrics | No other production external API client exists | API-001 | Phase 4D2C deterministic and transport tests |

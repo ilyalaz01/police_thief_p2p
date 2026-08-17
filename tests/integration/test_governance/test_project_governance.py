@@ -20,6 +20,7 @@ DOCS = {
     "docs/QUALITY_PLAN.md",
     "docs/QUALITY_CRITICAL_PATHS.md",
     "docs/CONCURRENCY_AND_CAPACITY.md",
+    "docs/OFFICIAL_SUBMISSION_READINESS.md",
     "docs/TESTING.md",
     "docs/PROMPT_ENGINEERING_LOG.md",
     "docs/PRD_GAME_CORE_AND_OBSERVABILITY.md",

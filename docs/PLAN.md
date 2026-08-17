@@ -189,9 +189,11 @@ values remain non-configurable.
 
 ## Remaining proposed architecture
 
-Proposals only: offline release tooling per [workstream](RELEASE_ENGINEERING_WORKSTREAM.md). The
-[FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md) and the
-[SDK facade](adr/ADR-003-sdk-facade-plan.md) is implemented and accepted. REF-001's
-semantics-preserving splits are implemented, and
-[ADR-006](adr/ADR-006-versioned-configuration-boundary.md) is implemented and accepted. No
-remaining proposal may silently change frozen or negotiated behavior.
+The [FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md),
+[SDK facade](adr/ADR-003-sdk-facade-plan.md), semantics-preserving file splits,
+[versioned configuration](adr/ADR-006-versioned-configuration-boundary.md), and
+[offline release tooling](RELEASE_ENGINEERING.md) are implemented and accepted. Remaining
+proposals are the role-legal Live GUI and artifact-backed Replay view, safe research/visualization,
+package/extension documentation, ISO/cost assessment, and final two-role-repository assembly. No
+remaining proposal may expose hidden truth, imply authorization, or silently change frozen or
+negotiated behavior.

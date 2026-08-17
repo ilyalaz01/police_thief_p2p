@@ -44,7 +44,7 @@ use non-debug tunnel logging. Verify the public URL ends exactly in `/mcp`.
 Police:
 
 ```bash
-.venv/bin/python -m police_thief_lab.peer_cli \
+uv run python -m police_thief_lab.peer_cli \
   --role police --profile interop/fixtures/phase4a5_reference_profile.json \
   --host 127.0.0.1 --port <LOCAL_PORT> \
   --advertised-url https://<OUR_PUBLIC_HOST>/mcp \

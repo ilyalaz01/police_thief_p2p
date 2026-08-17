@@ -1,0 +1,68 @@
+{
+  "phase": "4D6",
+  "status": "GREEN",
+  "scope_closed": [
+    "DOC-001",
+    "UX-001"
+  ],
+  "still_open": [
+    "GUI-001",
+    "SUB-001",
+    "RES-001",
+    "VIS-001",
+    "HUM-001"
+  ],
+  "commits": {
+    "red": "db8e8ea1e87238b8c5d61f9350e173c69ba2ad0e",
+    "green": "cb15a533297c8a5cb871abf477010fef5874451a"
+  },
+  "focused_tests": {
+    "collected": 24,
+    "passed": 24,
+    "failed": 0
+  },
+  "full_tests": {
+    "collected": 298,
+    "passed": 298,
+    "failed": 0
+  },
+  "branch_coverage_percent": 94.07,
+  "coverage_threshold_percent": 85.0,
+  "ruff_errors": 0,
+  "hcommit": "5/5",
+  "frozen_manifest": "7/7",
+  "conformance": "125/125",
+  "modified_python_max_counted_lines": 124,
+  "clean_worktree_quality_gate": {
+    "exit_code": 0,
+    "pytest": "pass",
+    "ruff": "pass",
+    "hcommit_vectors": "pass",
+    "frozen_manifest": "pass",
+    "conformance_kit": "pass",
+    "match_artifact": "skipped_no_path_requested",
+    "scan_secrets": "pass_zero_findings"
+  },
+  "long_lived_workspace_scan": {
+    "status": "expected_fail_closed_on_ignored_local_evidence",
+    "finding_count": 8,
+    "categories": [
+      "non_artifact_nonce",
+      "tunnel_url"
+    ],
+    "matched_values_retained": false,
+    "files_deleted": false,
+    "scanner_weakened": false
+  },
+  "official_gaps_made_explicit": [
+    "two_separate_role_repositories",
+    "live_gui",
+    "replay_verified_ok_view",
+    "annotated_submission_tags",
+    "two_counted_games_against_different_teams",
+    "gmail_reporting",
+    "moodle_submission"
+  ],
+  "game_strategy_wire_artifact_frozen_dependency_changed": false,
+  "external_operation_performed": false
+}
