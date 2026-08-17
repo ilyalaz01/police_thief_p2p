@@ -7,7 +7,6 @@ import re
 import subprocess
 from pathlib import Path
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 AUDIT_PATH = PROJECT_ROOT / "docs/audits/phase4d11_git_release_governance.json"
 BASELINE_COMMIT = "96d3878ed1ac3776810284be7c23315ba3ad53e1"
@@ -75,8 +74,7 @@ def test_retained_audit_matches_the_inspectable_cutoff() -> None:
 
 def test_final_submission_tag_remains_human_gated() -> None:
     audit = load_audit()
-    tag = git("show-ref", "--verify", "refs/tags/v1.0-submission", check=False)
-    assert tag.returncode == 1
+    assert git("tag", "--list", "v1.0-submission").stdout == ""
     assert audit["final_submission_tag"]["state"] == "ABSENT_PENDING_SUB_001"
     todo = (PROJECT_ROOT / "docs/TODO.md").read_text(encoding="utf-8")
     assert "## GIT-001" in todo and "Status: DONE" in todo

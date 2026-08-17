@@ -21,6 +21,8 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
   deterministic figures;
 - preregistered bounded local simulator wall/CPU latency, Python-allocation peak, result-size and
   sequential-capacity evidence without vendor-price invention;
+- inspectable branch/commit/PR governance, preserved partner authorship, full-history CI, and an
+  annotated validated-baseline tag with explicit historical review exceptions;
 - public quality gate: pytest/coverage, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125, and
   secret scan.
 
@@ -59,10 +61,9 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Close the remaining reviewed branch/PR/release evidence gap (`GIT-001`).
-2. Create and validate two role-specific final repositories, cross-links, README copies, and tags
+1. Create and validate two role-specific final repositories, cross-links, README copies, and tags
    only after the content is final (`SUB-001`).
-3. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
+2. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
 
 Package/building-block/extension documentation, the internal ISO assessment, measured applicable
 cost/capacity evidence, and the public-safe research/visualization package are complete; these
