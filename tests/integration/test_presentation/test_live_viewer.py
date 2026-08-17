@@ -11,6 +11,7 @@ from police_thief_lab import GameConfig, Position, Role, Simulator
 from police_thief_lab.presentation import TurnBanner, build_live_view, render_live_html
 from police_thief_lab.presentation.live_feed import LiveViewPublisher
 from police_thief_lab.presentation.live_server import build_live_server
+from tests.support.project_paths import PROJECT_ROOT
 
 
 def _snapshot(path: Path) -> None:
@@ -64,3 +65,9 @@ def test_live_server_refuses_non_loopback_binding(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="loopback"):
         build_live_server(tmp_path / "live.json", "0.0.0.0", 8765)
 
+
+def test_reviewed_live_and_replay_screenshots_are_retained() -> None:
+    for name in ("live-gui-local-truth.jpg", "replay-verified-ok.jpg"):
+        payload = (PROJECT_ROOT / "docs" / "images" / name).read_bytes()
+        assert payload.startswith(b"\xff\xd8\xff") and payload.endswith(b"\xff\xd9")
+        assert 20_000 < len(payload) < 1_000_000

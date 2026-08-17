@@ -39,6 +39,7 @@ commit/PR.
 | Phase 4D5 partner release integration | Port the partner-owned offline-ops boundary onto current main, preserve authorship, repair stale paths/encoding, and validate the same CI gate. | Clean-port stale work rather than rebasing through unrelated architecture; test contracts must normalize cross-Python AST representation. |
 | Phase 4D6 CLI/manual | Re-read official and guideline sources, add RED contracts for discoverable safe CLI help and a complete manual, then expose higher-authority submission blockers. | Guideline closure must not hide official two-repository, GUI/Replay, counted-game, or reporting requirements; validate publishable state in a clean checkout while preserving ignored local evidence. |
 | Phase 4D7B Replay shell | Derive a role-safe view boundary and standalone post-game Replay app from official Chapter 7, then verify it on synthetic tamper cases and a retained completed-game log. | Keep live partial truth structurally separate from post-game truth; verify before rendering and never embed revealed nonces in the HTML app. |
+| Phase 4D7C Live GUI | Add RED role-safe feed/runtime/loopback contracts, connect observations to an atomic bounded feed, visually review localhost Live/Replay apps, and retain synthetic screenshots. | Treat presentation as another privacy boundary: use an exact allow-list schema, reject extra fields, bind only to loopback, and preserve protocol/profile/strategy bytes. |
 
 ## Template for every future significant prompt
 

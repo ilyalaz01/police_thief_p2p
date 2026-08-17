@@ -1,0 +1,107 @@
+{
+  "phase": "4D7C",
+  "status": "GREEN_GUI_001_DONE_SHARED_BASELINE",
+  "commits": {
+    "red": "a15413c21d62599d38442113ceb969fe898c1f8a",
+    "green": "917254e38721eed4de9b5b45496cdb6844b54ea9"
+  },
+  "scope_completed": [
+    "runtime_fed_role_local_live_feed",
+    "live_belief_heatmap_and_turn_banners",
+    "loopback_only_sanitized_http_viewer",
+    "reviewed_live_and_replay_screenshots"
+  ],
+  "red_green_corrections": [
+    {
+      "failed": 2,
+      "categories": [
+        "python_150_line_limit",
+        "intentional_runtime_signature_fingerprint_change"
+      ],
+      "green_rerun": "311/311"
+    },
+    {
+      "failed": 1,
+      "category": "screenshot_file_extension_mismatch",
+      "green_rerun": "26/26"
+    }
+  ],
+  "tests": {
+    "current_collected": 312,
+    "current_passed": 312,
+    "current_failed": 0,
+    "green_source_passed": 311,
+    "green_source_failed": 0,
+    "focused_current": "26/26"
+  },
+  "branch_coverage_percent": 92.51,
+  "coverage_threshold_percent": 85.0,
+  "ruff_errors": 0,
+  "hcommit": "5/5",
+  "frozen_manifest": "7/7",
+  "conformance": "125/125",
+  "changed_python_max_counted_lines": 125,
+  "runtime_contract": {
+    "payload_bytes": 2403,
+    "sha256": "1da7d86790a4fef7cbf07c8ccd545b3b1a07969bff9b59d3b654eed240dd562f"
+  },
+  "workspace_quality_gate": {
+    "pytest": "pass",
+    "ruff": "pass",
+    "hcommit_vectors": "pass",
+    "frozen_manifest": "pass",
+    "conformance_kit": "pass",
+    "scan_secrets": "fail_8_ignored_historical_phase4b_findings",
+    "finding_categories": [
+      "non_artifact_nonce",
+      "tunnel_url"
+    ],
+    "matched_values_retained_or_printed": false
+  },
+  "clean_tracked_quality_gate": {
+    "commit": "917254e38721eed4de9b5b45496cdb6844b54ea9",
+    "exit_code": 0,
+    "pytest": "pass",
+    "ruff": "pass",
+    "hcommit_vectors": "pass",
+    "frozen_manifest": "pass",
+    "conformance_kit": "pass",
+    "match_artifact": "skipped_no_path_requested",
+    "scan_secrets": "pass_zero_findings"
+  },
+  "local_visual_evidence": {
+    "operation": "one_synthetic_localhost_two_peer_capture_integration_game",
+    "live_banners": [
+      "YOUR TURN",
+      "LOCKED",
+      "GAME OVER"
+    ],
+    "live_screenshot": {
+      "path": "docs/images/live-gui-local-truth.jpg",
+      "width": 1265,
+      "height": 712,
+      "bytes": 44664
+    },
+    "replay_screenshot": {
+      "path": "docs/images/replay-verified-ok.jpg",
+      "width": 1265,
+      "height": 712,
+      "bytes": 44307,
+      "verdict": "Verified OK"
+    },
+    "objective_opponent_truth_in_live_feed": false,
+    "sensitive_material_in_screenshots": false
+  },
+  "game_strategy_wire_artifact_frozen_behavior_changed": false,
+  "operations": {
+    "gmail": false,
+    "external_team_contact": false,
+    "public_request": false,
+    "tunnel": false,
+    "real_team_warmup": false,
+    "league_reporting": false,
+    "counted_game": false,
+    "submission_tag": false,
+    "new_ai_ml_search": false
+  }
+}

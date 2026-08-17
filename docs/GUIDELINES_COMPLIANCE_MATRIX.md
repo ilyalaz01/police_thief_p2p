@@ -29,7 +29,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 7 uv-only workflow | COMPLIANT | `pyproject.toml`, `uv.lock`, documented `uv` commands | External submodule owns its own requirements and is outside project package authority | PKG-001 | Repository workflow scan and uv gates |
 | 8 Research/sensitivity | PARTIAL | Experiments and phase reports | Safe reproducible publication, formal sensitivity and citations incomplete | RES-001 | Published inputs/seeds/results/analysis |
 | 8 Notebooks/visualization | MISSING | Markdown reports only | `notebooks/`, reproducible figures and professional visuals absent | VIS-001 | Clean notebook rerun and accessible artifacts |
-| 9 UI/CLI UX | PARTIAL | Guarded peer help/manual; Phase 4D7B role-local view model and standalone nonce-free Replay HTML app with keyboard controls and fail-closed `Verified OK`/`TAMPERED` verification | Runtime-fed Live GUI, belief heatmap screenshots, and reviewed public-safe Replay screenshot remain absent | GUI-001 | Offline GUI/replay tests and reviewed screenshots |
+| 9 UI/CLI UX | COMPLIANT | Guarded peer help/manual; runtime-fed role-local Live GUI with scent/belief heatmap and exact status; nonce-free verified Replay; keyboard controls; retained reviewed screenshots | Final role-repository placement is a higher-authority submission-assembly task, not a shared UI implementation gap | GUI-001 | Phase 4D7B/4D7C tests, browser review, and retained Live/Replay screenshots |
 | 10 Costs/pricing | MISSING | No applicable measured cost report | Compute/storage/network/token applicability and forecast absent | COST-001 | Reproducible measured cost analysis |
 | 11 Extensibility/maintainability | PARTIAL | `DecisionBackend`, `ScentModel`, profiles/policy factories | Lifecycle/hooks/middleware/compatibility policy incomplete | EXT-001 | Extension contract and tests |
 | 12 ISO/IEC 25010 | MISSING | Quality traits appear across tests/docs | No systematic eight-characteristic assessment | ISO-001 | Evidence-backed internal assessment |
@@ -56,7 +56,7 @@ Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATI
 | 16.4 Config/security/version | COMPLIANT | Strict operational loader, config example, `.env-example`, ignore rules, sanitized scan, coherence gates | MatchProfile and operational schemas remain deliberately separate | CFG-001 | Phase 4D2A version/secret tests |
 | 16.4 uv/lock/project | COMPLIANT | `uv.lock`, `pyproject.toml`, commands | Keep project workflows uv-only | PKG-001 | Command scan |
 | 16.5 Research/sensitivity | PARTIAL | Experiments/reports | Safe reproducible publication incomplete | RES-001 | Reviewed public evidence bundle |
-| 16.5 Notebook/graphs/screens | MISSING | Mermaid architecture only | Analysis notebook/assets absent | VIS-001 | Deterministic notebook/figures |
+| 16.5 Notebook/graphs/screens | PARTIAL | Mermaid architecture plus reviewed Live GUI and `Verified OK` Replay screenshots | Reproducible analysis notebook and research figures remain absent | VIS-001 | Deterministic notebook/figures |
 | 16.5 Token cost | MISSING | None | No measured applicable cost analysis | COST-001 | Reviewed calculations |
 | 16.6 Extension points | PARTIAL | Policy/scent interfaces | Compatibility/lifecycle policy incomplete | EXT-001 | Contract/tests |
 | 16.6 Professional package | PARTIAL | Installable src package | Package checklist gaps | PKG-001 | Package audit |
