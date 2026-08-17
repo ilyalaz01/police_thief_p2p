@@ -33,8 +33,8 @@ layout, Gmail reporting, or Moodle submission.
 
 | Requirement | Current evidence | Status | Owner / next evidence |
 |---|---|---|---|
-| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | One shared development repository | PLANNED | `SUB-001`: build reviewed role-specific exports/remotes without rewriting history |
-| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Complete shared manual and governance set | PLANNED | `SUB-001`: verify both final role repositories independently |
+| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Shared repository plus a guarded history-preserving role-content policy; no role URLs/remotes | IN_PROGRESS | `SUB-001`: integrate exporter, add approved role README cross-links, then create remotes only after exact-content approval |
+| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Candidate file policy includes every minimum and preserves the public implementation/evidence set | IN_PROGRESS | `SUB-001`: reproduce and validate both actual role trees independently |
 | Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, and reviewed screenshot | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Annotated Git tag `v1.0-submission` on each final repository | No final submission tag | BLOCKED | `SUB-001`: tag only after all final gates and exact commits are approved |
@@ -61,9 +61,11 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Create and validate two role-specific final repositories, cross-links, README copies, and tags
-   only after the content is final (`SUB-001`).
-2. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
+1. Integrate the deterministic offline exporter and compare both candidate role trees to the
+   reviewed content policy (`SUB-001`).
+2. Prepare role-specific README overlays and offline history-preserving role branches; stop for
+   exact URL/content approval before creating remotes or tags (`SUB-001`).
+3. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
 
 Package/building-block/extension documentation, the internal ISO assessment, measured applicable
 cost/capacity evidence, and the public-safe research/visualization package are complete; these
