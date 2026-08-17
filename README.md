@@ -316,6 +316,7 @@ changes follow the documented workflow and produce inspectable evidence.
 - [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
 - [Git, Pull Request, and release governance](docs/GIT_RELEASE_GOVERNANCE.md)
 - [Police and Thief repository content policy](docs/ROLE_REPOSITORY_CONTENT_POLICY.md)
+- [Offline role repository assembly runbook](docs/ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md)
 - [Release engineering](docs/RELEASE_ENGINEERING.md)
 
 ## License and credits
