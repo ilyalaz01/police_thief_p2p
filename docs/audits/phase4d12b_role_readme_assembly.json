@@ -1,0 +1,58 @@
+{
+  "phase": "4D12B",
+  "status": "GREEN",
+  "classification": "OFFLINE_SUBMISSION_ASSEMBLY_PREPARATION",
+  "evidence_cutoff": "2733adbd556788de23698aae6f7e73298cd8c076",
+  "commits": {
+    "red_contract": "bbfd5551ced4d139c47b290bb5f56bf1c878560d",
+    "green_overlays_and_runbook": "89a9c4889b43cd2da45ec3ab3fded94bd0ffbfa2"
+  },
+  "proven": {
+    "police_readme_overlay": "submission/templates/police/README.md",
+    "police_policy": "ScentTacticalPolice",
+    "police_policy_status": "FROZEN_ACCEPTED",
+    "thief_readme_overlay": "submission/templates/thief/README.md",
+    "thief_policy": "RandomLegalThief",
+    "thief_policy_status": "CURRENT_DEFAULT_NOT_NEW_CHAMPION",
+    "rule_50_links_present": true,
+    "pending_counterpart_is_blocking": true,
+    "history_preserving_assembly_documented": true,
+    "independent_role_gates_required": true
+  },
+  "not_proven": [
+    "actual final root README bytes",
+    "accepted exporter integration or exact include manifests",
+    "reciprocal repository URLs",
+    "final role repository trees or independent gates",
+    "remote creation or publication",
+    "v1.0-submission tags",
+    "other-team or counted readiness"
+  ],
+  "operations": {
+    "production_source_changed": false,
+    "frozen_file_changed": false,
+    "partner_exporter_path_changed": false,
+    "repository_created": false,
+    "publication_started": false,
+    "tag_created": false,
+    "opponent_contacted": false,
+    "gmail_started": false,
+    "gameplay_started": false
+  },
+  "validation": {
+    "focused_phase4d12_contracts": "10/10",
+    "full_suite": "358/358, no skips or xfails",
+    "combined_coverage_percent": 92.58684863523573,
+    "ruff": "PASS",
+    "hcommit_vectors": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance_vectors": "125/125",
+    "quality_gate": "PASS_ZERO_FINDINGS",
+    "new_python_max_counted_lines": 103,
+    "police_template_physical_lines": 88,
+    "thief_template_physical_lines": 89,
+    "runbook_physical_lines": 94,
+    "production_source_diff": "EMPTY",
+    "partner_exporter_diff": "EMPTY"
+  }
+}

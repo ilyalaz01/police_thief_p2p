@@ -210,5 +210,7 @@ retrospective limitations and withholding final submission tags. The package/bui
 extension audit and internal ISO assessment are accepted. Remaining offline architecture work is
 the two-role submission export/validation under SUB-001. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
-submodule reprovisioning gate without choosing URLs or tags. No remaining proposal may expose
-hidden truth, imply authorization, or silently change frozen or negotiated behavior.
+submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific
+README overlays and an offline history-preserving assembly sequence while leaving exporter
+integration, real trees, URLs, remotes, and tags pending. No remaining proposal may expose hidden
+truth, imply authorization, or silently change frozen or negotiated behavior.

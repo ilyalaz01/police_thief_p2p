@@ -265,8 +265,10 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Milestone: D4; Priority: P1; Status: IN_PROGRESS; Owner role: Release Engineering
 - Dependencies: DOC-001, GUI-001, GIT-001, completed final content; Evidence so far: the guarded
   candidate policy in `data/submission/role_content_policy.v1.json`,
-  `docs/ROLE_REPOSITORY_CONTENT_POLICY.md`, and Phase 4D12A contract. Deterministic exporter
-  integration, role overlays, exact URLs, two final repository gates, publication and tags remain.
+  `docs/ROLE_REPOSITORY_CONTENT_POLICY.md`, Phase 4D12A, the tested Police/Thief README overlays,
+  and `docs/ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md` from Phase 4D12B. Deterministic exporter
+  integration, actual role trees, exact URLs, two final repository gates, publication and tags
+  remain.
 - Definition of Done: separate Police and Thief repositories contain the required role code,
   config, PRD/PLAN/TODO and academic README; both cross-link each other, pass their own gates, and
   receive reviewed annotated `v1.0-submission` tags at the exact approved commits.
