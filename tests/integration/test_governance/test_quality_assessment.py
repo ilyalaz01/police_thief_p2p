@@ -70,11 +70,18 @@ def test_stable_ordering_across_runs() -> None:
 
 
 def test_invalid_repository_refused() -> None:
-    """A directory without .git causes SystemExit with a non-zero code."""
+    """A non-Git path fails without disclosing its absolute location."""
     with tempfile.TemporaryDirectory() as tmpdir:
         with pytest.raises(SystemExit) as exc_info:
             measure.measure_repository(Path(tmpdir))
-        assert exc_info.value.code != 0
+        assert exc_info.value.code == "error: repository root is not a Git worktree"
+        assert tmpdir not in str(exc_info.value.code)
+
+
+def test_gitlink_directory_size_is_platform_independent() -> None:
+    """The external submodule gitlink is counted, but not host-directory metadata."""
+    data = measure.measure_repository(ROOT)
+    assert data["areas"]["external"] == {"file_count": 1, "byte_total": 0}
 
 
 def test_cost_doc_required_limitations() -> None:
@@ -93,6 +100,15 @@ def test_cost_doc_required_limitations() -> None:
         assert phrase in text, f"cost doc missing required phrase: {phrase!r}"
 
 
+def test_cost_doc_has_correct_units_and_no_unproven_github_price() -> None:
+    """Keep formulas dimensionally correct and billing claims evidence-bound."""
+    text = COST_DOC.read_text(encoding="utf-8")
+    assert "T_cpu * W_tdp / 3_600_000" in text
+    assert "No GitHub billing record was supplied" in text
+    assert "GitHub repository (free tier) | $0" not in text
+    assert "Simulator.run_game()" not in text
+
+
 def test_iso_doc_all_eight_characteristics() -> None:
     """ISO/IEC 25010 document covers all eight product-quality characteristics."""
     text = ISO_DOC.read_text(encoding="utf-8")
@@ -100,6 +116,14 @@ def test_iso_doc_all_eight_characteristics() -> None:
     assert "not an ISO certification" in text
     for char in ISO_CHARACTERISTICS:
         assert char in text, f"ISO doc missing characteristic: {char!r}"
+
+
+def test_iso_doc_reconciles_the_accepted_live_gui() -> None:
+    """The living assessment must not preserve a GUI gap closed on current main."""
+    text = ISO_DOC.read_text(encoding="utf-8")
+    assert "Phase 4D7C" in text
+    assert "Runtime-fed Live GUI not implemented" not in text
+    assert "GUI-001: DONE" in text
 
 
 def test_new_python_files_within_150_lines() -> None:
