@@ -83,3 +83,12 @@ police_thief_p2p/
 
 # Historical and operational reports remain local evidence.
 reports/**
+
+# Curated deterministic research publication (all other results remain local)
+!results/
+results/*
+!results/research/
+results/research/*
+!results/research/phase4d9_sensitivity.json
+!results/research/phase4d9_summary.csv
+!results/research/phase4d9_manifest.json
