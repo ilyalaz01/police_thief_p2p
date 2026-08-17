@@ -1,0 +1,89 @@
+{
+  "schema": "role_repository_content_policy_v1",
+  "status": "LOCAL_CANDIDATE_PENDING_EXPORT_TOOL_INTEGRATION",
+  "evidence_cutoff": "64a1e55a9c99fa2debd480bebdfadbc7c2a142c5",
+  "authority": {
+    "official_rules": [49, 50],
+    "baseline": "RULES_AND_INTEROP_BASELINE.md",
+    "generic_guidelines_can_override_game_or_interop": false
+  },
+  "shared_content": {
+    "include_exact": [
+      ".env-example",
+      ".gitattributes",
+      ".github/workflows/quality-gate.yml",
+      ".gitignore",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "README.md",
+      "RULES_AND_INTEROP_BASELINE.md",
+      "pyproject.toml",
+      "uv.lock"
+    ],
+    "include_prefixes": [
+      "assets/research/",
+      "config/",
+      "data/quality/",
+      "data/research/",
+      "data/submission/",
+      "docs/",
+      "interop/fixtures/",
+      "interop/golden_vectors/",
+      "interop/templates/",
+      "notebooks/",
+      "results/research/",
+      "src/",
+      "tests/",
+      "tools/"
+    ],
+    "exclude_exact": [
+      ".gitmodules"
+    ],
+    "exclude_prefixes": [
+      "tests/offline_ops/"
+    ]
+  },
+  "rule_50_required_paths": [
+    "README.md",
+    "config/",
+    "docs/PRD.md",
+    "docs/PLAN.md",
+    "docs/TODO.md"
+  ],
+  "roles": {
+    "police": {
+      "runtime_role": "police",
+      "runtime_policy": "ScentTacticalPolice",
+      "policy_status": "FROZEN_ACCEPTED",
+      "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
+      "readme_overlay": "PENDING_FINAL_ROLE_ASSEMBLY"
+    },
+    "thief": {
+      "runtime_role": "thief",
+      "runtime_policy": "RandomLegalThief",
+      "policy_status": "CURRENT_DEFAULT_NOT_NEW_CHAMPION",
+      "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
+      "readme_overlay": "PENDING_FINAL_ROLE_ASSEMBLY"
+    }
+  },
+  "external_submodule": {
+    "path": "external/copthief-league-protocol",
+    "url": "https://github.com/Imreec/copthief-league-protocol",
+    "state": "REPROVISION_AFTER_EXPORT",
+    "reason": "The guarded exporter refuses gitlinks; the approved MIT dependency is restored and pinned separately before each role quality gate."
+  },
+  "history_policy": {
+    "preserve_shared_history": true,
+    "preserve_contributor_authorship": true,
+    "snapshot_export_replaces_git_history": false,
+    "role_changes_use_new_reviewed_commits": true
+  },
+  "authorizations": {
+    "create_final_repositories": false,
+    "publish_exports": false,
+    "create_submission_tags": false,
+    "contact_opponents": false,
+    "start_gmail": false,
+    "start_gameplay": false
+  }
+}
