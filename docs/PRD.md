@@ -114,9 +114,11 @@ runtime-fed atomic role-local snapshots, loopback serving, exact turn banners, a
 heatmap, and reviewed synthetic screenshots. Phase 4D9 proves a preregistered 2,400-game local
 OAT study, public-safe row/summary provenance, byte-identical regeneration, Wilson intervals,
 two accessible figures, and a cited notebook equivalent without changing the champion.
+Phase 4D10 adds preregistered one-machine local simulator wall/CPU timing, Python-allocation peak,
+result-size, and sequential-capacity evidence without inferring a vendor or electricity price.
 
-Planned or incomplete: stronger CPU/RAM/latency cost measurements, two-role-repository submission
-assembly, and bilateral readiness. Research/visualization, package/building-block/extension
+Planned or incomplete: two-role-repository submission assembly and bilateral readiness.
+Research/visualization, applicable cost/capacity measurement, package/building-block/extension
 documentation, and the internal ISO assessment are accepted alongside the Live GUI, Replay view,
 structured tests, CLI UX, and release tooling.
 

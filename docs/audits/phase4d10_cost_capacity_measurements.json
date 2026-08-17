@@ -1,0 +1,92 @@
+{
+  "commits": {
+    "implementation_green": "0575847",
+    "measurement_and_living_docs": "8018cdd",
+    "preregistered_red": "eb6dae0"
+  },
+  "frozen_behavior_changed": false,
+  "measurement": {
+    "design_sha256": "55bedd12918cdc4a7bb7763a3a9ab71a758ce41956611a3efea82e0f55d9b65a",
+    "environment": {
+      "logical_cpu_count": 20,
+      "machine": "x86_64",
+      "python_version": "3.13.12",
+      "system": "Linux"
+    },
+    "memory_samples": 30,
+    "observed": {
+      "illegal_actions": 0,
+      "peak_python_mib": {
+        "max": 0.025608062744140625,
+        "mean": 0.023038482666015624,
+        "p50": 0.022571563720703125,
+        "p95": 0.025539398193359375
+      },
+      "result_json_bytes": {
+        "max": 432.0,
+        "mean": 431.62,
+        "p50": 432.0,
+        "p95": 432.0
+      },
+      "sequential_games_per_second": 49.17101937975149,
+      "wall_latency_ms": {
+        "max": 51.659246,
+        "mean": 20.337182605,
+        "p50": 16.509374,
+        "p95": 36.50912
+      }
+    },
+    "raw_evidence_sha256": "9c17d0874ca6ee2266ff855f755a63857042b400b217c18297134352e6188e7c",
+    "scope": "LOCAL_SIMULATOR_EXPERIMENT",
+    "source_tree_sha": "3de0e42237792aa717d19d792ad18f44cced2be4",
+    "timing_samples": 200,
+    "warmup_games_uncounted": 20
+  },
+  "operations": {
+    "counted_game_started": false,
+    "external_api_called": false,
+    "external_team_contacted": false,
+    "gmail_action_performed": false,
+    "peer_started": false,
+    "public_network_used": false,
+    "public_tunnel_started": false
+  },
+  "phase": "4D10",
+  "proven_facts": [
+    "warmups are executed but not retained as measurement samples",
+    "timing and memory samples use disjoint fixed seed ranges",
+    "retained raw samples independently reproduce every summary value",
+    "the measured src tree is unchanged from the preregistered identity",
+    "all 200 timed games report zero illegal actions",
+    "no vendor price or electricity cost is inferred"
+  ],
+  "schema": "audit_v1",
+  "scope_completed": [
+    "bounded_local_wall_latency",
+    "bounded_local_cpu_time",
+    "python_allocation_peak",
+    "local_result_size",
+    "sequential_capacity_projection",
+    "cost_limitation_reconciliation"
+  ],
+  "status": "GREEN",
+  "validation": {
+    "branch_coverage_percent": 92.58684863523573,
+    "composed_local_root_gate": {
+      "conformance_kit": "pass",
+      "frozen_manifest": "pass",
+      "hcommit_vectors": "pass",
+      "pytest": "pass",
+      "ruff": "pass",
+      "scan_secrets": "fail_closed_8_ignored_historical_findings_outside_git_index"
+    },
+    "conformance": "125/125",
+    "focused_tests": "9/9",
+    "frozen_manifest": "7/7",
+    "full_tests": "343/343_no_skips_no_xfails",
+    "hcommit": "5/5",
+    "max_new_python_counted_lines": 103,
+    "ruff_errors": 0,
+    "secret_scan": "exact_staged_public_snapshot_zero_findings"
+  }
+}

@@ -25,9 +25,10 @@ preregistered public-safe sensitivity publication.
 
 Alternatives include exhaustive belief search, neural policies, and online learning; none is
 selected. The 2,400-game paired OAT publication compares existing policies and parameters without
-training or changing one; it is screening, not Sobol/global sensitivity. Formal performance
-budgets remain under `COST-001`. The characterized `belief.py` and `phase3b.py` structural splits
-are complete under REF-001.
+training or changing one; it is screening, not Sobol/global sensitivity. Phase 4D10 separately
+measures one accepted fixed policy pairing for local runtime capacity without changing the policy
+evaluation claim. The characterized `belief.py` and `phase3b.py` structural splits are complete
+under REF-001.
 
 Metrics: identical seeded results; 100% returned actions legal; no hidden-state path; paired win,
 capture, survival, score, turns, and latency summaries. Tests cover seed repetition, ablations,
@@ -35,5 +36,5 @@ strong opponents, budgeted search, oracle exclusion, and legality.
 
 Definition of Done: predeclared hypothesis/config/seeds, TDD evidence, raw-to-summary provenance,
 sensitivity results, review for leakage, full quality gates, and no frozen-policy hash change.
-Timing/capacity measurement remains explicitly separate under `COST-001`. Frozen boundary: rules,
+Timing/capacity evidence remains a separate completed `COST-001` artifact. Frozen boundary: rules,
 observations, champion, profiles, and interoperability semantics.

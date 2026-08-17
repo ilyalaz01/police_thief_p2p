@@ -19,6 +19,8 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
   controls;
 - preregistered public-safe local sensitivity data, notebook-equivalent analysis, and accessible
   deterministic figures;
+- preregistered bounded local simulator wall/CPU latency, Python-allocation peak, result-size and
+  sequential-capacity evidence without vendor-price invention;
 - public quality gate: pytest/coverage, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125, and
   secret scan.
 
@@ -57,15 +59,14 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Add bounded CPU/RAM/latency measurements to the accepted cost analysis (`COST-001`).
-2. Close the remaining reviewed branch/PR/release evidence gap (`GIT-001`).
-3. Create and validate two role-specific final repositories, cross-links, README copies, and tags
+1. Close the remaining reviewed branch/PR/release evidence gap (`GIT-001`).
+2. Create and validate two role-specific final repositories, cross-links, README copies, and tags
    only after the content is final (`SUB-001`).
-4. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
+3. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
 
-Package/building-block/extension documentation and the internal ISO assessment are already
-accepted. The public-safe research/visualization package is also complete; these items are not
-repeated as future work.
+Package/building-block/extension documentation, the internal ISO assessment, measured applicable
+cost/capacity evidence, and the public-safe research/visualization package are complete; these
+items are not repeated as future work.
 
 No item in this sequence changes the frozen competitive policy or resolves a negotiated difference
 without explicit evidence.

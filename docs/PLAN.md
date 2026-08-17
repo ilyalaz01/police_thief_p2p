@@ -203,7 +203,8 @@ The [FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md),
 Replay app and runtime-fed role-safe Live GUI are implemented with reviewed screenshots. Phase 4D9
 adds the accepted public-safe sensitivity data flow: preregistered design → public SDK evaluation →
 curated rows/summary → hash manifest → notebook and accessible SVG figures. Remaining proposals
-are stronger runtime cost/capacity measurement and final two-role-repository assembly. The
-package/building-block/extension audit and internal ISO assessment are accepted. No remaining
+now center on final two-role-repository assembly. Phase 4D10 closes the applicable runtime
+cost/capacity measurement with preregistered local wall/CPU/Python-allocation/result-size evidence.
+The package/building-block/extension audit and internal ISO assessment are accepted. No remaining
 proposal may expose hidden truth, imply authorization, or silently change frozen or negotiated
 behavior.
