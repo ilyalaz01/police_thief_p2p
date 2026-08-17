@@ -1,0 +1,123 @@
+{
+  "phase": "4D7A",
+  "schema": "audit_v1",
+  "status": "GREEN",
+  "scope_completed": [
+    "deterministic_measurement_tool",
+    "cost_and_capacity_analysis",
+    "iso_iec_25010_internal_assessment",
+    "governance_tests"
+  ],
+  "scope_still_open": [
+    "runtime_fed_live_gui",
+    "counted_league_games",
+    "bilateral_real_team_compatibility",
+    "research_publication",
+    "final_two_repository_submission",
+    "cpu_ram_latency_measurements"
+  ],
+  "commits": {
+    "red": "6c65779",
+    "green": "c142b4c"
+  },
+  "focused_tests": {
+    "collected": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "full_tests": {
+    "collected": 313,
+    "passed": 308,
+    "skipped": 5,
+    "failed": 0,
+    "note": "313 = 305 original baseline + 8 new; 5 skipped are professor differential tests expected in a public clone"
+  },
+  "branch_coverage_percent": 93.44,
+  "coverage_threshold_percent": 85.0,
+  "ruff_errors": 0,
+  "hcommit": "5/5",
+  "frozen_manifest": "7/7",
+  "conformance": "125/125",
+  "composed_quality_gate": {
+    "exit_code": 0,
+    "pytest": "pass",
+    "ruff": "pass",
+    "hcommit_vectors": "pass",
+    "frozen_manifest": "pass",
+    "conformance_kit": "pass",
+    "match_artifact": "skipped_no_path_requested",
+    "scan_secrets": "pass_zero_findings"
+  },
+  "new_python_max_counted_lines": 141,
+  "measure_tool_output_snapshot": {
+    "tracked_file_count": 233,
+    "tracked_byte_total": 1064600,
+    "python_source_file_count": 59,
+    "python_test_file_count": 70,
+    "python_source_nonblank_noncomment_lines": 4211,
+    "python_test_nonblank_noncomment_lines": 4517,
+    "test_function_count": 270,
+    "test_function_count_method": "counted_def_test_in_tracked_py_files"
+  },
+  "cost_analysis": {
+    "observed_external_llm_calls": 0,
+    "observed_external_llm_tokens": 0,
+    "observed_external_llm_spend_usd": "$0 observed",
+    "student_tooling_excluded": true,
+    "storage_formula": "C_storage = S_GB * P_gb_mo * N_months",
+    "future_scenario": "symbolic_formula_T_in_T_out_P_in_P_out_no_vendor_selected"
+  },
+  "iso_assessment": {
+    "type": "internal_engineering_assessment_not_a_certification",
+    "characteristics_covered": [
+      "Functional suitability",
+      "Performance efficiency",
+      "Compatibility",
+      "Usability",
+      "Reliability",
+      "Security",
+      "Maintainability",
+      "Portability"
+    ],
+    "research_publication_explicitly_open": true
+  },
+  "changed_paths": [
+    "tools/quality_assessment/__init__.py",
+    "tools/quality_assessment/measure.py",
+    "docs/COST_AND_CAPACITY_ANALYSIS.md",
+    "docs/ISO_IEC_25010_ASSESSMENT.md",
+    "tests/integration/test_governance/test_quality_assessment.py",
+    "docs/audits/PHASE4D7A_QUALITY_ASSESSMENT.md",
+    "docs/audits/phase4d7a_quality_assessment.json"
+  ],
+  "proven_facts": [
+    "measure.py produces byte-identical JSON on repeated calls without --timestamp",
+    "only git-tracked files appear in output; .git, __pycache__, .venv are absent",
+    "all output paths are repository-relative POSIX strings with no absolute root",
+    "non-git directory causes non-zero exit with clear error",
+    "cost doc contains $0 observed LLM spend, storage formula, and symbolic LLM formula variables",
+    "iso doc labeled internal assessment not certification and covers all 8 characteristics",
+    "iso doc explicitly keeps research publication open as a remaining gap",
+    "all new python files at or below 150 nonblank/non-comment lines"
+  ],
+  "limitations": [
+    "$0_observed applies to accepted scoped offline runs only not development tooling or future ops",
+    "student chatgpt codex claude subscription excluded no attributable usage record supplied",
+    "cpu_time ram public_latency multi_game_capacity are unmeasured listed with formulas",
+    "no vendor or model selected for hypothetical future llm scenario",
+    "iso assessment is internal no external audit or certification body engaged",
+    "live_gui counted_games bilateral_compatibility research_publication final_submission remain open"
+  ],
+  "operations": {
+    "peer_started": false,
+    "gameplay_performed": false,
+    "public_tunnel_used": false,
+    "gmail_sent": false,
+    "external_team_contacted": false,
+    "league_operation_performed": false,
+    "counted_game_performed": false,
+    "submission_tag_created": false
+  },
+  "game_strategy_wire_artifact_frozen_behavior_changed": false,
+  "scan_secrets": "pass_zero_findings"
+}
