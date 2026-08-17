@@ -1,0 +1,55 @@
+{
+  "phase": "4D12C",
+  "status": "GREEN",
+  "classification": "OFFLINE_GOVERNANCE_EVIDENCE_CORRECTION",
+  "evidence_cutoff": "a6e589df323e7caab0ce2b08257e18ad6446849e",
+  "commits": {
+    "red_contract": "7d5d5bbd572263da7b40f39a1ad12efa15d7583b",
+    "green_ledger": "44af482042543ccd633e54f9038fb28debff8dba"
+  },
+  "proven": {
+    "missing_matrix_rows": 0,
+    "todo_done": 21,
+    "todo_in_progress": 1,
+    "todo_blocked": 1,
+    "todo_planned": 0,
+    "only_in_progress_item": "SUB-001",
+    "only_blocked_item": "HUM-001",
+    "historical_partial_status_preserved": true,
+    "higher_authority_boundary_preserved": true
+  },
+  "corrected_stale_claims": [
+    "fixed accepted PR count",
+    "Phase 4D11 prompt cutoff",
+    "fixed 98-file inventory",
+    "multiple open technical/research gaps",
+    "missing role-specific README copies"
+  ],
+  "operations": {
+    "production_source_changed": false,
+    "frozen_file_changed": false,
+    "partner_exporter_path_changed": false,
+    "rating_promoted_to_hide_history": false,
+    "repository_created": false,
+    "tag_created": false,
+    "network_operation_started": false,
+    "opponent_contacted": false,
+    "gmail_started": false,
+    "gameplay_started": false
+  },
+  "validation": {
+    "freshness_contract": "4/4",
+    "red_state": "3 expected failures, 1 pass",
+    "full_suite": "362/362, no skips or xfails",
+    "combined_coverage_percent": 92.58684863523573,
+    "ruff": "PASS",
+    "hcommit_vectors": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance_vectors": "125/125",
+    "quality_gate": "PASS_ZERO_FINDINGS",
+    "new_test_physical_lines": 63,
+    "new_test_counted_lines": 48,
+    "production_source_diff": "EMPTY",
+    "partner_exporter_diff": "EMPTY"
+  }
+}
