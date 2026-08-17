@@ -29,6 +29,7 @@ def test_peer_help_explains_every_option_and_authorization_boundary() -> None:
         "--public",
         "--artifacts",
         "--output",
+        "--live-view",
         "--seed",
     )
     assert all(option in help_text for option in options)
@@ -57,6 +58,7 @@ def test_peer_parser_retains_safe_defaults() -> None:
     )
     assert (args.host, args.seed, args.public, args.real_team) == ("127.0.0.1", 1, False, False)
     assert args.operational_config is None
+    assert args.live_view is None
 
 
 def test_readme_is_a_complete_current_user_manual() -> None:
