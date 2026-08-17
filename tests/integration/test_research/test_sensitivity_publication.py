@@ -102,6 +102,9 @@ def test_figures_and_analysis_are_accessible_and_honest() -> None:
     for phrase in (
         "Local simulator experiment", "one-factor-at-a-time", "not a Sobol",
         "Wilson 95%", "\\Delta_i", "ScentTacticalPolice remains frozen",
+        "## Figures", "Figure 1.", "Figure 2.", "## Hypothesis assessment",
+        "../assets/research/capture_by_board_size.svg",
+        "../assets/research/capture_by_survival_threshold.svg",
         "10.1080/00401706.1991.10484804", "10.1016/j.cpc.2009.09.018",
         "10.1080/01621459.1927.10502953",
     ):
