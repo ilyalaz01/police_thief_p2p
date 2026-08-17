@@ -18,6 +18,7 @@ from ..gatekeeper_models import default_rate_limit_path, load_rate_limit_config
 
 @dataclass(slots=True)
 class PeerInboxes:
+    """Represent PeerInboxes as one cohesive typed implementation boundary."""
     max_depth: int | None = None
     agreements: queue.Queue = field(init=False)
     turns: queue.Queue = field(init=False)
@@ -25,6 +26,7 @@ class PeerInboxes:
     controls: queue.Queue = field(init=False)
 
     def __post_init__(self) -> None:
+        """Validate all constructed values before the instance crosses its public boundary."""
         depth = self.max_depth
         if depth is None:
             depth = load_rate_limit_config(default_rate_limit_path(), "fastmcp").queue_max
@@ -48,25 +50,30 @@ class PeerInboxes:
 
 
 def build_server(role: str, inboxes: PeerInboxes) -> FastMCP:
+    """Build and return server from validated inputs."""
     mcp = FastMCP(name=f"police-thief-phase4a-{role}")
 
     @mcp.tool
     def negotiate(message: dict) -> dict:
+        """Perform negotiate through the documented module contract."""
         inboxes.agreements.put(message)
         return {"ok": True}
 
     @mcp.tool
     def receive_turn(message: dict) -> dict:
+        """Perform receive turn through the documented module contract."""
         inboxes.turns.put(message)
         return {"ok": True}
 
     @mcp.tool
     def submit_audit(payload: dict) -> dict:
+        """Perform submit audit through the documented module contract."""
         inboxes.audits.put(payload)
         return {"ok": True}
 
     @mcp.tool
     def receive_control(message: dict) -> dict:
+        """Perform receive control through the documented module contract."""
         inboxes.controls.put(message)
         return {"ok": True}
 
@@ -74,6 +81,7 @@ def build_server(role: str, inboxes: PeerInboxes) -> FastMCP:
 
 
 def start_server(role: str, host: str, port: int) -> PeerInboxes:
+    """Perform start server through the documented module contract."""
     inboxes = PeerInboxes()
     app = build_server(role, inboxes)
     threading.Thread(
@@ -93,6 +101,7 @@ def start_server(role: str, host: str, port: int) -> PeerInboxes:
 def discover_tools(url: str, gatekeeper: ApiGatekeeper | None = None) -> list[str]:
     """Perform a real FastMCP initialize/list-tools exchange and return tool names."""
     async def discover() -> list[str]:
+        """Perform discover through the documented module contract."""
         async with Client(url) as client:
             return sorted(tool.name for tool in await client.list_tools())
 
@@ -101,6 +110,7 @@ def discover_tools(url: str, gatekeeper: ApiGatekeeper | None = None) -> list[st
 
 
 class McpPeerClient:
+    """Represent McpPeerClient as one cohesive typed implementation boundary."""
     def __init__(
         self,
         url: str,
@@ -109,6 +119,7 @@ class McpPeerClient:
         retry_count: int = 100,
         gatekeeper: ApiGatekeeper | None = None,
     ) -> None:
+        """Initialize McpPeerClient with its validated setup values and private state."""
         self.url, self.connect_timeout, self.retry = url, connect_timeout, retry
         self.retry_count = retry_count
         self.last_attempts = 0
@@ -116,13 +127,16 @@ class McpPeerClient:
         self.gatekeeper = gatekeeper or default_gatekeeper()
 
     def _invoke(self, tool: str, argument: str, value: dict[str, Any]) -> None:
+        """Compute the internal invoke step used by McpPeerClient."""
         async def invoke() -> None:
+            """Perform invoke through the documented McpPeerClient contract."""
             async with Client(self.url) as client:
                 await client.call_tool(tool, {argument: value})
 
         asyncio.run(invoke())
 
     def call(self, tool: str, value: dict[str, Any], timeout: float | None = None) -> float:
+        """Execute the peer call through the configured Gatekeeper boundary."""
         argument = "payload" if tool == "submit_audit" else "message"
         deadline = time.monotonic() + (timeout or self.connect_timeout)
         frozen = copy.deepcopy(value)

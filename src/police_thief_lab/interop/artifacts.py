@@ -18,6 +18,7 @@ from .artifact_encoding import (
     pretty_bytes,
 )
 from .artifact_encoding import _hardware as _hardware
+from .artifact_writers import write_artifacts as write_artifacts
 from .crypto import canonical_json
 
 SCHEMA_VERSION = "1.1"
@@ -78,6 +79,7 @@ def final_consensus_scope(game_id: str, aggregate: dict[str, Any],
 def build_declaration(game_id: str, game_uid: str, timezone: str, game_started_at: str,
                       game_ended_at: str, num_sub_games: int, max_tokens_per_game: int,
                       own: dict[str, Any], opponent: dict[str, Any]) -> dict[str, Any]:
+    """Build and return declaration under the documented module contract."""
     return {"_schema": SCHEMA_DECLARATION, "schema_version": SCHEMA_VERSION,
             "declaration_type": "pre_game_declaration", "game_id": game_id,
             "game_uid": game_uid, "links": artifact_links(game_id), "timezone": timezone,
@@ -88,6 +90,7 @@ def build_declaration(game_id: str, game_uid: str, timezone: str, game_started_a
 
 def build_config_artifact(shared_terms: dict[str, Any], game_id: str, game_uid: str,
                           sub_game_number: int) -> dict[str, Any]:
+    """Build and return config artifact under the documented module contract."""
     artifact = {"_schema": SCHEMA_CONFIG, **shared_terms}
     artifact.update({"schema_version": SCHEMA_VERSION, "game_id": game_id,
                      "game_uid": game_uid, "sub_game_number": sub_game_number,
@@ -99,6 +102,7 @@ def build_config_artifact(shared_terms: dict[str, Any], game_id: str, game_uid: 
 
 def build_log(summary: dict[str, Any], game_id: str, game_uid: str, group_id: str,
               opponent_group_id: str) -> dict[str, Any]:
+    """Build and return log under the documented module contract."""
     records = summary["records"]
     log_summary = {"sub_game_number": summary["sub_game_number"], "group_id": group_id,
                    "role": summary["role"], "opponent_group_id": opponent_group_id,
@@ -118,6 +122,7 @@ def build_log(summary: dict[str, Any], game_id: str, game_uid: str, group_id: st
 def build_result(game_id: str, game_uid: str, group_ids: list[str] | tuple[str, ...],
                  sub_games: list[dict[str, Any]], aggregate_out: dict[str, Any],
                  mutual_sha256: str) -> dict[str, Any]:
+    """Build and return result under the documented module contract."""
     final = {**aggregate_out,
              "tokens_total_series": {g: sum(s.get("tokens", {}).get(g, 0) for s in sub_games)
                                      for g in group_ids}}
@@ -134,6 +139,7 @@ def write_reference_v3_artifacts(directory: Path, game_id: str, game_uid: str,
         own_identity: dict[str, Any], peer_identity: dict[str, Any], sub_game: dict[str, Any],
         aggregate_out: dict[str, Any], mutual_sha256: str, game_started_at: str,
         game_ended_at: str, max_tokens_per_game: int = 0) -> list[Path]:
+    """Write deterministically reference v3 artifacts under the documented module contract."""
     values = {f"declaration_{game_id}.json": build_declaration(
         game_id, game_uid, DEFAULT_TIMEZONE, game_started_at, game_ended_at, 1,
         max_tokens_per_game, own_identity, peer_identity),
@@ -146,22 +152,6 @@ def write_reference_v3_artifacts(directory: Path, game_id: str, game_uid: str,
                 [own_identity["group_id"], peer_identity["group_id"]]
             ),
             [sub_game], aggregate_out, mutual_sha256)}
-    directory.mkdir(parents=True, exist_ok=True)
-    paths = []
-    for name, value in values.items():
-        path = directory / name
-        path.write_bytes(pretty_bytes(value))
-        paths.append(path)
-    return paths
-
-
-def write_artifacts(directory: Path, game_id: str, game_number: int,
-                    profile: dict[str, Any], log: dict[str, Any],
-                    result: dict[str, Any]) -> list[Path]:
-    values = {f"declaration_{game_id}.json": {"game_id": game_id, "kind": "UNCOUNTED_LOCALHOST"},
-              f"config_{game_id}_g{game_number:02d}.json": profile,
-              f"log_{game_id}_g{game_number:02d}.json": log,
-              f"result_{game_id}.json": result}
     directory.mkdir(parents=True, exist_ok=True)
     paths = []
     for name, value in values.items():

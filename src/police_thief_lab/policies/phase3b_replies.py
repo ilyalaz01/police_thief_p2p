@@ -53,6 +53,7 @@ def modeled_replies(model, thief, police, size, obstacles, police_scent):
 
 
 def _hypothetical_police_actions(position, size, obstacles, placed, quota):
+    """Compute the internal hypothetical police actions step used by module."""
     directions = (Direction.N, Direction.S, Direction.E, Direction.W)
     moves = tuple(
         Action.move(direction)

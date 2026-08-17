@@ -54,6 +54,7 @@ def scan_artifact_directory(root: Path) -> list[HygieneFinding]:
 
 
 def _scan_entry(root: Path, entry: Path) -> list[HygieneFinding]:
+    """Compute the internal scan entry step used by module."""
     relative = entry.name
 
     # Escape is checked before a bare symlink check: for a top-level-only

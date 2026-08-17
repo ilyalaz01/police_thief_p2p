@@ -7,6 +7,7 @@ from .geometry import blocked
 
 
 def _open_cells(observation: Observation) -> tuple[Position, ...]:
+    """Compute the internal open cells step used by module."""
     obstacles = blocked(observation)
     return tuple(
         Position(row, col)
@@ -19,6 +20,7 @@ def _open_cells(observation: Observation) -> tuple[Position, ...]:
 def _field_error(
     predicted: dict[Position, float], observed: dict[Position, float], size: int
 ) -> float:
+    """Compute the internal field error step used by module."""
     return sum(
         abs(predicted.get(Position(row, col), 0.0) - observed.get(Position(row, col), 0.0))
         for row in range(size)
@@ -27,6 +29,7 @@ def _field_error(
 
 
 def _entropy(distribution: dict[Position, float]) -> float:
+    """Compute the internal entropy step used by module."""
     return -sum(
         probability * math.log(probability)
         for probability in distribution.values()

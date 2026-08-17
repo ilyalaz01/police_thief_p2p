@@ -68,6 +68,7 @@ class ReplayView:
 
 
 def _cell(position: Position) -> tuple[int, int]:
+    """Compute the internal cell step used by module."""
     return position.row, position.col
 
 

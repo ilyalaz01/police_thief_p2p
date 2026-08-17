@@ -43,11 +43,13 @@ class CurrentScentBelief:
     """Normalized current scent weighting, matching the Phase 2 approximation."""
 
     def __init__(self) -> None:
+        """Initialize CurrentScentBelief with its validated setup values and private state."""
         self._distribution: dict[Position, float] = {}
         self._updates = 0
         self._last_update_seconds = 0.0
 
     def update(self, observation: Observation) -> None:
+        """Update internal state using only the supplied role-local observation."""
         started = time.perf_counter()
         obstacles = blocked(observation)
         positive = {
@@ -65,9 +67,11 @@ class CurrentScentBelief:
         self._last_update_seconds = time.perf_counter() - started
 
     def distribution(self) -> dict[Position, float]:
+        """Return a defensive copy of the current normalized belief distribution."""
         return dict(self._distribution)
 
     def diagnostics(self) -> BeliefDiagnostics:
+        """Return sanitized diagnostics for the current internal state."""
         return BeliefDiagnostics(
             self._updates,
             len(self._distribution),
@@ -78,6 +82,7 @@ class CurrentScentBelief:
 
 @dataclass(frozen=True, slots=True)
 class _Trajectory:
+    """Represent Trajectory as one cohesive typed implementation boundary."""
     positions: tuple[Position, ...]
     weight: float
 
@@ -91,6 +96,7 @@ class TrajectoryBeamBelief:
     """
 
     def __init__(self, history_k: int = 6, beam_width: int = 128) -> None:
+        """Initialize TrajectoryBeamBelief with its validated setup values and private state."""
         if history_k < 1 or beam_width < 1:
             raise ValueError("history_k and beam_width must be positive")
         self.history_k = history_k
@@ -107,6 +113,7 @@ class TrajectoryBeamBelief:
         return tuple(item.positions for item in self._beam)
 
     def update(self, observation: Observation) -> None:
+        """Update internal state using only the supplied role-local observation."""
         started = time.perf_counter()
         obstacles = blocked(observation)
         observed = dict(observation.opponent_scent)
@@ -148,9 +155,11 @@ class TrajectoryBeamBelief:
         self._last_update_seconds = time.perf_counter() - started
 
     def distribution(self) -> dict[Position, float]:
+        """Return a defensive copy of the current normalized belief distribution."""
         return dict(self._distribution)
 
     def diagnostics(self) -> BeliefDiagnostics:
+        """Return sanitized diagnostics for the current internal state."""
         return BeliefDiagnostics(
             self._updates, len(self._beam), _entropy(self._distribution), self._last_update_seconds
         )

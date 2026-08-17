@@ -9,6 +9,7 @@ from .crypto import verify_records
 
 
 def verify_audit(records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Verify and report audit under the documented module contract."""
     ok, failed = verify_records(records)
     steps = [record["payload"].get("step") for record in records]
     monotonic = steps == sorted(steps) and len(steps) == len(set(steps))
@@ -31,6 +32,7 @@ def verify_audit(records: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def position(value: list[int]) -> Position:
+    """Perform position through the documented module contract."""
     return Position(value[0], value[1])
 
 
@@ -46,6 +48,7 @@ def replay_sequence(records: list[dict[str, Any]], board_config: dict[str, Any])
     errors: list[str] = []
 
     def replay_order(record: dict[str, Any]) -> tuple[int, int]:
+        """Perform replay order through the documented module contract."""
         payload = record["payload"]
         sender = payload.get("sender") or record.get("_audit_sender")
         return payload["step"], 0 if sender == "thief" else 1

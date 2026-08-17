@@ -7,7 +7,9 @@ from ..rules import DELTAS
 
 
 class _RuntimeBoardMixin:
+    """Represent RuntimeBoardMixin as one cohesive typed implementation boundary."""
     def _next_outbound(self) -> int:
+        """Compute the internal next outbound step used by _RuntimeBoardMixin."""
         if self.profile.step_numbering == "sender_local":
             step = self._next_outbound_step
             self._next_outbound_step += 1
@@ -15,6 +17,7 @@ class _RuntimeBoardMixin:
         return self.receiver.next_step
 
     def _legal_actions(self) -> tuple[Action, ...]:
+        """Compute the internal legal actions step used by _RuntimeBoardMixin."""
         occupied = self.state.blocked | frozenset(self.state.barriers)
         actions = []
         for direction in (Direction.N, Direction.S, Direction.E, Direction.W):
@@ -40,6 +43,7 @@ class _RuntimeBoardMixin:
         return tuple(actions)
 
     def _boxed_in(self) -> bool:
+        """Compute the internal boxed in step used by _RuntimeBoardMixin."""
         occupied = self.state.blocked | frozenset(self.state.barriers)
         for direction in (Direction.N, Direction.S, Direction.E, Direction.W):
             dr, dc = DELTAS[direction]
@@ -53,6 +57,7 @@ class _RuntimeBoardMixin:
         return True
 
     def _observation(self) -> Observation:
+        """Compute the internal observation step used by _RuntimeBoardMixin."""
         return Observation(
             RoleLocalState(
                 self.role,

@@ -16,6 +16,7 @@ from .runtime_models import UNRESOLVED_GIT_COMMIT, _audit_result
 
 
 class _RuntimeArtifactsMixin:
+    """Represent RuntimeArtifactsMixin as one cohesive typed implementation boundary."""
     def _write_reference_artifacts(
         self,
         game_id,
@@ -24,6 +25,7 @@ class _RuntimeArtifactsMixin:
         combined,
         verified,
     ):
+        """Compute the internal write reference artifacts step used by _RuntimeArtifactsMixin."""
         winner = "thief" if _audit_result(self.state.terminal) == "survival" else "police"
         winner_group = self.identity["group_id"] if self.role.value == winner else peer_group
         role_groups = {
@@ -70,6 +72,7 @@ class _RuntimeArtifactsMixin:
         ended_at,
         verified,
     ):
+        """Compute the internal sub game step used by _RuntimeArtifactsMixin."""
         return {
             "sub_game_number": 1,
             "roles": role_groups,
@@ -93,6 +96,7 @@ class _RuntimeArtifactsMixin:
         }
 
     def _log_summary(self, combined, winner, ended_at, verified):
+        """Compute the internal log summary step used by _RuntimeArtifactsMixin."""
         return {
             "records": combined,
             "sub_game_number": 1,

@@ -72,6 +72,7 @@ def run(
 
 
 def _write_check(status: CheckStatus, explanation: str, exit_code: ExitCode) -> CheckResult:
+    """Compute the internal write check step used by module."""
     return CheckResult(
         check_id="package_write",
         status=status,
@@ -82,6 +83,7 @@ def _write_check(status: CheckStatus, explanation: str, exit_code: ExitCode) -> 
 
 
 def _report(validation: GateReport, write_check: CheckResult) -> GateReport:
+    """Compute the internal report step used by module."""
     return GateReport(
         command="package-match",
         checks=(*validation.checks, write_check),

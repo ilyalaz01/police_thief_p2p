@@ -13,14 +13,18 @@ from .live_html import render_live_html
 
 
 class _LiveServer(ThreadingHTTPServer):
+    """Represent LiveServer as one cohesive typed implementation boundary."""
     daemon_threads = True
 
 
 def _handler(snapshot: Path) -> type[BaseHTTPRequestHandler]:
+    """Compute the internal handler step used by module."""
     html = render_live_html().encode("utf-8")
 
     class Handler(BaseHTTPRequestHandler):
+        """Represent Handler as one cohesive typed implementation boundary."""
         def _send(self, status: int, body: bytes, content_type: str) -> None:
+            """Compute the internal send step used by Handler."""
             self.send_response(status)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
@@ -36,6 +40,7 @@ def _handler(snapshot: Path) -> type[BaseHTTPRequestHandler]:
             self.wfile.write(body)
 
         def do_GET(self) -> None:  # noqa: N802 - BaseHTTPRequestHandler contract
+            """Serve only the documented live-view resources or a not-found response."""
             request_path = urlsplit(self.path).path
             if request_path == "/":
                 self._send(200, html, "text/html; charset=utf-8")
@@ -54,6 +59,7 @@ def _handler(snapshot: Path) -> type[BaseHTTPRequestHandler]:
             self._send(404, b"not found", "text/plain; charset=utf-8")
 
         def log_message(self, _format: str, *_args: object) -> None:
+            """Suppress default HTTP logging so live endpoint data is not retained."""
             return
 
     return Handler

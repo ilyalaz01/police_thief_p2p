@@ -12,7 +12,9 @@ from .runtime_models import PeerPhase, _audit_result
 
 
 class _RuntimeAuditMixin:
+    """Represent RuntimeAuditMixin as one cohesive typed implementation boundary."""
     def _audit_and_finish(self) -> dict[str, Any]:
+        """Compute the internal audit and finish step used by _RuntimeAuditMixin."""
         self.phase = PeerPhase.AUDITING
         audit_started = time.perf_counter()
         payload = {

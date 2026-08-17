@@ -78,6 +78,7 @@ def run(
 
 
 def _skipped_conformance() -> CheckResult:
+    """Compute the internal skipped conformance step used by module."""
     return _check(
         "artifact_conformance",
         CheckStatus.SKIPPED,
@@ -89,6 +90,7 @@ def _skipped_conformance() -> CheckResult:
 def _check(
     check_id: str, status: CheckStatus, explanation: str, exit_code: ExitCode
 ) -> CheckResult:
+    """Compute the internal check step used by module."""
     return CheckResult(
         check_id=check_id,
         status=status,
@@ -99,4 +101,5 @@ def _check(
 
 
 def _report(checks: tuple[CheckResult, ...], exit_code: int) -> GateReport:
+    """Compute the internal report step used by module."""
     return GateReport(command="validate-match", checks=checks, exit_code=exit_code)

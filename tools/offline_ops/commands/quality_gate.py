@@ -110,6 +110,7 @@ def run(
 
 
 def _secret_scan_check(scan_target: Path) -> CheckResult:
+    """Compute the internal secret scan check step used by module."""
     report = scan_secrets.run(
         scan_target, exclude_relative_dirs=_SECRET_SCAN_EXCLUDE_RELATIVE_DIRS
     )
@@ -117,6 +118,7 @@ def _secret_scan_check(scan_target: Path) -> CheckResult:
 
 
 def _match_artifact_check(match_path: Path | None) -> CheckResult:
+    """Compute the internal match artifact check step used by module."""
     if match_path is None:
         return CheckResult(
             check_id="match_artifact",
@@ -138,6 +140,7 @@ def _match_artifact_check(match_path: Path | None) -> CheckResult:
 
 
 def _overall_exit_code(checks: Sequence[CheckResult]) -> int:
+    """Compute the internal overall exit code step used by module."""
     blocking_statuses = (CheckStatus.FAIL, CheckStatus.UNAVAILABLE)
     blocking = {check.exit_code for check in checks if check.status in blocking_statuses}
     for code in _FAILURE_PRIORITY:

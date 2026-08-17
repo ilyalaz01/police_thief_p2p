@@ -14,7 +14,9 @@ from .runtime_models import PeerPhase, action_to_wire
 
 
 class _RuntimeSendingMixin:
+    """Represent RuntimeSendingMixin as one cohesive typed implementation boundary."""
     def _act_and_send(self, step: int) -> None:
+        """Compute the internal act and send step used by _RuntimeSendingMixin."""
         self.phase = PeerPhase.ACTING
         observation = self._observation()
         started = time.perf_counter()
@@ -85,6 +87,7 @@ class _RuntimeSendingMixin:
         self._publish_live(TurnBanner.LOCKED)
 
     def _send_terminal_response(self, step: int) -> None:
+        """Compute the internal send terminal response step used by _RuntimeSendingMixin."""
         payload = {
             "step": step,
             "sender": self.role.value,

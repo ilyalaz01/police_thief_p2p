@@ -9,6 +9,7 @@ from .models import ReplayFrame, ReplayView
 
 
 def _pair(value: Any, label: str) -> tuple[int, int]:
+    """Compute the internal pair step used by module."""
     if (
         not isinstance(value, list | tuple)
         or len(value) != 2
@@ -19,6 +20,7 @@ def _pair(value: Any, label: str) -> tuple[int, int]:
 
 
 def _board_config(config: dict[str, Any]) -> dict[str, Any]:
+    """Compute the internal board config step used by module."""
     source = config.get("board_config", config)
     if not isinstance(source, dict):
         raise ValueError("board_config must be a JSON object")
@@ -39,7 +41,9 @@ def _board_config(config: dict[str, Any]) -> dict[str, Any]:
 
 
 def _ordered(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Compute the internal ordered step used by module."""
     def key(record: dict[str, Any]) -> tuple[int, int]:
+        """Return the deterministic ordering key for one replay record."""
         payload = record.get("payload", {})
         step = payload.get("step")
         sender = payload.get("sender") or record.get("_audit_sender")
@@ -49,6 +53,7 @@ def _ordered(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _frames(records: list[dict[str, Any]], board: dict[str, Any]) -> tuple[ReplayFrame, ...]:
+    """Compute the internal frames step used by module."""
     positions = {
         "police": tuple(board["police_start"]),
         "thief": tuple(board["thief_start"]),

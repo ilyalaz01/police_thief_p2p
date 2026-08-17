@@ -13,9 +13,21 @@ from tests.support.artifact_contract_support import _sha
 def _stable_ast_dump(value: object) -> str:
     """Match Python 3.13's empty-field-neutral AST representation on 3.11+."""
     if isinstance(value, ast.AST):
+        values = list(ast.iter_fields(value))
+        if isinstance(value, ast.FunctionDef) and value.body:
+            first = value.body[0]
+            if (
+                isinstance(first, ast.Expr)
+                and isinstance(first.value, ast.Constant)
+                and isinstance(first.value.value, str)
+            ):
+                values = [
+                    (name, field_value[1:] if name == "body" else field_value)
+                    for name, field_value in values
+                ]
         fields = (
             f"{name}={_stable_ast_dump(field_value)}"
-            for name, field_value in ast.iter_fields(value)
+            for name, field_value in values
             if field_value is not None and field_value != []
         )
         return f"{type(value).__name__}({', '.join(fields)})"

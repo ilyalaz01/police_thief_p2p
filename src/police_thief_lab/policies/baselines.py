@@ -12,6 +12,7 @@ class RandomLegalPolice:
     """Seeded uniform sampling from the Police legal-action list."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize RandomLegalPolice with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:
@@ -25,6 +26,7 @@ class RandomLegalThief:
     """Seeded uniform sampling from the Thief legal-action list."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize RandomLegalThief with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:
@@ -38,6 +40,7 @@ class ScentGreedyPolice:
     """Move toward the strongest observable scent cell; use no hidden coordinates."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize ScentGreedyPolice with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:
@@ -65,6 +68,7 @@ class SpaceSeekingThief:
     """Prefer moves with large components and distance from public edges/bottlenecks."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize SpaceSeekingThief with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:

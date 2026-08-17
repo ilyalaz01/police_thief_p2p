@@ -30,6 +30,7 @@ class DeterministicSearchPolice(_SearchScoringMixin):
         disabled_features: frozenset[str] = frozenset(),
         node_budget: int = 512,
     ) -> None:
+        """Initialize search depth, model, belief mode, and bounded node budget."""
         if depth not in (1, 2, 3) or node_budget < 1:
             raise ValueError("depth must be 1..3 and node_budget must be positive")
         unknown = disabled_features - frozenset(FEATURES)
@@ -50,6 +51,7 @@ class DeterministicSearchPolice(_SearchScoringMixin):
         self._scent_model = ReferenceSubtractiveChebyshevV1()
 
     def choose_action(self, observation: Observation) -> Action:
+        """Choose a deterministic legal action using only the supplied role-local observation."""
         if observation.local.role is not Role.POLICE:
             raise ValueError("DeterministicSearchPolice requires a Police observation")
         started = time.perf_counter()
@@ -82,6 +84,7 @@ class DeterministicSearchPolice(_SearchScoringMixin):
         return choice
 
     def _states(self, distribution: dict[Position, float]) -> tuple[tuple[Position, float], ...]:
+        """Compute the internal states step used by DeterministicSearchPolice."""
         ordered = sorted(distribution.items(), key=lambda item: (-item[1], item[0]))
         if self.belief_usage is BeliefUsage.HOTTEST_CELL:
             return ((ordered[0][0], 1.0),)
@@ -93,6 +96,7 @@ class TacticalOneStepPolice:
     """One Police action followed by a leaf score distilled from the frozen champion."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize TacticalOneStepPolice with its validated setup values and private state."""
         self._random = random.Random(seed)
         self.search_nodes_evaluated = 0
         self.last_search_nodes = 0
@@ -100,6 +104,7 @@ class TacticalOneStepPolice:
         self.last_diagnostics: tuple[ActionDiagnostic, ...] = ()
 
     def choose_action(self, observation: Observation) -> Action:
+        """Choose a deterministic legal action using only the supplied role-local observation."""
         if observation.local.role is not Role.POLICE:
             raise ValueError("TacticalOneStepPolice requires a Police observation")
         started = time.perf_counter()

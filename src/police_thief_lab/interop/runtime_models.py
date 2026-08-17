@@ -18,6 +18,7 @@ from .profile import MatchProfile
 
 
 class PeerPhase(str, Enum):
+    """Represent PeerPhase as one cohesive typed implementation boundary."""
     STARTING = "starting"
     NEGOTIATING = "negotiating"
     WAITING = "waiting"
@@ -38,15 +39,18 @@ def require_real_team_git_commit(value: Any, owner: str) -> None:
 
 @dataclass(slots=True)
 class DeadlineTracker:
+    """Represent DeadlineTracker as one cohesive typed implementation boundary."""
     timeout: float
     started: float = field(default_factory=time.monotonic)
 
     def remaining(self) -> float:
+        """Return the non-negative time remaining before the fixed deadline."""
         return max(0.0, self.timeout - (time.monotonic() - self.started))
 
 
 @dataclass(slots=True)
 class LocalGameState:
+    """Represent LocalGameState as one cohesive typed implementation boundary."""
     role: Role
     position: Position
     blocked: frozenset[Position]
@@ -60,10 +64,12 @@ class LocalGameState:
 
 
 def _position(raw: Any) -> Position:
+    """Compute the internal position step used by module."""
     return Position(int(raw[0]), int(raw[1]))
 
 
 def config_from_profile(profile: MatchProfile) -> GameConfig:
+    """Translate and return from profile under the documented module contract."""
     cfg = profile.board_config
     return GameConfig(
         board_size=cfg["board_size"],
@@ -78,6 +84,7 @@ def config_from_profile(profile: MatchProfile) -> GameConfig:
 
 
 def action_to_wire(action: Action | None) -> dict[str, Any] | None:
+    """Translate and return to wire under the documented module contract."""
     if action is None:
         return None
     return {
@@ -92,6 +99,7 @@ def action_to_wire(action: Action | None) -> dict[str, Any] | None:
 
 
 def _audit_result(value: str | None) -> str | None:
+    """Compute the internal audit result step used by module."""
     if value in {"police_capture", "barrier_on_thief", "thief_boxed_in"}:
         return "capture"
     return value
