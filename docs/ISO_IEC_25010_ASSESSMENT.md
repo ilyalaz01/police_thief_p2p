@@ -12,7 +12,7 @@ was engaged. Gaps are recorded honestly and are not claimed as closed.
 Source authority for all game, interoperability, and audit claims remains
 [`RULES_AND_INTEROP_BASELINE.md`](../RULES_AND_INTEROP_BASELINE.md).
 
-Current reconciliation: **GUI-001, DOCS-002, PKG-001, and EXT-001: DONE** on the shared baseline
+Current reconciliation: **GUI-001: DONE; DOCS-002, PKG-001, and EXT-001: DONE** on the shared baseline
 through Phase 4D8. This assessment incorporates that evidence without implying final-submission
 readiness.
 
