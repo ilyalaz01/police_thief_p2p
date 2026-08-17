@@ -1,0 +1,88 @@
+{
+  "phase": "4D8",
+  "schema": "audit_v1",
+  "status": "GREEN",
+  "tasks": {
+    "DOCS-002": "DONE",
+    "PKG-001": "DONE",
+    "EXT-001": "DONE",
+    "ISO-001": "DONE_RECONCILED",
+    "COST-001": "IN_PROGRESS_RUNTIME_MEASUREMENTS_OPEN"
+  },
+  "commits": {
+    "red": "0374799",
+    "green": "7506229",
+    "correction": "42c98cb34872c4be7393e1df8fe7f84ae2e6a831"
+  },
+  "red": {
+    "passed": 2,
+    "failed": 4,
+    "missing_editable_production_docstrings": 154,
+    "missing_contract_documents": 3,
+    "missing_author_metadata": true
+  },
+  "correction": {
+    "first_full_run": "328_passed_1_failed",
+    "failure": "accepted_GUI_001_DONE_literal_reformatted",
+    "targeted_after_fix": "17/17",
+    "repeated_full_run": "329/329"
+  },
+  "inventory": {
+    "production_python_files": 88,
+    "source_files": 65,
+    "tool_files": 23,
+    "symbols_total": 365,
+    "editable_symbols": 306,
+    "frozen_symbols": 59,
+    "editable_missing_docstrings": 0,
+    "frozen_exception_files": 7,
+    "python_files_over_150": 0,
+    "maximum_counted_lines": 150,
+    "artifacts_py_counted_lines": 140,
+    "artifact_writers_py_counted_lines": 20
+  },
+  "validation": {
+    "phase_governance": "6/6",
+    "artifact_api_ast_bytes": "4/4",
+    "full_pytest": "329/329",
+    "branch_coverage_percent": 92.52,
+    "coverage_threshold_percent": 85.0,
+    "ruff_errors": 0,
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "clean_tracked_secret_scan": "pass_zero_findings",
+    "matched_secret_values_printed_or_retained": false
+  },
+  "secret_scan_scope": {
+    "tracked_snapshot_commit": "42c98cb34872c4be7393e1df8fe7f84ae2e6a831",
+    "quality_gate_exact_exclusion": "tests/offline_ops",
+    "rationale": "scanner_self_tests_contain_eight_synthetic_credential_like_fixtures",
+    "raw_direct_scan_without_exclusion": "expected_fail_8_synthetic_findings",
+    "quality_gate_policy_scan": "pass_zero_findings"
+  },
+  "frozen_and_semantic_changes": {
+    "frozen_files_changed": false,
+    "champion_changed": false,
+    "game_rules_changed": false,
+    "scent_changed": false,
+    "mcp_or_wire_changed": false,
+    "artifact_bytes_changed": false,
+    "tie_or_consensus_changed": false,
+    "dependencies_or_lock_changed": false
+  },
+  "operations": {
+    "peer_started": false,
+    "simulator_game_started": false,
+    "public_request": false,
+    "tunnel": false,
+    "gmail": false,
+    "external_team_contact": false,
+    "warmup": false,
+    "league_reporting": false,
+    "counted_game": false,
+    "new_ai_ml_search": false,
+    "submission_repository_or_tag": false
+  },
+  "next_offline_milestone": "RES-001_VIS-001_DETERMINISTIC_PUBLIC_SAFE_RESEARCH"
+}
