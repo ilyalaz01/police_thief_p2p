@@ -92,3 +92,9 @@ results/research/*
 !results/research/phase4d9_sensitivity.json
 !results/research/phase4d9_summary.csv
 !results/research/phase4d9_manifest.json
+!data/research/
+!data/research/sensitivity_design.v1.json
+!tools/research/
+!tools/research/*.py
+!assets/research/
+!assets/research/*.svg
