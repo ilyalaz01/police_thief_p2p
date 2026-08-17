@@ -148,14 +148,18 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## GUI-001 — Implement the mandatory Live GUI and Replay view
 
-- Milestone: D3; Priority: P1; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: UX-001, SDK-001, QLT-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D3; Priority: P1; Status: IN_PROGRESS; Owner role: Core Architecture
+- Dependencies: UX-001, SDK-001, QLT-001; Evidence: Phase 4D7B role-local view model, standalone
+  artifact-backed Replay HTML app, fail-closed CLI, RED/GREEN tests, and real retained-log smoke
+  test. DONE evidence remains unavailable until the Live GUI and screenshots are accepted.
 - Definition of Done: a role-legal Live GUI displays belief/scent and current status without hidden
   truth; an artifact-backed Replay view displays deterministic verification including
   `Verified OK`; public-safe screenshots, accessibility notes, and offline tests are retained.
 - Validation commands: focused GUI/replay tests; `uv run pytest`; `uv run ruff check src tests`.
 - Hard stop/escalation: the live view cannot expose objective opponent coordinates, and the Replay
   view cannot treat an unverified or malformed log as verified.
+- Remaining slice: bind role-legal snapshots to the peer runtime, render the belief heatmap and
+  `YOUR TURN`/`LOCKED` state live, then retain public-safe screenshots of Live and `Verified OK`.
 
 ## COST-001 — Produce applicable cost/capacity analysis
 

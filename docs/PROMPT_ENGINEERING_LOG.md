@@ -38,6 +38,7 @@ commit/PR.
 | Phase 4D4 concurrency | Reproduce Gatekeeper close/admission races, then make capacity, shutdown and worker reaping deterministic. | Concurrency acceptance needs explicit ownership, exact capacity, race barriers and eventual cleanup evidence. |
 | Phase 4D5 partner release integration | Port the partner-owned offline-ops boundary onto current main, preserve authorship, repair stale paths/encoding, and validate the same CI gate. | Clean-port stale work rather than rebasing through unrelated architecture; test contracts must normalize cross-Python AST representation. |
 | Phase 4D6 CLI/manual | Re-read official and guideline sources, add RED contracts for discoverable safe CLI help and a complete manual, then expose higher-authority submission blockers. | Guideline closure must not hide official two-repository, GUI/Replay, counted-game, or reporting requirements; validate publishable state in a clean checkout while preserving ignored local evidence. |
+| Phase 4D7B Replay shell | Derive a role-safe view boundary and standalone post-game Replay app from official Chapter 7, then verify it on synthetic tamper cases and a retained completed-game log. | Keep live partial truth structurally separate from post-game truth; verify before rendering and never embed revealed nonces in the HTML app. |
 
 ## Template for every future significant prompt
 

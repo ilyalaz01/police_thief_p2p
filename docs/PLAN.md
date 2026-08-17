@@ -153,6 +153,10 @@ flowchart LR
 - `peer_cli.py`: argument parsing plus one typed `PeerLaunchRequest` delegation. The SDK transport
   service validates optional operational configuration, reads profile timeouts, validates the
   endpoint, and invokes the existing runtime behind that boundary.
+- `presentation/models.py`: immutable role-local live and post-game replay view models. The live
+  model has no field capable of carrying objective opponent position.
+- `presentation/replay.py`, `html.py`, `viewer_cli.py`: revealed-log verification, sanitized replay
+  frames, a standalone accessible HTML app, and an offline fail-closed command boundary.
 
 Current package structure is feature/layer hybrid under `src/police_thief_lab`; tests use documented
 unit, integration, and system layers. Experiments are executable evidence generators, reports are
@@ -192,8 +196,9 @@ values remain non-configurable.
 The [FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md),
 [SDK facade](adr/ADR-003-sdk-facade-plan.md), semantics-preserving file splits,
 [versioned configuration](adr/ADR-006-versioned-configuration-boundary.md), and
-[offline release tooling](RELEASE_ENGINEERING.md) are implemented and accepted. Remaining
-proposals are the role-legal Live GUI and artifact-backed Replay view, safe research/visualization,
+[offline release tooling](RELEASE_ENGINEERING.md) are implemented and accepted. The artifact-backed
+Replay app and role-safe view model are implemented; the remaining GUI proposal is the runtime-fed
+Live GUI plus reviewed screenshots. Other proposals are safe research/visualization,
 package/extension documentation, ISO/cost assessment, and final two-role-repository assembly. No
 remaining proposal may expose hidden truth, imply authorization, or silently change frozen or
 negotiated behavior.
