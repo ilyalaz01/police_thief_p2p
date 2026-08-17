@@ -10,7 +10,8 @@ The repository proves the deterministic game core, role-legal observations, the 
 `ScentTacticalPolice` champion, policy evaluation, a four-tool reference-compatible FastMCP
 transport, bounded retry/deadline/duplicate behavior, audit/replay, schema 1.1 artifact builders,
 a public SDK facade, versioned configuration, a centralized bounded Gatekeeper, and offline
-release/security tooling. The public quality gate passes with branch coverage above 90%, Hcommit
+release/security tooling. It also provides a runtime-fed role-local Live GUI and a verified
+post-game Replay Viewer. The public quality gate passes with branch coverage above 90%, Hcommit
 5/5, frozen hashes 7/7, and conformance vectors 125/125.
 
 Historical local and public self-tests are evidence only. This repository is not yet a final
@@ -121,6 +122,7 @@ are input/delegation controls; no flag grants permission to contact an opponent 
 | `--operational-config PATH` | Strict versioned startup-classification JSON |
 | `--artifacts DIR` | Required output directory for schema 1.1 artifacts |
 | `--output PATH` | Required peer-result JSON path |
+| `--live-view PATH` | Optional role-local Live GUI snapshot feed |
 | `--seed INTEGER` | Deterministic local seed; default `1` |
 
 The local two-process system test is the safest executable peer example:
@@ -190,7 +192,26 @@ It composes pytest/coverage, Ruff, Hcommit vectors, frozen-manifest verification
 conformance kit, and retained-evidence secret scanning. Match-artifact validation is optional only
 when no match path is requested; an unavailable required validator is a failure.
 
-## Offline Replay Viewer
+## Live GUI and Offline Replay Viewer
+
+To publish a role-local Live GUI feed, append
+`--live-view artifacts/police-live.json` to that role's already reviewed peer command.
+
+Serve that one role's sanitized feed on loopback:
+
+```bash
+uv run python -m police_thief_lab.viewer_cli live \
+  --snapshot artifacts/police-live.json \
+  --host 127.0.0.1 \
+  --port 8765
+```
+
+Then open `http://127.0.0.1:8765/` in a local browser.
+
+The Live GUI displays only that peer's own position, public obstacles/barriers, role-legal
+scent/belief heatmap, step, and `YOUR TURN`/`LOCKED`/terminal status. The feed schema has no field
+for objective opponent coordinates, records, commitments, nonces, or endpoint data. The viewer
+refuses non-loopback bind addresses.
 
 After a sub-game has ended and its nonces have been revealed, build a standalone viewer from the
 matching log and config artifacts:
@@ -205,9 +226,11 @@ uv run python -m police_thief_lab.viewer_cli replay \
 The command performs commit and deterministic physics verification before rendering. It writes a
 nonce-free HTML app with both post-game agent tracks, Previous/Next controls, barriers, and a
 `Verified OK` or `TAMPERED` banner. A tampered/malformed replay fails closed with exit code `2`.
-It does not open a browser, contact a peer, start a tunnel, or authorize any match. The role-local
-live model is implemented, but runtime-fed Live GUI operation and the required reviewed screenshots
-remain open under `GUI-001`. See the [Replay Viewer guide](docs/REPLAY_VIEWER.md).
+Neither viewer contacts a peer, starts a tunnel, or authorizes any match. Reviewed synthetic
+screenshots are retained as
+[Live local truth](docs/images/live-gui-local-truth.jpg) and
+[Replay Verified OK](docs/images/replay-verified-ok.jpg). See the
+[Live GUI and Replay guide](docs/REPLAY_VIEWER.md).
 
 ## Troubleshooting
 
@@ -236,9 +259,10 @@ review. See [CONTRIBUTING](CONTRIBUTING.md) and the [live TODO](docs/TODO.md).
 
 ## Submission-readiness limits
 
-This shared development repository is not the final course submission. Higher-authority work still
-requires two separate role repositories (Police and Thief), a Live GUI belief-map view, a Replay
-view with `Verified OK`, documented screenshots, annotated `v1.0-submission` tags, and human-gated
+This shared development repository is not the final course submission. The Live GUI, Replay
+`Verified OK`, and reviewed screenshots are implemented here, but higher-authority delivery still
+requires two separate role repositories (Police and Thief), inclusion and validation of that GUI
+evidence in each required submission context, annotated `v1.0-submission` tags, and human-gated
 league/Moodle steps. Counted games and Gmail reporting remain blocked without explicit approval.
 The exact evidence and owners are tracked in
 [official submission readiness](docs/OFFICIAL_SUBMISSION_READINESS.md).
@@ -260,7 +284,7 @@ changes follow the documented workflow and produce inspectable evidence.
 - [Test architecture](docs/TESTING.md)
 - [Critical-path map](docs/QUALITY_CRITICAL_PATHS.md)
 - [Concurrency and capacity](docs/CONCURRENCY_AND_CAPACITY.md)
-- [Replay Viewer](docs/REPLAY_VIEWER.md)
+- [Live GUI and Replay Viewer](docs/REPLAY_VIEWER.md)
 - [Operational configuration](docs/CONFIGURATION.md)
 - [SDK entry point](docs/SDK.md)
 - [Architecture decisions](docs/adr/README.md)

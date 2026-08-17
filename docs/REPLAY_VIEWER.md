@@ -1,11 +1,10 @@
-# Offline Replay Viewer
+# Live GUI and Offline Replay Viewer
 
 ## Purpose and authority
 
-The Replay Viewer implements the retrospective half of the official Chapter 7 observability
-requirement. It answers whether a completed revealed log happened as claimed. It is not a live
-bird's-eye view, does not authorize gameplay, and does not modify the frozen commitment dialect or
-game physics.
+The two viewers implement the official Chapter 7 observability boundary without modifying game
+physics, the frozen competitive policy, commitment dialect, wire messages, or artifacts. Neither
+viewer authorizes gameplay.
 
 The live and replay boundaries are deliberately different:
 
@@ -14,7 +13,32 @@ The live and replay boundaries are deliberately different:
 - `ReplayView` is created only from a completed revealed log. It may show both tracks after Python
   has recomputed every commitment and deterministic transition.
 
-## Build a viewer
+## Run the Live GUI
+
+Each independent peer may publish its own role-local snapshot feed by receiving an optional
+`--live-view` path. Police and Thief must use different paths and different browser ports.
+
+Append `--live-view artifacts/police-live.json` to that role's already reviewed peer command, then
+run the loopback viewer:
+
+```bash
+uv run python -m police_thief_lab.viewer_cli live \
+  --snapshot artifacts/police-live.json \
+  --host 127.0.0.1 \
+  --port 8765
+```
+
+Open `http://127.0.0.1:8765/` locally. The app polls the atomic bounded feed and renders the
+role-local position, static cells, public barriers, scent-derived belief heatmap, step, and exact
+`YOUR TURN`, `LOCKED`, `GAME OVER`, or `ERROR` banner. Previous/Next controls inspect the bounded
+snapshot history; `Follow latest` resumes the live edge.
+
+The HTTP server refuses non-loopback addresses, uses no remote assets, sends no-store and browser
+security headers, and validates the exact feed field set before serving it. An extra field such as
+`opponent_position` fails closed. The feed deliberately excludes wire records, commitments,
+nonces, URLs, and objective opponent truth.
+
+## Build a Replay viewer
 
 Use the schema 1.1 log and matching config from the same completed sub-game:
 
@@ -49,12 +73,19 @@ The viewer accepts the current flat schema 1.1 config fields (`board_size`, `cop
 `thief_start`) and the older local runtime's nested `board_config` for retained regression evidence.
 It consumes `records` from the log root and uses the summary result only as display metadata.
 
-Phase 4D7B does not complete `GUI-001`. Still required:
+## Reviewed visual evidence
 
-- connect the role-local snapshot model to each independent peer runtime;
-- render the live belief/scent heatmap and exact `YOUR TURN`/`LOCKED` status;
-- prove that no live opponent coordinate can cross that boundary;
-- capture reviewed public-safe Live GUI and Replay `Verified OK` screenshots.
+Both images were captured from one synthetic localhost two-peer self-test. They contain no live
+endpoint, credential, nonce, retained wire body, or real opponent identity.
+
+![Role-local Live GUI showing YOUR TURN](images/live-gui-local-truth.jpg)
+
+![Verified post-game Replay](images/replay-verified-ok.jpg)
+
+The Live screenshot proves the presentation shape, not another-team interoperability. The Replay
+screenshot proves that the retained synthetic log passed verification, not that a counted match
+occurred. Phase 4D7C closes the shared-code `GUI-001` implementation; final role-repository
+assembly and every external operation remain separate tasks.
 
 No public transport, external opponent, Gmail, league reporting, or counted operation is needed to
 test this viewer.

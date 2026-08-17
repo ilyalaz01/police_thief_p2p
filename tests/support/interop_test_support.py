@@ -81,7 +81,10 @@ def _reference_runtime_profile(survival_limit: int) -> MatchProfile:
 
 
 def _run_reference_pair(
-    tmp_path: Path, outcome: str, commits: tuple[str | None, str | None] = (None, None)
+    tmp_path: Path,
+    outcome: str,
+    commits: tuple[str | None, str | None] = (None, None),
+    live_view_paths: tuple[Path | None, Path | None] = (None, None),
 ) -> tuple[dict, dict]:
     police_port, thief_port = free_port(), free_port()
     shared = _reference_runtime_profile(35)
@@ -95,6 +98,7 @@ def _run_reference_pair(
         group_id="artifact-police",
         group_name="Artifact Police",
         git_commit=commits[0],
+        live_view_path=live_view_paths[0],
     )
     thief = PeerRuntime(
         Role.THIEF,
@@ -106,6 +110,7 @@ def _run_reference_pair(
         group_id="artifact-thief",
         group_name="Artifact Thief",
         git_commit=commits[1],
+        live_view_path=live_view_paths[1],
     )
     police.backend = _FixedPolicy(Direction.E)
     thief.backend = _FixedPolicy(None)

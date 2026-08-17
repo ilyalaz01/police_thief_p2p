@@ -56,6 +56,7 @@ class PeerLaunchRequest:
     real_team: bool = False
     public: bool = False
     operational_config: Path | None = None
+    live_view: Path | None = None
 
 
 def launch_peer(request: PeerLaunchRequest) -> int:
@@ -93,6 +94,7 @@ def launch_peer(request: PeerLaunchRequest) -> int:
         request.group_name,
         request.git_commit,
         request.real_team,
+        request.live_view,
     )
 
 

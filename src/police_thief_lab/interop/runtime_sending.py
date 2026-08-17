@@ -5,6 +5,7 @@ from __future__ import annotations
 import time
 
 from ..models import MoveType, Position, Role
+from ..presentation import TurnBanner
 from ..rules import DELTAS
 from ..scent import scent_model_for
 from .crypto import seal
@@ -81,6 +82,7 @@ class _RuntimeSendingMixin:
                 "wire": message.to_dict(),
             }
         )
+        self._publish_live(TurnBanner.LOCKED)
 
     def _send_terminal_response(self, step: int) -> None:
         payload = {
@@ -107,3 +109,4 @@ class _RuntimeSendingMixin:
             self.receiver.mark_local(step, record["commit"])
         self.roundtrip_ms.append(self.client.call("receive_turn", message.to_dict()))
         self.events.append({"event": "terminal_response", "step": step})
+        self._publish_live(TurnBanner.LOCKED)

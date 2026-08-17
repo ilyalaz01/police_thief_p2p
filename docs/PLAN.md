@@ -155,6 +155,8 @@ flowchart LR
   endpoint, and invokes the existing runtime behind that boundary.
 - `presentation/models.py`: immutable role-local live and post-game replay view models. The live
   model has no field capable of carrying objective opponent position.
+- `presentation/live_*.py`, `runtime_presentation.py`, `viewer_cli.py`: atomic role-local snapshot
+  publication, exact-field sanitization, loopback-only serving, and the live accessible heatmap.
 - `presentation/replay.py`, `html.py`, `viewer_cli.py`: revealed-log verification, sanitized replay
   frames, a standalone accessible HTML app, and an offline fail-closed command boundary.
 
@@ -197,8 +199,7 @@ The [FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md),
 [SDK facade](adr/ADR-003-sdk-facade-plan.md), semantics-preserving file splits,
 [versioned configuration](adr/ADR-006-versioned-configuration-boundary.md), and
 [offline release tooling](RELEASE_ENGINEERING.md) are implemented and accepted. The artifact-backed
-Replay app and role-safe view model are implemented; the remaining GUI proposal is the runtime-fed
-Live GUI plus reviewed screenshots. Other proposals are safe research/visualization,
-package/extension documentation, ISO/cost assessment, and final two-role-repository assembly. No
-remaining proposal may expose hidden truth, imply authorization, or silently change frozen or
-negotiated behavior.
+Replay app and runtime-fed role-safe Live GUI are implemented with reviewed screenshots. Remaining
+proposals are safe research/visualization, package/extension documentation, ISO/cost assessment,
+and final two-role-repository assembly. No remaining proposal may expose hidden truth, imply
+authorization, or silently change frozen or negotiated behavior.
