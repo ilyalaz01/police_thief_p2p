@@ -172,12 +172,14 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## COST-001 — Produce applicable cost/capacity analysis
 
-- Milestone: D3; Priority: P3; Status: IN_PROGRESS; Owner role: Release Engineering
+- Milestone: D3; Priority: P3; Status: DONE; Owner role: Release Engineering
 - Dependencies: RE-001, measured usage; Evidence: partner-authored deterministic repository
-  measurement tool, corrected `docs/COST_AND_CAPACITY_ANALYSIS.md`, and Phase 4D7A audit.
+  measurement tool, corrected `docs/COST_AND_CAPACITY_ANALYSIS.md`, Phase 4D7A audit, and the
+  preregistered Phase 4D10 local simulator timing/memory/result-size evidence.
 - Definition of Done: local compute/storage/network and any actual API/token costs are measured,
   assumptions dated, scaling forecasted, and non-applicable categories explained.
-- Validation commands: reproducible measurement command and arithmetic review.
+- Validation commands: reproducible repository measurement; `uv run python -m
+  tools.quality_assessment.runtime_cli`; retained-sample arithmetic test; full quality gate.
 - Hard stop/escalation: do not invent prices, usage, or token histories.
 
 ## ISO-001 — Assess ISO/IEC 25010 quality characteristics

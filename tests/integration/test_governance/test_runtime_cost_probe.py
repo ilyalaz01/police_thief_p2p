@@ -11,6 +11,7 @@ from tools.quality_assessment.runtime_probe import execute_design, load_design, 
 DESIGN_PATH = PROJECT_ROOT / "data/quality/runtime_measurement_design.v1.json"
 COST_DOC = PROJECT_ROOT / "docs/COST_AND_CAPACITY_ANALYSIS.md"
 AUDIT_JSON = PROJECT_ROOT / "docs/audits/phase4d10_cost_capacity_measurements.json"
+SAMPLES_JSON = PROJECT_ROOT / "docs/audits/phase4d10_runtime_samples.json"
 
 
 def test_design_is_explicit_and_pinned_to_current_source_tree() -> None:
@@ -71,6 +72,19 @@ def test_committed_evidence_closes_cost_without_vendor_invention() -> None:
     assert payload["measurement"]["memory_samples"] == 30
     assert "instrumented local simulator" in text
     assert "No vendor price or electricity cost was inferred" in text
+
+
+def test_raw_measurements_recompute_the_committed_summary() -> None:
+    """Retained samples and pure arithmetic independently reproduce the summary."""
+    from tools.quality_assessment.runtime_models import summarize_memory, summarize_timings
+
+    payload = json.loads(SAMPLES_JSON.read_text(encoding="utf-8"))
+    timings = tuple(TimingSample(**row) for row in payload["timing_samples"])
+    memories = tuple(MemorySample(**row) for row in payload["memory_samples"])
+    assert payload["summary"]["timing"] == summarize_timings(timings)
+    assert payload["summary"]["memory"] == summarize_memory(memories)
+    assert {row.seed for row in timings}.isdisjoint(row.seed for row in memories)
+    assert payload["summary"]["timing"]["illegal_action_count"] == 0
 
 
 def test_new_runtime_measurement_python_files_stay_within_150_lines() -> None:

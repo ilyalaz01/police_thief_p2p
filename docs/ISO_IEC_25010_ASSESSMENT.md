@@ -38,11 +38,11 @@ Covers time behaviour, resource utilisation, and capacity.
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | Policy decisions are synchronous and deterministic; Gatekeeper bounded outbound workers; `concurrent_max + queue_max` capacity formula documented in `docs/CONCURRENCY_AND_CAPACITY.md`; retry deadlines are monotonic and frozen |
+| **Current evidence** | Policy decisions are synchronous and deterministic; Gatekeeper bounded outbound workers; `concurrent_max + queue_max` capacity formula documented in `docs/CONCURRENCY_AND_CAPACITY.md`; retry deadlines are monotonic and frozen; Phase 4D10 retains 200 local wall/CPU samples, 30 separate `tracemalloc` peaks, result sizes and sequential throughput |
 | **Measurable indicator** | Turn decision latency (ms); game throughput (games/second); peak RAM; CPU time per game |
-| **Honest status** | PARTIAL — capacity model is defined; measurements are unmeasured |
-| **Remaining gap** | No measured CPU time, RAM peak, or latency under load; multi-game concurrency untested at scale; public transport latency is historical evidence only |
-| **Proposed owner/action** | Instrument `evaluation.runner.run_game()` with `time.perf_counter()` and `tracemalloc`; run a bounded offline load test against `config/rate_limits.v1.json` |
+| **Honest status** | SUBSTANTIAL for the measured fixed local simulator workload |
+| **Remaining gap** | `tracemalloc` is not whole-process RSS; multi-game parallelism and Gatekeeper load remain unmeasured at scale; public transport latency is historical evidence only |
+| **Proposed owner/action** | Keep the Phase 4D10 one-machine boundary explicit; profile RSS or network/load only when an approved operational scope requires it |
 
 ---
 
@@ -136,7 +136,7 @@ Covers adaptability, installability, and replaceability.
 | # | Characteristic | Honest status | Key gap | TODO |
 |---|---|---|---|---|
 | 1 | Functional suitability | SUBSTANTIAL | Counted games; submission repos | HUM-001, SUB-001 |
-| 2 | Performance efficiency | PARTIAL | CPU/RAM/latency unmeasured | CON-001 measurement plan |
+| 2 | Performance efficiency | SUBSTANTIAL (fixed local workload) | Whole-process RSS; parallel/network load | CON-001, HUM-001 |
 | 3 | Compatibility | SUBSTANTIAL (offline) | Real-team bilateral; artifact scope | HUM-001 |
 | 4 | Usability | SUBSTANTIAL (shared offline app) | Formal user/accessibility study; final role-repository workflows | SUB-001 |
 | 5 | Reliability | SUBSTANTIAL (offline) | Server restart; load reliability | CON-001 |
