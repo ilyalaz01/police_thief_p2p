@@ -16,6 +16,7 @@ class TurnBanner(str, Enum):
     YOUR_TURN = "YOUR TURN"
     LOCKED = "LOCKED"
     GAME_OVER = "GAME OVER"
+    ERROR = "ERROR"
 
 
 @dataclass(frozen=True, slots=True)
@@ -94,4 +95,3 @@ def build_live_view(
         banner=banner.value,
         step=step,
     )
-

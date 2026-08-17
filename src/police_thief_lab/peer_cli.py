@@ -54,6 +54,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--artifacts", type=Path, required=True, help="artifact output directory")
     parser.add_argument("--output", type=Path, required=True, help="peer result JSON path")
+    parser.add_argument(
+        "--live-view",
+        type=Path,
+        help="optional role-local Live GUI snapshot JSON path",
+    )
     parser.add_argument("--seed", type=int, default=1, help="deterministic local seed")
     return parser
 
@@ -77,6 +82,7 @@ def main() -> int:
         real_team=args.real_team,
         public=args.public,
         operational_config=args.operational_config,
+        live_view=args.live_view,
     )
     return PoliceThiefSDK().transport.launch_peer(request)
 

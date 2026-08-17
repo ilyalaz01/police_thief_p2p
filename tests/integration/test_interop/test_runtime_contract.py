@@ -87,9 +87,9 @@ def test_runtime_symbols_and_behavioral_contract_are_exact() -> None:
     assert runtime.PeerRuntime is PeerRuntime
     assert PeerRuntime.__module__ == "police_thief_lab.interop.runtime"
     payload = _runtime_contract()
-    assert len(payload) == 2327
+    assert len(payload) == 2403
     assert hashlib.sha256(payload).hexdigest() == (
-        "fc86adbbc506b2edd489926a31b97fd2e56a781a9eeb1c29291e9a509d912f67"
+        "1da7d86790a4fef7cbf07c8ccd545b3b1a07969bff9b59d3b654eed240dd562f"
     )
 
 
