@@ -39,7 +39,7 @@ def _require_git_worktree(root: Path) -> None:
         text=True,
     )
     if result.returncode != 0:
-        sys.exit(f"error: not a git worktree: {root!s}")
+        sys.exit("error: repository root is not a Git worktree")
 
 
 def _tracked_files(root: Path) -> list[str]:
@@ -51,7 +51,7 @@ def _tracked_files(root: Path) -> list[str]:
         text=True,
     )
     if result.returncode != 0:
-        sys.exit(f"error: git ls-files failed: {result.stderr.strip()}")
+        sys.exit("error: unable to enumerate tracked files")
     return sorted(p for p in result.stdout.split("\0") if p)
 
 
@@ -65,8 +65,11 @@ def _classify(path: str) -> str:
 
 def _nonblank_noncomment(root: Path, rel: str) -> int:
     """Count nonblank non-comment lines in a Python source file."""
+    entry = root / rel
+    if entry.is_symlink() or not entry.is_file():
+        return 0
     try:
-        lines = (root / rel).read_text(encoding="utf-8", errors="replace").splitlines()
+        lines = entry.read_text(encoding="utf-8", errors="replace").splitlines()
     except OSError:
         return 0
     return sum(bool(ln.strip()) and not ln.lstrip().startswith("#") for ln in lines)
@@ -74,8 +77,11 @@ def _nonblank_noncomment(root: Path, rel: str) -> int:
 
 def _count_test_fns(root: Path, rel: str) -> int:
     """Count ``def test_`` function definitions in a tracked Python file."""
+    entry = root / rel
+    if entry.is_symlink() or not entry.is_file():
+        return 0
     try:
-        text = (root / rel).read_text(encoding="utf-8", errors="replace")
+        text = entry.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return 0
     return sum(1 for ln in text.splitlines() if ln.lstrip().startswith("def test_"))
@@ -98,8 +104,9 @@ def measure_repository(root: Path, timestamp: str | None = None, top_n: int = 10
     sizes: list[tuple[int, str]] = []
 
     for rel in tracked:
+        entry = root / rel
         try:
-            size = (root / rel).stat().st_size
+            size = entry.stat().st_size if entry.is_file() and not entry.is_symlink() else 0
         except OSError:
             size = 0
         area = _classify(rel)
@@ -157,7 +164,7 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     root = Path(args.repo_root).resolve()
     if not root.is_dir():
-        sys.exit(f"error: not a directory: {root!s}")
+        sys.exit("error: repository root is not a directory")
     data = measure_repository(root, timestamp=args.timestamp, top_n=args.top)
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
 

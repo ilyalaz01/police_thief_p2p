@@ -43,7 +43,7 @@ They are not universal or future-operation claims.
 | Gmail API operations | 0 observed | No Gmail credentials or send operation performed; remains BLOCKED in `docs/OFFICIAL_SUBMISSION_READINESS.md` |
 | Public tunnel / ngrok | 0 current | Historical public self-test evidence only; not a current claimed cost |
 | Counted league operations | 0 | No counted game performed; BLOCKED pending bilateral authorization |
-| GitHub repository (free tier) | $0 for current usage | Public repository under free plan limits; unmeasured if limits are exceeded |
+| GitHub repository and CI billing | Unmeasured — excluded from runtime totals | No GitHub billing record was supplied; public visibility does not prove account-level cost |
 
 **Limitation:** `$0 observed` applies only to the accepted scoped runs listed above. Development
 electricity, networking, hardware depreciation, human time, and future operations are not covered.
@@ -113,9 +113,9 @@ These quantities cannot be truthfully derived from the repository alone.
 
 | Unmeasured item | Formula / symbol | Collection plan |
 |---|---|---|
-| CPU time per game | `T_cpu` seconds/game | Instrument `Simulator.run_game()` with `time.perf_counter()` |
+| CPU time per game | `T_cpu` seconds/game | Instrument `evaluation.runner.run_game()` with `time.perf_counter()` |
 | RAM peak per game | `M_peak` MB/game | Use `tracemalloc` or OS-level profiling |
-| Electricity per game | `E = T_cpu * W_tdp / 3600` kWh (where `W_tdp` is hardware TDP) | Requires hardware TDP and measured CPU time |
+| Electricity per game | `E = T_cpu * W_tdp / 3_600_000` kWh (`T_cpu` in seconds, `W_tdp` in watts) | Requires hardware TDP and measured CPU time; this is an upper-bound proxy, not a power-meter reading |
 | Artifact / result storage | `C_storage = S_GB * P_gb_mo * N_months` (S_GB = stored GB, P_gb_mo = price per GB per month, N_months = retention period) | Measure artifact directory size after matches; obtain host/cloud storage pricing |
 | Public tunnel cost | `C_tunnel = N_hours * P_tunnel_hr` | Obtain vendor pricing; measure active tunnel hours |
 | CI compute (GitHub Actions) | `C_ci = N_minutes * P_ci_min` | Obtain GitHub billing report; measure workflow minutes |

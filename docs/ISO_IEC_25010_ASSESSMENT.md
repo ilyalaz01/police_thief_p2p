@@ -12,6 +12,9 @@ was engaged. Gaps are recorded honestly and are not claimed as closed.
 Source authority for all game, interoperability, and audit claims remains
 [`RULES_AND_INTEROP_BASELINE.md`](../RULES_AND_INTEROP_BASELINE.md).
 
+Current reconciliation: **GUI-001: DONE** on shared `main` through Phase 4D7C. This assessment
+incorporates that accepted Live/Replay evidence without implying final-submission readiness.
+
 ---
 
 ## 1. Functional suitability
@@ -20,11 +23,11 @@ Covers functional completeness, functional correctness, and functional appropria
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | Deterministic rules engine (Rules 46/47, barriers, scoring, survival); role-legal observations; alternating Thief-first turns; four-tool FastMCP exchange; commit-reveal; audit/replay; schema 1.1 artifact builders; 305/305 passing tests; conformance 125/125 |
+| **Current evidence** | Deterministic rules engine (Rules 46/47, barriers, scoring, survival); role-legal observations; alternating Thief-first turns; four-tool FastMCP exchange; commit-reveal; audit/replay; schema 1.1 artifact builders; 312/312 passing tests; conformance 125/125; Phase 4D7C role-safe Live GUI |
 | **Measurable indicator** | Test suite pass rate; conformance vector pass rate; frozen manifest 7/7 |
 | **Honest status** | SUBSTANTIAL — core offline function is proven |
-| **Remaining gap** | Live GUI (runtime-fed) not implemented (`GUI-001`); counted league games blocked (`HUM-001`); two-repository submission assembly not complete (`SUB-001`); safe reproducible research publication not yet produced (`RES-001`) |
-| **Proposed owner/action** | `GUI-001`: implement role-legal live view; `HUM-001`: obtain bilateral approvals; `SUB-001`: assemble final role repositories; `RES-001`: publish safe reproducible research evidence |
+| **Remaining gap** | Counted league games are blocked (`HUM-001`); two-repository submission assembly is incomplete (`SUB-001`); safe reproducible research publication is not yet produced (`RES-001`) |
+| **Proposed owner/action** | `HUM-001`: obtain bilateral approvals; `SUB-001`: assemble final role repositories; `RES-001`: publish safe reproducible research evidence |
 
 ---
 
@@ -38,7 +41,7 @@ Covers time behaviour, resource utilisation, and capacity.
 | **Measurable indicator** | Turn decision latency (ms); game throughput (games/second); peak RAM; CPU time per game |
 | **Honest status** | PARTIAL — capacity model is defined; measurements are unmeasured |
 | **Remaining gap** | No measured CPU time, RAM peak, or latency under load; multi-game concurrency untested at scale; public transport latency is historical evidence only |
-| **Proposed owner/action** | Instrument `Simulator.run_game()` with `time.perf_counter()` and `tracemalloc`; run load test against `config/rate_limits.v1.json` bounds |
+| **Proposed owner/action** | Instrument `evaluation.runner.run_game()` with `time.perf_counter()` and `tracemalloc`; run a bounded offline load test against `config/rate_limits.v1.json` |
 
 ---
 
@@ -63,11 +66,11 @@ user interface aesthetics, and accessibility.
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | Complete CLI manual in `README.md` (Phase 4D6); guarded `--help` output; operation-classification table; offline Replay HTML with accessible Previous/Next keyboard controls; fail-closed `Verified OK`/`TAMPERED` verdict; error recovery guidance in README Troubleshooting section |
-| **Measurable indicator** | CLI help test pass rate; governance/link tests; manual section coverage |
-| **Honest status** | PARTIAL |
-| **Remaining gap** | Runtime-fed Live GUI not implemented; reviewed public-safe screenshots not retained; belief heatmap display absent (`GUI-001`) |
-| **Proposed owner/action** | `GUI-001`: implement live role-local view and capture reviewed screenshots |
+| **Current evidence** | Complete CLI manual in `README.md` (Phase 4D6); guarded `--help`; operation-classification table; Phase 4D7C runtime-fed role-local belief heatmap with exact turn banners; fail-closed Replay; accessible native controls; reviewed Live and `Verified OK` screenshots |
+| **Measurable indicator** | CLI/help and presentation test pass rate; governance/link checks; retained visual evidence |
+| **Honest status** | SUBSTANTIAL for the shared offline application |
+| **Remaining gap** | No formal user study or accessibility audit; the viewer and evidence are not yet assembled into both final role repositories (`SUB-001`) |
+| **Proposed owner/action** | `SUB-001`: validate both role-repository user workflows; retain any formal usability/accessibility findings without inventing scores |
 
 ---
 
@@ -77,7 +80,7 @@ Covers maturity, availability, fault tolerance, and recoverability.
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | 305 deterministic offline tests; 93.44% branch coverage; 7/7 frozen hashes guard behavioral regressions; malformed frames fail closed; equivocation rejected; profile mismatch stops before play; queue backpressure and bounded capacity tested; Gatekeeper admission/close atomic |
+| **Current evidence** | 312 deterministic offline tests; 92.51% branch coverage; 7/7 frozen hashes guard behavioral regressions; malformed frames fail closed; equivocation rejected; profile mismatch stops before play; queue backpressure and bounded capacity tested; Gatekeeper admission/close atomic |
 | **Measurable indicator** | Test pass rate; branch coverage %; frozen manifest; Hcommit pass rate |
 | **Honest status** | SUBSTANTIAL for offline scope |
 | **Remaining gap** | FastMCP server in-process restart not supported (deliberately process-scoped); no measured MTBF under sustained real-team load; counted-game reliability unvalidated |
@@ -131,10 +134,10 @@ Covers adaptability, installability, and replaceability.
 
 | # | Characteristic | Honest status | Key gap | TODO |
 |---|---|---|---|---|
-| 1 | Functional suitability | SUBSTANTIAL | Live GUI; counted games; submission repos | GUI-001, HUM-001, SUB-001 |
+| 1 | Functional suitability | SUBSTANTIAL | Counted games; submission repos; research publication | HUM-001, SUB-001, RES-001 |
 | 2 | Performance efficiency | PARTIAL | CPU/RAM/latency unmeasured | CON-001 measurement plan |
 | 3 | Compatibility | SUBSTANTIAL (offline) | Real-team bilateral; artifact scope | HUM-001 |
-| 4 | Usability | PARTIAL | Live GUI; screenshots | GUI-001 |
+| 4 | Usability | SUBSTANTIAL (shared offline app) | Formal user/accessibility study; final role-repository workflows | SUB-001 |
 | 5 | Reliability | SUBSTANTIAL (offline) | Server restart; load reliability | CON-001 |
 | 6 | Security | SUBSTANTIAL (offline) | Production audit; tunnel auth | HUM-001 |
 | 7 | Maintainability | SUBSTANTIAL | Docstring inventory; extension policy | DOCS-002, EXT-001 |
