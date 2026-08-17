@@ -1,0 +1,99 @@
+{
+  "phase": "4D9",
+  "schema": "audit_v1",
+  "status": "GREEN",
+  "tasks": {
+    "RES-001": "DONE",
+    "VIS-001": "DONE",
+    "COST-001": "IN_PROGRESS_RUNTIME_MEASUREMENTS_OPEN"
+  },
+  "operation_class": "LOCAL_SIMULATOR_EXPERIMENT",
+  "commits": {
+    "initial_red": "155666a",
+    "preregistered_design": "74ea8f9",
+    "publication_green": "caf13d3",
+    "visual_review_red": "476cc6d",
+    "visual_review_green": "2d817b7"
+  },
+  "initial_red": {
+    "passed": 1,
+    "failed": 4,
+    "simulator_games_before_design_commit": 0
+  },
+  "design": {
+    "method": "paired_one_factor_at_a_time_screening",
+    "global_sensitivity_claimed": false,
+    "board_sizes": [7, 9, 11],
+    "survival_thresholds": [35, 50, 70],
+    "settings": 5,
+    "scenarios": 3,
+    "seeds": 40,
+    "police_policies": 2,
+    "thief_policies": 2,
+    "published_games": 2400
+  },
+  "publication": {
+    "raw_rows": 2400,
+    "summary_rows": 20,
+    "effect_rows": 16,
+    "illegal_actions": 0,
+    "figures": 2,
+    "figure_dimensions": "1200x700",
+    "notebook_equivalent": true,
+    "primary_academic_citations": 3,
+    "byte_identical_regeneration": true
+  },
+  "observed_results": {
+    "negative_board_size_effects": "8/8",
+    "positive_survival_threshold_effects": "4/8",
+    "zero_survival_threshold_effects": "4/8",
+    "tactical_wins_greedy_wins_ties": "3/3/4",
+    "largest_capture_delta_percentage_points": -23.333333
+  },
+  "validation": {
+    "focused_contracts": "5/5",
+    "full_pytest": "334/334",
+    "branch_coverage_percent": 92.59,
+    "coverage_threshold_percent": 85.0,
+    "ruff_errors": 0,
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "research_python_files_over_150": 0,
+    "maximum_research_python_counted_lines": 136,
+    "staged_public_snapshot_files": 272,
+    "staged_public_snapshot_secret_findings": 0,
+    "matched_sensitive_values_printed_or_retained": false
+  },
+  "first_composed_gate_correction": {
+    "pytest_failure": "accepted_GUI_001_DONE_literal_reformatted",
+    "targeted_test_after_restore": "1/1",
+    "scanner_findings": 8,
+    "finding_scope": "pre_existing_ignored_local_evidence_and_ignored_historical_workspace_copy",
+    "new_tracked_publication_finding": false
+  },
+  "frozen_and_semantic_changes": {
+    "frozen_files_changed": false,
+    "champion_changed": false,
+    "game_rules_changed": false,
+    "scent_changed": false,
+    "mcp_or_wire_changed": false,
+    "artifact_or_consensus_changed": false,
+    "dependencies_or_lock_changed": false,
+    "new_ai_ml_search": false
+  },
+  "operations": {
+    "local_simulator_experiment": true,
+    "local_interoperability_test": false,
+    "public_transport_test": false,
+    "peer_started": false,
+    "tunnel": false,
+    "gmail": false,
+    "external_team_contact": false,
+    "uncounted_warmup": false,
+    "counted_game": false,
+    "league_reporting": false,
+    "submission_repository_or_tag": false
+  },
+  "next_offline_milestone": "COST-001_BOUNDED_LOCAL_RUNTIME_MEASUREMENT"
+}
