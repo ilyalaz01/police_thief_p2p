@@ -70,11 +70,14 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## DOCS-002 — Complete docstrings and building-block contracts
 
-- Milestone: D2; Priority: P2; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: REF-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D2; Priority: P2; Status: DONE; Owner role: Core Architecture
+- Dependencies: REF-001; Evidence: Phase 4D8 RED/GREEN inventory,
+  `docs/BUILDING_BLOCK_CONTRACTS.md`, and `docs/audits/PHASE4D8_PACKAGE_CONTRACTS.md`.
 - Definition of Done: every module/class/function documents purpose and public blocks document
   input, output, setup, validation and edge behavior; an automated inventory is green.
-- Validation commands: `uv run ruff check src tests`; documented docstring audit command.
+- Validation commands: `uv run pytest -q
+  tests/integration/test_governance/test_package_building_blocks.py --no-cov`;
+  `uv run ruff check src tests tools`.
 - Hard stop/escalation: doc changes must not redefine higher-authority behavior.
 
 ## TST-001 — Reorganize and document test layers
@@ -111,8 +114,9 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## PKG-001 — Audit package/API/path/dependency organization
 
-- Milestone: D2; Priority: P2; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: SDK-001, CFG-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D2; Priority: P2; Status: DONE; Owner role: Core Architecture
+- Dependencies: SDK-001, CFG-001; Evidence: `docs/PACKAGE_AUDIT.md`, team author metadata,
+  explicit export/package/import regressions, and Phase 4D8 audit evidence.
 - Definition of Done: exports, `__init__`, relative paths, attribution and dependency pins are
   audited; `pyproject.toml` stays authoritative and workflow remains uv-only.
 - Validation commands: `uv sync`; `uv run pytest`; repository command scan.
@@ -162,8 +166,9 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## COST-001 — Produce applicable cost/capacity analysis
 
-- Milestone: D3; Priority: P3; Status: PLANNED; Owner role: Release Engineering
-- Dependencies: RE-001, measured usage; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D3; Priority: P3; Status: IN_PROGRESS; Owner role: Release Engineering
+- Dependencies: RE-001, measured usage; Evidence: partner-authored deterministic repository
+  measurement tool, corrected `docs/COST_AND_CAPACITY_ANALYSIS.md`, and Phase 4D7A audit.
 - Definition of Done: local compute/storage/network and any actual API/token costs are measured,
   assumptions dated, scaling forecasted, and non-applicable categories explained.
 - Validation commands: reproducible measurement command and arithmetic review.
@@ -171,16 +176,19 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## ISO-001 — Assess ISO/IEC 25010 quality characteristics
 
-- Milestone: D3; Priority: P2; Status: PLANNED; Owner role: Shared Review
-- Dependencies: QLT-001, UX-001, SEC-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D3; Priority: P2; Status: DONE; Owner role: Shared Review
+- Dependencies: QLT-001, UX-001, SEC-001; Evidence: corrected
+  `docs/ISO_IEC_25010_ASSESSMENT.md` covers all eight characteristics and Phase 4D7A records
+  evidence, gaps, metrics, owners, and the explicit non-certification boundary.
 - Definition of Done: all eight characteristics have scoped metrics, evidence, gaps and owners.
 - Validation commands: matrix/link audit and reviewer sign-off.
 - Hard stop/escalation: no certification claim; this is an internal assessment.
 
 ## EXT-001 — Formalize extension points and compatibility policy
 
-- Milestone: D2; Priority: P2; Status: PLANNED; Owner role: Core Architecture
-- Dependencies: SDK-001, PKG-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D2; Priority: P2; Status: DONE; Owner role: Core Architecture
+- Dependencies: SDK-001, PKG-001; Evidence: `docs/EXTENSION_POINTS.md`, existing protocol/factory
+  tests, and Phase 4D8 package/extension governance tests.
 - Definition of Done: existing policy/scent/evaluation/profile extension interfaces, lifecycle,
   compatibility and tests are documented; plugin/middleware applicability is decided.
 - Validation commands: interface contract tests and `uv run pytest`.

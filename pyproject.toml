@@ -2,6 +2,7 @@
 name = "police-thief-lab"
 version = "1.0.0"
 description = "Deterministic Phase 1 laboratory for Police-Thief P2P"
+authors = [{ name = "Police-Thief P2P Student Team" }]
 requires-python = ">=3.11"
 license = "MIT"
 dependencies = [

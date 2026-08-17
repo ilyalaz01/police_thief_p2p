@@ -94,6 +94,9 @@ FastMCP transport, Gatekeeper, and official artifacts
 Each peer is a separate process with private local truth. Strategies receive observations rather
 than the opponent's hidden coordinate. The [architecture plan](docs/PLAN.md) contains C4, process,
 turn, audit, deployment, and artifact flows. The [SDK manual](docs/SDK.md) lists stable operations.
+The [building-block catalogue](docs/BUILDING_BLOCK_CONTRACTS.md),
+[extension policy](docs/EXTENSION_POINTS.md), and [package audit](docs/PACKAGE_AUDIT.md) define the
+customization and packaging boundaries without changing game semantics.
 
 ## Peer CLI reference
 
@@ -287,6 +290,11 @@ changes follow the documented workflow and produce inspectable evidence.
 - [Live GUI and Replay Viewer](docs/REPLAY_VIEWER.md)
 - [Operational configuration](docs/CONFIGURATION.md)
 - [SDK entry point](docs/SDK.md)
+- [Production building-block contracts](docs/BUILDING_BLOCK_CONTRACTS.md)
+- [Extension and compatibility policy](docs/EXTENSION_POINTS.md)
+- [Python package audit](docs/PACKAGE_AUDIT.md)
+- [Cost and capacity analysis](docs/COST_AND_CAPACITY_ANALYSIS.md)
+- [ISO/IEC 25010 internal assessment](docs/ISO_IEC_25010_ASSESSMENT.md)
 - [Architecture decisions](docs/adr/README.md)
 - [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
 - [Release engineering](docs/RELEASE_ENGINEERING.md)

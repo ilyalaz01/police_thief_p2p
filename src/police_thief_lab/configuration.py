@@ -44,6 +44,7 @@ class OperationalConfig:
 
 
 def _require_string(value: Any, field: str) -> str:
+    """Compute the internal require string step used by module."""
     if not isinstance(value, str) or not value:
         raise ValueError(f"operational config {field} must be a non-empty string")
     return value
@@ -83,6 +84,7 @@ def load_operational_config(path: Path) -> OperationalConfig:
 
 
 def _credential_assignment(line: str) -> bool:
+    """Compute the internal credential assignment step used by module."""
     env_match = _ENV_CREDENTIAL.match(line)
     if env_match and env_match.group("value").strip(' "\''):
         return True

@@ -18,6 +18,7 @@ class RateWindow:
         clock: Callable[[], float],
         sleep: Callable[[float], None],
     ) -> None:
+        """Initialize RateWindow with its validated setup values and private state."""
         self._config = config
         self._clock = clock
         self._sleep = sleep

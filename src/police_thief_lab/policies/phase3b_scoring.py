@@ -7,7 +7,9 @@ from .phase3b_replies import _hypothetical_police_actions, modeled_replies
 
 
 class _SearchScoringMixin:
+    """Represent SearchScoringMixin as one cohesive typed implementation boundary."""
     def _value(self, observation, action, thief: Position):
+        """Compute the internal value step used by _SearchScoringMixin."""
         if self.last_search_nodes >= self.node_budget:
             return -1000.0, dict.fromkeys(FEATURES, 0.0), ()
         obstacles = blocked(observation)
@@ -60,6 +62,7 @@ class _SearchScoringMixin:
         return value, components, replies
 
     def _components(self, observation, police, old_thief, thief, barrier, obstacles):
+        """Compute the internal components step used by _SearchScoringMixin."""
         old_area = reachable_area(old_thief, observation.board_size, blocked(observation))
         thief_area = reachable_area(thief, observation.board_size, frozenset(obstacles))
         thief_exits = len(neighbours(thief, observation.board_size, frozenset(obstacles)))
@@ -80,6 +83,7 @@ class _SearchScoringMixin:
         }
 
     def _simple_next_police_value(self, observation, action, thief, obstacles):
+        """Compute the internal simple next police value step used by _SearchScoringMixin."""
         police = target_of(action, observation.local.own_position)
         barrier = action.barrier_position if action.move_type is MoveType.BARRIER else None
         if police == thief or barrier == thief:
@@ -88,6 +92,7 @@ class _SearchScoringMixin:
         return self._sum(self._components(observation, police, thief, thief, barrier, after))
 
     def _sum(self, components: dict[str, float]) -> float:
+        """Compute the internal sum step used by _SearchScoringMixin."""
         return sum(
             value for name, value in components.items() if name not in self.disabled_features
         )

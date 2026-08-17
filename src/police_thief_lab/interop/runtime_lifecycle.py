@@ -18,7 +18,9 @@ from .runtime_models import (
 
 
 class _RuntimeLifecycleMixin:
+    """Represent RuntimeLifecycleMixin as one cohesive typed implementation boundary."""
     def _diagnostic(self, event: str, **extra: Any) -> None:
+        """Compute the internal diagnostic step used by _RuntimeLifecycleMixin."""
         self.events.append(
             {
                 "event": event,
@@ -37,6 +39,7 @@ class _RuntimeLifecycleMixin:
         )
 
     def _negotiate(self) -> None:
+        """Compute the internal negotiate step used by _RuntimeLifecycleMixin."""
         self.phase = PeerPhase.NEGOTIATING
         self.roundtrip_ms.append(
             self.client.call("negotiate", self.profile.agreement(self.role.value, self.identity))
@@ -52,6 +55,7 @@ class _RuntimeLifecycleMixin:
         self._diagnostic("negotiated")
 
     def _receive_and_maybe_act(self) -> None:
+        """Compute the internal receive and maybe act step used by _RuntimeLifecycleMixin."""
         self.phase = PeerPhase.WAITING
         deadline = DeadlineTracker(self.profile.timeouts["turn"])
         ready: list[TurnMessage] = []
@@ -72,6 +76,7 @@ class _RuntimeLifecycleMixin:
             self.turn_ms.append((time.perf_counter() - began) * 1000)
 
     def _apply_inbound(self, message: TurnMessage) -> None:
+        """Compute the internal apply inbound step used by _RuntimeLifecycleMixin."""
         if message.sender == self.role.value:
             raise ValueError("peer sent a turn under our role")
         self.state.opponent_scent = tuple(

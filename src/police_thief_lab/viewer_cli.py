@@ -28,6 +28,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _object(path: Path) -> dict[str, Any]:
+    """Compute the internal object step used by module."""
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise ValueError(f"{path.name} must contain a JSON object")

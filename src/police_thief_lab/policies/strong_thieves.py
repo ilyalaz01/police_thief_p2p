@@ -12,6 +12,7 @@ class ScentEvasionThief:
     """Avoid Police scent while preserving space and interior clearance."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize ScentEvasionThief with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:
@@ -42,6 +43,7 @@ class BarrierAwareThief:
     """Favor cells with multiple exits and low enclosure vulnerability."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize BarrierAwareThief with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:
@@ -74,6 +76,7 @@ class LookaheadEvasionThief:
     """Two-step local evasion using only public graph and observed Police scent."""
 
     def __init__(self, seed: int) -> None:
+        """Initialize LookaheadEvasionThief with its validated setup values and private state."""
         self._random = random.Random(seed)
 
     def choose_action(self, observation: Observation) -> Action:
@@ -111,5 +114,6 @@ class LookaheadEvasionThief:
 
 
 def _require_thief(observation: Observation) -> None:
+    """Compute the internal require thief step used by module."""
     if observation.local.role is not Role.THIEF:
         raise ValueError("Thief policy requires a Thief observation")

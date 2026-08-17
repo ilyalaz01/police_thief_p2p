@@ -60,6 +60,7 @@ def run(path: Path, *, exclude_relative_dirs: frozenset[str] = frozenset()) -> G
 def _report(
     *, status: CheckStatus, explanation: str, exit_code: ExitCode, duration_seconds: float
 ) -> GateReport:
+    """Compute the internal report step used by module."""
     check = CheckResult(
         check_id="scan_secrets",
         status=status,

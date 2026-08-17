@@ -7,15 +7,18 @@ from typing import Any
 
 
 class ProtocolViolation(ValueError):  # noqa: N818 - protocol term
+    """Represent ProtocolViolation as one cohesive typed implementation boundary."""
     pass
 
 
 class Equivocation(ProtocolViolation):
+    """Represent Equivocation as one cohesive typed implementation boundary."""
     pass
 
 
 @dataclass(frozen=True, slots=True)
 class TurnMessage:
+    """Represent TurnMessage as one cohesive typed implementation boundary."""
     step: int
     sender: str
     hint: str
@@ -28,10 +31,12 @@ class TurnMessage:
     win_claim: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
+        """Perform to dict through the documented TurnMessage contract."""
         return asdict(self)
 
     @classmethod
     def from_dict(cls, value: dict[str, Any]) -> TurnMessage:
+        """Perform from dict through the documented TurnMessage contract."""
         required = {"step", "sender", "hint", "smell_grid", "commit", "timestamp"}
         missing = required - value.keys()
         if missing:
@@ -55,6 +60,7 @@ class TurnInbox:
     """Deduplicate, reject equivocation, and buffer a bounded future window."""
 
     def __init__(self, next_step: int = 1, window: int = 4) -> None:
+        """Initialize TurnInbox with its validated setup values and private state."""
         self.next_step = next_step
         self.window = window
         self.played: dict[int, str] = {}
@@ -62,6 +68,7 @@ class TurnInbox:
         self.absorbed = 0
 
     def offer(self, raw: dict[str, Any]) -> list[TurnMessage]:
+        """Validate and classify an inbound turn under the ordering and duplicate contract."""
         message = TurnMessage.from_dict(raw)
         existing = self.played.get(message.step)
         buffered = self.buffered.get(message.step)

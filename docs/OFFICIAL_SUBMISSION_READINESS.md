@@ -55,12 +55,14 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Complete package/building-block and extension documentation (`PKG-001`, `DOCS-002`, `EXT-001`).
-2. Produce safe reproducible research figures and the academic analysis (`RES-001`, `VIS-001`).
-3. Integrate and review the independently owned cost/ISO evidence (`COST-001`, `ISO-001`).
-4. Create and validate two role-specific final repositories, cross-links, README copies, and tags
+1. Produce safe reproducible research figures and the academic analysis (`RES-001`, `VIS-001`).
+2. Add bounded CPU/RAM/latency measurements to the accepted cost analysis (`COST-001`).
+3. Create and validate two role-specific final repositories, cross-links, README copies, and tags
    only after the content is final (`SUB-001`).
-5. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
+4. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
+
+Package/building-block/extension documentation and the internal ISO assessment are already
+accepted; they are not repeated as future work.
 
 No item in this sequence changes the frozen competitive policy or resolves a negotiated difference
 without explicit evidence.

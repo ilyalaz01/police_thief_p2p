@@ -112,10 +112,10 @@ Replay HTML app and a live-view model with no opponent-coordinate field. Phase 4
 runtime-fed atomic role-local snapshots, loopback serving, exact turn banners, a scent/belief
 heatmap, and reviewed synthetic screenshots.
 
-Planned or incomplete: reproducible public research package, notebook/analysis visuals, cost/ISO
-analysis, package/extension documentation, two-role-repository submission assembly, and bilateral
-readiness. The Live GUI, offline Replay view, structured tests, CLI UX, and CI/offline release
-tooling are implemented.
+Planned or incomplete: reproducible public research package, notebook/analysis visuals, stronger
+CPU/RAM/latency cost measurements, two-role-repository submission assembly, and bilateral
+readiness. Package/building-block/extension documentation and the internal ISO assessment are
+accepted alongside the Live GUI, Replay view, structured tests, CLI UX, and release tooling.
 
 Milestones: D0 governance baseline; D1 technical compliance; D2 release/offline operations and CLI
 manual; D3 GUI/replay plus research/quality publication; D4 two-repository submission assembly and

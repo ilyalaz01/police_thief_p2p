@@ -42,6 +42,7 @@ class PeerRuntime(
     _RuntimeArtifactsMixin,
     _RuntimePresentationMixin,
 ):
+    """Represent PeerRuntime as one cohesive typed implementation boundary."""
     def __init__(
         self,
         role: Role,
@@ -59,6 +60,7 @@ class PeerRuntime(
         real_team: bool = False,
         live_view_path: Path | None = None,
     ) -> None:
+        """Initialize PeerRuntime with its validated setup values and private state."""
         self.role, self.profile, self.config = role, profile, config_from_profile(profile)
         self.host, self.port, self.artifact_dir = host, port, artifact_dir
         advertised_url = advertised_url or f"http://{host}:{port}/mcp"
@@ -106,6 +108,7 @@ class PeerRuntime(
         self.turn_ms: list[float] = []
 
     def run(self) -> dict[str, Any]:
+        """Execute the bounded lifecycle and return its terminal result."""
         try:
             self._publish_live(TurnBanner.LOCKED)
             if self.real_team:

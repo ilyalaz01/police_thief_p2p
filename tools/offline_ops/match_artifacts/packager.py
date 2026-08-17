@@ -96,6 +96,7 @@ def write_package(
 
 
 def _remove_flat_directory(directory: Path) -> None:
+    """Compute the internal remove flat directory step used by module."""
     for child in directory.iterdir():
         child.unlink()
     directory.rmdir()

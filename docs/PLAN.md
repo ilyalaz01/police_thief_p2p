@@ -191,7 +191,8 @@ Extension points already implemented: `DecisionBackend`, `ScentModel`, policy fa
 process-scoped FastMCP server lifecycle and negotiated scope ambiguity. REF-001
 closed with no Python source/test file above 150 counted lines. CFG-001 closed with a strict
 versioned operational boundary; SDK-001 closed with a single documented facade. Fixed game/profile
-values remain non-configurable.
+values remain non-configurable. Phase 4D8 records their lifecycle and compatibility policy,
+documents public building blocks, and audits the package without adding a dynamic runtime plugin.
 
 ## Remaining proposed architecture
 
@@ -200,6 +201,7 @@ The [FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md),
 [versioned configuration](adr/ADR-006-versioned-configuration-boundary.md), and
 [offline release tooling](RELEASE_ENGINEERING.md) are implemented and accepted. The artifact-backed
 Replay app and runtime-fed role-safe Live GUI are implemented with reviewed screenshots. Remaining
-proposals are safe research/visualization, package/extension documentation, ISO/cost assessment,
-and final two-role-repository assembly. No remaining proposal may expose hidden truth, imply
-authorization, or silently change frozen or negotiated behavior.
+proposals are safe research/visualization, stronger runtime cost/capacity measurement, and final
+two-role-repository assembly. The package/building-block/extension audit and internal ISO
+assessment are accepted. No remaining proposal may expose hidden truth, imply authorization, or
+silently change frozen or negotiated behavior.

@@ -8,6 +8,7 @@ from urllib.parse import SplitResult, urlsplit, urlunsplit
 
 
 def validate_mcp_url(value: str, *, public: bool = False) -> str:
+    """Validate and return mcp url under the documented module contract."""
     parsed = urlsplit(value)
     allowed = {"https"} if public else {"http", "https"}
     if parsed.scheme not in allowed or not parsed.hostname:
@@ -58,6 +59,7 @@ def redact_secrets(value: Any) -> Any:
 
 @dataclass(frozen=True, slots=True)
 class EndpointConfig:
+    """Represent EndpointConfig as one cohesive typed implementation boundary."""
     bind_host: str
     local_port: int
     advertised_url: str
@@ -70,6 +72,7 @@ class EndpointConfig:
     public: bool = False
 
     def __post_init__(self) -> None:
+        """Validate all constructed values before the instance crosses its public boundary."""
         if not self.bind_host.strip():
             raise ValueError("local bind host is required")
         if not 1 <= self.local_port <= 65535:

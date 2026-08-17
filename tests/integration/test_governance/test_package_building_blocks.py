@@ -42,9 +42,11 @@ def test_editable_production_symbols_have_docstrings() -> None:
         if ast.get_docstring(tree) is None:
             missing.append(f"{relative}:1:module")
         for node in ast.walk(tree):
-            if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
-                if ast.get_docstring(node) is None:
-                    missing.append(f"{relative}:{node.lineno}:{node.name}")
+            if (
+                isinstance(node, ast.ClassDef | ast.FunctionDef | ast.AsyncFunctionDef)
+                and ast.get_docstring(node) is None
+            ):
+                missing.append(f"{relative}:{node.lineno}:{node.name}")
     assert missing == []
 
 
@@ -92,12 +94,16 @@ def test_source_uses_package_relative_internal_imports() -> None:
     for path in (ROOT / "src" / "police_thief_lab").rglob("*.py"):
         tree = ast.parse(path.read_text(encoding="utf-8"))
         for node in ast.walk(tree):
-            if isinstance(node, ast.ImportFrom) and node.level == 0:
-                if (node.module or "").startswith("police_thief_lab"):
-                    violations.append(f"{_relative(path)}:{node.lineno}")
-            if isinstance(node, ast.Import):
-                if any(alias.name.startswith("police_thief_lab") for alias in node.names):
-                    violations.append(f"{_relative(path)}:{node.lineno}")
+            if (
+                isinstance(node, ast.ImportFrom)
+                and node.level == 0
+                and (node.module or "").startswith("police_thief_lab")
+            ):
+                violations.append(f"{_relative(path)}:{node.lineno}")
+            if isinstance(node, ast.Import) and any(
+                alias.name.startswith("police_thief_lab") for alias in node.names
+            ):
+                violations.append(f"{_relative(path)}:{node.lineno}")
     assert violations == []
 
 

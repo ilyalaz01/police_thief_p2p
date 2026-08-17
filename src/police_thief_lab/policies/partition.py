@@ -63,6 +63,7 @@ class PartitionPolice:
     """Build a public separator, otherwise move toward its nearest unfinished cell."""
 
     def __init__(self, seed: int, variant: SeparatorVariant = SeparatorVariant.CLOSED_WALL) -> None:
+        """Initialize PartitionPolice with its validated setup values and private state."""
         self._random = random.Random(seed)
         self.variant = variant
         self.plan: SeparatorPlan | None = None

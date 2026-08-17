@@ -104,6 +104,7 @@ def run_batch(
 
 
 def _aggregate(games: tuple[GameResult, ...], elapsed: float) -> dict:
+    """Compute the internal aggregate step used by module."""
     captures = sum(game.terminal_reason != TerminalReason.THIEF_SURVIVED.value for game in games)
     thief_actions = [game.thief_actions for game in games]
     by_scenario: dict[str, list[GameResult]] = defaultdict(list)
@@ -153,4 +154,5 @@ def _aggregate(games: tuple[GameResult, ...], elapsed: float) -> dict:
 
 
 def _low_side(position: Position, axis: str, index: int) -> bool:
+    """Compute the internal low side step used by module."""
     return position.col < index if axis == "vertical" else position.row < index

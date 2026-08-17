@@ -30,6 +30,7 @@ class BeliefSearchPolice:
         node_budget: int = 256,
         plausible_states: int = 12,
     ) -> None:
+        """Initialize BeliefSearchPolice with its validated setup values and private state."""
         if node_budget < 1 or plausible_states < 1:
             raise ValueError("search budgets must be positive")
         self._random = random.Random(seed)
@@ -43,6 +44,7 @@ class BeliefSearchPolice:
         self.belief_update_times: list[float] = []
 
     def choose_action(self, observation: Observation) -> Action:
+        """Choose a deterministic legal action using only the supplied role-local observation."""
         if observation.local.role is not Role.POLICE:
             raise ValueError("BeliefSearchPolice requires a Police observation")
         started = time.perf_counter()
@@ -76,6 +78,7 @@ class BeliefSearchPolice:
         return choice
 
     def _state_value(self, observation: Observation, action: Action, thief: Position) -> float:
+        """Compute the internal state value step used by BeliefSearchPolice."""
         obstacles = blocked(observation)
         police = target_of(action, observation.local.own_position)
         barrier = action.barrier_position if action.move_type is MoveType.BARRIER else None

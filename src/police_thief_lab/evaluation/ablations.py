@@ -23,6 +23,7 @@ class AblatedBackend:
     """Transform only opponent_scent before delegating to a policy."""
 
     def __init__(self, backend: DecisionBackend, mode: ScentAblation, seed: int) -> None:
+        """Initialize AblatedBackend with its validated setup values and private state."""
         self.backend = backend
         self.mode = mode
         self._random = random.Random(seed)
@@ -49,6 +50,7 @@ class LaggedScentBackend:
     """Supply scent from exactly N prior observations for controlled diagnostics."""
 
     def __init__(self, backend: DecisionBackend, age: int) -> None:
+        """Initialize LaggedScentBackend with its validated setup values and private state."""
         if age < 0:
             raise ValueError("scent age cannot be negative")
         self.backend = backend

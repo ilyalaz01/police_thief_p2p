@@ -9,6 +9,7 @@ from ..presentation import TurnBanner, build_live_view
 
 
 class _RuntimePresentationMixin:
+    """Represent RuntimePresentationMixin as one cohesive typed implementation boundary."""
     def _publish_live(self, banner: TurnBanner) -> None:
         """Publish only the observation boundary plus a truth-free belief."""
         if self.live_view_publisher is None:

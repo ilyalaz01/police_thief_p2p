@@ -32,6 +32,7 @@ class ApiGatekeeper:
         clock: Callable[[], float] = time.monotonic,
         sleep: Callable[[float], None] = time.sleep,
     ) -> None:
+        """Initialize ApiGatekeeper with its validated setup values and private state."""
         self.config = config
         self._clock, self._sleep = clock, sleep
         self._queue: queue.Queue[WorkItem] = queue.Queue(config.queue_max)
@@ -77,6 +78,7 @@ class ApiGatekeeper:
         return result
 
     def _worker(self) -> None:
+        """Compute the internal worker step used by ApiGatekeeper."""
         while True:
             try:
                 item = self._queue.get(timeout=0.01)

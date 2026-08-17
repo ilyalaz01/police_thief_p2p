@@ -26,6 +26,7 @@ _VIEW_FIELDS = {
 
 
 def _pair(value: Any, label: str, size: int) -> tuple[int, int]:
+    """Compute the internal pair step used by module."""
     if not isinstance(value, list) or len(value) != 2 or not all(
         isinstance(part, int) for part in value
     ):
@@ -37,6 +38,7 @@ def _pair(value: Any, label: str, size: int) -> tuple[int, int]:
 
 
 def _view(raw: Any) -> RoleLocalView:
+    """Compute the internal view step used by module."""
     if not isinstance(raw, dict) or set(raw) != _VIEW_FIELDS:
         raise ValueError("live view fields are not the approved exact set")
     size = raw["board_size"]
@@ -97,6 +99,7 @@ class LiveViewPublisher:
     """Publish a bounded role-safe history with atomic same-directory replacement."""
 
     def __init__(self, path: Path, history_limit: int = 32) -> None:
+        """Initialize LiveViewPublisher with its validated setup values and private state."""
         if history_limit < 1:
             raise ValueError("history_limit must be positive")
         self.path = path

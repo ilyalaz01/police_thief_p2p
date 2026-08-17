@@ -65,6 +65,7 @@ def scan_path(
 
 
 def _iter_files(root: Path, exclude_relative_dirs: frozenset[str]) -> Iterator[Path]:
+    """Compute the internal iter files step used by module."""
     stack = [root]
     while stack:
         current = stack.pop()
@@ -79,6 +80,7 @@ def _iter_files(root: Path, exclude_relative_dirs: frozenset[str]) -> Iterator[P
 
 
 def _scan_entry(root: Path, entry: Path) -> list[SecretFinding]:
+    """Compute the internal scan entry step used by module."""
     relative = str(entry.relative_to(root))
 
     # Escape is checked before a bare symlink check so an escaping symlink
@@ -97,10 +99,12 @@ def _scan_entry(root: Path, entry: Path) -> list[SecretFinding]:
 
 
 def _matches_any(name: str, patterns: tuple[str, ...]) -> bool:
+    """Compute the internal matches any step used by module."""
     return any(fnmatch.fnmatch(name, pattern) for pattern in patterns)
 
 
 def _scan_content(root: Path, entry: Path, relative: str) -> list[SecretFinding]:
+    """Compute the internal scan content step used by module."""
     if entry.stat().st_size > _MAX_SCANNED_FILE_BYTES:
         return []
     try:
@@ -119,6 +123,7 @@ def _scan_content(root: Path, entry: Path, relative: str) -> list[SecretFinding]
 
 
 def _is_non_artifact_nonce(entry: Path, relative: str, text: str) -> bool:
+    """Compute the internal is non artifact nonce step used by module."""
     if entry.suffix != ".json" or not NONCE_KEY_PATTERN.search(text):
         return False
     if entry.name.startswith(ARTIFACT_NAME_PREFIXES):

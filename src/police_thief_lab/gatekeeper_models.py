@@ -61,6 +61,7 @@ class CallMetric:
 
 
 def _positive_integer(value: Any, field: str) -> int:
+    """Compute the internal positive integer step used by module."""
     if not isinstance(value, int) or isinstance(value, bool) or value < 1:
         raise ValueError(f"rate-limit {field} must be a positive integer")
     return value

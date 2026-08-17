@@ -13,6 +13,7 @@ from .crypto import hcommit
 
 @dataclass(frozen=True, slots=True)
 class MatchProfile:
+    """Represent MatchProfile as one cohesive typed implementation boundary."""
     board_config: dict[str, Any]
     coordinate_convention: str = "row_col_zero_based"
     turn_profile: str = "reference-v3 alternating, Thief first"
@@ -31,13 +32,16 @@ class MatchProfile:
     step_numbering: str = "global_sequence"
 
     def object(self) -> dict[str, Any]:
+        """Perform object through the documented MatchProfile contract."""
         return asdict(self)
 
     def bytes(self) -> bytes:
+        """Perform bytes through the documented MatchProfile contract."""
         return json.dumps(self.object(), ensure_ascii=False, indent=2).encode("utf-8")
 
     @property
     def sha256(self) -> str:
+        """Perform sha256 through the documented MatchProfile contract."""
         return hashlib.sha256(self.bytes()).hexdigest()
 
     def reference_terms(self) -> dict[str, Any]:
@@ -60,6 +64,7 @@ class MatchProfile:
         }
 
     def agreement(self, sender: str, identity: dict[str, Any] | None = None) -> dict[str, Any]:
+        """Perform agreement through the documented MatchProfile contract."""
         nonce = secrets.token_hex(16)
         terms = self.reference_terms()
         return {
@@ -83,6 +88,7 @@ class MatchProfile:
         }
 
     def verify_agreement(self, message: dict[str, Any]) -> None:
+        """Verify and report agreement under the documented MatchProfile contract."""
         if message["terms"] != self.reference_terms():
             raise ValueError("mandatory negotiated terms mismatch")
         if hcommit(message["terms"], message["nonce"]) != message["signature"]:

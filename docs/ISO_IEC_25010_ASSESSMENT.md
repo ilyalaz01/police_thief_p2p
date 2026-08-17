@@ -12,8 +12,9 @@ was engaged. Gaps are recorded honestly and are not claimed as closed.
 Source authority for all game, interoperability, and audit claims remains
 [`RULES_AND_INTEROP_BASELINE.md`](../RULES_AND_INTEROP_BASELINE.md).
 
-Current reconciliation: **GUI-001: DONE** on shared `main` through Phase 4D7C. This assessment
-incorporates that accepted Live/Replay evidence without implying final-submission readiness.
+Current reconciliation: **GUI-001, DOCS-002, PKG-001, and EXT-001: DONE** on the shared baseline
+through Phase 4D8. This assessment incorporates that evidence without implying final-submission
+readiness.
 
 ---
 
@@ -108,11 +109,11 @@ Covers modularity, reusability, analysability, modifiability, and testability.
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | All project-authored Python files ≤150 nonblank/non-comment lines (`REF-001` DONE); Ruff zero errors; SDK facade (`SDK-001` DONE); versioned configuration boundary (`CFG-001` DONE); layered tests with documented boundaries (`TST-001` DONE); `DecisionBackend`, `ScentModel`, and policy factory extension points; ADRs for six architectural decisions |
+| **Current evidence** | All project-authored Python files ≤150 nonblank/non-comment lines (`REF-001` DONE); Ruff zero errors; SDK facade (`SDK-001` DONE); versioned configuration boundary (`CFG-001` DONE); layered tests (`TST-001` DONE); complete editable-production docstring inventory plus frozen external contracts (`DOCS-002` DONE); audited package and typed extension lifecycle/compatibility policy (`PKG-001`, `EXT-001` DONE); six ADRs |
 | **Measurable indicator** | Ruff error count; 150-line compliance count; test collection count; SDK facade inventory test |
 | **Honest status** | SUBSTANTIAL |
-| **Remaining gap** | Complete public-symbol docstring inventory absent (`DOCS-002` PLANNED); project-wide duplication analysis absent; extension-point lifecycle and compatibility policy incomplete (`EXT-001` PLANNED) |
-| **Proposed owner/action** | `DOCS-002`: automated docstring inventory; `EXT-001`: document extension contracts |
+| **Remaining gap** | Final role-specific package/export validation and release tags remain incomplete (`SUB-001`); no exhaustive clone detector is claimed beyond the reviewed structural DRY assessment |
+| **Proposed owner/action** | `SUB-001`: validate both final role repositories after content approval |
 
 ---
 
@@ -140,7 +141,7 @@ Covers adaptability, installability, and replaceability.
 | 4 | Usability | SUBSTANTIAL (shared offline app) | Formal user/accessibility study; final role-repository workflows | SUB-001 |
 | 5 | Reliability | SUBSTANTIAL (offline) | Server restart; load reliability | CON-001 |
 | 6 | Security | SUBSTANTIAL (offline) | Production audit; tunnel auth | HUM-001 |
-| 7 | Maintainability | SUBSTANTIAL | Docstring inventory; extension policy | DOCS-002, EXT-001 |
+| 7 | Maintainability | SUBSTANTIAL | Final role-package/export validation | SUB-001 |
 | 8 | Portability | SUBSTANTIAL | macOS CI; submission layout | GIT-001, SUB-001 |
 
 **This assessment is internal and evidence-based. It is not a certification, not a claim of
