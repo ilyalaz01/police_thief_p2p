@@ -1,7 +1,7 @@
 {
   "phase": "4D7A",
   "schema": "audit_v1",
-  "status": "GREEN",
+  "status": "GREEN_AFTER_INTEGRATION_CORRECTION",
   "scope_completed": [
     "deterministic_measurement_tool",
     "cost_and_capacity_analysis",
@@ -9,7 +9,6 @@
     "governance_tests"
   ],
   "scope_still_open": [
-    "runtime_fed_live_gui",
     "counted_league_games",
     "bilateral_real_team_compatibility",
     "research_publication",
@@ -18,7 +17,9 @@
   ],
   "commits": {
     "red": "6c65779",
-    "green": "c142b4c"
+    "green": "c142b4c",
+    "correction_red": "33fc79e6b6d277ba0cd87c4bc3c8aeccda5a495b",
+    "correction_green": "730521e031e20873591ff5f23d432b5be81457ce"
   },
   "focused_tests": {
     "collected": 8,
@@ -48,7 +49,19 @@
     "match_artifact": "skipped_no_path_requested",
     "scan_secrets": "pass_zero_findings"
   },
-  "new_python_max_counted_lines": 141,
+  "new_python_max_counted_lines": 148,
+  "integration_validation": {
+    "focused_tests": "11/11",
+    "full_tests": "323/323",
+    "branch_coverage_percent": 92.51,
+    "correction_red": "4_failed_7_passed",
+    "live_gui_reconciled_from_phase": "4D7C",
+    "ruff_errors": 0,
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "targeted_secret_scans": "pass_zero_findings"
+  },
   "measure_tool_output_snapshot": {
     "tracked_file_count": 233,
     "tracked_byte_total": 1064600,
@@ -59,11 +72,23 @@
     "test_function_count": 270,
     "test_function_count_method": "counted_def_test_in_tracked_py_files"
   },
+  "post_correction_measure_tool_output_snapshot": {
+    "tracked_file_count": 247,
+    "tracked_byte_total": 1203078,
+    "external_gitlink_byte_total": 0,
+    "python_source_file_count": 64,
+    "python_test_file_count": 73,
+    "python_source_nonblank_noncomment_lines": 4522,
+    "python_test_nonblank_noncomment_lines": 4671,
+    "test_function_count": 280
+  },
   "cost_analysis": {
     "observed_external_llm_calls": 0,
     "observed_external_llm_tokens": 0,
     "observed_external_llm_spend_usd": "$0 observed",
     "student_tooling_excluded": true,
+    "github_billing": "unmeasured_no_billing_record_supplied",
+    "electricity_formula": "E_kwh = T_cpu_seconds * W_tdp_watts / 3600000",
     "storage_formula": "C_storage = S_GB * P_gb_mo * N_months",
     "future_scenario": "symbolic_formula_T_in_T_out_P_in_P_out_no_vendor_selected"
   },
@@ -98,6 +123,9 @@
     "cost doc contains $0 observed LLM spend, storage formula, and symbolic LLM formula variables",
     "iso doc labeled internal assessment not certification and covers all 8 characteristics",
     "iso doc explicitly keeps research publication open as a remaining gap",
+    "invalid repository errors do not disclose absolute input paths",
+    "submodule gitlink host-directory metadata contributes zero tracked bytes",
+    "living ISO assessment reconciles the accepted Phase 4D7C Live GUI",
     "all new python files at or below 150 nonblank/non-comment lines"
   ],
   "limitations": [
@@ -106,7 +134,8 @@
     "cpu_time ram public_latency multi_game_capacity are unmeasured listed with formulas",
     "no vendor or model selected for hypothetical future llm scenario",
     "iso assessment is internal no external audit or certification body engaged",
-    "live_gui counted_games bilateral_compatibility research_publication final_submission remain open"
+    "counted_games bilateral_compatibility research_publication final_submission remain open",
+    "cpu_time ram public_latency multi_game_capacity remain unmeasured after the analysis deliverable"
   ],
   "operations": {
     "peer_started": false,

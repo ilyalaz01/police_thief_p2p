@@ -3,7 +3,8 @@
 > Retrospective baseline created after the validated prototype.
 > These documents did not exist before the prototype and do not claim otherwise.
 
-Status: **GREEN — COST-001 and ISO-001 implemented; all gates pass.**
+Status: **GREEN after integration correction — ISO-001 evidence is complete; COST-001 now has an
+honest reproducible analysis, while its stronger runtime-measurement follow-up remains open.**
 
 This phase does not claim ISO certification, production readiness, counted-game readiness,
 external-team compatibility, or final-submission readiness. Gaps are recorded honestly below.
@@ -17,6 +18,34 @@ checked against `RULES_AND_INTEROP_BASELINE.md`, `docs/INTEROP_DECISIONS.md`,
 The cost analysis is bounded to the accepted scoped offline runs only. No vendor prices,
 email accounts, Gmail operations, tunnel credentials, or league token totals were invented.
 The ISO assessment is internal only; no certification body was engaged.
+
+## Integration correction after Phase 4D7C
+
+The three partner-authored commits remain intact. After Phase 4D7C merged into `main`, orchestrator
+review added a transparent RED/GREEN correction rather than rewriting that history.
+
+RED commit `33fc79e6b6d277ba0cd87c4bc3c8aeccda5a495b` produced 4 intended failures and
+7 passes. It proved that:
+
+- an invalid-root error disclosed its absolute temporary path;
+- the submodule gitlink used host-directory metadata (4,096 bytes on the review environment), so
+  supposedly reproducible totals varied by platform;
+- the electricity conversion divided watt-seconds by 3,600 instead of 3,600,000;
+- GitHub cost was called `$0` without billing evidence, and the living ISO assessment still listed
+  the now-accepted Live GUI as missing.
+
+GREEN commit `730521e031e20873591ff5f23d432b5be81457ce` corrected each issue without
+adding a dependency. Error text is value-free, symlinks/non-file gitlinks are never read or assigned
+host filesystem bytes, GitHub billing is explicitly unmeasured, electricity units are correct, the
+real `evaluation.runner.run_game()` measurement target is named, and the ISO document incorporates
+Phase 4D7C. Focused correction tests passed 11/11; the combined current suite passed 323/323 with
+92.51% branch coverage. Ruff remained at zero; Hcommit 5/5, frozen 7/7, conformance 125/125,
+and targeted scans of the changed docs/tool passed with zero findings. `measure.py` remains under
+the governed limit at 148 counted lines.
+
+The original 313-test/public-clone and repository-size snapshot below is retained as historical
+Phase 4D7A evidence. It is not silently relabeled as the post-GUI state. The corrected current
+tracked snapshot is recorded in the machine-readable audit.
 
 ## TDD evidence
 
@@ -150,8 +179,9 @@ docs/audits/phase4d7a_quality_assessment.json (new)
   and a clearly-labeled fictional example are used instead.
 - The ISO assessment is internal. No external audit, certification body, or third-party review
   was performed.
-- Live GUI, counted games, bilateral real-team compatibility, research publication, and final
-  submission assembly remain open under `GUI-001`, `HUM-001`, `RES-001`, and `SUB-001`.
+- At the original Phase 4D7A base, Live GUI was still open; Phase 4D7C later closed `GUI-001` in the
+  shared baseline. Counted games, bilateral compatibility, research publication, final submission
+  assembly, and measured CPU/RAM/latency remain open.
 
 ## Frozen and operational boundary
 
