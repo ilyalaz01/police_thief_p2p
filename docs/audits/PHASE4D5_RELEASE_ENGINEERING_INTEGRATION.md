@@ -3,9 +3,10 @@
 > Retrospective baseline created after the validated prototype.
 > These documents did not exist before the prototype and do not claim otherwise.
 
-Status: **GREEN** for RE-001 and SEC-001 scope only. This phase does not claim release, real-team,
-uncounted-warm-up, or counted-match readiness, and does not claim the wider project suite is fully
-green (see Known open item below).
+Status: **GREEN** for RE-001 and SEC-001 scope only. The public CI suite and every required
+quality-gate validator pass. Five clean-worktree environmental skips remain classified separately
+and are not evidence for professor-owned or retained-public-evidence checks. This phase does not
+claim real-team, uncounted-warm-up, or counted-match readiness.
 
 ## Accepted state and old branch
 
@@ -50,14 +51,17 @@ No old flat `tests/test_*.py` file was restored.
    RE-001/SEC-001 sections of `docs/TODO.md`, the one RE-001-owned row of
    `docs/GUIDELINES_COMPLIANCE_MATRIX.md`, and added the operator manual to README's documentation
    index.
+5. `test: normalize artifact AST across Python versions` — retained the accepted `9fbc...` AST
+   contract while removing the Python 3.12/3.13 difference in whether `ast.dump()` includes empty
+   fields. Production artifact source and the expected contract hash remain unchanged.
 
 ## RED evidence (from PR #11 GitHub Actions, before this integration)
 
 | Check | Result |
 |---|---|
-| `pytest` | FAIL |
-| `hcommit_vectors` | FAIL (exit code 4 — cause not reproduced locally despite extensive investigation, including a matched-environment Linux/WSL reproduction; documented as a separate, still-open mystery, not addressed by this integration) |
-| `frozen_manifest` | FAIL (same exit-code-4 symptom as `hcommit_vectors`) |
+| `pytest` | FAIL — stale live test references plus the cross-Python AST representation |
+| `hcommit_vectors` | FAIL (exit code 4 — the old path was absent from GitHub's current-main PR merge tree) |
+| `frozen_manifest` | FAIL (exit code 4 — the old path was absent from the same merge tree) |
 | `conformance_kit` | PASS |
 | Ruff | PASS |
 | `scan_secrets` | PASS |
@@ -71,12 +75,11 @@ Four local Windows failures, confirmed by direct reproduction before any fix was
   `UnicodeDecodeError` (cp1255)
 - `test_reference_runtime_artifacts_score_uid_and_consensus_end_to_end[survival-expected_score1]` —
   `UnicodeDecodeError` (cp1255)
-- `test_public_helpers_constants_signatures_and_moved_ast_are_exact` — **not** a `UnicodeDecodeError**;
-  a genuine, pre-existing `AssertionError` (AST-hash mismatch: expected `9fbc2558...f26f7cfdf`,
-  actual `7e73215f...cdd1b3`), confirmed identical on Windows and Linux, and confirmed present on
-  `origin/main` outside this integration branch. Not caused by encoding, not fixed by Step 4's
-  encoding-only change, and out of this step's scope to fix further (would require altering a hash
-  or assertion).
+- `test_public_helpers_constants_signatures_and_moved_ast_are_exact` — **not** a `UnicodeDecodeError`;
+  Python 3.12's default `ast.dump()` includes empty AST fields that Python 3.13 omits. The mismatch
+  reproduced exactly under the CI-pinned Python 3.12 and disappeared under Python 3.13. A stable
+  empty-field-neutral test serializer now produces the original expected `9fbc2558...f26f7cfdf`
+  hash on both versions without changing artifact source or the expected hash.
 
 ## Final local validation
 
@@ -84,8 +87,8 @@ Four local Windows failures, confirmed by direct reproduction before any fix was
 |---|---|
 | Focused offline-ops (`tests/offline_ops`) | PASS — 96/96, 0 skipped |
 | Governance (`test_project_governance.py`, `test_quality_evidence.py`, `test_test_architecture.py`) | PASS — 16/16 |
-| Windows UTF-8 regression (3 authorized files) | 3/4 originally-failing cases now PASS; 1/4 remains RED for the unrelated pre-existing reason above |
-| Full `uv run pytest` | 1 failed, 288 passed, 5 skipped |
+| Windows/cross-Python regression | PASS — all four originally failing cases; AST contract passes on Python 3.12 and 3.13 |
+| Full Python 3.12 `uv run pytest` | PASS — 289 passed, 5 classified environmental skips, 0 failed |
 | Branch coverage | 94.07%; threshold 85% |
 | Ruff `src tests tools/offline_ops` | PASS — zero errors |
 | Hcommit golden vectors | PASS — 1 test asserting 5/5 vectors and extra-field binding |
@@ -93,25 +96,18 @@ Four local Windows failures, confirmed by direct reproduction before any fix was
 | Frozen production manifest | PASS — 1 test asserting 7/7 exact hashes |
 | Python 150-line regression | PASS — zero violations across `src/`, `tests/`, `tools/offline_ops/` |
 | Retained-evidence secret scan (`scan-secrets`) | PASS — 0 findings |
-| Real composed `quality-gate` | **exit 3** — 5 of 6 required checks PASS (`ruff`, `hcommit_vectors`,
-  `frozen_manifest`, `conformance_kit`, `scan_secrets`); `match_artifact` correctly `SKIPPED` (no
-  `--match-path` given); `pytest` FAILs solely because of the one unrelated, pre-existing,
-  out-of-scope AST-hash defect above |
+| Real composed `quality-gate` | PASS — exit 0; pytest, Ruff, Hcommit, frozen manifest, conformance and secret scan pass; optional `match_artifact` is explicitly skipped because no path was requested |
+| GitHub PR #12 quality gate | PASS — Python 3.12, run `32034896295`, job `95402903503` |
 
-## Known open items (not claimed as passing)
+## Environmental skips and scope
 
-1. `test_public_helpers_constants_signatures_and_moved_ast_are_exact` — pre-existing, platform-
-   independent AST-hash mismatch, present on `main` outside this branch, unrelated to RE-001/SEC-001,
-   and outside this integration's authorized scope to fix (would require altering a hash/assertion).
-   This is why `quality-gate` does not currently reach exit 0.
-2. `hcommit_vectors`/`frozen_manifest` reporting `exit code 4` specifically on the original PR #11
-   GitHub Actions run — investigated at length (source review, two independent matched-environment
-   Linux/WSL reproductions of the exact OS/Python/`uv` versions and every relevant environment
-   variable) without reproducing the failure. Cause remains unconfirmed and is not resolved by this
-   integration; the reconciled paths in this branch are verified correct and passing both locally
-   and via a faithful Linux reproduction.
+The five skips in a clean public checkout are one professor-differential check whose private source
+is deliberately not distributed and four retained-public-evidence checks whose local evidence is
+not part of a fresh clone. They do not block the public RE-001 validators, but they are not relabeled
+as executed release evidence. The authorized local evidence workspace must still run them before a
+real-team readiness claim.
 
-Neither item required modifying `src/police_thief_lab/**`, game rules, `ScentTacticalPolice` or any
+The fixes did not modify `src/police_thief_lab/**`, game rules, `ScentTacticalPolice` or any
 strategy, observation semantics, `MatchProfile`/Hcommit/scent/wire/retry/deadline/duplicate/
 equivocation behavior, artifact schemas/bytes/hashes/consensus scope, Rule 47, any frozen file, or
 the conformance-kit submodule. No professor-owned or private material was copied. No peer, tunnel,
@@ -124,5 +120,4 @@ Gmail, league, or gameplay operation occurred.
   `tests/integration/`, `tests/system/`, and `tests/offline_ops/` architecture and Phase 4D3/4D4
   evidence remain exactly as accepted on `origin/main`.
 - No game, strategy, wire, artifact, frozen, external-team, or operational behavior changed.
-- The final worktree is clean; only `docs/runbook_prompt.md` remains untracked by design and is not
-  part of this branch's history.
+- The final committed worktree is clean.

@@ -25,7 +25,8 @@
     "port": "a28c7e2",
     "path_reconciliation": "a461104",
     "utf8_encoding_fix": "f70a0f3",
-    "docs_reconciliation": "884687e"
+    "docs_reconciliation": "884687e",
+    "cross_python_ast_fix": "e4bcc6d"
   },
   "red_evidence_pr11_ci": {
     "pytest": "fail",
@@ -39,11 +40,17 @@
     "test_reference_artifacts_map_two_exact_group_commits": "unicode_decode_error",
     "test_reference_runtime_artifacts_score_uid_and_consensus_end_to_end_capture": "unicode_decode_error",
     "test_reference_runtime_artifacts_score_uid_and_consensus_end_to_end_survival": "unicode_decode_error",
-    "test_public_helpers_constants_signatures_and_moved_ast_are_exact": "assertion_error_not_encoding"
+    "test_public_helpers_constants_signatures_and_moved_ast_are_exact": "python_3_12_ast_empty_field_difference"
   },
   "windows_utf8_fix_result": {
     "fixed": 3,
-    "still_red_unrelated": 1
+    "still_red_unrelated": 0
+  },
+  "cross_python_ast_fix_result": {
+    "python_3_12": "pass",
+    "python_3_13": "pass",
+    "expected_hash_changed": false,
+    "production_source_changed": false
   },
   "focused_offline_ops": {
     "collected": 96,
@@ -59,8 +66,8 @@
   },
   "full_tests": {
     "collected": 294,
-    "passed": 288,
-    "failed": 1,
+    "passed": 289,
+    "failed": 0,
     "skipped": 5,
     "xfailed": 0
   },
@@ -74,9 +81,9 @@
   "frozen_manifest": "7/7",
   "python_150_line_violations": 0,
   "quality_gate_real_run": {
-    "exit_code": 3,
+    "exit_code": 0,
     "checks": {
-      "pytest": "fail",
+      "pytest": "pass",
       "ruff": "pass",
       "hcommit_vectors": "pass",
       "frozen_manifest": "pass",
@@ -85,10 +92,17 @@
       "scan_secrets": "pass"
     }
   },
-  "known_open_items": [
-    "test_public_helpers_constants_signatures_and_moved_ast_are_exact: pre-existing, platform-independent AST-hash mismatch, present on main outside this branch, unrelated to RE-001/SEC-001, out of scope to fix here",
-    "hcommit_vectors/frozen_manifest exit-code-4 symptom on the original PR #11 GitHub Actions run: investigated extensively including matched-environment Linux/WSL reproduction, not reproduced, cause unconfirmed"
-  ],
+  "github_pr_12_quality_gate": {
+    "status": "pass",
+    "python": "3.12",
+    "run_id": 32034896295,
+    "job_id": 95402903503
+  },
+  "environmental_skips": {
+    "count": 5,
+    "classified": true,
+    "claimed_as_executed_evidence": false
+  },
   "kickoff_and_guidelines_absent": true,
   "old_flat_tests_restored": false,
   "game_strategy_wire_artifact_frozen_external_operational_changed": false,
