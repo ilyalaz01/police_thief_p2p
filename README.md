@@ -314,6 +314,7 @@ changes follow the documented workflow and produce inspectable evidence.
 - [ISO/IEC 25010 internal assessment](docs/ISO_IEC_25010_ASSESSMENT.md)
 - [Architecture decisions](docs/adr/README.md)
 - [Prompt engineering log](docs/PROMPT_ENGINEERING_LOG.md)
+- [Git, Pull Request, and release governance](docs/GIT_RELEASE_GOVERNANCE.md)
 - [Release engineering](docs/RELEASE_ENGINEERING.md)
 
 ## License and credits

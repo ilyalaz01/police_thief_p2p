@@ -32,6 +32,8 @@ jobs:
       - name: Checkout repository (including the pinned conformance-kit submodule)
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
+          # GIT-001 audits real branch/merge/tag provenance; a shallow checkout cannot prove it.
+          fetch-depth: 0
           submodules: recursive
           persist-credentials: false
 

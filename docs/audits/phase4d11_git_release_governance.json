@@ -1,0 +1,81 @@
+{
+  "phase": "4D11",
+  "status": "GREEN",
+  "classification": "OFFLINE_REPOSITORY_GOVERNANCE_AUDIT",
+  "history": {
+    "cutoff_commit": "c1e0d5f7930ab24e1dd5106ced4b55347e344374",
+    "accepted_pr_merge_count": 18,
+    "accepted_pr_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "accepted_partner_commit_count": 8,
+    "partner_author_email": "ndvp39@gmail.com",
+    "baseline_tag_name": "team-baseline-v1",
+    "baseline_tag_type": "tag",
+    "baseline_tag_object": "e8fea4afe22cb503503a2ce071b86a409c73db23",
+    "baseline_tag_target": "96d3878ed1ac3776810284be7c23315ba3ad53e1"
+  },
+  "review": {
+    "pull_request_19_url": "https://github.com/ilyalaz01/police_thief_p2p/pull/19",
+    "quality_gate_run": "32066390100",
+    "quality_gate_status": "PASS",
+    "independent_review_exception": "Formal independent GitHub review is not present on every historical pull request; no review was fabricated."
+  },
+  "workflow_controls": {
+    "full_history_and_tags_in_ci": true,
+    "persisted_checkout_credentials": false,
+    "force_push_allowed": false,
+    "authorship_reassignment_allowed": false,
+    "self_merge_exception_requires_green_gate_and_evidence_review": true
+  },
+  "final_submission_tag": {
+    "name": "v1.0-submission",
+    "state": "ABSENT_PENDING_SUB_001",
+    "creation_authorized": false
+  },
+  "retrospective_limitations": [
+    "Formal PRD, PLAN, and TODO documents followed the validated prototype.",
+    "Historical pre-code TDD cannot be proven retroactively.",
+    "A complete historical prompt log cannot be reconstructed.",
+    "Independent human review is not inspectable for every historical pull request."
+  ],
+  "scope_boundaries": {
+    "production_source_changed": false,
+    "gameplay_started": false,
+    "public_network_started": false,
+    "opponent_contacted": false,
+    "gmail_started": false,
+    "final_repository_or_tag_created": false
+  },
+  "validation": {
+    "focused_governance_tests": "5/5",
+    "combined_governance_tests_after_correction": "13/13",
+    "first_full_run": "347 passed, 1 stale matrix TODO-cell failure, coverage 92.59%",
+    "final_full_suite": "348/348, no skips or xfails",
+    "combined_coverage_percent": 92.58684863523573,
+    "ruff": "PASS",
+    "hcommit_vectors": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance_vectors": "125/125",
+    "direct_staged_snapshot_scan": "FAIL_CLOSED_8_SYNTHETIC_TEST_FIXTURE_FINDINGS_NO_VALUES_RETAINED",
+    "ci_policy_staged_snapshot_scan": "PASS_ZERO_FINDINGS_EXCLUDING_TESTS_OFFLINE_OPS",
+    "production_source_diff": "EMPTY"
+  }
+}

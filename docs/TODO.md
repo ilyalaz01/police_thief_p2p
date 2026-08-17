@@ -250,11 +250,14 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## GIT-001 — Adopt reviewed branch/PR/release governance
 
-- Milestone: D1; Priority: P2; Status: PLANNED; Owner role: Shared Review
-- Dependencies: GOV-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P2; Status: DONE; Owner role: Shared Review
+- Dependencies: GOV-001; Evidence: `docs/GIT_RELEASE_GOVERNANCE.md`, the annotated
+  `team-baseline-v1` tag, 18 accepted first-parent PR merges through PR #19, preserved partner
+  authorship, full-history CI checkout, and the Phase 4D11 audit/regression contract.
 - Definition of Done: branch, commit, PR review, release/tag, attribution and exception evidence
   are documented and demonstrated on a future change without rewriting honest history.
-- Validation commands: `git log --oneline --decorate`; PR/release evidence review.
+- Validation commands: `git log --first-parent --merges --oneline main`; `git cat-file -t
+  team-baseline-v1`; Phase 4D11 governance test; PR/release evidence review.
 - Hard stop/escalation: never backdate, reassign, force-push, or tag without authorization.
 
 ## SUB-001 — Assemble the official two-repository submission

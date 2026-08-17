@@ -208,7 +208,10 @@ permission, pins `actions/checkout` and `astral-sh/setup-uv` to a specific
 commit SHA (with the corresponding version as a comment) and pins the `uv`
 and Python versions explicitly, uses no repository secrets, performs no
 peer/tunnel/mail/league/gameplay operation, and uploads no match artifact
-or private report.
+or private report. Checkout retains full history and tags (`fetch-depth: 0`)
+so the [Git governance contract](GIT_RELEASE_GOVERNANCE.md) can verify real
+merge lineage, contributor attribution, and annotated tags; credentials are
+still never persisted.
 
 A CI failure on `pytest` that does not reproduce locally on your platform
 most likely reflects a genuine environment difference (for example, text
