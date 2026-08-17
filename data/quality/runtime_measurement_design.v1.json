@@ -1,0 +1,26 @@
+{
+  "game_config": {
+    "barrier_placement_mode": "adjacent_only",
+    "barrier_quota": 14,
+    "blocked_cells": [],
+    "board_size": 7,
+    "police_start": [0, 0],
+    "scent_profile": "subtractive_chebyshev_v1",
+    "survival_threshold": 35,
+    "thief_start": [3, 3],
+    "turn_model": "reference_v3_alternating"
+  },
+  "memory_games": 30,
+  "memory_seed_start": 61000,
+  "percentile_method": "nearest_rank",
+  "police_policy": "ScentTacticalPolice",
+  "scope": "LOCAL_SIMULATOR_EXPERIMENT",
+  "schema": "runtime_measurement_design_v1",
+  "source_tree_sha": "3de0e42237792aa717d19d792ad18f44cced2be4",
+  "status": "PREREGISTERED_BEFORE_MEASUREMENT",
+  "thief_policy": "ScentEvasionThief",
+  "timed_games": 200,
+  "timed_seed_start": 60000,
+  "warmup_games": 20,
+  "warmup_seed_start": 59000
+}
