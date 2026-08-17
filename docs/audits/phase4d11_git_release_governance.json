@@ -66,6 +66,16 @@
   },
   "validation": {
     "focused_governance_tests": "5/5",
-    "full_quality_gate": "PENDING_FINAL_EVIDENCE_COMMIT"
+    "combined_governance_tests_after_correction": "13/13",
+    "first_full_run": "347 passed, 1 stale matrix TODO-cell failure, coverage 92.59%",
+    "final_full_suite": "348/348, no skips or xfails",
+    "combined_coverage_percent": 92.58684863523573,
+    "ruff": "PASS",
+    "hcommit_vectors": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance_vectors": "125/125",
+    "direct_staged_snapshot_scan": "FAIL_CLOSED_8_SYNTHETIC_TEST_FIXTURE_FINDINGS_NO_VALUES_RETAINED",
+    "ci_policy_staged_snapshot_scan": "PASS_ZERO_FINDINGS_EXCLUDING_TESTS_OFFLINE_OPS",
+    "production_source_diff": "EMPTY"
   }
 }

@@ -205,6 +205,8 @@ adds the accepted public-safe sensitivity data flow: preregistered design → pu
 curated rows/summary → hash manifest → notebook and accessible SVG figures. Remaining proposals
 now center on final two-role-repository assembly. Phase 4D10 closes the applicable runtime
 cost/capacity measurement with preregistered local wall/CPU/Python-allocation/result-size evidence.
-The package/building-block/extension audit and internal ISO assessment are accepted. No remaining
-proposal may expose hidden truth, imply authorization, or silently change frozen or negotiated
-behavior.
+Phase 4D11 accepts the inspectable shared-repository Git/PR/tag workflow while preserving its
+retrospective limitations and withholding final submission tags. The package/building-block/
+extension audit and internal ISO assessment are accepted. Remaining offline architecture work is
+the two-role submission export/validation under SUB-001. No remaining proposal may expose hidden
+truth, imply authorization, or silently change frozen or negotiated behavior.
