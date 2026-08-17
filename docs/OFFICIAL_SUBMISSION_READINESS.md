@@ -17,11 +17,13 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
 - historical inspectable public self-test through two HTTPS tunnels;
 - SDK, versioned configuration, Gatekeeper, concurrency/capacity, and offline release/security
   controls;
+- preregistered public-safe local sensitivity data, notebook-equivalent analysis, and accessible
+  deterministic figures;
 - public quality gate: pytest/coverage, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125, and
   secret scan.
 
-These facts do not prove another-team compatibility, counted authorization, final repository
-layout, GUI evidence, Gmail reporting, or Moodle submission.
+These facts do not prove another-team compatibility, counted authorization, final role-repository
+layout, Gmail reporting, or Moodle submission.
 
 ## Official final-delivery ledger
 
@@ -55,14 +57,15 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Produce safe reproducible research figures and the academic analysis (`RES-001`, `VIS-001`).
-2. Add bounded CPU/RAM/latency measurements to the accepted cost analysis (`COST-001`).
+1. Add bounded CPU/RAM/latency measurements to the accepted cost analysis (`COST-001`).
+2. Close the remaining reviewed branch/PR/release evidence gap (`GIT-001`).
 3. Create and validate two role-specific final repositories, cross-links, README copies, and tags
    only after the content is final (`SUB-001`).
 4. Stop for explicit user decisions before opponent contact, tunnels, Gmail, or counted play.
 
 Package/building-block/extension documentation and the internal ISO assessment are already
-accepted; they are not repeated as future work.
+accepted. The public-safe research/visualization package is also complete; these items are not
+repeated as future work.
 
 No item in this sequence changes the frozen competitive policy or resolves a negotiated difference
 without explicit evidence.

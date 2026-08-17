@@ -124,20 +124,26 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## RES-001 — Publish safe reproducible research and sensitivity analysis
 
-- Milestone: D3; Priority: P2; Status: PLANNED; Owner role: Shared Review
-- Dependencies: QLT-001, privacy review; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D3; Priority: P2; Status: DONE; Owner role: Shared Review
+- Dependencies: QLT-001, privacy review; Evidence: the preregistered
+  `data/research/sensitivity_design.v1.json`, public-safe raw/summary results, hash manifest,
+  network-free generator, Phase 4D9 audit, and five research publication contract tests.
 - Definition of Done: public-safe inputs/seeds/commands/results support controlled sensitivity,
   theory/citations and claim-to-data provenance without private/professor content.
-- Validation commands: approved `uv run python experiments/...` commands; artifact/link audit.
+- Validation commands: `uv run python -m tools.research.cli`; `uv run pytest -q
+  tests/integration/test_research/test_sensitivity_publication.py --no-cov`; artifact/link audit.
 - Hard stop/escalation: quarantine any private path, body, instruction, or personal data.
 
 ## VIS-001 — Create reproducible notebook and visualizations
 
-- Milestone: D3; Priority: P2; Status: PLANNED; Owner role: Shared Review
-- Dependencies: RES-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D3; Priority: P2; Status: DONE; Owner role: Shared Review
+- Dependencies: RES-001; Evidence: `notebooks/POLICY_SENSITIVITY_ANALYSIS.md`, two accessible
+  1200×700 SVG figures with labelled axes/legends/Wilson intervals, deterministic hash evidence,
+  and the Phase 4D9 RED/GREEN figure/notebook contract.
 - Definition of Done: a network-free notebook/equivalent regenerates accessible labelled figures
   from published results, with equations, captions and no hidden state/private data.
-- Validation commands: documented `uv run` notebook execution and deterministic output check.
+- Validation commands: `uv run python -m tools.research.cli`; deterministic output and SVG
+  accessibility checks in the Phase 4D9 test.
 - Hard stop/escalation: no new ML/search claim or unverifiable chart.
 
 ## UX-001 — Specify and validate CLI/UI usability

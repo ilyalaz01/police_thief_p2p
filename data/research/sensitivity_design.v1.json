@@ -1,0 +1,128 @@
+{
+  "_schema": "police_thief_sensitivity_design_v1",
+  "status": "PREDECLARED_BEFORE_FIRST_RUN",
+  "operation_class": "LOCAL_SIMULATOR_EXPERIMENT",
+  "research_question": "How do existing board-size and survival-threshold parameters affect capture outcomes for the frozen champion and a direct scent baseline against two existing observation-only Thief policies?",
+  "method": {
+    "name": "paired_one_factor_at_a_time_screening",
+    "baseline": "board_7_survival_35",
+    "paired_dimensions": [
+      "seed",
+      "scenario",
+      "police_policy",
+      "thief_policy"
+    ],
+    "global_sensitivity_claimed": false
+  },
+  "hypotheses": [
+    "Increasing board_size while holding survival_threshold fixed may reduce capture rate.",
+    "Increasing survival_threshold while holding board_size fixed may increase capture rate.",
+    "ScentTacticalPolice may be more robust than ScentGreedyPolice across the predeclared settings."
+  ],
+  "fixed_parameters": {
+    "barrier_quota": 14,
+    "barrier_placement_mode": "adjacent_only",
+    "scent_profile": "subtractive_chebyshev_v1",
+    "turn_model": "reference_v3_alternating",
+    "start_validation_profile": "interop",
+    "blocked_cells": []
+  },
+  "factors": {
+    "board_size": [7, 9, 11],
+    "survival_threshold": [35, 50, 70]
+  },
+  "settings": [
+    {
+      "id": "board_7_survival_35",
+      "factor": "baseline",
+      "value": 0,
+      "board_size": 7,
+      "survival_threshold": 35
+    },
+    {
+      "id": "board_9_survival_35",
+      "factor": "board_size",
+      "value": 9,
+      "board_size": 9,
+      "survival_threshold": 35
+    },
+    {
+      "id": "board_11_survival_35",
+      "factor": "board_size",
+      "value": 11,
+      "board_size": 11,
+      "survival_threshold": 35
+    },
+    {
+      "id": "board_7_survival_50",
+      "factor": "survival_threshold",
+      "value": 50,
+      "board_size": 7,
+      "survival_threshold": 50
+    },
+    {
+      "id": "board_7_survival_70",
+      "factor": "survival_threshold",
+      "value": 70,
+      "board_size": 7,
+      "survival_threshold": 70
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "reference_scaled",
+      "police_start": ["zero", "zero"],
+      "thief_start": ["mid", "mid"]
+    },
+    {
+      "id": "opposite_corners",
+      "police_start": ["last", "last"],
+      "thief_start": ["zero", "zero"]
+    },
+    {
+      "id": "edge_axis",
+      "police_start": ["zero", "mid"],
+      "thief_start": ["last", "mid"]
+    }
+  ],
+  "seeds": {
+    "start": 0,
+    "stop_exclusive": 40
+  },
+  "policies": {
+    "police": [
+      "ScentTacticalPolice",
+      "ScentGreedyPolice"
+    ],
+    "thief": [
+      "BarrierAwareThief",
+      "ScentEvasionThief"
+    ],
+    "frozen_champion": "ScentTacticalPolice"
+  },
+  "metrics": [
+    "capture_rate",
+    "wilson_95_interval",
+    "capture_rate_variance_across_seeds",
+    "mean_police_score",
+    "mean_thief_score",
+    "mean_police_actions",
+    "mean_thief_actions",
+    "mean_barriers_placed",
+    "illegal_action_count",
+    "paired_capture_delta_from_baseline",
+    "elementary_effect_per_parameter_unit"
+  ],
+  "expected_games": 2400,
+  "references": [
+    "https://doi.org/10.1080/00401706.1991.10484804",
+    "https://doi.org/10.1016/j.cpc.2009.09.018",
+    "https://doi.org/10.1080/01621459.1927.10502953"
+  ],
+  "hard_stops": [
+    "Do not change frozen files, game rules, scent, MCP, wire, artifacts, or the champion.",
+    "Do not start a peer, tunnel, public request, Gmail action, opponent contact, warm-up, report, or counted game.",
+    "Do not add or train a new AI, search, or machine-learning policy.",
+    "Do not interpret OAT screening as a global variance-based sensitivity index."
+  ]
+}

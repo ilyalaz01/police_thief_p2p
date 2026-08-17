@@ -77,6 +77,22 @@ print(result.terminal_reason, result.police_score, result.thief_score)
 For repeatable research batches, use the SDK evaluation service or the reviewed scripts in
 `experiments/`. Do not change the frozen champion during integration.
 
+## Reproducible research publication
+
+Regenerate the preregistered, network-free Phase 4D9 study:
+
+```bash
+uv run python -m tools.research.cli
+```
+
+The command runs 2,400 local simulator games through the public SDK and rewrites only the curated
+[manifest](results/research/phase4d9_manifest.json),
+[raw data](results/research/phase4d9_sensitivity.json),
+[summary](results/research/phase4d9_summary.csv),
+[notebook equivalent](notebooks/POLICY_SENSITIVITY_ANALYSIS.md), and two linked SVG figures. The
+[predeclared design](data/research/sensitivity_design.v1.json) uses paired OAT screening; it does
+not claim Sobol/global sensitivity, causality, real-team performance, or a new champion.
+
 ## Architecture
 
 ```text
@@ -293,6 +309,7 @@ changes follow the documented workflow and produce inspectable evidence.
 - [Production building-block contracts](docs/BUILDING_BLOCK_CONTRACTS.md)
 - [Extension and compatibility policy](docs/EXTENSION_POINTS.md)
 - [Python package audit](docs/PACKAGE_AUDIT.md)
+- [Reproducible policy sensitivity analysis](notebooks/POLICY_SENSITIVITY_ANALYSIS.md)
 - [Cost and capacity analysis](docs/COST_AND_CAPACITY_ANALYSIS.md)
 - [ISO/IEC 25010 internal assessment](docs/ISO_IEC_25010_ASSESSMENT.md)
 - [Architecture decisions](docs/adr/README.md)

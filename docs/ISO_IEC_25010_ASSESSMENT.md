@@ -12,9 +12,9 @@ was engaged. Gaps are recorded honestly and are not claimed as closed.
 Source authority for all game, interoperability, and audit claims remains
 [`RULES_AND_INTEROP_BASELINE.md`](../RULES_AND_INTEROP_BASELINE.md).
 
-Current reconciliation: **GUI-001: DONE; DOCS-002, PKG-001, and EXT-001: DONE** on the shared baseline
-through Phase 4D8. This assessment incorporates that evidence without implying final-submission
-readiness.
+Current reconciliation: **GUI-001: DONE; DOCS-002, PKG-001, EXT-001, RES-001, and VIS-001: DONE**
+on the shared baseline through Phase 4D9. This assessment incorporates that evidence without
+implying final-submission readiness.
 
 ---
 
@@ -24,11 +24,11 @@ Covers functional completeness, functional correctness, and functional appropria
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | Deterministic rules engine (Rules 46/47, barriers, scoring, survival); role-legal observations; alternating Thief-first turns; four-tool FastMCP exchange; commit-reveal; audit/replay; schema 1.1 artifact builders; 312/312 passing tests; conformance 125/125; Phase 4D7C role-safe Live GUI |
+| **Current evidence** | Deterministic rules engine (Rules 46/47, barriers, scoring, survival); role-legal observations; alternating Thief-first turns; four-tool FastMCP exchange; commit-reveal; audit/replay; schema 1.1 artifact builders; full passing suite; conformance 125/125; Phase 4D7C role-safe Live GUI; Phase 4D9 reproducible local sensitivity publication |
 | **Measurable indicator** | Test suite pass rate; conformance vector pass rate; frozen manifest 7/7 |
 | **Honest status** | SUBSTANTIAL — core offline function is proven |
-| **Remaining gap** | Counted league games are blocked (`HUM-001`); two-repository submission assembly is incomplete (`SUB-001`); safe reproducible research publication is not yet produced (`RES-001`) |
-| **Proposed owner/action** | `HUM-001`: obtain bilateral approvals; `SUB-001`: assemble final role repositories; `RES-001`: publish safe reproducible research evidence |
+| **Remaining gap** | Counted league games are blocked (`HUM-001`); two-repository submission assembly is incomplete (`SUB-001`) |
+| **Proposed owner/action** | `HUM-001`: obtain bilateral approvals; `SUB-001`: assemble final role repositories |
 
 ---
 
@@ -135,7 +135,7 @@ Covers adaptability, installability, and replaceability.
 
 | # | Characteristic | Honest status | Key gap | TODO |
 |---|---|---|---|---|
-| 1 | Functional suitability | SUBSTANTIAL | Counted games; submission repos; research publication | HUM-001, SUB-001, RES-001 |
+| 1 | Functional suitability | SUBSTANTIAL | Counted games; submission repos | HUM-001, SUB-001 |
 | 2 | Performance efficiency | PARTIAL | CPU/RAM/latency unmeasured | CON-001 measurement plan |
 | 3 | Compatibility | SUBSTANTIAL (offline) | Real-team bilateral; artifact scope | HUM-001 |
 | 4 | Usability | SUBSTANTIAL (shared offline app) | Formal user/accessibility study; final role-repository workflows | SUB-001 |

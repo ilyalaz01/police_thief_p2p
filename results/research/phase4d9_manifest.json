@@ -1,0 +1,56 @@
+{
+  "_schema": "police_thief_research_manifest_v1",
+  "artifacts": {
+    "board_figure": {
+      "bytes": 4260,
+      "path": "assets/research/capture_by_board_size.svg",
+      "sha256": "45fea3339ce77968f0e3af926e2ba8ca2ce075c9a0039f9f5a51390050c90391"
+    },
+    "notebook": {
+      "bytes": 7314,
+      "path": "notebooks/POLICY_SENSITIVITY_ANALYSIS.md",
+      "sha256": "ae0f5334f7086a7efc28e28d05647479d36af4db1e7f6c0f25ec885b02ae7208"
+    },
+    "raw": {
+      "bytes": 1305769,
+      "path": "results/research/phase4d9_sensitivity.json",
+      "sha256": "23e6cbecaa3e8ead20e28ef6143bbdc8a7be35cd1de9c9563e463eda29ce1073"
+    },
+    "summary": {
+      "bytes": 3548,
+      "path": "results/research/phase4d9_summary.csv",
+      "sha256": "f86d9d9cca1fd5e11030fe8c8f01a256da04c85b555cf1ef5f3a0837e106f345"
+    },
+    "survival_figure": {
+      "bytes": 4251,
+      "path": "assets/research/capture_by_survival_threshold.svg",
+      "sha256": "82aaa729c7ec4d2821668dc4dd7313c04c64042c346964f5a2137f0e5b7f1dc6"
+    }
+  },
+  "design": {
+    "bytes": 3683,
+    "path": "data/research/sensitivity_design.v1.json",
+    "sha256": "d52624b4cd877311fd7f2a47acabb1ccd854a59d4688dc288c305318510579e8"
+  },
+  "frozen_files": {
+    "src/police_thief_lab/interop/crypto.py": "6ce9d1c0ea3185c60583d4f4cc0512aadf7a22f2194162a45fb33cfdeaa9294e",
+    "src/police_thief_lab/models.py": "ab0714497d6720d1d06eede6a7b9ea52ebb5b559bddece17de1caecfd6898410",
+    "src/police_thief_lab/policies/tactical.py": "4b158025cf05edb975da1e2cd5b3e0a9b9ac44b42f018e7b8138a4f29b1d4dfb",
+    "src/police_thief_lab/rules.py": "90fd388cf1a4ea318f305b8eb5c692c9d05bdffeca43cad81cb381c6f48657ab",
+    "src/police_thief_lab/scent.py": "27b1b395402b6b072e1b4d78e9e081cbf11806d5f5c4a3c00b1a4c4508faec99",
+    "src/police_thief_lab/simulator.py": "0d9faab437f78e123e1fb4bab178a951866d10d5bd01ccf5df8a67a080f53110",
+    "src/police_thief_lab/turns.py": "38be6e861a2433b81db92f7a9a6f9d422a7c123e159a908110438a07b6a1aca9"
+  },
+  "matched_sensitive_values_retained": false,
+  "operation_class": "LOCAL_SIMULATOR_EXPERIMENT",
+  "record_count": 2400,
+  "source_files": {
+    "tools/research/cli.py": "ea97192f140ca1698cfe7e442755f0adf082f0b9d79836c3c29df8d7b7799839",
+    "tools/research/design.py": "650d7ee936c504a9914c4609a7e444f2ddd8fa299646cb5f6f6e44a24392812b",
+    "tools/research/publication.py": "177a388e845e8d2ab1fae4ff258e1d9e59d97a8774f02128d5c6660aafb87ad2",
+    "tools/research/render.py": "6c83e4e93d1a06a6fcf5708f77284be36d4978f0a09e4b4e69da52d99fe02681",
+    "tools/research/runner.py": "ef918aa0fc24f3099c5f4acf05a524233f816275952497fd7064dbeb14ff2527",
+    "tools/research/statistics.py": "42efcfe3d6b0be68d1dbec22be8c812f5239fe161cb41c707b2bf0c9ee141e80",
+    "tools/research/svg.py": "07b7f353b36674268ae8a3e7cc610f6ce027b79ea4711eab0817f82d5abe4c85"
+  }
+}

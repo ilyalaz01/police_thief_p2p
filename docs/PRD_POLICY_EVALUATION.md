@@ -20,17 +20,20 @@ Current modules provide baseline/tactical/partition/belief/search policies and a
 runner/matrix. This is selected as the implemented laboratory, not as a claim that every policy
 is optimal. Evidence: `tests/integration/test_evaluation/test_evaluation.py`,
 `tests/unit/test_policies/test_phase2_5.py`, `tests/unit/test_policies/test_phase3a.py`,
-`tests/unit/test_policies/test_phase3b.py`, experiment scripts, and phase reports.
+`tests/unit/test_policies/test_phase3b.py`, experiment scripts, phase reports, and the Phase 4D9
+preregistered public-safe sensitivity publication.
 
 Alternatives include exhaustive belief search, neural policies, and online learning; none is
-selected. Unresolved work: safely publish reproducible datasets, sensitivity analysis,
-notebooks/visualizations, and formal performance budgets. The characterized `belief.py` and
-`phase3b.py` structural splits are complete under REF-001.
+selected. The 2,400-game paired OAT publication compares existing policies and parameters without
+training or changing one; it is screening, not Sobol/global sensitivity. Formal performance
+budgets remain under `COST-001`. The characterized `belief.py` and `phase3b.py` structural splits
+are complete under REF-001.
 
 Metrics: identical seeded results; 100% returned actions legal; no hidden-state path; paired win,
 capture, survival, score, turns, and latency summaries. Tests cover seed repetition, ablations,
 strong opponents, budgeted search, oracle exclusion, and legality.
 
 Definition of Done: predeclared hypothesis/config/seeds, TDD evidence, raw-to-summary provenance,
-timing and sensitivity results, review for leakage, full quality gates, and no frozen-policy hash
-change. Frozen boundary: rules, observations, champion, profiles, and interoperability semantics.
+sensitivity results, review for leakage, full quality gates, and no frozen-policy hash change.
+Timing/capacity measurement remains explicitly separate under `COST-001`. Frozen boundary: rules,
+observations, champion, profiles, and interoperability semantics.

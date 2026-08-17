@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700"
+viewBox="0 0 1200 700" role="img">
+<title>Capture sensitivity to board size</title>
+<desc>Capture rate by board_size. Lines compare four existing policy pairings;
+vertical marks are Wilson 95 percent intervals.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#222}.axis{font-size:20px}
+.legend{font-size:16px}.title{font-size:28px;font-weight:bold}</style>
+<rect width="1200" height="700" fill="#FFFFFF"/>
+<text x="600" y="42" text-anchor="middle" class="title">Capture sensitivity to board size</text>
+<line x1="100" y1="80" x2="100" y2="480" stroke="#222" stroke-width="2"/>
+<line x1="100" y1="480" x2="1000" y2="480" stroke="#222" stroke-width="2"/>
+<line x1="100" y1="480.0" x2="1000" y2="480.0" stroke="#D9D9D9"/>
+<text x="88" y="486.0" text-anchor="end" class="axis">0%</text>
+<line x1="100" y1="400.0" x2="1000" y2="400.0" stroke="#D9D9D9"/>
+<text x="88" y="406.0" text-anchor="end" class="axis">20%</text>
+<line x1="100" y1="320.0" x2="1000" y2="320.0" stroke="#D9D9D9"/>
+<text x="88" y="326.0" text-anchor="end" class="axis">40%</text>
+<line x1="100" y1="240.0" x2="1000" y2="240.0" stroke="#D9D9D9"/>
+<text x="88" y="246.0" text-anchor="end" class="axis">60%</text>
+<line x1="100" y1="160.0" x2="1000" y2="160.0" stroke="#D9D9D9"/>
+<text x="88" y="166.0" text-anchor="end" class="axis">80%</text>
+<line x1="100" y1="80.0" x2="1000" y2="80.0" stroke="#D9D9D9"/>
+<text x="88" y="86.0" text-anchor="end" class="axis">100%</text>
+<text x="150" y="510" text-anchor="middle" class="axis">7</text>
+<text x="540" y="510" text-anchor="middle" class="axis">9</text>
+<text x="930" y="510" text-anchor="middle" class="axis">11</text>
+<text x="550" y="550" text-anchor="middle" class="axis">board_size</text>
+<path d="M 150 80.0 L 540 86.667 L 930 150.0" fill="none" stroke="#0072B2" stroke-width="4"/>
+<line x1="150" y1="80.0" x2="150" y2="92.408" stroke="#0072B2"/>
+<circle cx="150" cy="80.0" r="7" fill="#0072B2"/>
+<line x1="540" y1="81.833" x2="540" y2="103.494" stroke="#0072B2"/>
+<circle cx="540" cy="86.667" r="7" fill="#0072B2"/>
+<line x1="930" y1="126.962" x2="930" y2="181.103" stroke="#0072B2"/>
+<circle cx="930" cy="150.0" r="7" fill="#0072B2"/>
+<line x1="730" y1="525" x2="775" y2="525" stroke="#0072B2" stroke-width="4"/>
+<text x="790" y="531" class="legend">ScentTacticalPolice vs BarrierAwareThief</text>
+<path d="M 150 143.333 L 540 186.667 L 930 236.667" fill="none" stroke="#D55E00" stroke-width="4"/>
+<line x1="150" y1="121.508" x2="150" y2="173.637" stroke="#D55E00"/>
+<circle cx="150" cy="143.333" r="7" fill="#D55E00"/>
+<line x1="540" y1="158.274" x2="540" y2="220.85" stroke="#D55E00"/>
+<circle cx="540" cy="186.667" r="7" fill="#D55E00"/>
+<line x1="930" y1="203.597" x2="930" y2="272.425" stroke="#D55E00"/>
+<circle cx="930" cy="236.667" r="7" fill="#D55E00"/>
+<line x1="730" y1="559" x2="775" y2="559" stroke="#D55E00" stroke-width="4"/>
+<text x="790" y="565" class="legend">ScentTacticalPolice vs ScentEvasionThief</text>
+<path d="M 150 80.0 L 540 83.333 L 930 86.667" fill="none" stroke="#009E73" stroke-width="4"/>
+<line x1="150" y1="80.0" x2="150" y2="92.408" stroke="#009E73"/>
+<circle cx="150" cy="80.0" r="7" fill="#009E73"/>
+<line x1="540" y1="80.589" x2="540" y2="98.279" stroke="#009E73"/>
+<circle cx="540" cy="83.333" r="7" fill="#009E73"/>
+<line x1="930" y1="81.833" x2="930" y2="103.494" stroke="#009E73"/>
+<circle cx="930" cy="86.667" r="7" fill="#009E73"/>
+<line x1="730" y1="593" x2="775" y2="593" stroke="#009E73" stroke-width="4"/>
+<text x="790" y="599" class="legend">ScentGreedyPolice vs BarrierAwareThief</text>
+<path d="M 150 173.333 L 540 186.667 L 930 216.667" fill="none" stroke="#CC79A7" stroke-width="4"/>
+<line x1="150" y1="146.662" x2="150" y2="206.622" stroke="#CC79A7"/>
+<circle cx="150" cy="173.333" r="7" fill="#CC79A7"/>
+<line x1="540" y1="158.274" x2="540" y2="220.85" stroke="#CC79A7"/>
+<circle cx="540" cy="186.667" r="7" fill="#CC79A7"/>
+<line x1="930" y1="185.162" x2="930" y2="252.101" stroke="#CC79A7"/>
+<circle cx="930" cy="216.667" r="7" fill="#CC79A7"/>
+<line x1="730" y1="627" x2="775" y2="627" stroke="#CC79A7" stroke-width="4"/>
+<text x="790" y="633" class="legend">ScentGreedyPolice vs ScentEvasionThief</text>
+</svg>

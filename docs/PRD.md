@@ -80,8 +80,9 @@ verified Replay Viewer, tests, research evidence, and governance.
 Outside the accepted implementation baseline: rule changes, new strategy/AI/ML/search, production
 deployment, Gmail, tunnels, league reporting, opponent contact, and any uncounted or counted match.
 The shared-code GUI requirement is complete under `GUI-001`; final role-repository placement is
-still owned by `SUB-001`. Research, visualization, submission assembly, and human-gated operations
-remain tracked in [TODO](TODO.md).
+still owned by `SUB-001`. Research and visualization are complete under `RES-001`/`VIS-001`;
+cost measurement, submission assembly, and human-gated operations remain tracked in
+[TODO](TODO.md).
 
 The competitive/interoperability boundary is frozen: game rules, scoring, policies/profiles,
 hashes, serialization, crypto, audit/replay, transport/runtime behavior, artifacts, strategy,
@@ -97,8 +98,8 @@ negotiated interoperability decisions. See [the baseline](../RULES_AND_INTEROP_B
 Assumptions: Python/`uv` are available; pinned public kit remains present; fixtures represent only
 their named profiles. Dependencies: FastMCP 3.4.3 and development tools in `pyproject.toml`.
 Constraints include two-process isolation, no network in ordinary tests, and explicit human
-approval for external activity. Risks include professor/kit scope differences, incomplete daemon
-lifecycle analysis, flat tests, and private research evidence that cannot simply be published.
+approval for external activity. Risks include professor/kit scope differences, process-scoped
+daemon lifecycle, and extrapolating bounded local research beyond its preregistered grid.
 
 ## Evidence boundary and timeline
 
@@ -110,12 +111,14 @@ delegation; 125/125 vectors; frozen champion/hashes. Public transport validation
 evidence, not current authorization or readiness. Phase 4D7B proves a nonce-free artifact-backed
 Replay HTML app and a live-view model with no opponent-coordinate field. Phase 4D7C proves
 runtime-fed atomic role-local snapshots, loopback serving, exact turn banners, a scent/belief
-heatmap, and reviewed synthetic screenshots.
+heatmap, and reviewed synthetic screenshots. Phase 4D9 proves a preregistered 2,400-game local
+OAT study, public-safe row/summary provenance, byte-identical regeneration, Wilson intervals,
+two accessible figures, and a cited notebook equivalent without changing the champion.
 
-Planned or incomplete: reproducible public research package, notebook/analysis visuals, stronger
-CPU/RAM/latency cost measurements, two-role-repository submission assembly, and bilateral
-readiness. Package/building-block/extension documentation and the internal ISO assessment are
-accepted alongside the Live GUI, Replay view, structured tests, CLI UX, and release tooling.
+Planned or incomplete: stronger CPU/RAM/latency cost measurements, two-role-repository submission
+assembly, and bilateral readiness. Research/visualization, package/building-block/extension
+documentation, and the internal ISO assessment are accepted alongside the Live GUI, Replay view,
+structured tests, CLI UX, and release tooling.
 
 Milestones: D0 governance baseline; D1 technical compliance; D2 release/offline operations and CLI
 manual; D3 GUI/replay plus research/quality publication; D4 two-repository submission assembly and

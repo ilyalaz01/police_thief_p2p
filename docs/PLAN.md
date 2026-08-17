@@ -200,8 +200,10 @@ The [FastMCP Gatekeeper](adr/ADR-004-api-gatekeeper-applicability.md),
 [SDK facade](adr/ADR-003-sdk-facade-plan.md), semantics-preserving file splits,
 [versioned configuration](adr/ADR-006-versioned-configuration-boundary.md), and
 [offline release tooling](RELEASE_ENGINEERING.md) are implemented and accepted. The artifact-backed
-Replay app and runtime-fed role-safe Live GUI are implemented with reviewed screenshots. Remaining
-proposals are safe research/visualization, stronger runtime cost/capacity measurement, and final
-two-role-repository assembly. The package/building-block/extension audit and internal ISO
-assessment are accepted. No remaining proposal may expose hidden truth, imply authorization, or
-silently change frozen or negotiated behavior.
+Replay app and runtime-fed role-safe Live GUI are implemented with reviewed screenshots. Phase 4D9
+adds the accepted public-safe sensitivity data flow: preregistered design → public SDK evaluation →
+curated rows/summary → hash manifest → notebook and accessible SVG figures. Remaining proposals
+are stronger runtime cost/capacity measurement and final two-role-repository assembly. The
+package/building-block/extension audit and internal ISO assessment are accepted. No remaining
+proposal may expose hidden truth, imply authorization, or silently change frozen or negotiated
+behavior.
