@@ -1,4 +1,4 @@
-"""CLI entry point for one independent localhost peer process."""
+"""CLI entry point for one independent Police-Thief peer process."""
 
 from __future__ import annotations
 
@@ -9,29 +9,58 @@ from pathlib import Path
 from .sdk import PeerLaunchRequest, PoliceThiefSDK
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--role", choices=("police", "thief"), required=True)
+def build_parser() -> argparse.ArgumentParser:
+    """Build the documented peer parser without starting any runtime side effect."""
+    parser = argparse.ArgumentParser(
+        description="This command starts one independent peer process.",
+        epilog=(
+            "Safety: this command does not authorize external operations. Public transport, "
+            "opponent contact, Gmail, and counted matches require separate approval."
+        ),
+    )
     configured_path = os.environ.get("POLICE_THIEF_CONFIG_PATH")
+    parser.add_argument(
+        "--role",
+        choices=("police", "thief"),
+        required=True,
+        help="local role for this process",
+    )
     parser.add_argument(
         "--operational-config",
         type=Path,
         default=Path(configured_path) if configured_path else None,
+        help="strict versioned startup classification JSON",
     )
-    parser.add_argument("--profile", type=Path, required=True)
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, required=True)
-    parser.add_argument("--advertised-url")
-    parser.add_argument("--group-id")
-    parser.add_argument("--group-name")
-    parser.add_argument("--git-commit")
-    parser.add_argument("--real-team", action="store_true")
-    parser.add_argument("--opponent-url", required=True)
-    parser.add_argument("--public", action="store_true")
-    parser.add_argument("--artifacts", type=Path, required=True)
-    parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--seed", type=int, default=1)
-    args = parser.parse_args()
+    parser.add_argument("--profile", type=Path, required=True, help="agreed match-profile JSON")
+    parser.add_argument("--host", default="127.0.0.1", help="local listener host")
+    parser.add_argument("--port", type=int, required=True, help="local listener port")
+    parser.add_argument(
+        "--advertised-url",
+        help="role-appropriate MCP URL advertised during negotiation",
+    )
+    parser.add_argument("--group-id", help="local group identifier metadata")
+    parser.add_argument("--group-name", help="local group display-name metadata")
+    parser.add_argument("--git-commit", help="exact opaque local commit identity")
+    parser.add_argument(
+        "--real-team",
+        action="store_true",
+        help="enable stricter real-team preflight; this is not authorization",
+    )
+    parser.add_argument("--opponent-url", required=True, help="opponent FastMCP /mcp endpoint")
+    parser.add_argument(
+        "--public",
+        action="store_true",
+        help="require public HTTPS endpoint validation",
+    )
+    parser.add_argument("--artifacts", type=Path, required=True, help="artifact output directory")
+    parser.add_argument("--output", type=Path, required=True, help="peer result JSON path")
+    parser.add_argument("--seed", type=int, default=1, help="deterministic local seed")
+    return parser
+
+
+def main() -> int:
+    """Parse one peer launch request and delegate it once through the SDK."""
+    args = build_parser().parse_args()
     request = PeerLaunchRequest(
         role=args.role,
         profile=args.profile,

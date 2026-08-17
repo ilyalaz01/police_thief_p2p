@@ -76,9 +76,11 @@ bilateral prerequisites fail closed. A real-team or counted game is explicitly n
 In scope: deterministic core, observations, policies/evaluation, current local transport,
 commit-reveal, audit/replay, artifact builders, tests, research evidence, and governance.
 
-Out of scope: rule changes, new strategy/AI/ML/search, GUI, production deployment, Gmail, tunnels,
-league reporting, opponent contact, and any uncounted or counted match. Future structured tests,
-CI, notebook, UX, and release work remains planned in [TODO](TODO.md).
+Outside the accepted implementation baseline: rule changes, new strategy/AI/ML/search, Live GUI,
+production deployment, Gmail, tunnels, league reporting, opponent contact, and any uncounted or
+counted match. The official Live GUI/Replay shell is required future work under `GUI-001`; it is
+not being dismissed as inapplicable. Research, visualization, submission assembly, and human-gated
+operations remain tracked in [TODO](TODO.md).
 
 The competitive/interoperability boundary is frozen: game rules, scoring, policies/profiles,
 hashes, serialization, crypto, audit/replay, transport/runtime behavior, artifacts, strategy,
@@ -106,10 +108,10 @@ and inboxes; >90% historical branch coverage; a single SDK consumer facade with 
 delegation; 125/125 vectors; frozen champion/hashes. Public transport validation is historical
 evidence, not current authorization or readiness.
 
-Planned, not selected or implemented: structured tests, CI/offline release tooling, reproducible
-public research package, notebook/visuals, comprehensive CLI UX, cost/ISO analysis, and bilateral
-readiness.
+Planned, not implemented: the role-legal Live GUI and Replay view, reproducible public research
+package, notebook/visuals, cost/ISO analysis, two-role-repository submission assembly, and
+bilateral readiness. Structured tests, CLI UX, and CI/offline release tooling are implemented.
 
-Milestones: D0 governance baseline (this phase); D1 smallest technical compliance milestone after
-review; D2 release/offline operations; D3 research/quality publication; D4 human-gated bilateral
-compatibility. Exact ordering remains governed by [TODO](TODO.md) and proposed ADRs.
+Milestones: D0 governance baseline; D1 technical compliance; D2 release/offline operations and CLI
+manual; D3 GUI/replay plus research/quality publication; D4 two-repository submission assembly and
+human-gated bilateral compatibility. Exact ordering remains governed by [TODO](TODO.md).

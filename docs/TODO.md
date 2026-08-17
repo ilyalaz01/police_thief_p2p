@@ -18,8 +18,9 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## DOC-001 — Complete README user manual
 
-- Milestone: D1; Priority: P1; Status: PLANNED; Owner role: Shared Review
-- Dependencies: GOV-001, CFG-001, UX-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D1; Priority: P1; Status: DONE; Owner role: Shared Review
+- Dependencies: GOV-001, CFG-001, UX-001; Evidence: Phase 4D6 RED/GREEN commits, guarded manual
+  sections/options, and `docs/audits/PHASE4D6_CLI_MANUAL.md`.
 - Definition of Done: document install, all modes/options/workflows/examples/configuration,
   troubleshooting, contribution, license and credits without overstating readiness.
 - Validation commands:
@@ -137,12 +138,24 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## UX-001 — Specify and validate CLI/UI usability
 
-- Milestone: D2; Priority: P2; Status: PLANNED; Owner role: Shared Review
-- Dependencies: SDK-001, CFG-001; Evidence for DONE: not applicable while PLANNED.
+- Milestone: D2; Priority: P2; Status: DONE; Owner role: Shared Review
+- Dependencies: SDK-001, CFG-001; Evidence: Phase 4D6 parser/help tests, complete option and
+  recovery manual, operation-classification table, and explicit GUI applicability decision.
 - Definition of Done: supported CLI workflows/options/errors/recovery/accessibility are tested and
   documented; GUI applicability is explicitly decided with rationale.
 - Validation commands: `uv run python -m police_thief_lab.peer_cli --help`; CLI tests.
 - Hard stop/escalation: operational commands cannot imply authorization or expose secrets.
+
+## GUI-001 — Implement the mandatory Live GUI and Replay view
+
+- Milestone: D3; Priority: P1; Status: PLANNED; Owner role: Core Architecture
+- Dependencies: UX-001, SDK-001, QLT-001; Evidence for DONE: not applicable while PLANNED.
+- Definition of Done: a role-legal Live GUI displays belief/scent and current status without hidden
+  truth; an artifact-backed Replay view displays deterministic verification including
+  `Verified OK`; public-safe screenshots, accessibility notes, and offline tests are retained.
+- Validation commands: focused GUI/replay tests; `uv run pytest`; `uv run ruff check src tests`.
+- Hard stop/escalation: the live view cannot expose objective opponent coordinates, and the Replay
+  view cannot treat an unverified or malformed log as verified.
 
 ## COST-001 — Produce applicable cost/capacity analysis
 
@@ -212,15 +225,9 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   via the same thin CI entry, with deterministic sanitized reports and stable exit codes.
 - Validation commands: workstream commands plus full project/conformance/frozen gates.
 - Hard stop/escalation: remain inside its module boundary; missing validators fail closed.
-- Known open item (outside this workstream's module boundary to fix): the composed `pytest` check
-  inside `quality-gate` currently reports `FAIL` (overall exit 3) because
-  `tests/integration/test_artifacts/test_artifact_contract_api.py::
-  test_public_helpers_constants_signatures_and_moved_ast_are_exact` has a pre-existing,
-  platform-independent AST-hash mismatch unrelated to this workstream — confirmed identical on
-  Windows and Linux and present on current `main` outside this integration branch. This is the
-  gate correctly failing closed on a real, separate, pre-existing defect, not a defect in RE-001;
-  every other composed check (Ruff, Hcommit vectors, frozen manifest, conformance kit, secret
-  scan) passes.
+- Phase 4D5 correction: the composed quality gate is GREEN. The prior AST failure was a
+  Python-3.12/3.13 empty-field representation difference in a test serializer; the stable
+  cross-version test fix retained production source and the expected hash.
 
 ## GIT-001 — Adopt reviewed branch/PR/release governance
 
@@ -230,6 +237,19 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   are documented and demonstrated on a future change without rewriting honest history.
 - Validation commands: `git log --oneline --decorate`; PR/release evidence review.
 - Hard stop/escalation: never backdate, reassign, force-push, or tag without authorization.
+
+## SUB-001 — Assemble the official two-repository submission
+
+- Milestone: D4; Priority: P1; Status: PLANNED; Owner role: Release Engineering
+- Dependencies: DOC-001, GUI-001, GIT-001, completed final content; Evidence for DONE: not
+  applicable while PLANNED.
+- Definition of Done: separate Police and Thief repositories contain the required role code,
+  config, PRD/PLAN/TODO and academic README; both cross-link each other, pass their own gates, and
+  receive reviewed annotated `v1.0-submission` tags at the exact approved commits.
+- Validation commands: role-export manifest checks, both repository quality gates, link/secret
+  review, and `git show v1.0-submission` in each final repository.
+- Hard stop/escalation: do not create/tag final remotes before content approval; never copy ignored
+  sources, professor-owned code, credentials, correspondence, or retained private evidence.
 
 ## HUM-001 — Complete bilateral compatibility approvals
 
