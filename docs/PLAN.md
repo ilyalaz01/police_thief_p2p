@@ -208,5 +208,7 @@ cost/capacity measurement with preregistered local wall/CPU/Python-allocation/re
 Phase 4D11 accepts the inspectable shared-repository Git/PR/tag workflow while preserving its
 retrospective limitations and withholding final submission tags. The package/building-block/
 extension audit and internal ISO assessment are accepted. Remaining offline architecture work is
-the two-role submission export/validation under SUB-001. No remaining proposal may expose hidden
-truth, imply authorization, or silently change frozen or negotiated behavior.
+the two-role submission export/validation under SUB-001. Phase 4D12A fixes the candidate common
+content boundary, privacy exclusions, history-preservation rule, current role defaults, and
+submodule reprovisioning gate without choosing URLs or tags. No remaining proposal may expose
+hidden truth, imply authorization, or silently change frozen or negotiated behavior.

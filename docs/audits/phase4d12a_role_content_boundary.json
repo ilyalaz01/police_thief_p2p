@@ -1,0 +1,57 @@
+{
+  "phase": "4D12A",
+  "status": "GREEN",
+  "classification": "OFFLINE_SUBMISSION_CONTENT_POLICY",
+  "evidence_cutoff": "64a1e55a9c99fa2debd480bebdfadbc7c2a142c5",
+  "commits": {
+    "red_contract": "03031ce",
+    "green_policy": "2181c66"
+  },
+  "proven": {
+    "rule_50_minimum_selected": true,
+    "tracked_regular_files_only": true,
+    "private_and_ignored_prefixes_excluded": true,
+    "synthetic_scanner_fixtures_excluded": true,
+    "approved_submodule_requires_separate_reprovisioning": true,
+    "shared_git_history_must_be_preserved": true,
+    "police_policy": "ScentTacticalPolice",
+    "police_policy_status": "FROZEN_ACCEPTED",
+    "thief_policy": "RandomLegalThief",
+    "thief_policy_status": "CURRENT_DEFAULT_NOT_NEW_CHAMPION"
+  },
+  "not_proven": [
+    "final role-specific README bytes",
+    "reciprocal repository URLs",
+    "final role repository trees or quality gates",
+    "remote creation or publication",
+    "v1.0-submission tags",
+    "other-team or counted readiness"
+  ],
+  "operations": {
+    "production_source_changed": false,
+    "frozen_file_changed": false,
+    "partner_exporter_path_changed": false,
+    "repository_created": false,
+    "publication_started": false,
+    "tag_created": false,
+    "opponent_contacted": false,
+    "gmail_started": false,
+    "gameplay_started": false
+  },
+  "validation": {
+    "focused_policy_tests": "5/5",
+    "combined_policy_git_project_governance": "18/18",
+    "first_full_run": "352 passed, 1 stale SUB lifecycle assertion, coverage 92.59%",
+    "final_full_suite": "353/353, no skips or xfails",
+    "combined_coverage_percent": 92.58684863523573,
+    "ruff": "PASS",
+    "hcommit_vectors": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance_vectors": "125/125",
+    "ci_policy_staged_snapshot_scan": "PASS_ZERO_FINDINGS_EXCLUDING_TESTS_OFFLINE_OPS",
+    "new_python_max_counted_lines": 112,
+    "resolved_candidate_regular_files_at_acceptance": 271,
+    "production_source_diff": "EMPTY",
+    "partner_exporter_diff": "EMPTY"
+  }
+}

@@ -78,4 +78,6 @@ def test_final_submission_tag_remains_human_gated() -> None:
     assert audit["final_submission_tag"]["state"] == "ABSENT_PENDING_SUB_001"
     todo = (PROJECT_ROOT / "docs/TODO.md").read_text(encoding="utf-8")
     assert "## GIT-001" in todo and "Status: DONE" in todo
-    assert "## SUB-001" in todo and "Status: PLANNED" in todo
+    submission = todo.split("## SUB-001", 1)[1].split("\n## ", 1)[0]
+    assert "Status: IN_PROGRESS" in submission
+    assert "Status: DONE" not in submission
