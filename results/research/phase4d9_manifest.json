@@ -7,9 +7,9 @@
       "sha256": "45fea3339ce77968f0e3af926e2ba8ca2ce075c9a0039f9f5a51390050c90391"
     },
     "notebook": {
-      "bytes": 6412,
+      "bytes": 7314,
       "path": "notebooks/POLICY_SENSITIVITY_ANALYSIS.md",
-      "sha256": "fe5f88bc12332f62ed417e3cc150ae1e21cf165c944e36d068102eb6194598d8"
+      "sha256": "ae0f5334f7086a7efc28e28d05647479d36af4db1e7f6c0f25ec885b02ae7208"
     },
     "raw": {
       "bytes": 1305769,
@@ -48,7 +48,7 @@
     "tools/research/cli.py": "ea97192f140ca1698cfe7e442755f0adf082f0b9d79836c3c29df8d7b7799839",
     "tools/research/design.py": "650d7ee936c504a9914c4609a7e444f2ddd8fa299646cb5f6f6e44a24392812b",
     "tools/research/publication.py": "177a388e845e8d2ab1fae4ff258e1d9e59d97a8774f02128d5c6660aafb87ad2",
-    "tools/research/render.py": "3e7f7baf9adc92d12ced3fe8dfa6ac5956f451f961f11c27ff5883f24a890336",
+    "tools/research/render.py": "6c83e4e93d1a06a6fcf5708f77284be36d4978f0a09e4b4e69da52d99fe02681",
     "tools/research/runner.py": "ef918aa0fc24f3099c5f4acf05a524233f816275952497fd7064dbeb14ff2527",
     "tools/research/statistics.py": "42efcfe3d6b0be68d1dbec22be8c812f5239fe161cb41c707b2bf0c9ee141e80",
     "tools/research/svg.py": "07b7f353b36674268ae8a3e7cc610f6ce027b79ea4711eab0817f82d5abe4c85"

@@ -22,6 +22,16 @@ The paired OAT elementary effect for factor $i$ is
 
 $$\Delta_i = \frac{\hat p(x_i')-\hat p(x_i)}{x_i'-x_i}.$$
 
+## Figures
+
+![Capture sensitivity to board size](../assets/research/capture_by_board_size.svg)
+
+*Figure 1. Capture rate as board size varies at survival threshold 35. Each point pools 40 paired seeds across three starts; vertical marks are Wilson 95% intervals.*
+
+![Capture sensitivity to survival threshold](../assets/research/capture_by_survival_threshold.svg)
+
+*Figure 2. Capture rate as survival threshold varies on the 7×7 board. Each point pools 40 paired seeds across three starts; vertical marks are Wilson 95% intervals.*
+
 ## Aggregate results
 
 | Setting | Police | Thief | Games | Capture | Wilson 95% | Police score | Thief score |
@@ -68,6 +78,13 @@ $$\Delta_i = \frac{\hat p(x_i')-\hat p(x_i)}{x_i'-x_i}.$$
 | board_7_survival_70 | ScentGreedyPolice vs BarrierAwareThief | +0.0% | +0.00000 |
 | board_7_survival_70 | ScentGreedyPolice vs ScentEvasionThief | +17.5% | +0.00500 |
 
+## Hypothesis assessment
+
+- H1 is supported inside this grid: 8/8 board-size effects are negative.
+- H2 is partially supported: 4/8 survival effects are positive and 4 are zero at the observed ceiling.
+- H3 is not uniformly supported: Tactical wins 3 policy cells, Greedy wins 3, and 4 tie.
+- These are descriptive grid results, not causal or significance-test conclusions.
+
 ## Interpretation
 
 The frozen champion baseline spans 84.2% to 100.0% across the two Thief policies after pooling scenarios.
@@ -79,9 +96,8 @@ policy decision and not evidence about another team's implementation.
 
 - OAT is a screening design and cannot estimate factor interactions; this is not a Sobol
   or other global variance-based sensitivity analysis.
-- Forty deterministic seeds and three starts support paired comparison but do not
-  make the
-  confidence interval a guarantee for unseen terrains, teams, or implementations.
+- Forty deterministic seeds and three starts support paired comparison, but the
+  confidence interval is not a guarantee for unseen terrains, teams, or implementations.
 - The simulator exposes evaluator outcomes only after actions; policies still receive
   Observation-only inputs. No objective opponent coordinate is published.
 - Timing is deliberately excluded from deterministic artifacts and remains under

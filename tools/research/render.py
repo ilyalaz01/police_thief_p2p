@@ -38,6 +38,17 @@ def analysis_markdown(
         "The paired OAT elementary effect for factor $i$ is", "",
         "$$\\Delta_i = \\frac{\\hat p(x_i')-\\hat p(x_i)}{x_i'-x_i}.$$",
         "",
+        "## Figures", "",
+        "![Capture sensitivity to board size]"
+        "(../assets/research/capture_by_board_size.svg)", "",
+        "*Figure 1. Capture rate as board size varies at survival threshold 35. "
+        "Each point pools 40 paired seeds across three starts; vertical marks are Wilson "
+        "95% intervals.*", "",
+        "![Capture sensitivity to survival threshold]"
+        "(../assets/research/capture_by_survival_threshold.svg)", "",
+        "*Figure 2. Capture rate as survival threshold varies on the 7×7 board. "
+        "Each point pools 40 paired seeds across three starts; vertical marks are Wilson "
+        "95% intervals.*", "",
         "## Aggregate results", "",
         "| Setting | Police | Thief | Games | Capture | Wilson 95% | Police score | Thief score |",
         "|---|---|---|---:|---:|---:|---:|---:|",
@@ -59,8 +70,43 @@ def analysis_markdown(
             f"{row['paired_capture_delta_from_baseline']:+.1%} | "
             f"{row['elementary_effect_per_parameter_unit']:+.5f} |"
         )
+    lines.extend(_hypothesis_assessment(summary, effects))
     lines.extend(_interpretation(summary, effects))
     return ("\n".join(lines) + "\n").encode("utf-8")
+
+
+def _hypothesis_assessment(
+    summary: list[dict[str, Any]], effects: list[dict[str, Any]]
+) -> list[str]:
+    """Assess preregistered directional hypotheses without adding causal claims."""
+    board = [row for row in effects if row["factor"] == "board_size"]
+    survival = [row for row in effects if row["factor"] == "survival_threshold"]
+    negative_board = sum(row["paired_capture_delta_from_baseline"] < 0 for row in board)
+    positive_survival = sum(row["paired_capture_delta_from_baseline"] > 0 for row in survival)
+    zero_survival = sum(row["paired_capture_delta_from_baseline"] == 0 for row in survival)
+    by_cell: dict[tuple[str, str], dict[str, float]] = {}
+    for row in summary:
+        key = (row["setting"], row["thief_policy"])
+        by_cell.setdefault(key, {})[row["police_policy"]] = row["capture_rate"]
+    tactical_wins = sum(
+        cell["ScentTacticalPolice"] > cell["ScentGreedyPolice"]
+        for cell in by_cell.values()
+    )
+    greedy_wins = sum(
+        cell["ScentGreedyPolice"] > cell["ScentTacticalPolice"]
+        for cell in by_cell.values()
+    )
+    ties = len(by_cell) - tactical_wins - greedy_wins
+    return [
+        "", "## Hypothesis assessment", "",
+        f"- H1 is supported inside this grid: {negative_board}/{len(board)} board-size "
+        "effects are negative.",
+        f"- H2 is partially supported: {positive_survival}/{len(survival)} survival effects "
+        f"are positive and {zero_survival} are zero at the observed ceiling.",
+        f"- H3 is not uniformly supported: Tactical wins {tactical_wins} policy cells, "
+        f"Greedy wins {greedy_wins}, and {ties} tie.",
+        "- These are descriptive grid results, not causal or significance-test conclusions.",
+    ]
 
 
 def _interpretation(
@@ -82,9 +128,8 @@ def _interpretation(
         "## Limitations and threats to validity", "",
         "- OAT is a screening design and cannot estimate factor interactions; this is not a Sobol",
         "  or other global variance-based sensitivity analysis.",
-        "- Forty deterministic seeds and three starts support paired comparison but do not",
-        "  make the",
-        "  confidence interval a guarantee for unseen terrains, teams, or implementations.",
+        "- Forty deterministic seeds and three starts support paired comparison, but the",
+        "  confidence interval is not a guarantee for unseen terrains, teams, or implementations.",
         "- The simulator exposes evaluator outcomes only after actions; policies still receive",
         "  Observation-only inputs. No objective opponent coordinate is published.",
         "- Timing is deliberately excluded from deterministic artifacts and remains under",
