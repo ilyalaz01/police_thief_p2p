@@ -56,14 +56,14 @@
       "runtime_policy": "ScentTacticalPolice",
       "policy_status": "FROZEN_ACCEPTED",
       "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
-      "readme_overlay": "PENDING_FINAL_ROLE_ASSEMBLY"
+      "readme_overlay": "submission/templates/police/README.md"
     },
     "thief": {
       "runtime_role": "thief",
       "runtime_policy": "RandomLegalThief",
       "policy_status": "CURRENT_DEFAULT_NOT_NEW_CHAMPION",
       "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
-      "readme_overlay": "PENDING_FINAL_ROLE_ASSEMBLY"
+      "readme_overlay": "submission/templates/thief/README.md"
     }
   },
   "external_submodule": {
