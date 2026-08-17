@@ -7,6 +7,7 @@ import time
 from typing import Any
 
 from ..models import Role
+from ..presentation import TurnBanner
 from .protocol import TurnMessage
 from .runtime_models import (
     DeadlineTracker,
@@ -66,6 +67,7 @@ class _RuntimeLifecycleMixin:
             began = time.perf_counter()
             self._apply_inbound(message)
             if self.state.terminal is None:
+                self._publish_live(TurnBanner.YOUR_TURN)
                 self._act_and_send(self._next_outbound())
             self.turn_ms.append((time.perf_counter() - began) * 1000)
 

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -10,6 +9,7 @@ from typing import Any
 from ..models import Role
 from ..policies.baselines import RandomLegalThief
 from ..policies.tactical import ScentTacticalPolice
+from ..presentation import LiveViewPublisher, TurnBanner
 from . import runtime_models as _runtime_models
 from .network import redact_url
 from .profile import MatchProfile
@@ -17,7 +17,9 @@ from .protocol import TurnInbox
 from .runtime_artifacts import _RuntimeArtifactsMixin
 from .runtime_audit import _RuntimeAuditMixin
 from .runtime_board import _RuntimeBoardMixin
+from .runtime_entry import run_peer as run_peer
 from .runtime_lifecycle import _RuntimeLifecycleMixin
+from .runtime_presentation import _RuntimePresentationMixin
 from .runtime_sending import _RuntimeSendingMixin
 from .transport import McpPeerClient, start_server
 
@@ -38,6 +40,7 @@ class PeerRuntime(
     _RuntimeSendingMixin,
     _RuntimeAuditMixin,
     _RuntimeArtifactsMixin,
+    _RuntimePresentationMixin,
 ):
     def __init__(
         self,
@@ -54,6 +57,7 @@ class PeerRuntime(
         group_name: str | None = None,
         git_commit: str | None = None,
         real_team: bool = False,
+        live_view_path: Path | None = None,
     ) -> None:
         self.role, self.profile, self.config = role, profile, config_from_profile(profile)
         self.host, self.port, self.artifact_dir = host, port, artifact_dir
@@ -94,23 +98,31 @@ class PeerRuntime(
         self.peer_identity: dict[str, Any] = {}
         self.records: list[dict[str, Any]] = []
         self.events: list[dict[str, Any]] = []
+        self.live_view_publisher = (
+            LiveViewPublisher(live_view_path) if live_view_path is not None else None
+        )
         self.strategy_ms: list[float] = []
         self.roundtrip_ms: list[float] = []
         self.turn_ms: list[float] = []
 
     def run(self) -> dict[str, Any]:
         try:
+            self._publish_live(TurnBanner.LOCKED)
             if self.real_team:
                 require_real_team_git_commit(self.git_commit, "local")
             self.inboxes = start_server(self.role.value, self.host, self.port)
             self._negotiate()
             if self.role is Role.THIEF:
+                self._publish_live(TurnBanner.YOUR_TURN)
                 self._act_and_send(self._next_outbound())
             while self.state.terminal is None:
                 self._receive_and_maybe_act()
-            return self._audit_and_finish()
+            result = self._audit_and_finish()
+            self._publish_live(TurnBanner.GAME_OVER if result["ok"] else TurnBanner.ERROR)
+            return result
         except Exception as exc:
             self.phase = PeerPhase.FAILED
+            self._publish_live_error()
             return {
                 "ok": False,
                 "role": self.role.value,
@@ -118,42 +130,3 @@ class PeerRuntime(
                 "error": f"{type(exc).__name__}: {exc}",
                 "events": self.events,
             }
-
-
-def run_peer(
-    role: str,
-    profile_path: Path,
-    host: str,
-    port: int,
-    advertised_url: str,
-    opponent_url: str,
-    artifact_dir: Path,
-    output_path: Path,
-    seed: int = 1,
-    group_id: str | None = None,
-    group_name: str | None = None,
-    git_commit: str | None = None,
-    real_team: bool = False,
-) -> int:
-    raw = json.loads(profile_path.read_text(encoding="utf-8"))
-    profile = MatchProfile(**raw)
-    result = PeerRuntime(
-        Role(role),
-        profile,
-        host,
-        port,
-        opponent_url,
-        artifact_dir,
-        seed,
-        advertised_url=advertised_url,
-        group_id=group_id,
-        group_name=group_name,
-        git_commit=git_commit,
-        real_team=real_team,
-    ).run()
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        json.dumps(result, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    return 0 if result["ok"] else 1
