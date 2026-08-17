@@ -30,7 +30,7 @@ layout, GUI evidence, Gmail reporting, or Moodle submission.
 | Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | One shared development repository | PLANNED | `SUB-001`: build reviewed role-specific exports/remotes without rewriting history |
 | Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Complete shared manual and governance set | PLANNED | `SUB-001`: verify both final role repositories independently |
 | Live GUI showing the role-legal belief/scent state | No Live GUI implementation or screenshot | PLANNED | `GUI-001`: implement and test without exposing objective hidden truth |
-| Replay application showing `Verified OK` | Replay verifier exists; no required user-facing Replay view/screenshot | PLANNED | `GUI-001`: build the artifact-backed viewer and capture public-safe evidence |
+| Replay application showing `Verified OK` | Phase 4D7B standalone artifact-backed viewer verifies commitments/physics and renders `Verified OK`/`TAMPERED`; no accepted screenshot yet | IN_PROGRESS | `GUI-001`: capture reviewed public-safe Replay evidence after Live integration |
 | Annotated Git tag `v1.0-submission` on each final repository | No final submission tag | BLOCKED | `SUB-001`: tag only after all final gates and exact commits are approved |
 | At least two counted games against two different opponent teams | No other-team counted game | BLOCKED | Human authorization after successful uncounted warm-ups and compatibility agreement |
 | Both teams independently send agreeing result JSON through Gmail API | No Gmail credentials or send operation | BLOCKED | Explicit counted authorization, least-privilege setup, and successful audited result |

@@ -1,5 +1,7 @@
 """Role-safe presentation-model contract tests."""
 
+from dataclasses import replace
+
 from police_thief_lab import Barrier, Position, Role, Simulator
 from police_thief_lab.models import GameConfig
 from police_thief_lab.presentation import TurnBanner, build_live_view
@@ -25,15 +27,12 @@ def test_live_view_contains_only_role_local_truth_and_belief() -> None:
 
 def test_live_view_sorts_public_barriers_and_rejects_bad_belief_cells() -> None:
     simulator = Simulator(GameConfig())
-    observation = simulator.observe(Role.THIEF)
-    object.__setattr__(
-        observation,
-        "barriers",
-        frozenset({Barrier(Position(2, 1)), Barrier(Position(1, 2))}),
+    observation = replace(
+        simulator.observe(Role.THIEF),
+        barriers=frozenset({Barrier(Position(2, 1)), Barrier(Position(1, 2))}),
     )
 
     view = build_live_view(observation, {}, TurnBanner.LOCKED, step=2)
 
     assert view.barriers == ((1, 2), (2, 1))
     assert view.banner == "LOCKED"
-

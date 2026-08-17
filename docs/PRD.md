@@ -74,13 +74,15 @@ bilateral prerequisites fail closed. A real-team or counted game is explicitly n
 ## Scope and boundaries
 
 In scope: deterministic core, observations, policies/evaluation, current local transport,
-commit-reveal, audit/replay, artifact builders, tests, research evidence, and governance.
+commit-reveal, audit/replay, artifact builders, role-safe presentation models, the offline Replay
+Viewer, tests, research evidence, and governance.
 
-Outside the accepted implementation baseline: rule changes, new strategy/AI/ML/search, Live GUI,
-production deployment, Gmail, tunnels, league reporting, opponent contact, and any uncounted or
-counted match. The official Live GUI/Replay shell is required future work under `GUI-001`; it is
-not being dismissed as inapplicable. Research, visualization, submission assembly, and human-gated
-operations remain tracked in [TODO](TODO.md).
+Outside the accepted implementation baseline: rule changes, new strategy/AI/ML/search, runtime-fed
+Live GUI operation, production deployment, Gmail, tunnels, league reporting, opponent contact, and
+any uncounted or counted match. The official GUI requirement remains in progress under `GUI-001`:
+the offline Replay shell and role-local view boundary exist, while runtime integration and reviewed
+screenshots remain open. Research, visualization, submission assembly, and human-gated operations
+remain tracked in [TODO](TODO.md).
 
 The competitive/interoperability boundary is frozen: game rules, scoring, policies/profiles,
 hashes, serialization, crypto, audit/replay, transport/runtime behavior, artifacts, strategy,
@@ -106,11 +108,13 @@ evaluation; local two-peer FastMCP; duplicate/equivocation behavior; Hcommit/rep
 schema 1.1 builders; strict versioned operational/rate configuration; bounded FastMCP Gatekeeper
 and inboxes; >90% historical branch coverage; a single SDK consumer facade with typed CLI
 delegation; 125/125 vectors; frozen champion/hashes. Public transport validation is historical
-evidence, not current authorization or readiness.
+evidence, not current authorization or readiness. Phase 4D7B additionally proves a nonce-free
+artifact-backed Replay HTML app and a live-view model with no opponent-coordinate field.
 
-Planned, not implemented: the role-legal Live GUI and Replay view, reproducible public research
-package, notebook/visuals, cost/ISO analysis, two-role-repository submission assembly, and
-bilateral readiness. Structured tests, CLI UX, and CI/offline release tooling are implemented.
+Planned or incomplete: runtime-fed Live GUI operation and screenshots, reproducible public research
+package, notebook/visuals, cost/ISO analysis, two-role-repository submission assembly, and bilateral
+readiness. The offline Replay view, structured tests, CLI UX, and CI/offline release tooling are
+implemented.
 
 Milestones: D0 governance baseline; D1 technical compliance; D2 release/offline operations and CLI
 manual; D3 GUI/replay plus research/quality publication; D4 two-repository submission assembly and

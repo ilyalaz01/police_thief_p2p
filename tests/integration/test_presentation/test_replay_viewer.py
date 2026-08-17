@@ -57,6 +57,13 @@ def test_verified_replay_builds_two_agent_frames_and_safe_html() -> None:
     assert "thief-secret" not in html and "police-secret" not in html
 
 
+def test_legacy_runtime_profile_board_config_is_supported() -> None:
+    replay = build_replay(_log(), {"board_config": _config()})
+
+    assert replay.verdict == "Verified OK"
+    assert replay.board_size == 7
+
+
 def test_one_changed_reveal_marks_whole_replay_tampered() -> None:
     tampered = copy.deepcopy(_log())
     tampered["records"][1]["payload"]["position"] = [2, 0]
@@ -86,4 +93,3 @@ def test_physics_failure_is_tampered_even_with_valid_commit() -> None:
 
     assert replay.verdict == "TAMPERED"
     assert replay.physics_errors
-

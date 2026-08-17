@@ -190,6 +190,25 @@ It composes pytest/coverage, Ruff, Hcommit vectors, frozen-manifest verification
 conformance kit, and retained-evidence secret scanning. Match-artifact validation is optional only
 when no match path is requested; an unavailable required validator is a failure.
 
+## Offline Replay Viewer
+
+After a sub-game has ended and its nonces have been revealed, build a standalone viewer from the
+matching log and config artifacts:
+
+```bash
+uv run python -m police_thief_lab.viewer_cli replay \
+  --log artifacts/log_<game-id>_g01.json \
+  --config artifacts/config_<game-id>_g01.json \
+  --output artifacts/replay_<game-id>_g01.html
+```
+
+The command performs commit and deterministic physics verification before rendering. It writes a
+nonce-free HTML app with both post-game agent tracks, Previous/Next controls, barriers, and a
+`Verified OK` or `TAMPERED` banner. A tampered/malformed replay fails closed with exit code `2`.
+It does not open a browser, contact a peer, start a tunnel, or authorize any match. The role-local
+live model is implemented, but runtime-fed Live GUI operation and the required reviewed screenshots
+remain open under `GUI-001`. See the [Replay Viewer guide](docs/REPLAY_VIEWER.md).
+
 ## Troubleshooting
 
 | Symptom | Resolution |
@@ -241,6 +260,7 @@ changes follow the documented workflow and produce inspectable evidence.
 - [Test architecture](docs/TESTING.md)
 - [Critical-path map](docs/QUALITY_CRITICAL_PATHS.md)
 - [Concurrency and capacity](docs/CONCURRENCY_AND_CAPACITY.md)
+- [Replay Viewer](docs/REPLAY_VIEWER.md)
 - [Operational configuration](docs/CONFIGURATION.md)
 - [SDK entry point](docs/SDK.md)
 - [Architecture decisions](docs/adr/README.md)
