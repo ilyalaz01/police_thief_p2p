@@ -47,9 +47,10 @@ def test_current_d12b_evidence_is_reflected_without_volatile_counts() -> None:
 
 def test_partial_status_is_honest_history_not_an_open_technical_gap() -> None:
     document = matrix()
-    assert "no `MISSING` implementation row remains" in document
-    assert "historical evidence cannot be reconstructed" in document
-    assert "higher-authority submission and human operations" in document
+    normalized = " ".join(document.split())
+    assert "no `MISSING` implementation row remains" in normalized
+    assert "historical evidence cannot be reconstructed" in normalized
+    assert "higher-authority submission and human operations" in normalized
     assert "| MISSING |" not in document
     assert "shared technical checklist is implemented" in row("16 Final checklist")
 
