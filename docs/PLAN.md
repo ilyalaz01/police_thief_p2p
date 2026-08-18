@@ -214,11 +214,14 @@ Phase 4D11 accepts the inspectable shared-repository Git/PR/tag workflow while p
 retrospective limitations and withholding final submission tags. The package/building-block/
 extension audit and internal ISO assessment are accepted. Phase 4D13B completes the localhost
 runtime/artifact adapter for the accepted six-game/config entry boundary without changing the
-single-game runtime. Remaining offline architecture work is the two-role submission
-export/validation under SUB-001; real inputs and bilateral locks remain human/external gates.
+single-game runtime. Phase 4D14A integrates the guarded exporter and atomically reproduces two
+role-specific offline snapshots with exact manifests and secret scans. Remaining offline work is
+history-preserving Police/Thief branch assembly and two independent gates under SUB-001; real
+inputs and bilateral locks remain human/external gates.
 Gmail delivery remains blocked under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific
-README overlays and an offline history-preserving assembly sequence while leaving exporter
-integration, real trees, URLs, remotes, and tags pending. No remaining proposal may expose hidden
+README overlays and an offline history-preserving assembly sequence. Phase 4D14A proves exporter
+integration and real snapshot trees while leaving role Git branches, URLs, remotes, and tags
+pending. No remaining proposal may expose hidden
 truth, imply authorization, or silently change frozen or negotiated behavior.

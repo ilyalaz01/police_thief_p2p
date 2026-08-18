@@ -172,3 +172,20 @@ produces a reviewed plan:
    separately before each role gate; the exporter refuses gitlink entries.
 
 No step in this tooling performs or authorizes any of the above.
+
+## Reviewed two-role integration
+
+`tools.submission_assembly` is the separate policy/assembly layer accepted in Phase 4D14A. It
+resolves the reviewed tracked-file policy into two explicit `submission_export_v1` inputs and
+calls this exporter unchanged for each role. It then replaces only `README.md` with the reviewed
+role overlay, verifies that no other selected byte changed, scans the exact candidate tree, and
+writes deterministic evidence outside that tree.
+
+```bash
+uv run python -m tools.submission_assembly.cli tmp/role-candidates
+```
+
+The command requires a clean source worktree, refuses an existing output root, builds both roles
+atomically, retains `PENDING_HUMAN_APPROVAL`, and authorizes no external operation. Its output is
+an offline snapshot, not a Git repository, remote, approved cross-link, independent role gate, or
+submission tag.

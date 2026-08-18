@@ -281,8 +281,9 @@ review. See [CONTRIBUTING](CONTRIBUTING.md) and the [live TODO](docs/TODO.md).
 ## Submission-readiness limits
 
 This shared development repository is not the final course submission. The Live GUI, Replay
-`Verified OK`, and reviewed screenshots are implemented here, but higher-authority delivery still
-requires two separate role repositories (Police and Thief), completion of the fixed six-sub-game
+`Verified OK`, reviewed screenshots, and deterministic offline Police/Thief candidate snapshots
+are implemented here, but higher-authority delivery still requires two history-preserving role
+repositories with approved reciprocal URLs, completion of the fixed six-sub-game
 real-team inputs and bilateral Appendix-B lock, an explicitly authorized Gmail API sender,
 GUI evidence in each submission context, annotated `v1.0-submission` tags, and human-gated
 league/Moodle steps. Counted games and Gmail reporting remain blocked without explicit approval.
