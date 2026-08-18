@@ -31,9 +31,39 @@ transport, another-team contact, a warm-up, or a counted league operation.
 
 ## Local simulator use
 
-The supported SDK can run deterministic, network-free simulator experiments. The repository-wide
-[user manual](docs/PRD.md) and root package API describe the shared components. Local simulator
-results do not prove public transport or opponent compatibility and do not count for the league.
+The supported SDK can run deterministic, network-free simulator experiments. The
+[product requirements](docs/PRD.md), [architecture plan](docs/PLAN.md), and root package API
+describe the shared components. Local simulator results do not prove public transport or opponent
+compatibility and do not count for the league.
+
+## Academic model and FastMCP architecture
+
+The game is modeled as a two-agent Dec-POMDP. The hidden state contains both true positions,
+barriers, counters, and scent fields. Each process receives only its role-local observation:
+its own state, public barriers, legal actions, messages, and the opponent scent/belief evidence.
+`WorldState` stays inside the simulator; a strategy receives only immutable `Observation`. The
+transition model is the frozen alternating Thief-first model, and the reward is the official
+capture/survival score. See the [game-core PRD](docs/PRD_GAME_CORE_AND_OBSERVABILITY.md) and
+[architecture plan](docs/PLAN.md) for the formal boundaries and diagrams.
+
+Police and Thief run as separate processes and exchange the four reference FastMCP tools over
+`/mcp`: negotiation, turn delivery, audit submission, and control. Bounded FIFO inboxes provide
+backpressure. Every outbound attempt passes through the centralized versioned Gatekeeper, while
+the peer client preserves the agreed retry payload and monotonic deadline. Commit-reveal and the
+post-game verifier make each accepted action auditable without revealing live hidden truth.
+
+## Decision strategy
+
+`ScentTacticalPolice` uses only the observable scent field and public board geometry. It pursues
+the hottest scent cell and places a bounded number of adjacent barriers only at high-confidence,
+low-degree cells where confinement is immediately useful. Seeded tie-breaking makes repeated
+experiments reproducible. It never receives the Thief's objective coordinate.
+
+No reinforcement learning is used by the accepted runtime, so RL training curves are not
+applicable. The published paired OAT sensitivity study evaluates existing deterministic policies;
+it does not train a model or replace the frozen champion. See the
+[policy-evaluation PRD](docs/PRD_POLICY_EVALUATION.md) and
+[research notebook](notebooks/POLICY_SENSITIVITY_ANALYSIS.md).
 
 ## Live GUI and verified Replay
 
@@ -55,6 +85,13 @@ uv run python -m police_thief_lab.viewer_cli replay \
 
 The Live view is role-local and cannot carry objective opponent coordinates. Replay verifies the
 revealed log before showing `Verified OK`. See [the viewer guide](docs/REPLAY_VIEWER.md).
+
+The required reviewed evidence is embedded below. It comes from a synthetic localhost game and
+does not claim another-team or counted play.
+
+![Role-local Live GUI](docs/images/live-gui-local-truth.jpg)
+
+![Replay showing Verified OK](docs/images/replay-verified-ok.jpg)
 
 ## Official repository layout
 

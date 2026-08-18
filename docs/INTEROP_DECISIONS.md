@@ -59,3 +59,26 @@ Reference disk JSON: UTF-8, `ensure_ascii=False`, indent 2, insertion order, no 
 Key reordering, whitespace, EOF newline, or Unicode escaping preserve parsed meaning but change file-byte hashes. Do not compare pretty artifact file bytes unless the match explicitly requires it; compare the agreed canonical object or named symmetric scope. Agree before play on the exact result schema/scope because the professor artifact schema and played kit convention are not fully identical.
 
 Evidence: professor `report/emit.py:34-39,95-123`, `report/artifact_helpers.py:14-44`, `report/report_writer.py`; kit `vectors/report_consensus.json`; mutations in `interop/fixtures/artifact_mutations.json`.
+
+## Full Counted-Series Shared Configuration
+
+STATUS: `UNRESOLVED_FOR_COUNTED_SERIES`
+
+The official PDF Appendix B describes a byte-identical `config/game.json` schema 1.2 containing
+board, movement, scoring, pheromone, league, timeout, token-budget, and Gatekeeper fields. Appendix
+F fixes a six-sub-game series and the quantitative minima/fixed values. The pinned professor
+negotiation and schema-1.1 artifact builders instead expose the tested flat 14-term agreement,
+while our stronger runtime lock separately serializes the extended `MatchProfile`.
+
+These are three named scopes, not interchangeable serializations:
+
+1. official full Appendix-B shared configuration for a counted series;
+2. professor-compatible 14-term negotiation/config-artifact body;
+3. local extended runtime profile bytes.
+
+Current code proves scopes 2 and 3 and one-sub-game runtime artifacts. It does not yet produce the
+full scope-1 file or a six-sub-game series result. Do not add fields to the pinned professor body,
+drop official fixed fields, or hash one scope while labeling it as another. `LGE-001` must define
+an outer counted-series/config contract with differential and frozen regression tests. Explicit
+bilateral agreement is still required for negotiable values and serialization choices, but it
+cannot waive fixed Appendix-E/F requirements.

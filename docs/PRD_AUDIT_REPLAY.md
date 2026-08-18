@@ -25,10 +25,13 @@ The current approach isolates `canonical_json`, `hcommit`, `seal`, `verify_recor
 Alternatives such as a different canonical serializer, nonce placement, signature scheme, or
 consensus preimage are rejected for the frozen profile.
 
-Unresolved: offline redacted validation/reporting and broader security review. Metrics are 5/5
-local Hcommit vectors, 125/125 kit vectors, deterministic replay, and rejection of any changed
-payload/nonce/order. Scenarios include Unicode/float/extra fields, wrong nonce, modified payload,
-bad order, terminal claims, and replay divergence.
+Offline redacted validation, fail-closed security scanning, and the verified Replay application
+are implemented. Remaining evidence is operational rather than a missing verifier: an authorized
+other-team audit and a later counted series must still prove mutual agreement in their explicitly
+approved artifact/consensus scope. Metrics are 5/5 local Hcommit vectors, 125/125 kit vectors,
+deterministic replay, and rejection of any changed payload/nonce/order. Scenarios include
+Unicode/float/extra fields, wrong nonce, modified payload, bad order, terminal claims, and replay
+divergence.
 
 Definition of Done: byte vectors remain exact, failure evidence is sanitized, audit and replay
 tests cover success/error paths, conformance and seven frozen hashes pass, and no negotiated

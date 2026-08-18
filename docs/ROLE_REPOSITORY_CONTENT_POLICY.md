@@ -60,11 +60,12 @@ The deterministic exporter is a byte-selection and validation tool; it must not 
 history. Final role assembly must start from the approved shared history so contributor authorship
 and accepted PR evidence remain inspectable. Role-specific changes then use new reviewed commits.
 
-The candidate role-specific root README overlays are retained at
+The candidate role-specific academic root README overlays are retained at
 `submission/templates/police/README.md` and `submission/templates/thief/README.md`. The complete
 offline, history-preserving sequence is documented in
 [`ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md`](ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md). These files contain
-only pending counterpart placeholders and do not satisfy Rule 49 before exact URL approval.
+the required Dec-POMDP, FastMCP/Gatekeeper, role-strategy, Live GUI, and Replay evidence, but they
+contain pending counterpart placeholders and do not satisfy Rule 49 before exact URL approval.
 
 For each role, the future operator must:
 

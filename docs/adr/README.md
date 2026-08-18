@@ -10,5 +10,5 @@ already established by authoritative repository evidence; proposed records selec
 - [ADR-002](ADR-002-retrospective-documentation-recovery.md): honest retrospective recovery — ACCEPTED
 - [ADR-003](ADR-003-sdk-facade-plan.md): single SDK facade — ACCEPTED
 - [ADR-004](ADR-004-api-gatekeeper-applicability.md): FastMCP API Gatekeeper — ACCEPTED
-- [ADR-005](ADR-005-150-line-refactoring-strategy.md): 150-line refactoring — PROPOSED
+- [ADR-005](ADR-005-150-line-refactoring-strategy.md): 150-line refactoring — ACCEPTED
 - [ADR-006](ADR-006-versioned-configuration-boundary.md): versioned configuration — ACCEPTED

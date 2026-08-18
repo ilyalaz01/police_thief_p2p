@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
 
 from tests.support.project_paths import PROJECT_ROOT
 
@@ -68,6 +67,11 @@ def test_role_readmes_cover_the_official_academic_report() -> None:
     for path in ROLE_READMES:
         document = read(path)
         assert not [term for term in required if term not in document]
+    for image in (
+        "docs/images/live-gui-local-truth.jpg",
+        "docs/images/replay-verified-ok.jpg",
+    ):
+        assert (ROOT / image).is_file()
 
 
 def test_open_official_delivery_implementation_is_not_hidden_as_human_only() -> None:

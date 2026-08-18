@@ -26,6 +26,11 @@ Alternatives include the kit row with `tie`, raw-file agreement, and other schem
 remain unselected pending explicit bilateral agreement. The repository worksheet is always
 blocked and is not an agreement.
 
+The current runtime produces one schema-1.1 sub-game result at a time. It does not yet orchestrate
+the official fixed six-sub-game series or produce the full Appendix-B schema-1.2 shared file.
+Those delivery domains remain explicit under `LGE-001`; they cannot be silently folded into the
+pinned reference builders or their frozen consensus preimage.
+
 Metrics: deterministic bytes/hashes for named domains; four expected artifact families; schema
 parse; cross-links and consensus hash verified; zero unexpected/private fields in reports.
 Scenarios include key reordering, whitespace/newline, Unicode escaping, optional-field mutation,
@@ -35,4 +40,3 @@ Definition of Done: selected schema/scope explicitly approved, worked vector exc
 terms bytes/hash agreed separately from optional extended profile, validators pass, artifacts
 remain unchanged through packaging, and no readiness claim precedes human approval. Frozen and
 negotiated boundaries cover all artifacts, serialization, profiles, hashes, and consensus.
-

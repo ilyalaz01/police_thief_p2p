@@ -27,8 +27,10 @@ frozen-manifest tests.
 Rejected for the current profile: a simultaneous shared-world resolver, because it conflicts with
 the executable reference cadence; a full-truth policy interface, because it violates isolation.
 
-Unresolved: own-cell barrier behavior is negotiated; simultaneous opponents require a separate
-agreement; documentation/refactoring coverage remains planned.
+Unresolved: own-cell barrier behavior is negotiated and simultaneous opponents require a separate
+agreement. Documentation, building-block contracts, and the semantics-preserving refactoring are
+complete. The outer six-sub-game counted-series workflow and the full Appendix-B shared-config
+scope are separate delivery work under `LGE-001`; they must not alter this frozen core.
 
 Metrics: deterministic equality for repeated inputs; zero illegal accepted actions; zero hidden
 coordinate exposure; exact boundary/terminal tests; frozen hashes 7/7. Test scenarios include

@@ -260,6 +260,39 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   team-baseline-v1`; Phase 4D11 governance test; PR/release evidence review.
 - Hard stop/escalation: never backdate, reassign, force-push, or tag without authorization.
 
+## LGE-001 — Complete the official counted-series and shared-config boundary
+
+- Milestone: D4; Priority: P0; Status: PLANNED; Owner role: Core Architecture / Release Engineering
+- Dependencies: accepted single-sub-game runtime, Appendix-B/F authority review, HUM-001 for any
+  opponent-specific value; Evidence today: professor/reference cross-play and schema-1.1 artifacts
+  prove one sub-game, while `docs/INTEROP_DECISIONS.md` records
+  `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope.
+- Definition of Done: an outer offline coordinator runs the fixed six-sub-game series without
+  changing frozen game/wire behavior; role assignment, per-game commit, truthful game count,
+  declaration metadata, token totals, scoring, audit, and aggregate result are deterministic; the
+  full Appendix-B shared configuration is byte-locked as its own named scope and every
+  professor/schema-1.1 serialization remains exact.
+- Validation commands: focused series/config success and refusal tests; unmodified-professor
+  differential; full quality gate; six-sub-game localhost audit/replay with no external network.
+- Hard stop/escalation: do not invent missing identity/hardware/repository values, conflate the
+  three config/hash domains, change the frozen champion or semantics, contact a peer, or report a
+  counted result.
+
+## MAIL-001 — Implement and authorize official Gmail result reporting
+
+- Milestone: D4; Priority: P0; Status: BLOCKED; Owner role: Release Engineering / Human Operator
+- Dependencies: explicit user authorization to begin Gmail work, LGE-001 result bytes, HUM-001,
+  and least-privilege OAuth setup; Evidence today: no production Gmail API sender exists and no
+  credential or send operation has been authorized.
+- Definition of Done: both roles can independently send the exact mutually agreed result JSON as
+  an attachment through a send-only Gmail API boundary; quota, token-bucket, retry/backoff,
+  queue/DOS protection, Table-19 configuration, secret handling, and deterministic mocked failure
+  paths are tested; any live send occurs only for a separately authorized counted operation.
+- Validation commands: network-free mocked sender/Gatekeeper tests and secret scan first; later,
+  only after explicit approval, a bounded least-privilege operational preflight and audited send.
+- Hard stop/escalation: do not add credentials, start OAuth, open Gmail, send a draft/message, or
+  treat a mock as operational evidence without the user's explicit choice.
+
 ## SUB-001 — Assemble the official two-repository submission
 
 - Milestone: D4; Priority: P1; Status: IN_PROGRESS; Owner role: Release Engineering
