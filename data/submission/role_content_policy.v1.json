@@ -1,6 +1,6 @@
 {
   "schema": "role_repository_content_policy_v1",
-  "status": "LOCAL_CANDIDATE_PENDING_EXPORT_TOOL_INTEGRATION",
+  "status": "LOCAL_CANDIDATE_EXPORTER_INTEGRATED",
   "evidence_cutoff": "64a1e55a9c99fa2debd480bebdfadbc7c2a142c5",
   "authority": {
     "official_rules": [49, 50],
@@ -33,6 +33,7 @@
       "notebooks/",
       "results/research/",
       "src/",
+      "submission/templates/",
       "tests/",
       "tools/"
     ],
