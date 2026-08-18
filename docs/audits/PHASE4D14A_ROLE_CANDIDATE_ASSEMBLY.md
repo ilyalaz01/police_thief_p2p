@@ -38,8 +38,19 @@ exactly `PENDING_HUMAN_APPROVAL`.
 
 ## Acceptance and remaining boundary
 
-Focused submission-assembly tests pass 14/14. Full suite, coverage, Ruff, Hcommit, frozen-manifest,
-conformance, and exact tracked-snapshot scan are recorded after the final evidence commit.
+Focused submission-assembly tests pass 14/14. The final branch state passes 453/453 tests with no
+skip or xfail and 91.10% combined statement/branch coverage. Ruff passes over `src`, `tests`, and
+`tools`; Hcommit is 5/5, the frozen manifest is 7/7, and the pinned conformance kit is 125/125.
+An exact `git archive` snapshot excluding only the documented synthetic `tests/offline_ops/`
+scanner fixtures passed the fail-closed secret scan with zero findings.
+
+The first aggregate local gate correctly exposed two governance failures: the root manual had
+lost the exact required phrase `two separate role repositories`, and five new private helpers
+lacked docstrings. Both were corrected and their focused contracts pass 10/10 before the final
+full run. That aggregate invocation also scanned ignored retained public-test evidence and old
+temporary snapshots in the developer workspace, reporting only sanitized categories/paths. Those
+ignored files are not in Git or either candidate; the exact tracked-snapshot scan is the applicable
+publication evidence. No finding value was retained.
 
 The outputs are byte snapshots, not Git repositories. Shared history/authorship, the pinned
 conformance gitlink, two independent role quality gates, exact reciprocal URLs, remotes, and

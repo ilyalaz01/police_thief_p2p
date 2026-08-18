@@ -5,6 +5,26 @@
   "red_commit": "a8cdc3e",
   "implementation_commit": "836be0fd3fcc733467a3bb60baf2c9c5a1f51236",
   "focused_tests": {"passed": 14, "failed": 0},
+  "final_validation": {
+    "pytest_passed": 453,
+    "pytest_failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "branch_coverage_percent": 91.10,
+    "ruff": "PASS",
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "exact_tracked_snapshot_secret_scan": "PASS_ZERO_FINDINGS"
+  },
+  "correction": {
+    "initial_governance_failures": [
+      "root README exact two-repository phrase",
+      "five private helper docstrings"
+    ],
+    "focused_correction_tests": "10/10 PASS",
+    "ignored_workspace_scan_is_publication_evidence": false
+  },
   "candidates": {
     "police": {
       "file_count": 334,
