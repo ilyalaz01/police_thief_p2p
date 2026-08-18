@@ -57,7 +57,7 @@ def _source_tree(root: Path) -> str:
 
 
 def load_design(path: Path, repo_root: Path) -> MeasurementDesign:
-    """Load and fail closed on any unsupported or stale measurement design."""
+    """Load an immutable historical design without rewriting its source identity."""
     raw = path.read_bytes()
     data = json.loads(raw.decode("utf-8"))
     required = {
@@ -76,8 +76,8 @@ def load_design(path: Path, repo_root: Path) -> MeasurementDesign:
     source_tree_sha = data.get("source_tree_sha")
     if not isinstance(source_tree_sha, str) or len(source_tree_sha) != 40:
         raise ValueError("source_tree_sha must be a full Git tree identity")
-    if _source_tree(repo_root) != source_tree_sha:
-        raise ValueError("current src tree differs from the preregistered design")
+    if not repo_root.is_dir():
+        raise ValueError("measurement repository root is unavailable")
     return MeasurementDesign(
         scope=data["scope"],
         police_policy=data["police_policy"],
@@ -91,3 +91,9 @@ def load_design(path: Path, repo_root: Path) -> MeasurementDesign:
         memory_games=_positive(data, "memory_games"),
         memory_seed_start=_positive(data, "memory_seed_start"),
     )
+
+
+def require_current_source_tree(design: MeasurementDesign, repo_root: Path) -> None:
+    """Block a new measurement when code differs from its preregistered source tree."""
+    if _source_tree(repo_root) != design.source_tree_sha:
+        raise ValueError("current src tree differs from the preregistered design")

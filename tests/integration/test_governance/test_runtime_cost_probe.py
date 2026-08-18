@@ -4,9 +4,16 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
 from tests.support.project_paths import PROJECT_ROOT
 from tools.quality_assessment.runtime_models import MemorySample, TimingSample
-from tools.quality_assessment.runtime_probe import execute_design, load_design, measure_one_game
+from tools.quality_assessment.runtime_probe import (
+    execute_design,
+    load_design,
+    measure_one_game,
+    require_current_source_tree,
+)
 
 DESIGN_PATH = PROJECT_ROOT / "data/quality/runtime_measurement_design.v1.json"
 COST_DOC = PROJECT_ROOT / "docs/COST_AND_CAPACITY_ANALYSIS.md"
@@ -14,9 +21,10 @@ AUDIT_JSON = PROJECT_ROOT / "docs/audits/phase4d10_cost_capacity_measurements.js
 SAMPLES_JSON = PROJECT_ROOT / "docs/audits/phase4d10_runtime_samples.json"
 
 
-def test_design_is_explicit_and_pinned_to_current_source_tree() -> None:
-    """The preregistered design fixes scope, policies, samples, and source tree."""
+def test_design_is_explicit_and_pinned_to_historical_source_tree() -> None:
+    """The retained design keeps the exact source identity that was measured."""
     design = load_design(DESIGN_PATH, PROJECT_ROOT)
+    audit = json.loads(AUDIT_JSON.read_text(encoding="utf-8"))
     assert design.scope == "LOCAL_SIMULATOR_EXPERIMENT"
     assert design.police_policy == "ScentTacticalPolice"
     assert design.thief_policy == "ScentEvasionThief"
@@ -24,6 +32,14 @@ def test_design_is_explicit_and_pinned_to_current_source_tree() -> None:
     assert design.timed_games == 200
     assert design.memory_games == 30
     assert len(design.source_tree_sha) == 40
+    assert design.source_tree_sha == audit["measurement"]["source_tree_sha"]
+
+
+def test_new_measurement_refuses_changed_source_without_rewriting_design() -> None:
+    """Later source additions cannot be measured under the historical preregistration."""
+    design = load_design(DESIGN_PATH, PROJECT_ROOT)
+    with pytest.raises(ValueError, match="current src tree differs"):
+        require_current_source_tree(design, PROJECT_ROOT)
 
 
 def test_execute_design_excludes_warmups_and_sorts_samples() -> None:

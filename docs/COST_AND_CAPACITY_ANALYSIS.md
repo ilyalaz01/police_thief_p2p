@@ -117,6 +117,10 @@ retained at `docs/audits/phase4d10_runtime_samples.json`.
 ### Scope and method
 
 - Exact production `src/` tree: `3de0e42237792aa717d19d792ad18f44cced2be4`.
+- This is immutable historical provenance, not a claim that later repository versions have the
+  same tree. The retained design remains readable, while the measurement CLI refuses any new run
+  unless its preregistered source identity equals the then-current `src` tree; the old design SHA
+  and samples are never rewritten to make later code appear preregistered.
 - Pairing: frozen `ScentTacticalPolice` versus `ScentEvasionThief`, default Appendix-F-compatible
   local config and disjoint fixed seed ranges.
 - 20 warm-up games ran first and were not retained or counted as measurements.
