@@ -27,7 +27,7 @@ Covers functional completeness, functional correctness, and functional appropria
 | **Current evidence** | Deterministic rules engine (Rules 46/47, barriers, scoring, survival); role-legal observations; alternating Thief-first turns; four-tool FastMCP exchange; commit-reveal; audit/replay; schema 1.1 artifact builders; full passing suite; conformance 125/125; Phase 4D7C role-safe Live GUI; Phase 4D9 reproducible local sensitivity publication |
 | **Measurable indicator** | Test suite pass rate; conformance vector pass rate; frozen manifest 7/7 |
 | **Honest status** | SUBSTANTIAL — core offline function is proven |
-| **Remaining gap** | Official six-sub-game aggregation/full shared config (`LGE-001`), Gmail reporting (`MAIL-001`), counted league games (`HUM-001`), and two-repository assembly (`SUB-001`) remain open |
+| **Remaining gap** | The accepted six-slot/config entry gate still needs a localhost runtime/artifact adapter and bilateral locks (`LGE-001`); Gmail reporting (`MAIL-001`), counted league games (`HUM-001`), and two-repository assembly (`SUB-001`) remain open |
 | **Proposed owner/action** | Complete each named gate without modifying the frozen single-sub-game core or inferring external authorization |
 
 ---
@@ -55,8 +55,8 @@ Covers co-existence and interoperability.
 | **Current evidence** | 125/125 conformance vectors; Hcommit 5/5 golden cases; professor localhost MCP 4/4; MCP wire `VERIFIED_REFERENCE_INTEROP`; duplicate/equivocation behavior verified; scent and artifact schemas documented in `docs/INTEROP_DECISIONS.md` |
 | **Measurable indicator** | Conformance vector pass rate; Hcommit vector pass rate; interop fixture coverage |
 | **Honest status** | SUBSTANTIAL for reference-v3 profile; PARTIAL for real-team compatibility |
-| **Remaining gap** | No other-team counted game; simultaneous-model turn resolution and artifact consensus remain negotiated; the full Appendix-B counted-series config is unresolved under `LGE-001`; `HUM-001` is BLOCKED |
-| **Proposed owner/action** | `LGE-001`: preserve separate config/hash scopes; `HUM-001`: complete the bilateral worksheet and pre-match profile negotiation |
+| **Remaining gap** | No other-team counted game; simultaneous-model turn resolution and artifact consensus remain negotiated; the Appendix-B candidate has no peer-approved lock and no six-game runtime artifact evidence under `LGE-001`; `HUM-001` is BLOCKED |
+| **Proposed owner/action** | `LGE-001`: preserve separate config/hash scopes through the localhost adapter; `HUM-001`: complete the bilateral worksheet and pre-match profile negotiation |
 
 ---
 

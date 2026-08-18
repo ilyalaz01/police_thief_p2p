@@ -6,6 +6,7 @@ from .artifacts import ArtifactsSDK
 from .configuration import ConfigurationSDK
 from .domain import DomainSDK
 from .evaluation import EvaluationSDK
+from .league import LeagueSDK
 from .policies import PoliciesSDK
 from .transport import TransportSDK
 
@@ -20,3 +21,4 @@ class PoliceThiefSDK:
     artifacts: ArtifactsSDK = field(default_factory=ArtifactsSDK)
     transport: TransportSDK = field(default_factory=TransportSDK)
     configuration: ConfigurationSDK = field(default_factory=ConfigurationSDK)
+    league: LeagueSDK = field(default_factory=LeagueSDK)

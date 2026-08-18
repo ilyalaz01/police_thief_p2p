@@ -76,8 +76,10 @@ These are three named scopes, not interchangeable serializations:
 2. professor-compatible 14-term negotiation/config-artifact body;
 3. local extended runtime profile bytes.
 
-Current code proves scopes 2 and 3 and one-sub-game runtime artifacts. It does not yet produce the
-full scope-1 file or a six-sub-game series result. Do not add fields to the pinned professor body,
+Current code proves scopes 2 and 3 and one-sub-game runtime artifacts. Phase 4D13A adds a strict
+scope-1 schema-1.2 candidate and matching byte-lock gate plus an injected six-slot offline
+coordinator, but no peer has approved the proposed serialization/schedule and no six-sub-game
+runtime artifact set has run. Do not add fields to the pinned professor body,
 drop official fixed fields, or hash one scope while labeling it as another. `LGE-001` must define
 an outer counted-series/config contract with differential and frozen regression tests. Explicit
 bilateral agreement is still required for negotiable values and serialization choices, but it

@@ -17,6 +17,7 @@ PUBLIC_PACKAGES = (
     "src/police_thief_lab/__init__.py",
     "src/police_thief_lab/evaluation/__init__.py",
     "src/police_thief_lab/interop/__init__.py",
+    "src/police_thief_lab/league/__init__.py",
     "src/police_thief_lab/policies/__init__.py",
     "src/police_thief_lab/presentation/__init__.py",
     "src/police_thief_lab/sdk/__init__.py",
@@ -115,7 +116,7 @@ def test_building_block_and_extension_contracts_cover_public_boundaries() -> Non
         assert heading in blocks
     for service in (
         "DomainSDK", "PoliciesSDK", "EvaluationSDK", "ArtifactsSDK", "TransportSDK",
-        "ConfigurationSDK",
+        "ConfigurationSDK", "LeagueSDK",
     ):
         assert service in blocks
     for extension in (

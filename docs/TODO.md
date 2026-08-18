@@ -262,11 +262,14 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## LGE-001 — Complete the official counted-series and shared-config boundary
 
-- Milestone: D4; Priority: P0; Status: PLANNED; Owner role: Core Architecture / Release Engineering
+- Milestone: D4; Priority: P0; Status: IN_PROGRESS; Owner role: Core Architecture / Release Engineering
 - Dependencies: accepted single-sub-game runtime, Appendix-B/F authority review, HUM-001 for any
   opponent-specific value; Evidence today: professor/reference cross-play and schema-1.1 artifacts
   prove one sub-game, while `docs/INTEROP_DECISIONS.md` records
-  `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope.
+  `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope. Phase 4D13A and its
+  `docs/audits/PHASE4D13A_OFFICIAL_SERIES_ENTRY.md` evidence add the
+  fail-closed offline config/schedule/identity/provenance/aggregation entry contract without
+  changing the single-game runtime or claiming bilateral approval.
 - Definition of Done: an outer offline coordinator runs the fixed six-sub-game series without
   changing frozen game/wire behavior; role assignment, per-game commit, truthful game count,
   eight-character group identity, members/repos/hardware declaration metadata, token totals,

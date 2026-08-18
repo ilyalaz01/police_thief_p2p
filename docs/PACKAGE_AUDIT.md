@@ -20,7 +20,7 @@ and documentation only; it does not authorize final two-repository submission as
 ## Package boundaries and exports
 
 All Python package directories contain `__init__.py`. The consumer-facing root and the
-`evaluation`, `interop`, `policies`, `presentation`, and `sdk` packages declare explicit `__all__`
+`evaluation`, `interop`, `league`, `policies`, `presentation`, and `sdk` packages declare explicit `__all__`
 lists. `PoliceThiefSDK` remains the single supported consumer facade; legacy imports remain for
 validated compatibility rather than creating a second implementation.
 

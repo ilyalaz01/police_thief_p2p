@@ -23,7 +23,7 @@ an uncounted compatibility exercise.
 The problem is to implement a partially observable two-process game without leaking hidden truth
 or silently diverging on rules, bytes, deadlines, or audit results. The validated prototype
 solves the local single-sub-game technical core and the generic professional-project controls.
-Official final delivery still requires role repositories, a six-sub-game series/config layer,
+Official final delivery still requires role repositories, a six-sub-game runtime/artifact adapter,
 authorized Gmail reporting, and human/bilateral operations.
 
 Measurable goals and KPIs:
@@ -120,9 +120,9 @@ two accessible figures, and a cited notebook equivalent without changing the cha
 Phase 4D10 adds preregistered one-machine local simulator wall/CPU timing, Python-allocation peak,
 result-size, and sequential-capacity evidence without inferring a vendor or electricity price.
 
-Planned or incomplete: two-role-repository submission assembly; the fixed six-sub-game outer
-series and full Appendix-B shared-config domain; Gmail API sender/authorization; and bilateral
-readiness.
+Planned or incomplete: two-role-repository submission assembly; the localhost runtime/artifact
+adapter for the accepted offline six-slot and Appendix-B entry contract; Gmail API
+sender/authorization; and bilateral readiness.
 Research/visualization, applicable cost/capacity measurement, package/building-block/extension
 documentation, and the internal ISO assessment are accepted alongside the Live GUI, Replay view,
 structured tests, CLI UX, and release tooling.

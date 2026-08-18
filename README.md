@@ -15,8 +15,9 @@ post-game Replay Viewer. The public quality gate passes with branch coverage abo
 5/5, frozen hashes 7/7, and conformance vectors 125/125.
 
 Historical local and public self-tests are evidence only. This repository is not yet a final
-two-repository submission and does not yet implement the official outer six-sub-game series or
-Gmail sender. It is not authorization for a real-team warm-up or counted match.
+two-repository submission. It has a fail-closed offline six-slot/config entry contract, but not
+the complete localhost series artifact adapter or Gmail sender. It is not authorization for a
+real-team warm-up or counted match.
 The authority hierarchy is defined in [the rules baseline](RULES_AND_INTEROP_BASELINE.md), and
 negotiated differences are recorded in [interop decisions](docs/INTEROP_DECISIONS.md).
 
@@ -281,8 +282,8 @@ review. See [CONTRIBUTING](CONTRIBUTING.md) and the [live TODO](docs/TODO.md).
 
 This shared development repository is not the final course submission. The Live GUI, Replay
 `Verified OK`, and reviewed screenshots are implemented here, but higher-authority delivery still
-requires two separate role repositories (Police and Thief), the fixed six-sub-game series and full
-Appendix-B shared-config scope, an explicitly authorized Gmail API sender, inclusion and validation
+requires two separate role repositories (Police and Thief), completion of the fixed six-sub-game
+runtime/artifact flow and bilateral Appendix-B lock, an explicitly authorized Gmail API sender,
 of GUI evidence in each submission context, annotated `v1.0-submission` tags, and human-gated
 league/Moodle steps. Counted games and Gmail reporting remain blocked without explicit approval.
 The exact evidence and owners are tracked in

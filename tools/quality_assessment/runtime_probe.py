@@ -13,7 +13,7 @@ from police_thief_lab import GameConfig
 from police_thief_lab.evaluation import run_game
 from police_thief_lab.policies import ScentEvasionThief, ScentTacticalPolice
 
-from .runtime_design import MeasurementDesign, load_design
+from .runtime_design import MeasurementDesign, load_design, require_current_source_tree
 from .runtime_models import MemorySample, TimingSample, summarize_memory, summarize_timings
 
 Warmup = Callable[[int], None]
@@ -117,6 +117,7 @@ __all__ = [
     "load_design",
     "measure_one_game",
     "memory_one_game",
+    "require_current_source_tree",
     "timing_one_game",
     "warmup_one_game",
 ]

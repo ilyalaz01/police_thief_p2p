@@ -134,7 +134,8 @@ flowchart LR
 ## Modules and interfaces
 
 - `sdk/*`: the documented single consumer entry point, split into domain, policy, evaluation,
-  artifact, transport, and configuration services; existing modules remain implementations.
+  artifact, transport, configuration, and offline league services; existing modules remain
+  implementations.
 - `models`, `rules`, `scent`, `turns`, `simulator`: domain types, legal actions, scent protocol,
   transition model, `DecisionBackend`, role observations, `Simulator`, and `replay`.
 - `policies/*`: interchangeable observed-state decision backends; tactical champion is frozen.
@@ -150,6 +151,9 @@ flowchart LR
   artifact and consensus functions.
 - `configuration.py`: strict versioned operational-startup loader and value-redacting secret scan;
   it is deliberately outside MatchProfile and frozen game/interoperability bytes.
+- `league/*`: exact Appendix-B schema-1.2 candidate/lock, final identity/provenance gates, flat-term
+  series IDs, and a six-slot injected offline coordinator. It leaves schedule/config/tie differences
+  blocked until explicit bilateral agreement and does not start a peer.
 - `peer_cli.py`: argument parsing plus one typed `PeerLaunchRequest` delegation. The SDK transport
   service validates optional operational configuration, reads profile timeouts, validates the
   endpoint, and invokes the existing runtime behind that boundary.
@@ -209,8 +213,8 @@ cost/capacity measurement with preregistered local wall/CPU/Python-allocation/re
 Phase 4D11 accepts the inspectable shared-repository Git/PR/tag workflow while preserving its
 retrospective limitations and withholding final submission tags. The package/building-block/
 extension audit and internal ISO assessment are accepted. Remaining offline architecture work is
-the two-role submission export/validation under SUB-001 plus the separately controlled
-six-sub-game/full Appendix-B configuration boundary under LGE-001. Gmail delivery remains blocked
+the two-role submission export/validation under SUB-001 plus the localhost runtime/artifact adapter
+for the accepted offline six-game/config entry boundary under LGE-001. Gmail delivery remains blocked
 under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific

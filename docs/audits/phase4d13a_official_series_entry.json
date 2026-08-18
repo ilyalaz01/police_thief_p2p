@@ -1,0 +1,74 @@
+{
+  "phase": "4D13A",
+  "status": "GREEN_LOCAL_PENDING_PR_CI",
+  "classification": "OFFLINE_LGE_ENTRY_CONTRACT",
+  "todo": {
+    "LGE-001": "IN_PROGRESS",
+    "MAIL-001": "BLOCKED",
+    "SUB-001": "IN_PROGRESS",
+    "HUM-001": "BLOCKED"
+  },
+  "commits": {
+    "red_contract": "4601857",
+    "green_implementation": "46cba50",
+    "architecture_and_living_docs": "347ebbd",
+    "historical_measurement_regression": "f48b1e8",
+    "appendix_b_worked_vector": "1f53568"
+  },
+  "proven": {
+    "appendix_b_exact_schema_and_fixed_values": true,
+    "appendix_b_named_candidate_profile": "appendix_b_canonical_compact_v1",
+    "appendix_b_peer_hash_profile_and_approval_gate": true,
+    "flat_fourteen_term_uid_with_num_games_six": true,
+    "six_sealed_alternating_slots": true,
+    "official_capture_survival_score_validation": true,
+    "raw_aggregate_and_token_totals": true,
+    "tied_series_fails_closed": true,
+    "complete_static_identity_shape_validation": true,
+    "opaque_commits_for_both_groups_all_six_games": true,
+    "single_game_runtime_and_schema_1_1_builders_unchanged": true
+  },
+  "worked_vector": {
+    "path": "interop/fixtures/appendix_b_schema_1_2_candidate_vector.json",
+    "classification": "LOCAL_PROPOSAL_PENDING_EXPLICIT_BILATERAL_AGREEMENT",
+    "utf8_length": 911,
+    "sha256": "358f29da2ce5777b0697a8f4201b00404a56732e5bb57e15b806122c92c9f734"
+  },
+  "not_proven": [
+    "six-sub-game localhost peer execution and artifact set",
+    "real operator or opponent identity values",
+    "bilateral config serialization, role schedule, tie, Rule 47, or consensus approval",
+    "Gmail sender or OAuth authorization",
+    "public transport or external-team interoperability",
+    "counted league readiness or final submission readiness"
+  ],
+  "operations": {
+    "frozen_file_changed": false,
+    "single_game_runtime_changed": false,
+    "pinned_professor_source_changed": false,
+    "conformance_submodule_changed": false,
+    "partner_exporter_path_changed": false,
+    "public_network_used": false,
+    "peer_or_gameplay_started": false,
+    "external_team_contacted": false,
+    "gmail_or_oauth_started": false,
+    "league_reporting_started": false,
+    "counted_match_started": false,
+    "repository_or_tag_created": false
+  },
+  "validation": {
+    "red_state": "3 expected missing-package collection errors",
+    "full_suite": "396/396, no skips or xfails",
+    "combined_coverage_percent": 91.99,
+    "coverage_threshold_percent": 85,
+    "ruff": "PASS_ZERO_ERRORS",
+    "professor_four_builder_differential": "PASS_WITHOUT_SKIP",
+    "hcommit_vectors": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance_vectors": "125/125",
+    "max_new_production_counted_lines": 148,
+    "max_new_test_counted_lines": 131,
+    "tracked_public_snapshot_secret_scan": "PASS_ZERO_FINDINGS"
+  },
+  "smallest_next_step": "offline localhost six-slot runtime/artifact adapter with hard stop before any public, human, Gmail, reporting, or counted operation"
+}

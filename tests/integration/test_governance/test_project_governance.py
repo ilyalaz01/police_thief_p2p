@@ -82,7 +82,18 @@ def test_every_matrix_gap_links_to_a_todo_task() -> None:
 
 def test_adr_statuses_and_required_mermaid_diagrams() -> None:
     adrs = sorted((ROOT / "docs/adr").glob("ADR-*.md"))
-    assert len(adrs) == 6
+    assert {adr.name for adr in adrs} >= {
+        f"ADR-{number:03d}-{suffix}"
+        for number, suffix in (
+            (1, "source-authority-and-frozen-core.md"),
+            (2, "retrospective-documentation-recovery.md"),
+            (3, "sdk-facade-plan.md"),
+            (4, "api-gatekeeper-applicability.md"),
+            (5, "150-line-refactoring-strategy.md"),
+            (6, "versioned-configuration-boundary.md"),
+            (7, "official-series-boundary.md"),
+        )
+    }
     for adr in adrs:
         match = re.search(r"^Status: (\w+)$", adr.read_text(encoding="utf-8"), re.MULTILINE)
         assert match and match.group(1) in ALLOWED_ADR

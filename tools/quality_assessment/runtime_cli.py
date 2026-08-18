@@ -12,6 +12,7 @@ from .runtime_probe import (
     execute_design,
     load_design,
     memory_one_game,
+    require_current_source_tree,
     timing_one_game,
     warmup_one_game,
 )
@@ -56,6 +57,7 @@ def main(argv: list[str] | None = None) -> int:
         design_path = (root / args.design).resolve()
         design_path.relative_to(root)
         design = load_design(design_path, root)
+        require_current_source_tree(design, root)
         output = _safe_output(root, args.output)
         report = execute_design(
             design, warmup_one_game, timing_one_game, memory_one_game, _environment()
