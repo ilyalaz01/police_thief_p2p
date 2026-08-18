@@ -5,6 +5,18 @@
   "red_commit": "bb631ad",
   "implementation_commit": "4c41d01",
   "real_git_gate_tests": {"passed": 5, "failed": 0},
+  "affected_contracts": {"passed": 42, "failed": 0},
+  "final_validation": {
+    "pytest_passed": 458,
+    "pytest_failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "branch_coverage_percent": 91.10,
+    "ruff": "PASS",
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125"
+  },
   "selected_regular_files": 327,
   "separately_retained": [
     ".gitmodules",

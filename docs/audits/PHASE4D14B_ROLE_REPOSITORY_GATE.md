@@ -37,10 +37,12 @@ research, config, license and contribution history remain selected.
 ## Validation and boundary
 
 - Real temporary-Git verifier/CLI contracts: 5/5.
-- Affected submission/governance contracts before this report: 41/41.
+- Affected submission/governance contracts: 42/42.
 - Every new/changed Python file remains below 150 counted lines; Ruff passes.
-- Full-suite, frozen, Hcommit, conformance and tracked-snapshot results are finalized after this
-  evidence commit and public PR CI.
+- Full suite: 458/458 with no skip or xfail and 91.10% combined statement/branch coverage.
+- Hcommit: 5/5; frozen manifest: 7/7; pinned conformance kit: 125/125.
+- The exact tracked snapshot secret scan and public PR CI remain the final acceptance checks after
+  this evidence commit.
 
 This phase prepares but does not claim the actual Police/Thief branch gates. No URL, remote,
 publication, final tag, opponent contact, Gmail, public transport, gameplay, counted operation,
