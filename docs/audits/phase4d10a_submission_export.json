@@ -1,0 +1,133 @@
+{
+  "phase": "4D10A",
+  "task": "SUB-001 / Deterministic Offline Submission Export Tooling",
+  "branch": "partner/submission-export-tooling",
+  "starting_commit": "1cd880f999ce9c0e58fc2f3119653c3ca7a559c0",
+  "required_ancestor_commit": "04dd67b633442f245e8bce3174ee610a6294b1f6",
+  "ancestor_verified": true,
+  "worktree_clean_at_start": true,
+  "commits": {
+    "red": {
+      "sha": "85e7f8c684f54bbbcc91ed8a0d6f6783f4088668",
+      "message": "test: define offline submission export contract",
+      "description": "TDD RED: 46 integration tests, all fail with ModuleNotFoundError"
+    },
+    "green": {
+      "sha": "c2c8434c9c6357f41b85b84c9646e8d7745ea8a7",
+      "message": "feat: add guarded deterministic submission exporter",
+      "description": "Full stdlib-only implementation; 46/46 tests GREEN"
+    },
+    "docs": {
+      "sha": "b14603b63b899b495e901940e638ae0d1ce73ccb",
+      "message": "docs: document role submission export contract",
+      "description": "docs/SUBMISSION_EXPORT_CONTRACT.md"
+    }
+  },
+  "changed_paths": [
+    "tools/submission_export/__init__.py",
+    "tools/submission_export/manifest.py",
+    "tools/submission_export/git_ops.py",
+    "tools/submission_export/path_guard.py",
+    "tools/submission_export/planner.py",
+    "tools/submission_export/exporter.py",
+    "tools/submission_export/cli.py",
+    "tests/integration/test_submission_export/__init__.py",
+    "tests/integration/test_submission_export/conftest.py",
+    "tests/integration/test_submission_export/test_plan.py",
+    "tests/integration/test_submission_export/test_export.py",
+    "tests/integration/test_submission_export/test_refusals.py",
+    "tests/integration/test_submission_export/test_cli.py",
+    "tests/integration/test_submission_export/test_governance.py",
+    "docs/SUBMISSION_EXPORT_CONTRACT.md",
+    "docs/audits/PHASE4D10A_SUBMISSION_EXPORT.md",
+    "docs/audits/phase4d10a_submission_export.json"
+  ],
+  "validation": {
+    "targeted_tests": {
+      "command": "uv run pytest -q tests/integration/test_submission_export --no-cov",
+      "passed": 51,
+      "failed": 0,
+      "result": "GREEN"
+    },
+    "full_test_suite": {
+      "command": "uv run pytest -q",
+      "passed": 398,
+      "failed": 10,
+      "skipped": 5,
+      "failed_tests_are_preexisting": true,
+      "failed_tests_note": "10 pre-existing failures in tests/offline_ops/ and test_package_building_blocks.py caused by missing external/copthief-league-protocol submodule on this machine, not by this branch",
+      "branch_coverage_percent": 92.59,
+      "coverage_threshold_met": true,
+      "result": "pre-existing failures only"
+    },
+    "ruff": {
+      "command": "uv run ruff check src tests tools",
+      "result": "PASS",
+      "violations": 0
+    },
+    "hcommit_vectors": {
+      "command": "uv run pytest tests/integration/test_interop/test_phase4a_crypto_protocol.py::test_all_hcommit_golden_vectors_and_extra_fields --no-cov",
+      "result": "PASS",
+      "vectors": "5/5"
+    },
+    "frozen_manifest": {
+      "command": "uv run pytest tests/integration/test_governance/test_frozen_manifest.py::test_authoritative_seven_frozen_file_hashes --no-cov",
+      "result": "PASS",
+      "hashes": "7/7"
+    },
+    "conformance_kit": {
+      "command": "uv run python external/copthief-league-protocol/verify_vectors.py",
+      "result": "UNAVAILABLE",
+      "note": "external/copthief-league-protocol submodule not checked out on this machine; must be reprovisioned separately per ROLE_REPOSITORY_CONTENT_POLICY.md; pre-existing environmental limitation"
+    },
+    "secret_scan": {
+      "result": "PASS",
+      "findings": 0
+    }
+  },
+  "line_counts": {
+    "tools/submission_export/__init__.py": 7,
+    "tools/submission_export/manifest.py": 66,
+    "tools/submission_export/git_ops.py": 45,
+    "tools/submission_export/path_guard.py": 98,
+    "tools/submission_export/planner.py": 76,
+    "tools/submission_export/exporter.py": 59,
+    "tools/submission_export/cli.py": 59,
+    "tests/integration/test_submission_export/conftest.py": 58,
+    "tests/integration/test_submission_export/test_plan.py": 67,
+    "tests/integration/test_submission_export/test_export.py": 64,
+    "tests/integration/test_submission_export/test_refusals.py": 102,
+    "tests/integration/test_submission_export/test_cli.py": 60,
+    "tests/integration/test_submission_export/test_governance.py": 23,
+    "maximum": 102,
+    "limit": 150,
+    "all_within_limit": true
+  },
+  "proven_facts": [
+    "plan operation validates submission_export_v1 and emits deterministic sorted JSON with per-file SHA-256 and aggregate hash",
+    "export operation copies validated include set into empty output directory and writes export_manifest.json; refuses non-empty directory",
+    "fail-closed for: absolute, drive-qualified, .., empty, backslash, duplicate, case-insensitive collision, forbidden prefix, credential filename, gitlink, missing/untracked, symlink, wrong source_commit, missing Rule 50 paths, unsupported schema/role",
+    "PENDING_HUMAN_APPROVAL counterpart URL is preserved verbatim and never treated as approval",
+    "no file body, matched secret, absolute system path, or username in any output",
+    "all new Python files within 150-line governance rule (max 98)",
+    "Ruff: zero violations",
+    "Hcommit vectors: 5/5",
+    "Frozen manifest: 7/7",
+    "Secret scan: no findings"
+  ],
+  "limitations": [
+    "conformance_kit 125/125 not verifiable without reprovisioned external submodule (pre-existing environmental limitation)",
+    "final include manifests must be human-authored and reviewed",
+    "final role repository URLs, cross-links, GitHub creation, and v1.0-submission tags remain human-controlled"
+  ],
+  "confirmed_booleans": {
+    "no_production_or_frozen_files_modified": true,
+    "no_existing_tests_modified": true,
+    "no_external_network_operation": true,
+    "no_github_api_operation": true,
+    "no_browser_peer_or_gameplay_operation": true,
+    "no_new_dependency_or_lockfile_change": true,
+    "no_final_repository_remote_publication_or_tag_created": true,
+    "no_opponent_contact_tunnel_email_or_gmail": true
+  }
+}
