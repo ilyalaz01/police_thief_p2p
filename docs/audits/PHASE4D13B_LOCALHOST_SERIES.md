@@ -65,7 +65,7 @@ summary. No live nonce body is retained in this report or its adjacent JSON.
 ## Validation
 
 - Full suite: **449/449 passed**, no skips or xfails.
-- Combined branch coverage: **91.09%**; required threshold 85%.
+- Combined branch coverage: **91.10%**; required threshold 85%.
 - Ruff over `src`, `tests`, and `tools`: zero errors.
 - Hcommit golden vectors: 5/5.
 - Pinned conformance kit: 125/125.

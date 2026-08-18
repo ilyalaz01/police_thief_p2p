@@ -46,7 +46,7 @@
   },
   "validation": {
     "full_suite": "449/449, no skips or xfails",
-    "branch_coverage_percent": 91.09,
+    "branch_coverage_percent": 91.10,
     "ruff_src_tests_tools": "PASS",
     "hcommit_vectors": "5/5",
     "conformance_vectors": "125/125",
