@@ -123,6 +123,31 @@ def test_reject_unsupported_role(police_manifest: dict, repo_root: Path) -> None
         plan(bad, repo_root)
 
 
+def test_reject_agents_dir_prefix(police_manifest: dict, repo_root: Path) -> None:
+    with pytest.raises(PathViolationError):
+        _plan_with_include(police_manifest, [".agents/state.json"], repo_root)
+
+
+def test_reject_sources_dir_prefix(police_manifest: dict, repo_root: Path) -> None:
+    with pytest.raises(PathViolationError):
+        _plan_with_include(police_manifest, ["sources/private_data.json"], repo_root)
+
+
+def test_reject_tmp_dir_prefix(police_manifest: dict, repo_root: Path) -> None:
+    with pytest.raises(PathViolationError):
+        _plan_with_include(police_manifest, ["tmp/cache.db"], repo_root)
+
+
+def test_reject_credential_filename(police_manifest: dict, repo_root: Path) -> None:
+    with pytest.raises(PathViolationError):
+        _plan_with_include(police_manifest, ["private.key"], repo_root)
+
+
+def test_reject_tunnel_config_filename(police_manifest: dict, repo_root: Path) -> None:
+    with pytest.raises(PathViolationError):
+        _plan_with_include(police_manifest, ["config/prod_tunnel.yml"], repo_root)
+
+
 def test_pending_counterpart_url_never_treated_as_approval(
     police_manifest: dict, repo_root: Path
 ) -> None:

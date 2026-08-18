@@ -68,7 +68,7 @@ external dependencies, or lock files were modified.
 uv run pytest -q tests/integration/test_submission_export --no-cov
 ```
 
-Result: **46 passed** in 2.24 s
+Result: **51 passed** in 2.98 s
 
 Tests cover:
 - Valid Police and Thief dry-run plans ✅
@@ -78,7 +78,9 @@ Tests cover:
 - Exported bytes and per-file hashes equal source bytes ✅
 - Every refusal case (absolute path, drive-qualified, `..`, empty, backslash,
   duplicate, case-insensitive collision, missing/untracked, gitlink, forbidden
-  prefix, wrong source_commit, missing Rule 50 paths, unsupported schema/role) ✅
+  prefix `.git/`/`.agents/`/`sources/`/`tmp/`, credential filenames `*.key`,
+  tunnel config filenames, wrong source_commit, missing Rule 50 paths,
+  unsupported schema/role) ✅
 - Required Rule 50 layout (README.md, config/, PRD, PLAN, TODO) ✅
 - Pending counterpart URL preserved and never treated as approval ✅
 - No absolute source path, username, or file body in output ✅
@@ -159,11 +161,11 @@ operational evidence were detected in the repository tree.
 | `tests/integration/test_submission_export/conftest.py` | 58 |
 | `tests/integration/test_submission_export/test_plan.py` | 67 |
 | `tests/integration/test_submission_export/test_export.py` | 64 |
-| `tests/integration/test_submission_export/test_refusals.py` | 87 |
+| `tests/integration/test_submission_export/test_refusals.py` | 102 |
 | `tests/integration/test_submission_export/test_cli.py` | 60 |
 | `tests/integration/test_submission_export/test_governance.py` | 23 |
 
-**Maximum: 98 lines** (`path_guard.py`) — all files within the 150-line rule ✅
+**Maximum: 102 lines** (`test_refusals.py`) — all files within the 150-line rule ✅
 
 ---
 

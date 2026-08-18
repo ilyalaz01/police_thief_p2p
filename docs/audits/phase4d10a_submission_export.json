@@ -45,7 +45,7 @@
   "validation": {
     "targeted_tests": {
       "command": "uv run pytest -q tests/integration/test_submission_export --no-cov",
-      "passed": 46,
+      "passed": 51,
       "failed": 0,
       "result": "GREEN"
     },
@@ -96,10 +96,10 @@
     "tests/integration/test_submission_export/conftest.py": 58,
     "tests/integration/test_submission_export/test_plan.py": 67,
     "tests/integration/test_submission_export/test_export.py": 64,
-    "tests/integration/test_submission_export/test_refusals.py": 87,
+    "tests/integration/test_submission_export/test_refusals.py": 102,
     "tests/integration/test_submission_export/test_cli.py": 60,
     "tests/integration/test_submission_export/test_governance.py": 23,
-    "maximum": 98,
+    "maximum": 102,
     "limit": 150,
     "all_within_limit": true
   },
