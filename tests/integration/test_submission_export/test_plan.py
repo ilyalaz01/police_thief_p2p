@@ -52,7 +52,7 @@ def test_stable_ordering_regardless_of_input_order(
     police_manifest: dict, repo_root: Path
 ) -> None:
     fwd = dict(police_manifest, include=sorted(police_manifest["include"]))
-    rev = dict(police_manifest, include=list(reversed(sorted(police_manifest["include"]))))
+    rev = dict(police_manifest, include=sorted(police_manifest["include"], reverse=True))
     assert json.dumps(plan(fwd, repo_root), sort_keys=True) == json.dumps(
         plan(rev, repo_root), sort_keys=True
     )
