@@ -85,6 +85,7 @@ def test_open_official_delivery_implementation_is_not_hidden_as_human_only() -> 
         "six-sub-game series",
         "full Appendix-B shared configuration",
         "Gmail API sender is not implemented",
+        "eight-character group ID",
     ):
         assert phrase in readiness
     assert "UNRESOLVED_FOR_COUNTED_SERIES" in decisions

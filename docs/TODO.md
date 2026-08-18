@@ -269,7 +269,8 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope.
 - Definition of Done: an outer offline coordinator runs the fixed six-sub-game series without
   changing frozen game/wire behavior; role assignment, per-game commit, truthful game count,
-  declaration metadata, token totals, scoring, audit, and aggregate result are deterministic; the
+  eight-character group identity, members/repos/hardware declaration metadata, token totals,
+  scoring, audit, and aggregate result are deterministic; the
   full Appendix-B shared configuration is byte-locked as its own named scope and every
   professor/schema-1.1 serialization remains exact.
 - Validation commands: focused series/config success and refusal tests; unmodified-professor
