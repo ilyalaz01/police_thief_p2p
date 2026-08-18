@@ -41,7 +41,9 @@
       ".gitmodules"
     ],
     "exclude_prefixes": [
-      "tests/offline_ops/"
+      "tests/offline_ops/",
+      "tests/integration/test_submission_assembly/",
+      "tools/submission_assembly/"
     ]
   },
   "rule_50_required_paths": [

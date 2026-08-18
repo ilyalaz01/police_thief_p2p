@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from police_thief_lab import peer_cli
 from tests.support.project_paths import PROJECT_ROOT
+from tests.support.role_manual import assert_complete_role_manual
 
 
 def _read(relative: str) -> str:
@@ -64,6 +65,10 @@ def test_peer_parser_retains_safe_defaults() -> None:
 def test_readme_is_a_complete_current_user_manual() -> None:
     """Guard the manual sections required by DOC-001."""
     readme = _read("README.md")
+    if readme.startswith("# Police-Thief P2P — "):
+        role = "police" if "— Police\n" in readme[:40] else "thief"
+        assert_complete_role_manual(readme, role)
+        return
     headings = (
         "## Requirements",
         "## Installation",
