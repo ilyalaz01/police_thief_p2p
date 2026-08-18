@@ -45,6 +45,7 @@ class PathViolationError(ValueError):
     """A path failed one of the exporter's fail-closed security checks."""
 
     def __init__(self, category: str, safe_path: str) -> None:
+        """Store the safe failure category and redacted path."""
         self.category = category
         self.safe_path = safe_path
         super().__init__(f"{category}: {safe_path!r}")
