@@ -134,12 +134,18 @@ def test_live_documented_test_paths_exist() -> None:
         )
     }
     assert references
+    role_root = read("README.md").startswith("# Police-Thief P2P — ")
+    excluded_prefixes: tuple[str, ...] = ()
+    if role_root:
+        policy = json.loads(read("data/submission/role_content_policy.v1.json"))
+        excluded_prefixes = tuple(policy["shared_content"]["exclude_prefixes"])
     missing = sorted(
         reference
         for reference in references
         if not (
             ROOT / (reference if reference.startswith("tests/") else f"tests/{reference}")
         ).is_file()
+        and not any(reference.startswith(prefix) for prefix in excluded_prefixes)
     )
     assert missing == []
 

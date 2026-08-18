@@ -81,6 +81,20 @@ In each candidate checkout, independently verify:
 Retain separate Police and Thief audit JSON/Markdown. A green shared repository alone is not a
 substitute for these two independent gates.
 
+Run the shared read-only repository gate before the full role quality gate:
+
+```bash
+uv run python -m tools.submission_assembly.repository_cli \
+  --role police \
+  --candidate tmp/role-worktrees/police \
+  --source-commit <accepted-shared-main-sha>
+```
+
+Repeat with `--role thief` and the Thief checkout. The verifier requires a clean accepted source
+and clean candidate, exact ancestry/file bytes, the unchanged `.gitmodules` and gitlink pin,
+pending counterpart placeholder, zero secret findings, and no final tag. It is read-only and
+authorizes no remote or external operation.
+
 ## 8. Stop for exact-content and URL approval
 
 Present both exact candidate commit SHAs, file/hash manifests, gate evidence, proposed repository

@@ -216,8 +216,9 @@ extension audit and internal ISO assessment are accepted. Phase 4D13B completes 
 runtime/artifact adapter for the accepted six-game/config entry boundary without changing the
 single-game runtime. Phase 4D14A integrates the guarded exporter and atomically reproduces two
 role-specific offline snapshots with exact manifests and secret scans. Remaining offline work is
-history-preserving Police/Thief branch assembly and two independent gates under SUB-001; real
-inputs and bilateral locks remain human/external gates.
+history-preserving Police/Thief branch assembly and two independent gates under SUB-001. Phase
+4D14B supplies the tested read-only ancestry/bytes/submodule/privacy/tag verifier for those
+branches; real inputs and bilateral locks remain human/external gates.
 Gmail delivery remains blocked under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific

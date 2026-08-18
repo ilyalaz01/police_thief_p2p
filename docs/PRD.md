@@ -125,8 +125,9 @@ verifies both audits/replays per game, and assembles two mutually agreeing 14-ar
 byte-identical full Appendix-B files. Its synthetic identities and approvals are local-test data.
 
 Implemented locally: deterministic guarded Police/Thief snapshot assembly with exact role README
-overlays and candidate-tree secret scans. Planned or incomplete: two history-preserving role
-branches and their independent gates; exact URLs/remotes/tags; real series identity/config inputs
+overlays and candidate-tree secret scans, plus a real-Git role repository verifier for history,
+bytes, submodule pin, privacy and tag absence. Planned or incomplete: two actual history-preserving
+role branches and their independent gate runs; exact URLs/remotes/tags; real series identity/config inputs
 and bilateral approval; Gmail API sender/authorization; and external-team readiness.
 Research/visualization, applicable cost/capacity measurement, package/building-block/extension
 documentation, and the internal ISO assessment are accepted alongside the Live GUI, Replay view,

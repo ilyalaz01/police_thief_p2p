@@ -50,6 +50,12 @@ synthetic secret-shaped fixtures. The production `tools/offline_ops/` gate remai
 the shared repository retains the complete tests and their evidence. This avoids turning known
 scanner test values into final role-repository findings.
 
+`tests/integration/test_submission_assembly/` and `tools/submission_assembly/` are also excluded
+from the final role trees. They are shared-repository construction/gate machinery, not Police or
+Thief runtime content. The guarded partner exporter and ordinary release tooling remain included.
+The shared repository retains and tests this assembly machinery, while the final role gate runs it
+from the exact accepted source checkout against each candidate checkout.
+
 The guarded snapshot exporter also refuses Git submodule entries. Therefore `.gitmodules` and the
 `external/copthief-league-protocol` gitlink are outside its copied snapshot. Before either final
 role quality gate, the approved MIT conformance kit must be restored separately at the reviewed
@@ -97,3 +103,8 @@ Phase 4D14A integrates the partner-authored guarded exporter through
 only the root README after byte-checked export, and scans each exact candidate tree. Those
 snapshots are still not Git repositories and do not satisfy the later history, submodule, URL,
 remote, gate, or tag requirements.
+
+Phase 4D14B adds a read-only Git repository gate. It requires the exact 327-file reviewed regular
+set plus `.gitmodules` and the pinned conformance gitlink, preserves accepted ancestry, permits
+only the reviewed root README overlay, scans the candidate, and refuses a premature
+`v1.0-submission` tag. Actual role branches remain the next local operation.

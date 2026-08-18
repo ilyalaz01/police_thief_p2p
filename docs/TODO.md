@@ -310,9 +310,11 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   `docs/ROLE_REPOSITORY_CONTENT_POLICY.md`, Phase 4D12A, the tested Police/Thief README overlays,
   `docs/ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md` from Phase 4D12B, and Phase 4D14A deterministic
   integration of the partner exporter. Two 334-file offline candidate snapshots reproduce from
-  one exact clean commit with distinct role README hashes and clean secret scans. History-
-  preserving role branches, the pinned submodule, exact URLs, two final repository gates,
-  publication and tags remain.
+  one exact clean commit with distinct role README hashes and clean secret scans. Phase 4D14B adds
+  a real temporary-Git contract and read-only repository gate for ancestry, the final 327-file
+  policy, `.gitmodules`/gitlink pin, role README bytes, secrets and tag absence. Actual history-
+  preserving role branches, exact URLs, two final repository gate runs, publication and tags
+  remain.
 - Definition of Done: separate Police and Thief repositories contain the required role code,
   config, PRD/PLAN/TODO and academic README; both cross-link each other, pass their own gates, and
   receive reviewed annotated `v1.0-submission` tags at the exact approved commits.

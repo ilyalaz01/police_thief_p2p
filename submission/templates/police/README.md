@@ -95,7 +95,7 @@ does not claim another-team or counted play.
 
 ## Official repository layout
 
-Rule 49 requires separate Police and Thief repositories with reciprocal README links. The future
+Rule 49 requires two separate role repositories (Police and Thief) with reciprocal README links. The future
 counterpart repository URL is currently: `PENDING_HUMAN_APPROVAL`.
 
 The placeholder is not a valid cross-link and must remain blocking until the exact Thief URL and
