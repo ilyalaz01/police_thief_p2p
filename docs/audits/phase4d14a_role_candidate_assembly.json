@@ -1,0 +1,51 @@
+{
+  "phase": "4D14A",
+  "classification": "OFFLINE_SUBMISSION_CANDIDATE_SNAPSHOTS",
+  "status": "GREEN_LOCAL_PENDING_PUBLIC_PR_CI",
+  "red_commit": "a8cdc3e",
+  "implementation_commit": "836be0fd3fcc733467a3bb60baf2c9c5a1f51236",
+  "focused_tests": {"passed": 14, "failed": 0},
+  "final_validation": {
+    "pytest_passed": 453,
+    "pytest_failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "branch_coverage_percent": 91.10,
+    "ruff": "PASS",
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "exact_tracked_snapshot_secret_scan": "PASS_ZERO_FINDINGS"
+  },
+  "correction": {
+    "initial_governance_failures": [
+      "root README exact two-repository phrase",
+      "five private helper docstrings"
+    ],
+    "focused_correction_tests": "10/10 PASS",
+    "ignored_workspace_scan_is_publication_evidence": false
+  },
+  "candidates": {
+    "police": {
+      "file_count": 334,
+      "base_export_aggregate_hash": "1a6e7515106fbe93885f02b7cb1749654c18a2154b3a6591cf501cc6a0be9169",
+      "candidate_aggregate_hash": "2e960b3779f3c92f28ffb2042f88b9625305ce33d16388ede8a4e159b0d6c6d1",
+      "secret_scan": "PASS"
+    },
+    "thief": {
+      "file_count": 334,
+      "base_export_aggregate_hash": "1a6e7515106fbe93885f02b7cb1749654c18a2154b3a6591cf501cc6a0be9169",
+      "candidate_aggregate_hash": "d1ecb4e5de579e120780d541b266fc8d51973270d54768128d2b8bf4be482f4f",
+      "secret_scan": "PASS"
+    }
+  },
+  "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
+  "external_operations_authorized": false,
+  "remaining": [
+    "history-preserving Police branch and independent gate",
+    "history-preserving Thief branch and independent gate",
+    "pinned conformance submodule in each role repository",
+    "approved reciprocal URLs and exact contents",
+    "separate remotes and reviewed v1.0-submission tags"
+  ]
+}

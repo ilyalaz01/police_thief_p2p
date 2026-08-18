@@ -68,7 +68,7 @@ def test_policy_is_pending_and_role_truth_is_observed() -> None:
     data = policy()
     roles = data["roles"]
     assert data["schema"] == "role_repository_content_policy_v1"
-    assert data["status"] == "LOCAL_CANDIDATE_PENDING_EXPORT_TOOL_INTEGRATION"
+    assert data["status"] == "LOCAL_CANDIDATE_EXPORTER_INTEGRATED"
     assert roles["police"]["runtime_policy"] == "ScentTacticalPolice"
     assert roles["police"]["policy_status"] == "FROZEN_ACCEPTED"
     assert roles["thief"]["runtime_policy"] == "RandomLegalThief"

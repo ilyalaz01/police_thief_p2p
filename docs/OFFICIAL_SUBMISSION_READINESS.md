@@ -35,8 +35,8 @@ or counted-series acceptance.
 
 | Requirement | Current evidence | Status | Owner / next evidence |
 |---|---|---|---|
-| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Tested role README overlays exist, but both links remain `PENDING_HUMAN_APPROVAL`; no role URLs/remotes | IN_PROGRESS | `SUB-001`: integrate exporter, build both candidate trees, then approve exact reciprocal URLs/content before remotes |
-| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Candidate policy and role overlays cover every minimum and preserve the public implementation/evidence set | IN_PROGRESS | `SUB-001`: reproduce and validate both actual role trees independently |
+| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Deterministic 334-file Police/Thief snapshots and exact role READMEs exist, but both links remain `PENDING_HUMAN_APPROVAL`; snapshots are not repositories and no role URLs/remotes exist | IN_PROGRESS | `SUB-001`: prepare history-preserving branches and gates, then approve exact reciprocal URLs/content before remotes |
+| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Both exact offline snapshots contain the required layout and distinct reviewed root README; the guarded exporter plan and clean secret scan are retained separately | IN_PROGRESS | `SUB-001`: reproduce from accepted main in two history-preserving role branches and validate each independently |
 | Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, and reviewed screenshot | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Fixed six-sub-game series with role/game provenance and one aggregate result | Phase 4D13B runs twelve independent loopback processes, verifies both peers in all six games, and emits two agreeing final results; the local fixture scores 75–75 and correctly stays blocked on series-tie settlement | DONE_LOCAL | Preserve this adapter; `HUM-001` supplies real approval before any other-team use |
@@ -69,8 +69,8 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Integrate the deterministic offline exporter and compare both candidate role trees to the
-   reviewed content policy and tested academic README overlays (`SUB-001`).
+1. Reproduce the integrated deterministic Police/Thief snapshots from the exact accepted shared
+   commit and compare every path/hash to the reviewed policy (`SUB-001`; locally proven).
 2. Prepare offline history-preserving role branches and run both independent gates; stop for exact
    URL/content approval before creating remotes or tags (`SUB-001`).
 3. Stop for an explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,

@@ -1,6 +1,6 @@
 # Offline Role Repository Assembly Runbook
 
-Status: `LOCAL_DRAFT_PENDING_EXPORTER_INTEGRATION_AND_HUMAN_APPROVAL`.
+Status: `LOCAL_EXPORT_SNAPSHOTS_PROVEN_PENDING_ROLE_BRANCH_GATES_AND_HUMAN_APPROVAL`.
 
 This runbook defines the smallest safe sequence for preparing candidate Police and Thief trees.
 It implements no game rule, chooses no URL, creates no remote repository, and authorizes no tag or
@@ -27,13 +27,22 @@ fixtures, `.gitmodules`, and Git gitlinks. A human reviews every path and hash b
 
 ## 3. Produce offline candidate snapshots
 
-After the partner-owned exporter is accepted, run its documented deterministic `plan` operation
-for each explicit manifest. Compare the plan against the content policy, then run `export` into two
-new empty temporary roots. Preserve both plan manifests and aggregate hashes as evidence. A
-snapshot mismatch, path refusal, secret finding, or non-empty output root is a hard stop.
+The integrated assembler generates both explicit manifests and composes the partner-owned
+exporter without changing it:
 
-These candidate snapshots validate byte selection only. They do not replace shared Git history and
-are not publishable repositories.
+```bash
+uv run python -m tools.submission_assembly.cli tmp/role-candidates
+```
+
+Run only from an exact clean accepted commit into a new output path. The command prepares both
+roles atomically, preserves the input/export/candidate manifests under each role's `evidence/`,
+places only selected candidate bytes under `tree/`, replaces exactly the root README with the
+reviewed role overlay, and scans each tree. Review every path and hash. A source-dirty state,
+snapshot mismatch, path refusal, secret finding, or existing output root is a hard stop.
+
+Phase 4D14A reproduced both 334-file snapshots from one implementation commit. Candidate
+snapshots validate byte selection only. They do not replace shared Git history and are not
+publishable repositories.
 
 ## 4. Create history-preserving role branches
 

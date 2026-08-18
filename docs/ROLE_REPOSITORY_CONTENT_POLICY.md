@@ -1,6 +1,6 @@
 # Police and Thief Repository Content Policy
 
-Status: `LOCAL_CANDIDATE_PENDING_EXPORT_TOOL_INTEGRATION`.
+Status: `LOCAL_CANDIDATE_EXPORTER_INTEGRATED`.
 
 This document selects a safe, reproducible shared content boundary for the two future role
 repositories. It does not create them, choose their URLs, publish an export, or authorize a tag.
@@ -36,6 +36,8 @@ The common candidate retains:
 - all public `src/`, core/integration/system tests, SDK, GUI, Replay, and offline tools;
 - versioned `config/`, PRD/PLAN/TODO, ADRs, quality/security/release documents and audits;
 - curated public research designs, results, notebook, figures, and safe interop fixtures/vectors.
+- both reviewed README overlays under `submission/templates/`, so the retained governance tests
+  can verify the two academic manuals from either role candidate.
 
 ## Exclusions and separate provisioning
 
@@ -69,8 +71,9 @@ contain pending counterpart placeholders and do not satisfy Rule 49 before exact
 
 For each role, the future operator must:
 
-1. choose the exact accepted shared `HEAD` and generate an ignored explicit exporter manifest;
-2. run deterministic `plan`, review every selected path/hash, and create an offline export;
+1. choose the exact accepted shared `HEAD` and generate ignored explicit exporter manifests;
+2. run the integrated deterministic assembler, review every selected path/hash, and create both
+   offline exports atomically;
 3. prepare a history-preserving local role branch whose regular-file tree matches that export;
 4. add the role-specific README title, launch example, and the real counterpart URL;
 5. restore and pin the approved conformance-kit submodule separately;
@@ -88,3 +91,9 @@ Until actual URLs are chosen, both counterpart fields remain exactly
 - No hidden or bilateral interoperability choice is resolved here.
 - No new AI/search/ML policy or Thief champion is selected here.
 - Missing exporter evidence, a different file set, or any secret/privacy finding blocks assembly.
+
+Phase 4D14A integrates the partner-authored guarded exporter through
+`tools.submission_assembly`. It produces separate `tree/` and `evidence/` directories, changes
+only the root README after byte-checked export, and scans each exact candidate tree. Those
+snapshots are still not Git repositories and do not satisfy the later history, submodule, URL,
+remote, gate, or tag requirements.
