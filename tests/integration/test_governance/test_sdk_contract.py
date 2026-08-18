@@ -45,6 +45,13 @@ EXPECTED = {
     "configuration": {
         "OperationalConfig", "load_operational_config", "scan_configuration_secrets",
     },
+    "league": {
+        "APPENDIX_B_CANONICAL_COMPACT_V1", "HardwareIdentity",
+        "KIT_SORTED_FIRST_POLICE_ODD_V1", "TeamDeclarationIdentity",
+        "aggregate_series_rows", "build_appendix_b_candidate", "build_series_schedule",
+        "confirm_appendix_b_lock", "coordinate_offline_series", "series_reference_terms",
+        "validate_series_commits",
+    },
 }
 
 
