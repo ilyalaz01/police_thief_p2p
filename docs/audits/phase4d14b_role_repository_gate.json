@@ -1,0 +1,28 @@
+{
+  "phase": "4D14B",
+  "classification": "OFFLINE_ROLE_REPOSITORY_GATE_PREPARATION",
+  "status": "GREEN_LOCAL_PENDING_ACTUAL_BRANCHES_AND_PUBLIC_PR_CI",
+  "red_commit": "bb631ad",
+  "implementation_commit": "4c41d01",
+  "real_git_gate_tests": {"passed": 5, "failed": 0},
+  "selected_regular_files": 327,
+  "separately_retained": [
+    ".gitmodules",
+    "external/copthief-league-protocol gitlink"
+  ],
+  "excluded_prefixes": [
+    "tests/offline_ops/",
+    "tests/integration/test_submission_assembly/",
+    "tools/submission_assembly/"
+  ],
+  "proven": [
+    "accepted source ancestry",
+    "exact selected bytes with README-only overlay",
+    "unchanged submodule pin",
+    "candidate secret scan",
+    "pending reciprocal URL",
+    "absence of v1.0-submission"
+  ],
+  "actual_role_branches_validated": false,
+  "external_operations_authorized": false
+}
