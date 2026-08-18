@@ -53,3 +53,7 @@ honest that no peer has approved its proposed bytes, schedule, identity, or tie 
 stays in progress until a six-sub-game localhost runtime/artifact adapter and full differential
 evidence are accepted. Gmail, public transport, opponent contact, counted play, and final
 reporting remain separately blocked.
+
+The local candidate's reproducible worked vector is retained at
+`interop/fixtures/appendix_b_schema_1_2_candidate_vector.json`. Its label remains a proposal, not
+an opponent signature or approval.

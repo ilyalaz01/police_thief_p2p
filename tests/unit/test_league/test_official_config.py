@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from dataclasses import replace
 
 import pytest
@@ -16,6 +17,9 @@ from police_thief_lab.league.config import (
     confirm_appendix_b_lock,
 )
 from tests.support.league_fixtures import appendix_b_config
+from tests.support.project_paths import PROJECT_ROOT
+
+VECTOR_PATH = PROJECT_ROOT / "interop/fixtures/appendix_b_schema_1_2_candidate_vector.json"
 
 
 def test_appendix_b_candidate_has_its_own_named_bytes_and_pending_status() -> None:
@@ -33,6 +37,17 @@ def test_appendix_b_candidate_has_its_own_named_bytes_and_pending_status() -> No
     exposed = candidate.value
     exposed["network_and_league"]["num_games"] = 1
     assert candidate.value["network_and_league"]["num_games"] == 6
+
+
+def test_appendix_b_worked_vector_pins_reproducible_candidate_bytes() -> None:
+    vector = json.loads(VECTOR_PATH.read_text(encoding="utf-8"))
+    candidate = build_appendix_b_candidate(
+        vector["config"], serialization_profile=vector["serialization_profile"]
+    )
+    assert candidate.scope == vector["scope"]
+    assert candidate.approval_status == vector["classification"]
+    assert len(candidate.bytes) == vector["expected_utf8_length"]
+    assert candidate.sha256 == vector["expected_sha256"]
 
 
 @pytest.mark.parametrize(
