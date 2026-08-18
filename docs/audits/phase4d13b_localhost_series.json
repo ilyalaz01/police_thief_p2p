@@ -1,0 +1,67 @@
+{
+  "phase": "4D13B",
+  "status": "GREEN_LOCALHOST_ONLY",
+  "classification": "UNCOUNTED_LOCALHOST_SELF_TEST",
+  "todo": {
+    "LGE-001": "IN_PROGRESS_REAL_INPUTS_AND_BILATERAL_EVIDENCE",
+    "SUB-001": "IN_PROGRESS_NEXT_OFFLINE_STEP",
+    "MAIL-001": "BLOCKED",
+    "HUM-001": "BLOCKED"
+  },
+  "execution": {
+    "sub_games": 6,
+    "peer_processes": 12,
+    "transport": "127.0.0.1_FASTMCP_ONLY",
+    "verified_peer_results": 12,
+    "verified_audits": 12,
+    "verified_replays": 12,
+    "outcomes": ["capture", "capture", "capture", "capture", "capture", "capture"]
+  },
+  "series": {
+    "game_id": "alpha001-vs-bravo002",
+    "game_uid": "c7cfa730-f46b-4fc9-a5e4-43ac61cf8c53",
+    "total_score": {"alpha001": 75, "bravo002": 75},
+    "sub_games_won": {"alpha001": 3, "bravo002": 3},
+    "winner_group": null,
+    "series_tie": true,
+    "settlement_status": "BLOCKED_PENDING_EXPLICIT_BILATERAL_TIE_POLICY",
+    "mutual_result_sha256": "d5a8d71eb9d6a54421e53d8924a7479b999b7d187a780945c942dacdb59eac54"
+  },
+  "configuration": {
+    "full_scope": "official_appendix_b_schema_1_2",
+    "full_config_utf8_bytes": 911,
+    "full_config_sha256": "358f29da2ce5777b0697a8f4201b00404a56732e5bb57e15b806122c92c9f734",
+    "runtime_profile_sha256": "6b470b0fdae20977b40ef3d92d3a0f683be7bc800211d0b7d980bf4d9dd255f7",
+    "full_and_flat_scopes_kept_separate": true
+  },
+  "artifacts": {
+    "official_per_role": 14,
+    "official_total": 28,
+    "full_config_files": 2,
+    "sanitized_evidence_files": 1,
+    "role_a_hygiene_and_conformance": "PASS",
+    "role_b_hygiene_and_conformance": "PASS",
+    "two_set_join": "ALL_SETS_AGREE",
+    "live_nonce_bodies_retained": false
+  },
+  "validation": {
+    "full_suite": "449/449, no skips or xfails",
+    "branch_coverage_percent": 91.09,
+    "ruff_src_tests_tools": "PASS",
+    "hcommit_vectors": "5/5",
+    "conformance_vectors": "125/125",
+    "frozen_manifest": "7/7",
+    "python_files_over_150_counted_lines": 0,
+    "tracked_snapshot_secret_findings": 0
+  },
+  "not_performed": [
+    "public_transport",
+    "tunnel",
+    "external_team_contact",
+    "gmail_or_oauth",
+    "league_reporting",
+    "counted_game",
+    "final_role_remote_creation",
+    "submission_tag"
+  ]
+}

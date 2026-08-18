@@ -68,6 +68,19 @@ request = PeerLaunchRequest(
 The commented call is intentionally not a copy-paste authorization. Consult the operational
 runbook before any process, network, tunnel, opponent, or league activity.
 
+## Six-game localhost rehearsal
+
+`sdk.league.run_localhost_series(LocalhostSeriesRequest(...))` is the single entry point for the
+offline official-series rehearsal. The request must already contain a valid named Appendix-B
+lock, sealed six-slot schedule, two complete identities, six exact commit maps, an explicit token
+cap, and a new output directory. The adapter runs twelve independent child processes only on
+`127.0.0.1`, requires both audit and replay verdicts for every game, then atomically publishes two
+checker-compatible artifact directories plus separate byte-identical `config/game.json` files.
+
+Its only accepted operation class is `UNCOUNTED_LOCALHOST_SELF_TEST`. Synthetic matching values
+exercise refusal/assembly paths but are not bilateral approval; the call cannot start public
+transport, contact an opponent, report through Gmail, or authorize counted play.
+
 ## Compatibility policy
 
 Legacy module imports remain available to avoid breaking validated tests and integrations. New

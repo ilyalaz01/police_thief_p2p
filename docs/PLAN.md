@@ -212,10 +212,11 @@ now center on final two-role-repository assembly. Phase 4D10 closes the applicab
 cost/capacity measurement with preregistered local wall/CPU/Python-allocation/result-size evidence.
 Phase 4D11 accepts the inspectable shared-repository Git/PR/tag workflow while preserving its
 retrospective limitations and withholding final submission tags. The package/building-block/
-extension audit and internal ISO assessment are accepted. Remaining offline architecture work is
-the two-role submission export/validation under SUB-001 plus the localhost runtime/artifact adapter
-for the accepted offline six-game/config entry boundary under LGE-001. Gmail delivery remains blocked
-under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
+extension audit and internal ISO assessment are accepted. Phase 4D13B completes the localhost
+runtime/artifact adapter for the accepted six-game/config entry boundary without changing the
+single-game runtime. Remaining offline architecture work is the two-role submission
+export/validation under SUB-001; real inputs and bilateral locks remain human/external gates.
+Gmail delivery remains blocked under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific
 README overlays and an offline history-preserving assembly sequence while leaving exporter

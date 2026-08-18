@@ -30,14 +30,21 @@ def test_six_localhost_games_produce_verified_symmetric_series_bundle(
     full_configs = [(root / group / "config/game.json").read_bytes() for group in groups]
     assert full_configs == [localhost_series_request.config_lock.bytes] * 2
     for number in range(1, 7):
-        names = [root / group / f"config_{result.game_id}_g{number:02d}.json" for group in groups]
+        names = [
+            root / group / "artifacts" / f"config_{result.game_id}_g{number:02d}.json"
+            for group in groups
+        ]
         assert names[0].read_bytes() == names[1].read_bytes()
         for group in groups:
-            log = _load(root / group / f"log_{result.game_id}_g{number:02d}.json")
+            log = _load(
+                root / group / "artifacts" / f"log_{result.game_id}_g{number:02d}.json"
+            )
             assert log["summary"]["sub_game_number"] == number
             assert log["summary"]["audit"]["passed"] is True
 
-    result_paths = [root / group / f"result_{result.game_id}.json" for group in groups]
+    result_paths = [
+        root / group / "artifacts" / f"result_{result.game_id}.json" for group in groups
+    ]
     assert result_paths[0].read_bytes() == result_paths[1].read_bytes()
     final = _load(result_paths[0])
     assert final["num_sub_games"] == 6

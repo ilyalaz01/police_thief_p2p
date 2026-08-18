@@ -53,8 +53,9 @@ def write_series_bundle(
     paths: list[Path] = []
     for group in groups:
         peer = next(other for other in groups if other != group)
-        directory = root / group
-        paths.append(_write(directory / "config/game.json", lock.bytes))
+        role_root = root / group
+        directory = role_root / "artifacts"
+        paths.append(_write(role_root / "config/game.json", lock.bytes))
         paths.append(
             _write(
                 directory / f"declaration_{game_id}.json",

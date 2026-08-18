@@ -130,7 +130,7 @@ def extract_pair_evidence(
         "tokens": dict.fromkeys(groups, 0),
         "score": expected_score,
         "log_files": {
-            group: f"{group}/log_{game_id}_g{slot.sub_game_number:02d}.json"
+            group: f"{group}/artifacts/log_{game_id}_g{slot.sub_game_number:02d}.json"
             for group in groups
         },
         "audit": {"log_verified": True, "tampered": False},

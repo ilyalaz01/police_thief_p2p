@@ -283,8 +283,8 @@ review. See [CONTRIBUTING](CONTRIBUTING.md) and the [live TODO](docs/TODO.md).
 This shared development repository is not the final course submission. The Live GUI, Replay
 `Verified OK`, and reviewed screenshots are implemented here, but higher-authority delivery still
 requires two separate role repositories (Police and Thief), completion of the fixed six-sub-game
-runtime/artifact flow and bilateral Appendix-B lock, an explicitly authorized Gmail API sender,
-of GUI evidence in each submission context, annotated `v1.0-submission` tags, and human-gated
+real-team inputs and bilateral Appendix-B lock, an explicitly authorized Gmail API sender,
+GUI evidence in each submission context, annotated `v1.0-submission` tags, and human-gated
 league/Moodle steps. Counted games and Gmail reporting remain blocked without explicit approval.
 The exact evidence and owners are tracked in
 [official submission readiness](docs/OFFICIAL_SUBMISSION_READINESS.md).
