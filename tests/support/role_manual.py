@@ -26,4 +26,4 @@ def assert_complete_role_manual(document: str, role: str) -> None:
     assert "FastMCP" in document
     assert "Gatekeeper" in document
     assert "Verified OK" in document
-    assert "does not authorize" in document
+    assert "not authorization" in document.lower()
