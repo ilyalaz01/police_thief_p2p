@@ -1,0 +1,81 @@
+{
+  "phase": "4D14C",
+  "classification": "OFFLINE_ROLE_REPOSITORY_ACCEPTANCE",
+  "status": "GREEN_LOCAL_CANDIDATES_BLOCKED_BEFORE_URLS_REMOTES_AND_TAGS",
+  "accepted_source_commit": "e3fda929d84d62ea8b25324f92478285a64c2ac7",
+  "accepted_source_pr": 29,
+  "content_counts": {
+    "selected_regular_files": 329,
+    "regular_files_with_gitmodules": 330,
+    "gitlinks": 1,
+    "tracked_entries": 331,
+    "phase4d14b_previous_count": 327,
+    "correction_reason": "the Phase 4D14B Markdown and JSON evidence files were added after the implementation-time count"
+  },
+  "submodule": {
+    "path": "external/copthief-league-protocol",
+    "gitlink_oid": "be96e57e357d59386c486a907e210e050d74c114",
+    "status": "PASS_UNCHANGED"
+  },
+  "candidates": {
+    "police": {
+      "branch": "codex/submission-police-candidate",
+      "commit": "c52f9078b682e8a8e8731045f61a89b9d9b5c3cc",
+      "readme_sha256": "6c1491f537f613f457befc7747ffdab0932f63f02d954c319fe9e6a00fde4bef",
+      "aggregate_sha256": "3e0eaaf155595fe67af26c362d20d0bf72c34fa601e5fbce56fde4f805dfc9d3",
+      "repository_gate": "PASS",
+      "pytest": {"collected": 343, "passed": 338, "skipped_expected": 5, "failed": 0, "xfailed": 0},
+      "coverage_percent": 91.10,
+      "ruff": "PASS",
+      "hcommit": "5/5",
+      "frozen_manifest": "7/7",
+      "conformance": "125/125",
+      "secret_scan": "PASS"
+    },
+    "thief": {
+      "branch": "codex/submission-thief-candidate",
+      "commit": "fd87d62d3c05f18c5fedc68547228f6bb71e403d",
+      "readme_sha256": "483d676bd357425c698a1d7fb5b4cc16eda0cf40a7644d3967a922813b7ec59f",
+      "aggregate_sha256": "c441719d758f7570174c15369cee71d98916ee95f4b9d38a385091e0db3d469d",
+      "repository_gate": "PASS",
+      "pytest": {"collected": 343, "passed": 338, "skipped_expected": 5, "failed": 0, "xfailed": 0},
+      "coverage_percent": 91.10,
+      "ruff": "PASS",
+      "hcommit": "5/5",
+      "frozen_manifest": "7/7",
+      "conformance": "125/125",
+      "secret_scan": "PASS"
+    }
+  },
+  "history": {
+    "accepted_source_is_ancestor": true,
+    "candidate_commits_after_source_per_role": 1,
+    "partner_authored_commits_retained": 13,
+    "history_rewritten": false
+  },
+  "shared_audit_validation": {
+    "pytest_passed": 458,
+    "pytest_failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "coverage_percent": 91.10,
+    "focused_submission_governance": "45/45",
+    "ruff_src_tests_tools": "PASS",
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "exact_tracked_snapshot_secret_scan": "PASS_ZERO_FINDINGS",
+    "secret_scan_exclusion": "tests/offline_ops/ synthetic scanner fixtures only"
+  },
+  "expected_skips": {
+    "professor_source_not_redistributed": 1,
+    "retained_operational_reports_not_redistributed": 3,
+    "retained_public_run_logs_not_redistributed": 1
+  },
+  "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
+  "candidate_branches_pushed": false,
+  "final_submission_tags_created": false,
+  "external_operations_authorized": false,
+  "decision": "ACCEPT_LOCAL_TECHNICAL_CANDIDATES",
+  "remaining_human_gate": "approve both exact commits and both exact reciprocal repository URLs together"
+}

@@ -35,8 +35,8 @@ or counted-series acceptance.
 
 | Requirement | Current evidence | Status | Owner / next evidence |
 |---|---|---|---|
-| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Deterministic role snapshots, exact root READMEs, and a tested history/submodule repository gate exist, but both links remain `PENDING_HUMAN_APPROVAL`; no final role URLs/remotes exist | IN_PROGRESS | `SUB-001`: run the prepared gate on actual local role branches, then approve exact reciprocal URLs/content before remotes |
-| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Both snapshot layouts are proven; a real temporary-Git test preserves shared ancestry, exact selected bytes, `.gitmodules`, and the pinned gitlink for both roles | IN_PROGRESS | `SUB-001`: create the two actual local branches from accepted main and run their full independent gates |
+| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Actual local Police `c52f907...` and Thief `fd87d62...` candidates preserve accepted history and pass repository/quality gates, but both links remain `PENDING_HUMAN_APPROVAL`; no final role URLs/remotes exist | IN_PROGRESS | `SUB-001`: approve both exact commits and reciprocal URLs together before link edits, remotes or tags |
+| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Both history-preserving local trees contain and test the required layout, exact role README, `.gitmodules`, pinned gitlink and safe common content | DONE_LOCAL | Preserve the accepted candidate trees while completing the separate Rule 49 publication gate |
 | Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, and reviewed screenshot | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Fixed six-sub-game series with role/game provenance and one aggregate result | Phase 4D13B runs twelve independent loopback processes, verifies both peers in all six games, and emits two agreeing final results; the local fixture scores 75–75 and correctly stays blocked on series-tie settlement | DONE_LOCAL | Preserve this adapter; `HUM-001` supplies real approval before any other-team use |
@@ -69,11 +69,11 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Reproduce the integrated deterministic Police/Thief snapshots from the exact accepted shared
-   commit and compare every path/hash to the reviewed policy (`SUB-001`; locally proven).
-2. Prepare offline history-preserving role branches and run both independent gates; stop for exact
-   URL/content approval before creating remotes or tags (`SUB-001`).
-3. Stop for an explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
+1. Review exact local Police commit `c52f907...`, Thief commit `fd87d62...`, their distinct hashes,
+   and proposed reciprocal repository URLs together (`SUB-001`; local gates are GREEN).
+2. Only after explicit approval, substitute the two reciprocal links, rerun both gates, and obtain
+   a second exact-content approval before creating remotes, publishing, or tagging (`SUB-001`).
+3. Stop for a separate explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
    Gmail/OAuth, or counted play.
 
 Package/building-block/extension documentation, the internal ISO assessment, measured applicable

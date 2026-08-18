@@ -1,9 +1,10 @@
 # Police and Thief Repository Content Policy
 
-Status: `LOCAL_CANDIDATE_EXPORTER_INTEGRATED`.
+Status: `LOCAL_HISTORY_PRESERVING_CANDIDATES_GREEN_PENDING_URL_APPROVAL`.
 
 This document selects a safe, reproducible shared content boundary for the two future role
-repositories. It does not create them, choose their URLs, publish an export, or authorize a tag.
+repositories. Two local history-preserving candidates now exist and pass their gates; this does
+not choose their URLs, create final remotes, publish either candidate, or authorize a tag.
 The machine-readable policy is
 [`data/submission/role_content_policy.v1.json`](../data/submission/role_content_policy.v1.json).
 
@@ -104,7 +105,12 @@ only the root README after byte-checked export, and scans each exact candidate t
 snapshots are still not Git repositories and do not satisfy the later history, submodule, URL,
 remote, gate, or tag requirements.
 
-Phase 4D14B adds a read-only Git repository gate. It requires the exact 327-file reviewed regular
-set plus `.gitmodules` and the pinned conformance gitlink, preserves accepted ancestry, permits
-only the reviewed root README overlay, scans the candidate, and refuses a premature
-`v1.0-submission` tag. Actual role branches remain the next local operation.
+Phase 4D14B adds a read-only Git repository gate. The accepted source selects 329 regular files;
+the earlier 327 count preceded the two Phase 4D14B evidence files and is transparently corrected
+in Phase 4D14C. The gate retains `.gitmodules` and the pinned conformance gitlink, preserves
+accepted ancestry, permits only the reviewed root README overlay, scans the candidate, and refuses
+a premature `v1.0-submission` tag.
+
+Phase 4D14C validates the actual local Police and Thief candidates with preserved history and
+independent quality gates. Only reciprocal URL approval, final remotes, publication and reviewed
+tags remain under `SUB-001`; none is implied by the local GREEN result.
