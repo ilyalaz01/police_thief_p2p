@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from dataclasses import replace
 
 import pytest
 
@@ -29,6 +30,9 @@ def test_appendix_b_candidate_has_its_own_named_bytes_and_pending_status() -> No
     assert candidate.sha256 == hashlib.sha256(expected).hexdigest()
     assert candidate.scope == APPENDIX_B_SCOPE
     assert candidate.approval_status == PENDING_BILATERAL_APPROVAL
+    exposed = candidate.value
+    exposed["network_and_league"]["num_games"] = 1
+    assert candidate.value["network_and_league"]["num_games"] == 6
 
 
 @pytest.mark.parametrize(
@@ -42,6 +46,7 @@ def test_appendix_b_candidate_has_its_own_named_bytes_and_pending_status() -> No
         ("rate_limiter_gatekeeper", "retry_backoff_sec", 4),
         ("rate_limiter_gatekeeper", "max_retries", 2),
         ("rate_limiter_gatekeeper", "queue_depth", 99),
+        ("network_and_league", "response_timeout_sec", float("nan")),
     ],
 )
 def test_appendix_b_fixed_values_and_minima_fail_closed(
@@ -86,6 +91,20 @@ def test_config_lock_requires_matching_peer_bytes_and_explicit_approval() -> Non
         confirm_appendix_b_lock(
             candidate,
             peer_sha256="0" * 64,
+            peer_serialization_profile=candidate.serialization_profile,
+            bilateral_approval_recorded=True,
+        )
+    with pytest.raises(ValueError, match="serialization profile mismatch"):
+        confirm_appendix_b_lock(
+            candidate,
+            peer_sha256=candidate.sha256,
+            peer_serialization_profile="peer-pretty-json",
+            bilateral_approval_recorded=True,
+        )
+    with pytest.raises(ValueError, match="invalid local"):
+        confirm_appendix_b_lock(
+            replace(candidate, bytes=b"{}"),
+            peer_sha256=candidate.sha256,
             peer_serialization_profile=candidate.serialization_profile,
             bilateral_approval_recorded=True,
         )

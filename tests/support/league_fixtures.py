@@ -1,9 +1,6 @@
 """Deterministic, non-operational fixtures for the official series boundary."""
 
-from __future__ import annotations
-
 from typing import Any
-
 
 GROUP_A = "alpha001"
 GROUP_B = "bravo002"
