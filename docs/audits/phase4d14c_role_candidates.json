@@ -53,6 +53,20 @@
     "partner_authored_commits_retained": 13,
     "history_rewritten": false
   },
+  "shared_audit_validation": {
+    "pytest_passed": 458,
+    "pytest_failed": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "coverage_percent": 91.10,
+    "focused_submission_governance": "45/45",
+    "ruff_src_tests_tools": "PASS",
+    "hcommit": "5/5",
+    "frozen_manifest": "7/7",
+    "conformance": "125/125",
+    "exact_tracked_snapshot_secret_scan": "PASS_ZERO_FINDINGS",
+    "secret_scan_exclusion": "tests/offline_ops/ synthetic scanner fixtures only"
+  },
   "expected_skips": {
     "professor_source_not_redistributed": 1,
     "retained_operational_reports_not_redistributed": 3,

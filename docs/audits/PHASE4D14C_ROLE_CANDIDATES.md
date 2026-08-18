@@ -67,6 +67,15 @@ parallel diagnostic produced a localhost-port warning; the accepted sequential r
 The quality-gate `match_artifact` item was not requested and is reported as optional/skipped. No
 game or result path was supplied, so this is not a skipped code test and does not claim gameplay.
 
+## Shared audit validation
+
+The clean shared audit commit passed 458/458 tests with no skip or xfail and 91.10% combined
+statement/branch coverage. The focused submission/governance selection passed 45/45. Ruff passed
+for `src`, `tests` and `tools`; Hcommit vectors remained 5/5; the authoritative frozen manifest
+remained 7/7; the pinned conformance kit passed 125/125. A `git archive` of the exact tracked tree,
+excluding only the quality gate's documented `tests/offline_ops/` synthetic fixtures, produced
+zero secret-scan findings. No ignored private evidence was treated as publication content.
+
 ## Remaining hard stops
 
 - Both role READMEs still contain `PENDING_HUMAN_APPROVAL`; no reciprocal URL is claimed.
