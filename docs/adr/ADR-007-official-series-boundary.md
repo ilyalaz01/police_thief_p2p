@@ -49,11 +49,23 @@ after separate localhost tests and without editing frozen game/wire semantics.
 ## Consequences
 
 The repository can now prepare and test an official series boundary offline while remaining
-honest that no peer has approved its proposed bytes, schedule, identity, or tie scope. `LGE-001`
-stays in progress until a six-sub-game localhost runtime/artifact adapter and full differential
-evidence are accepted. Gmail, public transport, opponent contact, counted play, and final
-reporting remain separately blocked.
+honest that no peer has approved its proposed bytes, schedule, identity, or tie scope. The
+Phase 4D13B amendment below accepts the localhost adapter and differential evidence; `LGE-001`
+remains in progress only for real inputs and bilateral proof. Gmail, public transport, opponent
+contact, counted play, and final reporting remain separately blocked.
 
 The local candidate's reproducible worked vector is retained at
 `interop/fixtures/appendix_b_schema_1_2_candidate_vector.json`. Its label remains a proposal, not
 an opponent signature or approval.
+
+## Phase 4D13B implementation amendment
+
+The deferred adapter is now implemented behind `LeagueSDK.run_localhost_series`. It invokes the
+unchanged file-oriented peer boundary as twelve child processes over loopback, validates both
+audit/replay results for each of six sealed slots, and only then atomically assembles two
+checker-compatible series artifact sets. The full Appendix-B bytes live separately at each role's
+`config/game.json`; schema-1.1 builders still receive only the flat fourteen terms.
+
+This amendment proves the local technical path, not a new authority decision. The test identities,
+commits, matching profile responses, and approvals are synthetic. Real peer approval, tie
+settlement, public transport, Gmail, reporting, and counted play remain outside the adapter.

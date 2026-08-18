@@ -47,10 +47,12 @@ EXPECTED = {
     },
     "league": {
         "APPENDIX_B_CANONICAL_COMPACT_V1", "HardwareIdentity",
-        "KIT_SORTED_FIRST_POLICE_ODD_V1", "TeamDeclarationIdentity",
+        "KIT_SORTED_FIRST_POLICE_ODD_V1", "LocalhostSeriesRequest",
+        "LocalhostSeriesResult", "TeamDeclarationIdentity",
         "aggregate_series_rows", "build_appendix_b_candidate", "build_series_schedule",
         "confirm_appendix_b_lock", "coordinate_offline_series", "derive_series_game_ids",
-        "series_reference_terms", "series_token_totals", "validate_series_commits",
+        "run_localhost_series", "series_reference_terms", "series_token_totals",
+        "validate_series_commits",
     },
 }
 

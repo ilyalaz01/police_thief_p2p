@@ -31,10 +31,10 @@ deadline semantics. Evidence: `tests/integration/test_interop/test_phase4a_runti
 [interop decisions](INTEROP_DECISIONS.md). Phase 4D2C and Phase 4D4 provide the Gatekeeper and
 concurrency evidence. Alternatives—async orchestration or brokered transport—remain unselected.
 
-Remaining delivery gaps are outside the proven single-sub-game wire. Phase 4D13A adds the offline
-six-slot/config/identity entry contract, but the localhost runtime/artifact adapter and real
-operator inputs remain incomplete under `LGE-001`. The full Appendix-B candidate, flat 14-term
-domain, and schema-1.1 reference bodies remain separate.
+Phase 4D13B proves the six-slot adapter with twelve independent loopback peer processes, six
+successful games, twelve audits/replays, and two checker-accepted artifact sets. Real operator
+inputs and bilateral approvals remain incomplete under `LGE-001`/`HUM-001`. The full Appendix-B
+candidate, flat 14-term domain, and schema-1.1 reference bodies remain separate.
 Real-team fields and consensus still require explicit bilateral approval, and Gmail reporting is
 separately blocked under `MAIL-001`; no counted readiness is claimed.
 

@@ -22,9 +22,9 @@ an uncounted compatibility exercise.
 
 The problem is to implement a partially observable two-process game without leaking hidden truth
 or silently diverging on rules, bytes, deadlines, or audit results. The validated prototype
-solves the local single-sub-game technical core and the generic professional-project controls.
-Official final delivery still requires role repositories, a six-sub-game runtime/artifact adapter,
-authorized Gmail reporting, and human/bilateral operations.
+solves the local game core, the offline six-sub-game runtime/artifact rehearsal, and the generic
+professional-project controls. Official final delivery still requires role repositories, real
+operator values and bilateral locks, authorized Gmail reporting, and human/external operations.
 
 Measurable goals and KPIs:
 
@@ -83,7 +83,8 @@ Outside the accepted implementation baseline: rule changes, new strategy/AI/ML/s
 deployment, Gmail, tunnels, league reporting, opponent contact, and any uncounted or counted match.
 The shared-code GUI requirement is complete under `GUI-001`; final role-repository placement is
 still owned by `SUB-001`. Research, visualization, and applicable local cost measurement are
-complete. The official counted-series/shared-config layer (`LGE-001`), Gmail sender and its
+complete. The localhost technical slice of the official counted-series/shared-config layer is
+complete; real inputs and bilateral approval remain under `LGE-001`/`HUM-001`. Gmail sender
 authorization (`MAIL-001`), submission assembly, and human-gated operations remain tracked in
 [TODO](TODO.md).
 
@@ -119,10 +120,12 @@ OAT study, public-safe row/summary provenance, byte-identical regeneration, Wils
 two accessible figures, and a cited notebook equivalent without changing the champion.
 Phase 4D10 adds preregistered one-machine local simulator wall/CPU timing, Python-allocation peak,
 result-size, and sequential-capacity evidence without inferring a vendor or electricity price.
+Phase 4D13B runs the unchanged peer boundary as twelve child processes across six loopback games,
+verifies both audits/replays per game, and assembles two mutually agreeing 14-artifact sets plus
+byte-identical full Appendix-B files. Its synthetic identities and approvals are local-test data.
 
-Planned or incomplete: two-role-repository submission assembly; the localhost runtime/artifact
-adapter for the accepted offline six-slot and Appendix-B entry contract; Gmail API
-sender/authorization; and bilateral readiness.
+Planned or incomplete: two-role-repository submission assembly; real series identity/config
+inputs and bilateral approval; Gmail API sender/authorization; and external-team readiness.
 Research/visualization, applicable cost/capacity measurement, package/building-block/extension
 documentation, and the internal ISO assessment are accepted alongside the Live GUI, Replay view,
 structured tests, CLI UX, and release tooling.

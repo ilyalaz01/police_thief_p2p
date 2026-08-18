@@ -8,6 +8,8 @@ from ..league import (
     AppendixBConfigCandidate,
     AppendixBConfigLock,
     HardwareIdentity,
+    LocalhostSeriesRequest,
+    LocalhostSeriesResult,
     SeriesSlot,
     TeamDeclarationIdentity,
     aggregate_series_rows,
@@ -16,6 +18,7 @@ from ..league import (
     confirm_appendix_b_lock,
     coordinate_offline_series,
     derive_series_game_ids,
+    run_localhost_series,
     series_reference_terms,
     series_token_totals,
     validate_series_commits,
@@ -32,6 +35,8 @@ class LeagueSDK:
     AppendixBConfigCandidate = AppendixBConfigCandidate
     AppendixBConfigLock = AppendixBConfigLock
     HardwareIdentity = HardwareIdentity
+    LocalhostSeriesRequest = LocalhostSeriesRequest
+    LocalhostSeriesResult = LocalhostSeriesResult
     SeriesSlot = SeriesSlot
     TeamDeclarationIdentity = TeamDeclarationIdentity
     aggregate_series_rows = staticmethod(aggregate_series_rows)
@@ -42,4 +47,5 @@ class LeagueSDK:
     derive_series_game_ids = staticmethod(derive_series_game_ids)
     series_reference_terms = staticmethod(series_reference_terms)
     series_token_totals = staticmethod(series_token_totals)
+    run_localhost_series = staticmethod(run_localhost_series)
     validate_series_commits = staticmethod(validate_series_commits)

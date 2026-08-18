@@ -10,6 +10,12 @@ from .config import (
     confirm_appendix_b_lock,
 )
 from .identity import HardwareIdentity, TeamDeclarationIdentity, validate_series_commits
+from .local_models import (
+    UNCOUNTED_LOCALHOST_SELF_TEST,
+    LocalhostSeriesRequest,
+    LocalhostSeriesResult,
+)
+from .local_series import run_localhost_series
 from .series import (
     KIT_SORTED_FIRST_POLICE_ODD_V1,
     SeriesSlot,
@@ -29,8 +35,11 @@ __all__ = [
     "AppendixBConfigCandidate",
     "AppendixBConfigLock",
     "HardwareIdentity",
+    "LocalhostSeriesRequest",
+    "LocalhostSeriesResult",
     "SeriesSlot",
     "TeamDeclarationIdentity",
+    "UNCOUNTED_LOCALHOST_SELF_TEST",
     "aggregate_series_rows",
     "build_appendix_b_candidate",
     "build_series_schedule",
@@ -39,5 +48,6 @@ __all__ = [
     "derive_series_game_ids",
     "series_reference_terms",
     "series_token_totals",
+    "run_localhost_series",
     "validate_series_commits",
 ]

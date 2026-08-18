@@ -27,9 +27,9 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
   secret scan.
 
 These facts do not prove another-team compatibility, counted authorization, final role-repository
-layout, a complete six-sub-game series, Gmail reporting, or Moodle submission. The current peer
-runtime and schema-1.1 writer close one sub-game at a time; that is not the official series-level
-delivery contract.
+layout, Gmail reporting, or Moodle submission. Phase 4D13B proves the complete six-game flow only
+as an uncounted localhost self-test with synthetic identities and approvals; it is not a real-team
+or counted-series acceptance.
 
 ## Official final-delivery ledger
 
@@ -39,9 +39,9 @@ delivery contract.
 | Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Candidate policy and role overlays cover every minimum and preserve the public implementation/evidence set | IN_PROGRESS | `SUB-001`: reproduce and validate both actual role trees independently |
 | Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, and reviewed screenshot | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
-| Fixed six-sub-game series with role/game provenance and one aggregate result | Phase 4D13A proves an injected six-slot offline coordinator, alternating schedule, flat-term UID, exact opaque commits and raw aggregation; no six-sub-game runtime/artifact adapter has run | IN_PROGRESS | `LGE-001`: adapt the accepted single-game runtime locally and prove six audits/logs plus one truthful result without changing frozen semantics |
-| full Appendix-B shared configuration, byte-identical and separately named from reference scopes | Phase 4D13A validates the exact schema-1.2 object and a named immutable candidate/peer-lock gate; the local serialization proposal has no bilateral approval | IN_PROGRESS | `LGE-001`: carry the accepted lock through the localhost adapter, then stop for actual peer profile/hash approval |
-| Complete pre-game identity/declaration fields | Phase 4D13A validates each eight-character group ID, members, GitHub repositories, HTTPS MCP URLs, hardware and six-game commits; no real values were supplied and the current CLI does not collect them | IN_PROGRESS | `LGE-001`: wire validated operator inputs to the outer localhost declaration adapter and continue refusing placeholders |
+| Fixed six-sub-game series with role/game provenance and one aggregate result | Phase 4D13B runs twelve independent loopback processes, verifies both peers in all six games, and emits two agreeing final results; the local fixture scores 75–75 and correctly stays blocked on series-tie settlement | DONE_LOCAL | Preserve this adapter; `HUM-001` supplies real approval before any other-team use |
+| full Appendix-B shared configuration, byte-identical and separately named from reference scopes | Both local role bundles contain byte-identical `config/game.json` bytes with SHA-256 `358f29d…f734`; twelve schema-1.1 config artifacts remain the separate flat-term scope | IN_PROGRESS | Obtain actual peer approval for the named full-config bytes/profile; the localhost transport is already proven |
+| Complete pre-game identity/declaration fields | The SDK consumes and validates each exact eight-character group ID, hardware, repositories, endpoints, max-token input and six exact commit maps; Phase 4D13B uses conspicuously synthetic `.invalid`/`example` fixtures only | IN_PROGRESS | Operators must supply real values and bilateral evidence; no placeholder becomes readiness |
 | Annotated Git tag `v1.0-submission` on each final repository | No final submission tag | BLOCKED | `SUB-001`: tag only after all final gates and exact commits are approved |
 | At least two counted games against two different opponent teams | No other-team counted game | BLOCKED | Human authorization after successful uncounted warm-ups and compatibility agreement |
 | Both teams independently send agreeing result JSON through Gmail API | The Gmail API sender is not implemented; no credentials, OAuth flow, or send operation exists | BLOCKED | `MAIL-001`: explicit authorization, offline sender/Gatekeeper implementation, least-privilege setup, then a separately approved audited send |
@@ -49,6 +49,8 @@ delivery contract.
 | Moodle PDF/form submission by each team member | No submission performed | BLOCKED | Human submission after final repository and league evidence review |
 
 `IN_PROGRESS` means a tested offline slice exists but its Definition of Done is not complete.
+`DONE_LOCAL` means the complete offline technical behavior is proven while real-team evidence is
+still governed by a separate human/external gate.
 `PLANNED` means offline work can proceed under its TODO scope. `BLOCKED` means the missing evidence
 depends on a later human decision, external participant, or final accepted state; it must not be
 fabricated or inferred.
@@ -69,17 +71,15 @@ pass readiness needs games against two different opponent teams.
 
 1. Integrate the deterministic offline exporter and compare both candidate role trees to the
    reviewed content policy and tested academic README overlays (`SUB-001`).
-2. Complete the controlled localhost runtime/artifact adapter for the accepted six-slot and full
-   shared-config entry boundary without modifying frozen single-sub-game behavior (`LGE-001`).
-3. Prepare offline history-preserving role branches and run both independent gates; stop for exact
+2. Prepare offline history-preserving role branches and run both independent gates; stop for exact
    URL/content approval before creating remotes or tags (`SUB-001`).
-4. Stop for an explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
+3. Stop for an explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
    Gmail/OAuth, or counted play.
 
 Package/building-block/extension documentation, the internal ISO assessment, measured applicable
 cost/capacity evidence, and the public-safe research/visualization package are complete; these
-items are not repeated as future work. `LGE-001` and `MAIL-001` are newly surfaced official
-delivery gaps, not a rollback of those accepted generic-guideline controls.
+items are not repeated as future work. The offline `LGE-001` adapter is complete; actual bilateral
+series inputs and `MAIL-001` remain delivery gates, not a rollback of accepted guideline controls.
 
 No item in this sequence changes the frozen competitive policy or resolves a negotiated difference
 without explicit evidence.

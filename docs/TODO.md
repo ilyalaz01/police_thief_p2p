@@ -269,7 +269,10 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope. Phase 4D13A and its
   `docs/audits/PHASE4D13A_OFFICIAL_SERIES_ENTRY.md` evidence add the
   fail-closed offline config/schedule/identity/provenance/aggregation entry contract without
-  changing the single-game runtime or claiming bilateral approval.
+  changing the single-game runtime or claiming bilateral approval. Phase 4D13B and
+  `docs/audits/PHASE4D13B_LOCALHOST_SERIES.md` run six games as twelve loopback processes,
+  verify all audits/replays, and produce two checker-accepted series bundles plus distinct
+  byte-identical full Appendix-B files. Synthetic fixture values do not satisfy `HUM-001`.
 - Definition of Done: an outer offline coordinator runs the fixed six-sub-game series without
   changing frozen game/wire behavior; role assignment, per-game commit, truthful game count,
   eight-character group identity, members/repos/hardware declaration metadata, token totals,
@@ -278,6 +281,8 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   professor/schema-1.1 serialization remains exact.
 - Validation commands: focused series/config success and refusal tests; unmodified-professor
   differential; full quality gate; six-sub-game localhost audit/replay with no external network.
+- Remaining acceptance: replace synthetic identity/provenance/profile approvals only with actual
+  operator values and explicit bilateral evidence; the offline technical adapter itself is GREEN.
 - Hard stop/escalation: do not invent missing identity/hardware/repository values, conflate the
   three config/hash domains, change the frozen champion or semantics, contact a peer, or report a
   counted result.
