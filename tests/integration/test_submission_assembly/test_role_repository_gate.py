@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 import subprocess
 from pathlib import Path
@@ -11,6 +12,7 @@ import pytest
 from tests.support.role_manual import assert_complete_role_manual
 from tools.submission_assembly.policy import build_export_manifest, role_overlay
 from tools.submission_assembly.repository import verify_role_repository
+from tools.submission_assembly.repository_cli import main as repository_cli
 from tools.submission_export.git_ops import get_head_commit, get_tracked_info
 
 POLICY = Path("data/submission/role_content_policy.v1.json")
@@ -102,3 +104,29 @@ def test_role_gate_refuses_dirty_candidate(repo_root: Path, tmp_path: Path) -> N
             "police",
             source_commit,
         )
+
+
+def test_role_gate_cli_emits_sanitized_json(
+    repo_root: Path, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    candidate, source_commit = _candidate(repo_root, tmp_path / "cli", "police")
+    assert (
+        repository_cli(
+            [
+                "--role",
+                "police",
+                "--candidate",
+                str(candidate),
+                "--source-commit",
+                source_commit,
+                "--source-root",
+                str(repo_root),
+                "--policy",
+                str(repo_root / POLICY),
+            ]
+        )
+        == 0
+    )
+    report = json.loads(capsys.readouterr().out)
+    assert report["schema"] == "role_repository_gate_v1"
+    assert report["external_operations_authorized"] is False
