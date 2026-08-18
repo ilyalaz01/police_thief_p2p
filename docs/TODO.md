@@ -308,13 +308,13 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Dependencies: DOC-001, GUI-001, GIT-001, completed final content; Evidence so far: the guarded
   candidate policy in `data/submission/role_content_policy.v1.json`,
   `docs/ROLE_REPOSITORY_CONTENT_POLICY.md`, Phase 4D12A, the tested Police/Thief README overlays,
-  `docs/ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md` from Phase 4D12B, and Phase 4D14A deterministic
-  integration of the partner exporter. Two 334-file offline candidate snapshots reproduce from
-  one exact clean commit with distinct role README hashes and clean secret scans. Phase 4D14B adds
-  a real temporary-Git contract and read-only repository gate for ancestry, the final 327-file
-  policy, `.gitmodules`/gitlink pin, role README bytes, secrets and tag absence. Actual history-
-  preserving role branches, exact URLs, two final repository gate runs, publication and tags
-  remain.
+  `docs/ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md` from Phase 4D12B, Phase 4D14A deterministic
+  integration of the partner exporter, and the accepted Phase 4D14B repository gate. Phase 4D14C
+  creates and independently validates the actual history-preserving Police commit `c52f907...`
+  and Thief commit `fd87d62...` from accepted source `e3fda929...`. Both exact repository gates,
+  338-pass role suites at 91.10%, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125 and secret
+  scans are GREEN. The corrected accepted-source set is 329 selected regular files plus
+  `.gitmodules` and one pinned gitlink. Exact reciprocal URLs, publication and tags remain.
 - Definition of Done: separate Police and Thief repositories contain the required role code,
   config, PRD/PLAN/TODO and academic README; both cross-link each other, pass their own gates, and
   receive reviewed annotated `v1.0-submission` tags at the exact approved commits.

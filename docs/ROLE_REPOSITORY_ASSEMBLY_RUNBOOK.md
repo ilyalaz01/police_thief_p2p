@@ -1,6 +1,6 @@
 # Offline Role Repository Assembly Runbook
 
-Status: `LOCAL_EXPORT_SNAPSHOTS_PROVEN_PENDING_ROLE_BRANCH_GATES_AND_HUMAN_APPROVAL`.
+Status: `LOCAL_ROLE_CANDIDATES_GREEN_PENDING_RECIPROCAL_URL_AND_PUBLICATION_APPROVAL`.
 
 This runbook defines the smallest safe sequence for preparing candidate Police and Thief trees.
 It implements no game rule, chooses no URL, creates no remote repository, and authorizes no tag or
@@ -51,6 +51,10 @@ accepted history and preserve contributor authorship. In focused reviewed commit
 regular-file tree match its approved candidate snapshot. Do not copy `.git` from an export, squash
 shared history, rewrite authors, or fabricate earlier reviews.
 
+Phase 4D14C completed this local step from accepted source `e3fda929...`: Police candidate
+`c52f907...` and Thief candidate `fd87d62...`. These local branches are evidence only; neither was
+pushed or assigned a final remote.
+
 ## 5. Apply the role README overlays
 
 Use `submission/templates/police/README.md` as the future Police root `README.md` and
@@ -94,6 +98,10 @@ Repeat with `--role thief` and the Thief checkout. The verifier requires a clean
 and clean candidate, exact ancestry/file bytes, the unchanged `.gitmodules` and gitlink pin,
 pending counterpart placeholder, zero secret findings, and no final tag. It is read-only and
 authorizes no remote or external operation.
+
+Phase 4D14C ran both repository gates and both independent role quality gates. Each role collected
+343 tests, passed 338 with five explicit redistribution/evidence skips, reached 91.10% coverage,
+and passed Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125 and its exact candidate secret scan.
 
 ## 8. Stop for exact-content and URL approval
 

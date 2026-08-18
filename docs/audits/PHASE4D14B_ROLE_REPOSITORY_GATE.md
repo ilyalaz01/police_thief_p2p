@@ -4,6 +4,13 @@ Status: **GREEN locally; actual role branches and public PR acceptance remain pe
 
 Classification: `OFFLINE_ROLE_REPOSITORY_GATE_PREPARATION`.
 
+> Correction recorded by Phase 4D14C on 2026-08-19: the implementation-time manifest contained
+> 327 selected regular files, but the accepted source commit also contains this Markdown report
+> and its JSON companion, which were added after that measurement. The exact accepted source
+> therefore selects 329 files. Each validated role candidate contains those 329 selected files,
+> unchanged `.gitmodules` as regular file 330, and one pinned gitlink. This corrects evidence
+> counting only; no candidate byte, production behavior, frozen hash, or policy decision changed.
+
 ## Outcome
 
 Phase 4D14B closes the gap between a byte snapshot and a real Git repository candidate. It adds a
@@ -22,7 +29,8 @@ updated the reviewed final-role exclusions. A small follow-up aligned the existi
 For each role, the verifier requires:
 
 - the accepted shared source commit remains an ancestor of the candidate commit;
-- the exact reviewed 327 regular files, plus unchanged `.gitmodules`;
+- the exact selected regular-file set at the supplied accepted source commit, plus unchanged
+  `.gitmodules` (329 selected files at accepted source `e3fda929...`);
 - the exact original conformance-kit gitlink path and object ID;
 - every selected byte equals source except root `README.md`, which must equal the reviewed role
   overlay;

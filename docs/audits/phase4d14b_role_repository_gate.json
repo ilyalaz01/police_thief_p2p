@@ -17,7 +17,16 @@
     "frozen_manifest": "7/7",
     "conformance": "125/125"
   },
-  "selected_regular_files": 327,
+  "selected_regular_files": 329,
+  "count_correction": {
+    "recorded_by_phase": "4D14C",
+    "recorded_on": "2026-08-19",
+    "previous_implementation_time_count": 327,
+    "accepted_source_commit": "e3fda929d84d62ea8b25324f92478285a64c2ac7",
+    "accepted_source_selected_regular_files": 329,
+    "reason": "the Phase 4D14B Markdown and JSON evidence files were committed after the implementation-time count",
+    "behavior_or_policy_change": false
+  },
   "separately_retained": [
     ".gitmodules",
     "external/copthief-league-protocol gitlink"
