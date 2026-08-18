@@ -26,10 +26,11 @@ Alternatives include the kit row with `tie`, raw-file agreement, and other schem
 remain unselected pending explicit bilateral agreement. The repository worksheet is always
 blocked and is not an agreement.
 
-The current runtime produces one schema-1.1 sub-game result at a time. It does not yet orchestrate
-the official fixed six-sub-game series or produce the full Appendix-B schema-1.2 shared file.
-Those delivery domains remain explicit under `LGE-001`; they cannot be silently folded into the
-pinned reference builders or their frozen consensus preimage.
+The current runtime produces one schema-1.1 sub-game result at a time. Phase 4D13A adds a distinct
+full Appendix-B schema-1.2 candidate/lock and six-slot raw aggregation contract, but it does not
+yet produce a complete six-sub-game runtime artifact set. Those delivery domains remain explicit
+under `LGE-001`; they cannot be silently folded into the pinned reference builders or their
+frozen consensus preimage.
 
 Metrics: deterministic bytes/hashes for named domains; four expected artifact families; schema
 parse; cross-links and consensus hash verified; zero unexpected/private fields in reports.

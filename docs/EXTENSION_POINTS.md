@@ -16,6 +16,7 @@ interoperability decision.
 | `PolicyFactory` | Evaluation constructs a fresh backend from an integer seed for each game | Local simulator/evaluation only; registration does not make a policy the competitive champion | repeatability, both roles, invalid output and cross-play aggregation |
 | Evaluation scenarios | Pass an explicit scenario/config set into local evaluation | Scenario data cannot weaken frozen action validation or claim public/league evidence | deterministic scenario and boundary-condition tests |
 | `MatchProfile` documents | Load before peer side effects and compare byte identity during negotiation | Existing fields retain their pinned meaning; any new/different term is blocking until explicit bilateral agreement | strict schema rejection, byte/hash identity, peer refusal on mismatch |
+| Appendix-B and role-schedule profiles | Supply exact named local/peer profiles to `LeagueSDK` before an outer series | The full config, flat fourteen terms, and extended runtime profile remain distinct; serialization, starting role, and tie handling require **explicit bilateral agreement** | exact schema/fixed/minimum rejection, byte/hash mismatch, six-slot alternation, UID-domain and blocked-tie tests |
 
 `ScentTacticalPolice` remains the frozen Police champion. Adding another backend to a local policy
 catalogue does not promote it and does not authorize a search/ML experiment.

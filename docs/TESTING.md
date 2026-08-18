@@ -34,6 +34,7 @@ not recreate path-depth assumptions or leave helper modules at the test root.
 | `policies/**` and policy evaluation helpers | `tests/unit/test_policies/` | Observation-only actions and seeded decisions |
 | `evaluation.py` | `tests/integration/test_evaluation/` | Reproducible batches and aggregation |
 | `configuration.py`, `gatekeeper.py` | `tests/integration/test_configuration/` | Files, strict schemas, queues, and safe failures |
+| `league/**` outer-series contracts | `tests/unit/test_league/` | Appendix-B bytes, six slots, identity/provenance, score and refusal paths |
 | Artifact and consensus builders | `tests/integration/test_artifacts/` | Exact bytes, hashes, schemas, scoring, and scope |
 | Runtime, crypto, transport, retry, audit/replay | `tests/integration/test_interop/` | Local component and FastMCP contracts |
 | SDK, frozen manifest, project governance | `tests/integration/test_governance/` | Cross-package and repository invariants |

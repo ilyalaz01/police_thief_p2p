@@ -12,3 +12,4 @@ already established by authoritative repository evidence; proposed records selec
 - [ADR-004](ADR-004-api-gatekeeper-applicability.md): FastMCP API Gatekeeper — ACCEPTED
 - [ADR-005](ADR-005-150-line-refactoring-strategy.md): 150-line refactoring — ACCEPTED
 - [ADR-006](ADR-006-versioned-configuration-boundary.md): versioned configuration — ACCEPTED
+- [ADR-007](ADR-007-official-series-boundary.md): official outer-series boundary — ACCEPTED
