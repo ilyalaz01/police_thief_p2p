@@ -19,18 +19,23 @@ redaction. Current `McpPeerClient` centralizes FastMCP calls, retry count/interv
 ## Selection, evidence, and gaps
 
 The selected implemented approach is synchronous outbound FastMCP calls plus one daemon server
-thread and four queues, coordinated by the public `PeerRuntime` assembled from responsibility
-mixins. Evidence: `tests/integration/test_interop/test_phase4a_runtime_network.py`,
+thread and four bounded queues, coordinated by the public `PeerRuntime` assembled from
+responsibility mixins. Every outbound discovery/tool attempt passes through one process-wide
+versioned `ApiGatekeeper`; the Gatekeeper provides FIFO admission, rate windows, bounded
+backpressure, drain, and value-free monitoring while `McpPeerClient` retains the frozen retry and
+deadline semantics. Evidence: `tests/integration/test_interop/test_phase4a_runtime_network.py`,
 `tests/integration/test_interop/test_phase4a_runtime_rules.py`,
 `tests/integration/test_interop/test_phase4b_network.py`,
 `tests/integration/test_interop/test_phase4b_identity_gates.py`, the
 [Phase 4D1A test mapping](audits/PHASE4D1A_TEST_SPLIT.md), local/public phase reports, and
-[interop decisions](INTEROP_DECISIONS.md). Alternatives—async orchestration, a generic API
-gatekeeper, or brokered transport—remain unselected.
+[interop decisions](INTEROP_DECISIONS.md). Phase 4D2C and Phase 4D4 provide the Gatekeeper and
+concurrency evidence. Alternatives—async orchestration or brokered transport—remain unselected.
 
-Rate limiting, bounded queue depth, backpressure, drain policy, and call monitoring are not
-implemented. A future gatekeeper must not alter frozen deadline/retry/duplicate behavior.
-Real-team fields and consensus require explicit bilateral approval; no readiness is claimed.
+Remaining delivery gaps are outside the proven single-sub-game wire: the official six-sub-game
+series coordinator, complete declaration/private operator inputs, and reconciliation of the full
+Appendix-B shared configuration with the pinned 14-term/schema-1.1 reference domains (`LGE-001`).
+Real-team fields and consensus still require explicit bilateral approval, and Gmail reporting is
+separately blocked under `MAIL-001`; no counted readiness is claimed.
 
 Metrics: profile mismatch rejected before play; duplicate/equivocation/window scenarios exact;
 timeout within negotiated bound; no secret/hidden-state diagnostics; tool surface 4/4. Tests cover
@@ -38,5 +43,6 @@ malformed frames, retry exhaustion, transport loss, isolated processes, and reda
 
 Definition of Done for a future change: ADR accepted, contract characterization tests first,
 bounded-load tests, race review, existing transport/Hcommit/conformance/frozen checks green, and
-human escalation on any semantic difference. Negotiated/frozen boundaries are defined by
+human escalation on any semantic difference. The existing Gatekeeper/concurrency implementation
+already meets that contract for FastMCP. Negotiated/frozen boundaries are defined by
 [the authority baseline](../RULES_AND_INTEROP_BASELINE.md) and profiles.

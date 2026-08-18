@@ -27,8 +27,8 @@ Covers functional completeness, functional correctness, and functional appropria
 | **Current evidence** | Deterministic rules engine (Rules 46/47, barriers, scoring, survival); role-legal observations; alternating Thief-first turns; four-tool FastMCP exchange; commit-reveal; audit/replay; schema 1.1 artifact builders; full passing suite; conformance 125/125; Phase 4D7C role-safe Live GUI; Phase 4D9 reproducible local sensitivity publication |
 | **Measurable indicator** | Test suite pass rate; conformance vector pass rate; frozen manifest 7/7 |
 | **Honest status** | SUBSTANTIAL — core offline function is proven |
-| **Remaining gap** | Counted league games are blocked (`HUM-001`); two-repository submission assembly is incomplete (`SUB-001`) |
-| **Proposed owner/action** | `HUM-001`: obtain bilateral approvals; `SUB-001`: assemble final role repositories |
+| **Remaining gap** | Official six-sub-game aggregation/full shared config (`LGE-001`), Gmail reporting (`MAIL-001`), counted league games (`HUM-001`), and two-repository assembly (`SUB-001`) remain open |
+| **Proposed owner/action** | Complete each named gate without modifying the frozen single-sub-game core or inferring external authorization |
 
 ---
 
@@ -55,8 +55,8 @@ Covers co-existence and interoperability.
 | **Current evidence** | 125/125 conformance vectors; Hcommit 5/5 golden cases; professor localhost MCP 4/4; MCP wire `VERIFIED_REFERENCE_INTEROP`; duplicate/equivocation behavior verified; scent and artifact schemas documented in `docs/INTEROP_DECISIONS.md` |
 | **Measurable indicator** | Conformance vector pass rate; Hcommit vector pass rate; interop fixture coverage |
 | **Honest status** | SUBSTANTIAL for reference-v3 profile; PARTIAL for real-team compatibility |
-| **Remaining gap** | No other-team counted game performed; turn resolution status `UNRESOLVED` for simultaneous models; artifact schema scope requires per-match agreement (`NEGOTIATED_PER_MATCH`); `HUM-001` BLOCKED |
-| **Proposed owner/action** | `HUM-001`: complete bilateral worksheet; pre-match profile negotiation per `docs/REAL_TEAM_WARMUP_RUNBOOK.md` |
+| **Remaining gap** | No other-team counted game; simultaneous-model turn resolution and artifact consensus remain negotiated; the full Appendix-B counted-series config is unresolved under `LGE-001`; `HUM-001` is BLOCKED |
+| **Proposed owner/action** | `LGE-001`: preserve separate config/hash scopes; `HUM-001`: complete the bilateral worksheet and pre-match profile negotiation |
 
 ---
 
@@ -81,11 +81,11 @@ Covers maturity, availability, fault tolerance, and recoverability.
 
 | Field | Detail |
 |---|---|
-| **Current evidence** | 312 deterministic offline tests; 92.51% branch coverage; 7/7 frozen hashes guard behavioral regressions; malformed frames fail closed; equivocation rejected; profile mismatch stops before play; queue backpressure and bounded capacity tested; Gatekeeper admission/close atomic |
+| **Current evidence** | Latest accepted full offline quality gate passes with branch coverage above 90%; 7/7 frozen hashes guard behavioral regressions; malformed frames fail closed; equivocation rejected; profile mismatch stops before play; queue backpressure and bounded capacity are tested; Gatekeeper admission/close is atomic |
 | **Measurable indicator** | Test pass rate; branch coverage %; frozen manifest; Hcommit pass rate |
 | **Honest status** | SUBSTANTIAL for offline scope |
 | **Remaining gap** | FastMCP server in-process restart not supported (deliberately process-scoped); no measured MTBF under sustained real-team load; counted-game reliability unvalidated |
-| **Proposed owner/action** | Document server-lifecycle limitation explicitly; measure stability under load test once `CON-001` capacity measurements are collected |
+| **Proposed owner/action** | Keep the documented process-owned server limitation explicit; add sustained real-team/load evidence only under a separately approved operational scope |
 
 ---
 
@@ -98,8 +98,8 @@ Covers confidentiality, integrity, non-repudiation, accountability, and authenti
 | **Current evidence** | Role-legal observations only (no hidden-state leak to strategies); commit-reveal (SHA-256 `VERIFIED_REFERENCE_INTEROP`); secret scanner (`tools/offline_ops/secrets/`) with zero findings; `.env-example` with no secret values; URL validation and redaction; no credentials in artifacts or docs; `scan-secrets` in composed quality gate |
 | **Measurable indicator** | Secret-scan findings count; observation-isolation test pass rate; Hcommit golden-vector pass rate |
 | **Honest status** | SUBSTANTIAL for offline/local scope |
-| **Remaining gap** | No production security audit performed; tunnel authentication not yet exercised in current phase; Gmail least-privilege setup not yet configured; external-team credential exchange not yet executed |
-| **Proposed owner/action** | `SEC-001` (DONE for scanner); `HUM-001`: complete bilateral auth before any external operation |
+| **Remaining gap** | No production security audit; tunnel authentication is not current evidence; the Gmail sender/least-privilege setup is not implemented or authorized; no external-team credential exchange occurred |
+| **Proposed owner/action** | `MAIL-001`: begin only after explicit approval; `HUM-001`: complete bilateral auth before any external operation |
 
 ---
 
@@ -135,14 +135,14 @@ Covers adaptability, installability, and replaceability.
 
 | # | Characteristic | Honest status | Key gap | TODO |
 |---|---|---|---|---|
-| 1 | Functional suitability | SUBSTANTIAL | Counted games; submission repos | HUM-001, SUB-001 |
-| 2 | Performance efficiency | SUBSTANTIAL (fixed local workload) | Whole-process RSS; parallel/network load | CON-001, HUM-001 |
-| 3 | Compatibility | SUBSTANTIAL (offline) | Real-team bilateral; artifact scope | HUM-001 |
+| 1 | Functional suitability | SUBSTANTIAL | Series/config/reporting; counted games; submission repos | LGE-001, MAIL-001, HUM-001, SUB-001 |
+| 2 | Performance efficiency | SUBSTANTIAL (fixed local workload) | Whole-process RSS; parallel/network load | HUM-001 |
+| 3 | Compatibility | SUBSTANTIAL (offline) | Full series config; real-team bilateral; artifact scope | LGE-001, HUM-001 |
 | 4 | Usability | SUBSTANTIAL (shared offline app) | Formal user/accessibility study; final role-repository workflows | SUB-001 |
-| 5 | Reliability | SUBSTANTIAL (offline) | Server restart; load reliability | CON-001 |
-| 6 | Security | SUBSTANTIAL (offline) | Production audit; tunnel auth | HUM-001 |
+| 5 | Reliability | SUBSTANTIAL (offline) | Server restart; real-team load reliability | HUM-001 |
+| 6 | Security | SUBSTANTIAL (offline) | Gmail boundary; production audit; tunnel auth | MAIL-001, HUM-001 |
 | 7 | Maintainability | SUBSTANTIAL | Final role-package/export validation | SUB-001 |
-| 8 | Portability | SUBSTANTIAL | macOS CI; submission layout | GIT-001, SUB-001 |
+| 8 | Portability | SUBSTANTIAL | macOS CI; submission layout | SUB-001 |
 
 **This assessment is internal and evidence-based. It is not a certification, not a claim of
 production readiness, not a claim of counted-game readiness, and not a claim of

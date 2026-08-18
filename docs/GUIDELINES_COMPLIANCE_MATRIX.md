@@ -5,14 +5,16 @@
 
 Allowed ratings are `COMPLIANT`, `PARTIAL`, `MISSING`, `NOT_APPLICABLE_WITH_RATIONALE`, and
 `BLOCKED_BY_HIGHER_AUTHORITY`. Overall status is **PARTIAL** because historical evidence cannot be
-reconstructed and higher-authority submission and human operations remain outside generic
-guideline completion; no `MISSING` implementation row remains. Generic guidance cannot override
-the [authority hierarchy](../RULES_AND_INTEROP_BASELINE.md).
+reconstructed and higher-authority submission, counted-series/reporting implementation, and human
+operations remain outside generic-guideline completion; no `MISSING` generic-guideline row
+remains. Generic guidance cannot override the
+[authority hierarchy](../RULES_AND_INTEROP_BASELINE.md). Open official work is tracked separately
+as `LGE-001`, `MAIL-001`, `SUB-001`, and `HUM-001` rather than hidden by this matrix.
 
 | Guideline item | Status | Current evidence | Exact gap / applicability | TODO | Acceptance evidence required |
 |---|---|---|---|---|---|
 | 0 Professional model/SDLC | PARTIAL | `CONTRIBUTING.md`; retrospective PRD/PLAN/TODO; Phase 4D11 branch/RED/PR/CI evidence | Formal planning followed the prototype; that historical ordering cannot be repaired retroactively | GIT-001 | Future lifecycle is demonstrated without claiming pre-prototype evidence |
-| 1 README | COMPLIANT | Root manual covers the complete shared product; tested Phase 4D12B Police/Thief overlays add exact role identity, offline commands, GUI/Replay, Rule 49/50, license and blocking counterpart fields | Candidate role manuals exist; actual root placement and approved reciprocal links remain the separate higher-authority SUB-001 delivery task | DOC-001 | Phase 4D6 root-manual tests plus Phase 4D12B overlay/assembly contracts |
+| 1 README | COMPLIANT | Root manual covers the complete shared product; Phase 4D12B Police/Thief overlays now carry exact role identity, Dec-POMDP/FastMCP/strategy explanation, offline commands, embedded GUI/Replay evidence, Rule 49/50, license and blocking counterpart fields | Candidate role manuals exist; actual root placement and approved reciprocal links remain the separate higher-authority SUB-001 delivery task | DOC-001 | Phase 4D6 root-manual tests plus role academic-report/assembly contracts |
 | 1 PRD/PLAN/TODO | COMPLIANT | `docs/PRD.md`, `PLAN.md`, `TODO.md` | Retrospective limitation disclosed | GOV-001 | Phase 4D0 audit and governance tests |
 | 1 Dedicated PRDs | COMPLIANT | Six mechanism PRDs | Must remain live as mechanisms change | GOV-001 | Required-file/link test |
 | 1 Recommended layout | COMPLIANT | Layered `src`, `tests/unit`, `tests/integration`, `tests/system`, `docs`, `interop`, `reports`, `config`, `data`, `results`, `assets`, and `notebooks`; `pyproject.toml`, `uv.lock`, `.env-example` | Research outputs are curated by an explicit ignore allow-list | VIS-001 | Phase 4D3 structure evidence plus Phase 4D9 deterministic publication |
@@ -38,7 +40,7 @@ the [authority hierarchy](../RULES_AND_INTEROP_BASELINE.md).
 | 13 Package organization | COMPLIANT | Installable src layout, author/license/version metadata, explicit exports, relative imports, exact runtime pin and uv lock | External submodule remains separately attributed and outside package authority | PKG-001 | Phase 4D8 package audit and AST regressions |
 | 14 Concurrency/thread safety | COMPLIANT | Process-owned FastMCP daemon; bounded Gatekeeper workers/FIFO inboxes; atomic admission/close; deterministic race, cleanup and capacity tests | In-process FastMCP restart is deliberately unsupported; peer-process termination owns server cleanup | CON-001 | Phase 4D4 lifecycle/load/race audit and ownership diagram |
 | 15 Building blocks | COMPLIANT | SDK and presentation blocks document Input, Output, Setup, Validation and Edge behavior | Frozen implementations are documented externally without byte drift | DOCS-002 | Phase 4D8 building-block catalogue and inventory |
-| 16 Final checklist | PARTIAL | Detailed group mapping below; the shared technical checklist is implemented and no generic-guideline row is MISSING | Historical process proof remains partial; official two-repository submission and human/external operations stay under higher authority | GOV-001 | Preserve technical gates and complete separately authorized SUB-001/HUM-001 evidence |
+| 16 Final checklist | PARTIAL | Detailed group mapping below; the shared technical checklist is implemented and no generic-guideline row is MISSING | Historical process proof remains partial; official six-sub-game/config/reporting work, two-repository submission, and human/external operations remain open | GOV-001 | Preserve generic technical gates and complete LGE-001/MAIL-001/SUB-001/HUM-001 under their separate authorities |
 | 17 Quick-reference enforcement | COMPLIANT | `tools/offline_ops` `quality-gate` composes pytest/Ruff/Hcommit/frozen-manifest/conformance-kit/secret-scan into one fail-closed CLI and CI check; 96 offline-ops tests | Phase 4D5 corrected the cross-Python test serializer; the real composed gate and public Python 3.12 CI pass | RE-001 | `uv run python -m tools.offline_ops.cli quality-gate`; `docs/RELEASE_ENGINEERING.md` |
 | 18 References | NOT_APPLICABLE_WITH_RATIONALE | Guidelines supply a bibliography | Bibliography is source context, not an implementation requirement | GOV-001 | Rationale retained |
 | 19 Applicability note | BLOCKED_BY_HIGHER_AUTHORITY | Baseline authority order and ADR-001 | Generic advice cannot override rules/frozen/negotiated semantics | HUM-001 | Higher-authority clarification or explicit agreement |
@@ -47,7 +49,7 @@ the [authority hierarchy](../RULES_AND_INTEROP_BASELINE.md).
 
 | Checklist group/item | Status | Current evidence | Exact gap / rationale | TODO | Acceptance evidence required |
 |---|---|---|---|---|---|
-| 16.1 Documentation & structure | COMPLIANT | Complete shared manual, tested role overlays, governance set, six PRDs, seven Mermaid views, prompt log, and official-readiness ledger | Retrospective history remains disclosed rather than fabricated; actual role-repository assembly is tracked separately | DOC-001 | Phase 4D6 manual/governance and Phase 4D12B overlay tests |
+| 16.1 Documentation & structure | COMPLIANT | Complete shared manual, academic role overlays, governance set, six live PRDs, seven Mermaid views, prompt log, and official-readiness ledger | Retrospective history remains disclosed rather than fabricated; actual role-repository assembly is tracked separately | DOC-001 | Root-manual/governance and role academic-report tests |
 | 16.2 SDK architecture | COMPLIANT | Root `PoliceThiefSDK`, six services, typed CLI delegation | New operations must extend the guarded inventory | SDK-001 | Phase 4D2B interface/consumer tests |
 | 16.2 OOP/no duplication | COMPLIANT | Protocols/dataclasses, single-concern runtime mixins, shared artifact helpers and SDK aliases avoid copied business implementations | Review-backed structural assessment; any future duplicated behavior reopens PKG-001 | PKG-001 | `PACKAGE_AUDIT.md`, SDK and line-boundary regressions |
 | 16.2 API gatekeeper/rates/queues | COMPLIANT | Versioned centralized FastMCP gate; bounded FIFO/backpressure/drain/metrics | No other production external API client exists | API-001 | Phase 4D2C deterministic and transport tests |

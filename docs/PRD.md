@@ -22,7 +22,9 @@ an uncounted compatibility exercise.
 
 The problem is to implement a partially observable two-process game without leaking hidden truth
 or silently diverging on rules, bytes, deadlines, or audit results. The validated prototype
-solves the local technical core; governance and several professional-project controls remain.
+solves the local single-sub-game technical core and the generic professional-project controls.
+Official final delivery still requires role repositories, a six-sub-game series/config layer,
+authorized Gmail reporting, and human/bilateral operations.
 
 Measurable goals and KPIs:
 
@@ -80,8 +82,9 @@ verified Replay Viewer, tests, research evidence, and governance.
 Outside the accepted implementation baseline: rule changes, new strategy/AI/ML/search, production
 deployment, Gmail, tunnels, league reporting, opponent contact, and any uncounted or counted match.
 The shared-code GUI requirement is complete under `GUI-001`; final role-repository placement is
-still owned by `SUB-001`. Research and visualization are complete under `RES-001`/`VIS-001`;
-cost measurement, submission assembly, and human-gated operations remain tracked in
+still owned by `SUB-001`. Research, visualization, and applicable local cost measurement are
+complete. The official counted-series/shared-config layer (`LGE-001`), Gmail sender and its
+authorization (`MAIL-001`), submission assembly, and human-gated operations remain tracked in
 [TODO](TODO.md).
 
 The competitive/interoperability boundary is frozen: game rules, scoring, policies/profiles,
@@ -117,11 +120,14 @@ two accessible figures, and a cited notebook equivalent without changing the cha
 Phase 4D10 adds preregistered one-machine local simulator wall/CPU timing, Python-allocation peak,
 result-size, and sequential-capacity evidence without inferring a vendor or electricity price.
 
-Planned or incomplete: two-role-repository submission assembly and bilateral readiness.
+Planned or incomplete: two-role-repository submission assembly; the fixed six-sub-game outer
+series and full Appendix-B shared-config domain; Gmail API sender/authorization; and bilateral
+readiness.
 Research/visualization, applicable cost/capacity measurement, package/building-block/extension
 documentation, and the internal ISO assessment are accepted alongside the Live GUI, Replay view,
 structured tests, CLI UX, and release tooling.
 
 Milestones: D0 governance baseline; D1 technical compliance; D2 release/offline operations and CLI
-manual; D3 GUI/replay plus research/quality publication; D4 two-repository submission assembly and
-human-gated bilateral compatibility. Exact ordering remains governed by [TODO](TODO.md).
+manual; D3 GUI/replay plus research/quality publication; D4 official series/reporting closure,
+two-repository submission assembly, and human-gated bilateral compatibility. Exact ordering
+remains governed by [TODO](TODO.md).

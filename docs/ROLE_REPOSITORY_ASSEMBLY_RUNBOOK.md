@@ -47,8 +47,8 @@ shared history, rewrite authors, or fabricate earlier reviews.
 Use `submission/templates/police/README.md` as the future Police root `README.md` and
 `submission/templates/thief/README.md` as the future Thief root `README.md`. While URLs remain
 pending, the exact placeholder must stay visible and blocking. Confirm each README identifies only
-its own runtime role/policy and retains Rule 50 links, GUI/Replay instructions, license, credits,
-and operational limits.
+its own runtime role/policy and retains the academic Dec-POMDP/FastMCP/strategy explanation,
+embedded GUI/Replay evidence, Rule 50 links, license, credits, and operational limits.
 
 ## 6. Restore the pinned conformance submodule
 

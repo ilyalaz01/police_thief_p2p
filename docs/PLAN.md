@@ -188,7 +188,8 @@ traffic cannot renew turn time. The complete ownership and capacity contract is 
 
 Extension points already implemented: `DecisionBackend`, `ScentModel`, policy factories,
 `BarrierPlacementMode`, evaluation scenarios, and named match profiles. Residual risks are the
-process-scoped FastMCP server lifecycle and negotiated scope ambiguity. REF-001
+process-scoped FastMCP server lifecycle, negotiated scope ambiguity, and the unimplemented outer
+counted-series/full-config/reporting layer. REF-001
 closed with no Python source/test file above 150 counted lines. CFG-001 closed with a strict
 versioned operational boundary; SDK-001 closed with a single documented facade. Fixed game/profile
 values remain non-configurable. Phase 4D8 records their lifecycle and compatibility policy,
@@ -208,7 +209,9 @@ cost/capacity measurement with preregistered local wall/CPU/Python-allocation/re
 Phase 4D11 accepts the inspectable shared-repository Git/PR/tag workflow while preserving its
 retrospective limitations and withholding final submission tags. The package/building-block/
 extension audit and internal ISO assessment are accepted. Remaining offline architecture work is
-the two-role submission export/validation under SUB-001. Phase 4D12A fixes the candidate common
+the two-role submission export/validation under SUB-001 plus the separately controlled
+six-sub-game/full Appendix-B configuration boundary under LGE-001. Gmail delivery remains blocked
+under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific
 README overlays and an offline history-preserving assembly sequence while leaving exporter
