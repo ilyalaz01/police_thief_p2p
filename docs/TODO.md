@@ -266,7 +266,8 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 - Dependencies: accepted single-sub-game runtime, Appendix-B/F authority review, HUM-001 for any
   opponent-specific value; Evidence today: professor/reference cross-play and schema-1.1 artifacts
   prove one sub-game, while `docs/INTEROP_DECISIONS.md` records
-  `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope. Phase 4D13A adds the
+  `UNRESOLVED_FOR_COUNTED_SERIES` for the distinct full shared-config scope. Phase 4D13A and its
+  `docs/audits/PHASE4D13A_OFFICIAL_SERIES_ENTRY.md` evidence add the
   fail-closed offline config/schedule/identity/provenance/aggregation entry contract without
   changing the single-game runtime or claiming bilateral approval.
 - Definition of Done: an outer offline coordinator runs the fixed six-sub-game series without
