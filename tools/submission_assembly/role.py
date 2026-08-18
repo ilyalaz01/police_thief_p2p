@@ -49,6 +49,7 @@ def prepare_role(policy_path: Path, role: str, output: Path, repo_root: Path) ->
 def _require_only_readme_changed(
     export_plan: dict[str, object], final_files: list[dict[str, str]]
 ) -> None:
+    """Require the role overlay to be the export's only byte change."""
     original = {entry["path"]: entry["sha256"] for entry in export_plan["files"]}
     final = {entry["path"]: entry["sha256"] for entry in final_files}
     if original.keys() != final.keys():

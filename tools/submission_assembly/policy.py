@@ -56,6 +56,7 @@ def role_overlay(path: Path, role: str) -> str:
 
 
 def _resolve_selected(content: dict[str, object], regular: frozenset[str]) -> set[str]:
+    """Resolve exact/prefix policy rules over tracked regular files."""
     exact = _strings(content, "include_exact")
     prefixes = _strings(content, "include_prefixes")
     excluded = set(_strings(content, "exclude_exact"))
@@ -73,6 +74,7 @@ def _resolve_selected(content: dict[str, object], regular: frozenset[str]) -> se
 
 
 def _mapping(data: dict[str, object], key: str) -> dict[str, object]:
+    """Return one required object field or fail with a safe category."""
     value = data.get(key)
     if not isinstance(value, dict):
         raise ValueError(f"policy field must be an object: {key!r}")
@@ -80,6 +82,7 @@ def _mapping(data: dict[str, object], key: str) -> dict[str, object]:
 
 
 def _strings(data: dict[str, object], key: str) -> tuple[str, ...]:
+    """Return one required string-list field as an immutable tuple."""
     value = data.get(key)
     if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
         raise ValueError(f"policy field must be a string list: {key!r}")
@@ -87,6 +90,7 @@ def _strings(data: dict[str, object], key: str) -> tuple[str, ...]:
 
 
 def _string(data: dict[str, object], key: str) -> str:
+    """Return one required string field or fail closed."""
     value = data.get(key)
     if not isinstance(value, str):
         raise ValueError(f"policy field must be a string: {key!r}")
