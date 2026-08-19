@@ -5,12 +5,13 @@ from __future__ import annotations
 import re
 
 from tests.support.project_paths import PROJECT_ROOT
+from tests.support.role_manual import COUNTERPART_URLS
 
 ROOT = PROJECT_ROOT
-ROLE_READMES = (
-    "submission/templates/police/README.md",
-    "submission/templates/thief/README.md",
-)
+ROLE_READMES = {
+    "police": "submission/templates/police/README.md",
+    "thief": "submission/templates/thief/README.md",
+}
 
 
 def read(relative: str) -> str:
@@ -62,11 +63,12 @@ def test_role_readmes_cover_the_official_academic_report() -> None:
         "docs/images/live-gui-local-truth.jpg",
         "docs/images/replay-verified-ok.jpg",
         "Verified OK",
-        "PENDING_HUMAN_APPROVAL",
     )
-    for path in ROLE_READMES:
+    for role, path in ROLE_READMES.items():
         document = read(path)
         assert not [term for term in required if term not in document]
+        assert COUNTERPART_URLS[role] in document
+        assert "PENDING_HUMAN_APPROVAL" not in document
     for image in (
         "docs/images/live-gui-local-truth.jpg",
         "docs/images/replay-verified-ok.jpg",
