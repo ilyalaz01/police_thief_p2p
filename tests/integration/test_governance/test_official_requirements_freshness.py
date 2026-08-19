@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 
 from tests.support.project_paths import PROJECT_ROOT
@@ -12,6 +13,7 @@ ROLE_READMES = {
     "police": "submission/templates/police/README.md",
     "thief": "submission/templates/thief/README.md",
 }
+PUBLICATION_AUDIT = ROOT / "docs/audits/phase4d14e_role_publication.json"
 
 
 def read(relative: str) -> str:
@@ -99,3 +101,33 @@ def test_iso_assessment_avoids_obsolete_fixed_suite_evidence() -> None:
     assert "312 deterministic offline tests" not in document
     assert "92.51% branch coverage" not in document
     assert "once `CON-001` capacity measurements are collected" not in document
+
+
+def test_public_role_repositories_have_exact_green_evidence_without_final_tags() -> None:
+    """Rule 49/50 publication must be exact while later operations stay blocked."""
+    audit = json.loads(PUBLICATION_AUDIT.read_text(encoding="utf-8"))
+    assert audit["status"] == "GREEN_PUBLIC_ROLE_REPOSITORIES"
+    expected = {
+        "police": (
+            "https://github.com/ilyalaz01/police_thief_p2p-police",
+            "42c5367d690abda6b01c6aa91499491526123ed8",
+            "https://github.com/ilyalaz01/police_thief_p2p-police/actions/runs/32230351200",
+        ),
+        "thief": (
+            "https://github.com/ilyalaz01/police_thief_p2p-thief",
+            "f279dc2c736df1b234f857de6e085e38fbdb73f1",
+            "https://github.com/ilyalaz01/police_thief_p2p-thief/actions/runs/32230359324",
+        ),
+    }
+    for role, (url, commit, run_url) in expected.items():
+        evidence = audit["repositories"][role]
+        assert (evidence["url"], evidence["commit"]) == (url, commit)
+        assert evidence["public_ci"] == {"status": "PASS", "run_url": run_url}
+    assert audit["published_historical_tags"] == ["team-baseline-v1"]
+    assert audit["final_submission_tags_created"] is False
+    assert not any(audit["external_operations_authorized"].values())
+
+    readiness = read("docs/OFFICIAL_SUBMISSION_READINESS.md")
+    for requirement in ("Rule 49:", "Rule 50:"):
+        row = next(line for line in readiness.splitlines() if line.startswith(f"| {requirement}"))
+        assert "| DONE |" in row
