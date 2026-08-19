@@ -8,9 +8,21 @@ from pathlib import Path
 from tools.submission_export.git_ops import get_head_commit, get_tracked_info
 
 _POLICY_SCHEMA = "role_repository_content_policy_v1"
-_POLICY_STATUS = "LOCAL_CANDIDATE_EXPORTER_INTEGRATED"
+_POLICY_STATUS = "EXACT_ROLE_URLS_APPROVED_FOR_PUBLICATION"
 _ROLES = frozenset({"police", "thief"})
 _REQUIRED = ["README.md", "docs/PRD.md", "docs/PLAN.md", "docs/TODO.md"]
+_COUNTERPART_URLS = {
+    "police": "https://github.com/ilyalaz01/police_thief_p2p-thief",
+    "thief": "https://github.com/ilyalaz01/police_thief_p2p-police",
+}
+_AUTHORIZATIONS = {
+    "create_final_repositories": True,
+    "publish_exports": True,
+    "create_submission_tags": False,
+    "contact_opponents": False,
+    "start_gmail": False,
+    "start_gameplay": False,
+}
 
 
 def load_policy(path: Path) -> dict[str, object]:
@@ -19,8 +31,8 @@ def load_policy(path: Path) -> dict[str, object]:
     if data.get("schema") != _POLICY_SCHEMA or data.get("status") != _POLICY_STATUS:
         raise ValueError("role-content policy schema or integration status is not accepted")
     authorizations = data.get("authorizations")
-    if not isinstance(authorizations, dict) or any(authorizations.values()):
-        raise ValueError("offline role-content policy must authorize no external operation")
+    if authorizations != _AUTHORIZATIONS:
+        raise ValueError("role-content policy authorization boundary is not accepted")
     return data
 
 
@@ -37,8 +49,8 @@ def build_export_manifest(path: Path, role: str, repo_root: Path) -> dict[str, o
     if overlay not in selected:
         raise ValueError("reviewed role README overlay is outside the selected file set")
     counterpart = _string(role_policy, "counterpart_repository_url")
-    if counterpart != "PENDING_HUMAN_APPROVAL":
-        raise ValueError("offline candidate requires the pending counterpart placeholder")
+    if counterpart != _COUNTERPART_URLS[role]:
+        raise ValueError("candidate counterpart repository URL is not approved")
     return {
         "schema": "submission_export_v1",
         "role": role,

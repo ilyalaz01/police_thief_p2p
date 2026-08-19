@@ -1,10 +1,11 @@
 # Offline Role Repository Assembly Runbook
 
-Status: `LOCAL_ROLE_CANDIDATES_GREEN_PENDING_RECIPROCAL_URL_AND_PUBLICATION_APPROVAL`.
+Status: `EXACT_URLS_APPROVED_PUBLIC_REPOSITORIES_EMPTY_PENDING_UPDATED_GATES`.
 
 This runbook defines the smallest safe sequence for preparing candidate Police and Thief trees.
-It implements no game rule, chooses no URL, creates no remote repository, and authorizes no tag or
-external operation. Official Rules 49/50 and the authority order in
+The exact reciprocal URLs are approved and both public repositories exist empty. The user
+authorized publishing verified candidates, but no tag or external game operation. Official Rules
+49/50 and the authority order in
 [`RULES_AND_INTEROP_BASELINE.md`](../RULES_AND_INTEROP_BASELINE.md) remain controlling.
 
 ## 1. Freeze the accepted shared commit
@@ -19,8 +20,9 @@ continue from a dirty worktree.
 Generate one explicit manifest for `police` and one for `thief` from the reviewed
 [`role_content_policy.v1.json`](../data/submission/role_content_policy.v1.json). Each manifest must
 list every selected regular file, the exact `source_commit`, Rule 50 required paths, and the role's
-README overlay. Keep `counterpart_repository_url` exactly `PENDING_HUMAN_APPROVAL` during offline
-preparation. Input ordering must not affect the deterministic plan.
+README overlay. During the earlier offline-only preparation, the counterpart value remained
+exactly `PENDING_HUMAN_APPROVAL`; after explicit approval it must equal the role-specific URL in
+the policy. Input ordering must not affect the deterministic plan.
 
 The selected set excludes ignored/private paths, `tests/offline_ops/` synthetic secret-shaped
 fixtures, `.gitmodules`, and Git gitlinks. A human reviews every path and hash before export.
@@ -57,9 +59,9 @@ pushed or assigned a final remote.
 
 ## 5. Apply the role README overlays
 
-Use `submission/templates/police/README.md` as the future Police root `README.md` and
-`submission/templates/thief/README.md` as the future Thief root `README.md`. While URLs remain
-pending, the exact placeholder must stay visible and blocking. Confirm each README identifies only
+Use `submission/templates/police/README.md` as the Police root `README.md` and
+`submission/templates/thief/README.md` as the Thief root `README.md`. Confirm each README uses its
+exact approved counterpart URL and identifies only
 its own runtime role/policy and retains the academic Dec-POMDP/FastMCP/strategy explanation,
 embedded GUI/Replay evidence, Rule 50 links, license, credits, and operational limits.
 
@@ -96,7 +98,7 @@ uv run python -m tools.submission_assembly.repository_cli \
 
 Repeat with `--role thief` and the Thief checkout. The verifier requires a clean accepted source
 and clean candidate, exact ancestry/file bytes, the unchanged `.gitmodules` and gitlink pin,
-pending counterpart placeholder, zero secret findings, and no final tag. It is read-only and
+approved counterpart URL, zero secret findings, and no final tag. It is read-only and
 authorizes no remote or external operation.
 
 Phase 4D14C ran both repository gates and both independent role quality gates. Each role collected
@@ -105,18 +107,21 @@ and passed Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125 and its exact cand
 
 ## 8. Stop for exact-content and URL approval
 
-Present both exact candidate commit SHAs, file/hash manifests, gate evidence, proposed repository
-names, and reciprocal URLs to the human operator. Replace `PENDING_HUMAN_APPROVAL` only after both
-exact URLs and both contents are approved together. Re-run both gates after changing the links.
+This historical approval stop is now satisfied: the operator approved these empty public
+repositories and publication of candidates that pass the updated gates:
 
-Only a later explicit authorization may create remotes, push either repository, or create the
-annotated `v1.0-submission` tags. The tags must point to the exact approved commits and must never
-be moved silently.
+- Police: `https://github.com/ilyalaz01/police_thief_p2p-police`;
+- Thief: `https://github.com/ilyalaz01/police_thief_p2p-thief`.
+
+Push each verified candidate non-forcibly to its matching `main`, verify the public reciprocal
+links and CI, and record exact public commit evidence. Stop before creating annotated
+`v1.0-submission` tags; tag authorization remains separate and the tags must never move silently.
 
 ## Hard stops and operation classes
 
-No command in this runbook authorizes opponent contact, public transport, a real-team warm-up, a
-counted league game, Gmail reporting, Moodle submission, repository publication, or a final tag.
+No command in this runbook authorizes opponent contact, public game transport, a real-team
+warm-up, a counted league game, Gmail reporting, Moodle submission, or a final tag. Repository
+publication is authorized only for the two named role candidates after both gates pass.
 Local simulator experiments, local interoperability tests, historical public self-tests,
 uncounted warm-ups, and counted league operations remain distinct evidence classes.
 

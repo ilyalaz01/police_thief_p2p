@@ -1,10 +1,11 @@
 # Police and Thief Repository Content Policy
 
-Status: `LOCAL_HISTORY_PRESERVING_CANDIDATES_GREEN_PENDING_URL_APPROVAL`.
+Status: `EXACT_ROLE_URLS_APPROVED_AND_EMPTY_PUBLIC_REPOSITORIES_CREATED`.
 
-This document selects a safe, reproducible shared content boundary for the two future role
-repositories. Two local history-preserving candidates now exist and pass their gates; this does
-not choose their URLs, create final remotes, publish either candidate, or authorize a tag.
+This document selects a safe, reproducible shared content boundary for the two role repositories.
+The operator approved the exact reciprocal URLs and creation/publication of the two repositories;
+both public repositories were created empty so accepted history can be preserved. Publication
+still requires updated candidates and repeated gates. No final submission tag is authorized.
 The machine-readable policy is
 [`data/submission/role_content_policy.v1.json`](../data/submission/role_content_policy.v1.json).
 
@@ -73,8 +74,11 @@ The candidate role-specific academic root README overlays are retained at
 `submission/templates/police/README.md` and `submission/templates/thief/README.md`. The complete
 offline, history-preserving sequence is documented in
 [`ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md`](ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md). These files contain
-the required Dec-POMDP, FastMCP/Gatekeeper, role-strategy, Live GUI, and Replay evidence, but they
-contain pending counterpart placeholders and do not satisfy Rule 49 before exact URL approval.
+the required Dec-POMDP, FastMCP/Gatekeeper, role-strategy, Live GUI, and Replay evidence and now
+pin the approved reciprocal repository URLs:
+
+- Police repository: `https://github.com/ilyalaz01/police_thief_p2p-police`;
+- Thief repository: `https://github.com/ilyalaz01/police_thief_p2p-thief`.
 
 For each role, the future operator must:
 
@@ -86,14 +90,13 @@ For each role, the future operator must:
 5. restore and pin the approved conformance-kit submodule separately;
 6. run the role repository's full tests, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125,
    link/license/privacy checks, and compare the final tree to the reviewed plan;
-7. obtain exact-content human approval before creating remotes, publishing, or tagging.
-
-Until actual URLs are chosen, both counterpart fields remain exactly
-`PENDING_HUMAN_APPROVAL`. A placeholder is not a cross-link and never satisfies Rule 49.
+7. use the approved empty public remotes only after both updated candidates pass all gates;
+8. stop before `v1.0-submission` tags pending separate explicit approval.
 
 ## Deliberate hard stops
 
-- No final repository or `v1.0-submission` tag is authorized here.
+- Creation and publication of the two named role repositories are authorized; final
+  `v1.0-submission` tags are not.
 - No Gmail, opponent contact, tunnel, public warm-up, or counted game is authorized here.
 - No hidden or bilateral interoperability choice is resolved here.
 - No new AI/search/ML policy or Thief champion is selected here.
@@ -111,6 +114,7 @@ in Phase 4D14C. The gate retains `.gitmodules` and the pinned conformance gitlin
 accepted ancestry, permits only the reviewed root README overlay, scans the candidate, and refuses
 a premature `v1.0-submission` tag.
 
-Phase 4D14C validates the actual local Police and Thief candidates with preserved history and
-independent quality gates. Only reciprocal URL approval, final remotes, publication and reviewed
-tags remain under `SUB-001`; none is implied by the local GREEN result.
+Phase 4D14C validates the initial local Police and Thief candidates with preserved history and
+independent quality gates. Phase 4D14D records the operator-approved reciprocal URLs and two empty
+public repositories. The candidates must now integrate this accepted source and pass both gates
+again before publication. Reviewed tags remain a separate blocked `SUB-001` action.
