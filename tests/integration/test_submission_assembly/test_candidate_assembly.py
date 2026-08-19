@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from tests.support.role_manual import COUNTERPART_URLS
 from tools.offline_ops.secrets.scanner import scan_path
 from tools.submission_assembly.assembly import prepare_candidates
 from tools.submission_assembly.policy import build_export_manifest
@@ -37,7 +38,7 @@ def test_policy_builds_explicit_reviewable_manifests(repo_root: Path) -> None:
         assert manifest["schema"] == "submission_export_v1"
         assert manifest["role"] == role
         assert manifest["include"] == sorted(manifest["include"])
-        assert manifest["counterpart_repository_url"] == "PENDING_HUMAN_APPROVAL"
+        assert manifest["counterpart_repository_url"] == COUNTERPART_URLS[role]
         assert manifest["required_paths"] == [
             "README.md",
             "docs/PRD.md",
@@ -64,7 +65,7 @@ def test_candidates_match_manifests_and_exact_role_overlays(
         ).read_bytes()
         assert final["schema"] == "role_candidate_manifest_v1"
         assert final["role"] == role
-        assert final["counterpart_repository_url"] == "PENDING_HUMAN_APPROVAL"
+        assert final["counterpart_repository_url"] == COUNTERPART_URLS[role]
         assert final["secret_scan"] == "PASS"
         assert not (tree / "export_manifest.json").exists()
         assert scan_path(tree) == []

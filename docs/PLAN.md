@@ -218,12 +218,14 @@ single-game runtime. Phase 4D14A integrates the guarded exporter and atomically 
 role-specific offline snapshots with exact manifests and secret scans. Phase 4D14B supplies the
 tested read-only ancestry/bytes/submodule/privacy/tag verifier. Phase 4D14C assembles and validates
 the actual local history-preserving Police and Thief candidates; their independent gates are
-GREEN. Remaining `SUB-001` work now requires human approval of exact reciprocal URLs/content
-before remotes, publication and tags. Real inputs and bilateral locks remain human/external gates.
+GREEN. Phase 4D14D pins the operator-approved reciprocal URLs and records the two empty public
+repositories. Remaining `SUB-001` work is to accept this source through CI, update/recheck both
+candidates, publish and verify public CI; tags remain separately blocked. Real inputs and bilateral
+locks remain human/external gates.
 Gmail delivery remains blocked under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific
 README overlays and an offline history-preserving assembly sequence. Phase 4D14A proves exporter
 integration and real snapshot trees while leaving role Git branches, URLs, remotes, and tags
-pending. No remaining proposal may expose hidden
+pending at that historical phase. No remaining proposal may expose hidden
 truth, imply authorization, or silently change frozen or negotiated behavior.

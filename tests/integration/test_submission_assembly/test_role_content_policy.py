@@ -6,6 +6,8 @@ import json
 import subprocess
 from pathlib import Path
 
+from tests.support.role_manual import COUNTERPART_URLS
+
 ROOT = Path(__file__).resolve().parents[3]
 POLICY_PATH = ROOT / "data/submission/role_content_policy.v1.json"
 DOC_PATH = ROOT / "docs/ROLE_REPOSITORY_CONTENT_POLICY.md"
@@ -64,18 +66,18 @@ def resolved_files(data: dict[str, object]) -> set[str]:
     }
 
 
-def test_policy_is_pending_and_role_truth_is_observed() -> None:
+def test_policy_has_approved_urls_and_role_truth_is_observed() -> None:
     data = policy()
     roles = data["roles"]
     assert data["schema"] == "role_repository_content_policy_v1"
-    assert data["status"] == "LOCAL_CANDIDATE_EXPORTER_INTEGRATED"
+    assert data["status"] == "EXACT_ROLE_URLS_APPROVED_FOR_PUBLICATION"
     assert roles["police"]["runtime_policy"] == "ScentTacticalPolice"
     assert roles["police"]["policy_status"] == "FROZEN_ACCEPTED"
     assert roles["thief"]["runtime_policy"] == "RandomLegalThief"
     assert roles["thief"]["policy_status"] == "CURRENT_DEFAULT_NOT_NEW_CHAMPION"
-    assert {role["counterpart_repository_url"] for role in roles.values()} == {
-        "PENDING_HUMAN_APPROVAL"
-    }
+    assert {
+        role: details["counterpart_repository_url"] for role, details in roles.items()
+    } == COUNTERPART_URLS
 
 
 def test_candidate_satisfies_rule_50_and_preserves_evidence() -> None:
@@ -118,16 +120,22 @@ def test_cutoff_and_runtime_defaults_are_inspectable() -> None:
     assert "ScentTacticalPolice(seed) if role is Role.POLICE else RandomLegalThief(seed)" in runtime
 
 
-def test_final_operations_remain_blocked_and_documented() -> None:
+def test_publication_is_authorized_but_later_operations_remain_blocked() -> None:
     data = policy()
     assert data["authorizations"] == {
-        "create_final_repositories": False,
-        "publish_exports": False,
+        "create_final_repositories": True,
+        "publish_exports": True,
         "create_submission_tags": False,
         "contact_opponents": False,
         "start_gmail": False,
         "start_gameplay": False,
     }
     document = DOC_PATH.read_text(encoding="utf-8")
-    for fact in ("Rule 49", "Rule 50", "tests/offline_ops", "PENDING_HUMAN_APPROVAL"):
+    for fact in (
+        "Rule 49",
+        "Rule 50",
+        "tests/offline_ops",
+        COUNTERPART_URLS["police"],
+        COUNTERPART_URLS["thief"],
+    ):
         assert fact in document

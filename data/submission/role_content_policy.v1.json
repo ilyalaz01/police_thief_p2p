@@ -1,7 +1,7 @@
 {
   "schema": "role_repository_content_policy_v1",
-  "status": "LOCAL_CANDIDATE_EXPORTER_INTEGRATED",
-  "evidence_cutoff": "64a1e55a9c99fa2debd480bebdfadbc7c2a142c5",
+  "status": "EXACT_ROLE_URLS_APPROVED_FOR_PUBLICATION",
+  "evidence_cutoff": "185988ee18203b4309cb856f8a8eeb816e9a787b",
   "authority": {
     "official_rules": [49, 50],
     "baseline": "RULES_AND_INTEROP_BASELINE.md",
@@ -58,14 +58,14 @@
       "runtime_role": "police",
       "runtime_policy": "ScentTacticalPolice",
       "policy_status": "FROZEN_ACCEPTED",
-      "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
+      "counterpart_repository_url": "https://github.com/ilyalaz01/police_thief_p2p-thief",
       "readme_overlay": "submission/templates/police/README.md"
     },
     "thief": {
       "runtime_role": "thief",
       "runtime_policy": "RandomLegalThief",
       "policy_status": "CURRENT_DEFAULT_NOT_NEW_CHAMPION",
-      "counterpart_repository_url": "PENDING_HUMAN_APPROVAL",
+      "counterpart_repository_url": "https://github.com/ilyalaz01/police_thief_p2p-police",
       "readme_overlay": "submission/templates/thief/README.md"
     }
   },
@@ -82,8 +82,8 @@
     "role_changes_use_new_reviewed_commits": true
   },
   "authorizations": {
-    "create_final_repositories": false,
-    "publish_exports": false,
+    "create_final_repositories": true,
+    "publish_exports": true,
     "create_submission_tags": false,
     "contact_opponents": false,
     "start_gmail": false,

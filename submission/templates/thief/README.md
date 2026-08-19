@@ -96,11 +96,11 @@ does not claim another-team or counted play.
 
 ## Official repository layout
 
-Rule 49 requires two separate role repositories (Police and Thief) with reciprocal README links. The future
-counterpart repository URL is currently: `PENDING_HUMAN_APPROVAL`.
-
-The placeholder is not a valid cross-link and must remain blocking until the exact Police URL and
-both final repository contents are approved.
+Rule 49 requires two separate role repositories (Police and Thief) with reciprocal README links.
+The approved counterpart repository is
+[Police-Thief P2P — Police](https://github.com/ilyalaz01/police_thief_p2p-police).
+This reciprocal link identifies the repository layout only; it is not authorization for opponent
+contact, public transport, external messaging, a warm-up, or counted play.
 
 Rule 50 requires this README plus the following retained project materials:
 

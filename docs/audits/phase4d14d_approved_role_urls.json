@@ -1,0 +1,31 @@
+{
+  "phase": "4D14D",
+  "classification": "ROLE_REPOSITORY_PUBLICATION_PREFLIGHT",
+  "status": "GREEN_SHARED_URL_CONTRACT_PENDING_CANDIDATE_PUBLICATION",
+  "accepted_source_cutoff": "185988ee18203b4309cb856f8a8eeb816e9a787b",
+  "repositories": {
+    "police": {
+      "url": "https://github.com/ilyalaz01/police_thief_p2p-police",
+      "visibility": "PUBLIC",
+      "state": "CREATED_EMPTY"
+    },
+    "thief": {
+      "url": "https://github.com/ilyalaz01/police_thief_p2p-thief",
+      "visibility": "PUBLIC",
+      "state": "CREATED_EMPTY"
+    }
+  },
+  "authorizations": {
+    "create_named_public_repositories": true,
+    "publish_verified_role_candidates": true,
+    "create_submission_tags": false,
+    "contact_opponents": false,
+    "start_gmail": false,
+    "start_public_game_transport": false,
+    "start_warmup": false,
+    "start_counted_play": false
+  },
+  "candidate_publication_completed": false,
+  "frozen_semantics_changed": false,
+  "decision": "ACCEPT_EXACT_URLS_AND_CONTINUE_TO_SHARED_CI"
+}

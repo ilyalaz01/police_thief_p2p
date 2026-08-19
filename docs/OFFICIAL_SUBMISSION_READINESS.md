@@ -35,7 +35,7 @@ or counted-series acceptance.
 
 | Requirement | Current evidence | Status | Owner / next evidence |
 |---|---|---|---|
-| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Actual local Police `c52f907...` and Thief `fd87d62...` candidates preserve accepted history and pass repository/quality gates, but both links remain `PENDING_HUMAN_APPROVAL`; no final role URLs/remotes exist | IN_PROGRESS | `SUB-001`: approve both exact commits and reciprocal URLs together before link edits, remotes or tags |
+| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | The exact reciprocal URLs are approved and both public repositories exist empty; the shared overlays now pin the cross-links, while updated role candidates and public CI remain pending | IN_PROGRESS | `SUB-001`: integrate the accepted URL source into both role branches, rerun both gates, publish non-forcibly and verify both public links/CI; tags remain separate |
 | Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Both history-preserving local trees contain and test the required layout, exact role README, `.gitmodules`, pinned gitlink and safe common content | DONE_LOCAL | Preserve the accepted candidate trees while completing the separate Rule 49 publication gate |
 | Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, and reviewed screenshot | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
 | Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
@@ -69,10 +69,11 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Review exact local Police commit `c52f907...`, Thief commit `fd87d62...`, their distinct hashes,
-   and proposed reciprocal repository URLs together (`SUB-001`; local gates are GREEN).
-2. Only after explicit approval, substitute the two reciprocal links, rerun both gates, and obtain
-   a second exact-content approval before creating remotes, publishing, or tagging (`SUB-001`).
+1. Accept the exact reciprocal URL policy through shared CI, then integrate its accepted commit
+   into both history-preserving role branches (`SUB-001`).
+2. Rerun both exact repository and independent quality gates, publish each GREEN candidate
+   non-forcibly to its approved empty public repository, and verify both public links and CI.
+   Stop before tags (`SUB-001`).
 3. Stop for a separate explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
    Gmail/OAuth, or counted play.
 
