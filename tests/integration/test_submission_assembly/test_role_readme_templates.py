@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from tests.support.role_manual import COUNTERPART_URLS
+
 ROOT = Path(__file__).resolve().parents[3]
 POLICY_PATH = ROOT / "data/submission/role_content_policy.v1.json"
 RUNBOOK_PATH = ROOT / "docs/ROLE_REPOSITORY_ASSEMBLY_RUNBOOK.md"
@@ -37,12 +39,12 @@ def test_role_templates_identify_only_the_observed_runtime_policy() -> None:
         assert f"Policy status: `{policy_status}`" in document
 
 
-def test_both_templates_cover_rules_49_and_50_without_fake_cross_links() -> None:
-    for document in map(read_role, ROLE_READMES):
+def test_both_templates_cover_rules_49_and_50_with_exact_cross_links() -> None:
+    for role, document in ((role, read_role(role)) for role in ROLE_READMES):
         assert "Rule 49" in document
         assert "Rule 50" in document
-        assert "PENDING_HUMAN_APPROVAL" in document
-        assert "placeholder is not a valid cross-link" in document
+        assert COUNTERPART_URLS[role] in document
+        assert "PENDING_HUMAN_APPROVAL" not in document
         for required in (
             "docs/PRD.md",
             "docs/PLAN.md",

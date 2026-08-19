@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from tests.support.role_manual import assert_complete_role_manual
+from tests.support.role_manual import COUNTERPART_URLS, assert_complete_role_manual
 from tools.submission_assembly.policy import build_export_manifest, role_overlay
 from tools.submission_assembly.repository import verify_role_repository
 from tools.submission_assembly.repository_cli import main as repository_cli
@@ -79,7 +79,7 @@ def test_history_preserving_role_candidate_passes_exact_gate(
     assert report["history_preserved"] is True
     assert report["submodule_pin"] == "PASS"
     assert report["secret_scan"] == "PASS"
-    assert report["counterpart_repository_url"] == "PENDING_HUMAN_APPROVAL"
+    assert report["counterpart_repository_url"] == COUNTERPART_URLS[role]
     assert_complete_role_manual((candidate / "README.md").read_text(encoding="utf-8"), role)
 
 
