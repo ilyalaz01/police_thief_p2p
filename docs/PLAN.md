@@ -219,9 +219,10 @@ role-specific offline snapshots with exact manifests and secret scans. Phase 4D1
 tested read-only ancestry/bytes/submodule/privacy/tag verifier. Phase 4D14C assembles and validates
 the actual local history-preserving Police and Thief candidates; their independent gates are
 GREEN. Phase 4D14D pins the operator-approved reciprocal URLs and records the two empty public
-repositories. Remaining `SUB-001` work is to accept this source through CI, update/recheck both
-candidates, publish and verify public CI; tags remain separately blocked. Real inputs and bilateral
-locks remain human/external gates.
+repositories. Phase 4D14E updates both history-preserving candidates from accepted source
+`cff96c44...`, repeats their gates, publishes Police `42c5367...` and Thief `f279dc2...`, and
+verifies reciprocal links and both public CI reruns. Only separately authorized final submission
+tags remain under `SUB-001`. Real inputs and bilateral locks remain human/external gates.
 Gmail delivery remains blocked under MAIL-001 until explicitly authorized. Phase 4D12A fixes the candidate common
 content boundary, privacy exclusions, history-preservation rule, current role defaults, and
 submodule reprovisioning gate without choosing URLs or tags. Phase 4D12B adds tested role-specific

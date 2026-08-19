@@ -1,11 +1,12 @@
 # Police and Thief Repository Content Policy
 
-Status: `EXACT_ROLE_URLS_APPROVED_AND_EMPTY_PUBLIC_REPOSITORIES_CREATED`.
+Status: `PUBLIC_ROLE_REPOSITORIES_VERIFIED_PENDING_FINAL_SUBMISSION_TAGS`.
 
 This document selects a safe, reproducible shared content boundary for the two role repositories.
-The operator approved the exact reciprocal URLs and creation/publication of the two repositories;
-both public repositories were created empty so accepted history can be preserved. Publication
-still requires updated candidates and repeated gates. No final submission tag is authorized.
+The operator approved the exact reciprocal URLs and creation/publication of the two repositories.
+Both history-preserving candidates were published non-forcibly, their reciprocal links and public
+commit identities were verified, and both public CI reruns passed. No final submission tag is
+authorized.
 The machine-readable policy is
 [`data/submission/role_content_policy.v1.json`](../data/submission/role_content_policy.v1.json).
 
@@ -80,7 +81,7 @@ pin the approved reciprocal repository URLs:
 - Police repository: `https://github.com/ilyalaz01/police_thief_p2p-police`;
 - Thief repository: `https://github.com/ilyalaz01/police_thief_p2p-thief`.
 
-For each role, the future operator must:
+The completed publication sequence for each role was:
 
 1. choose the exact accepted shared `HEAD` and generate ignored explicit exporter manifests;
 2. run the integrated deterministic assembler, review every selected path/hash, and create both
@@ -116,5 +117,7 @@ a premature `v1.0-submission` tag.
 
 Phase 4D14C validates the initial local Police and Thief candidates with preserved history and
 independent quality gates. Phase 4D14D records the operator-approved reciprocal URLs and two empty
-public repositories. The candidates must now integrate this accepted source and pass both gates
-again before publication. Reviewed tags remain a separate blocked `SUB-001` action.
+public repositories. Phase 4D14E integrates accepted shared source `cff96c44...`, repeats both
+repository/quality gates, publishes Police `42c5367...` and Thief `f279dc2...`, verifies reciprocal
+links and accepts both public CI reruns. Reviewed `v1.0-submission` tags remain a separate blocked
+`SUB-001` action.

@@ -314,16 +314,17 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
   and Thief commit `fd87d62...` from accepted source `e3fda929...`. Both exact repository gates,
   338-pass role suites at 91.10%, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125 and secret
   scans are GREEN. The corrected accepted-source set is 329 selected regular files plus
-  `.gitmodules` and one pinned gitlink. The exact reciprocal URLs are now approved and both public
-  repositories exist empty. Updated candidate integration, repeated gates, non-force publication,
-  public CI/link verification, and separately authorized tags remain.
+  `.gitmodules` and one pinned gitlink. Phase 4D14D accepts exact reciprocal URLs; Phase 4D14E
+  integrates accepted source `cff96c44...`, repeats both exact/local gates, and non-forcibly
+  publishes public Police `42c5367...` and Thief `f279dc2...`. Both reciprocal links and public CI
+  reruns are GREEN. Only separately authorized annotated `v1.0-submission` tags remain for SUB-001.
 - Definition of Done: separate Police and Thief repositories contain the required role code,
   config, PRD/PLAN/TODO and academic README; both cross-link each other, pass their own gates, and
   receive reviewed annotated `v1.0-submission` tags at the exact approved commits.
 - Validation commands: role-export manifest checks, both repository quality gates, link/secret
   review, and `git show v1.0-submission` in each final repository.
-- Hard stop/escalation: publish only candidates that pass the updated exact gates to the two
-  approved repositories; do not create tags without separate approval; never copy ignored sources,
+- Hard stop/escalation: preserve the verified public commits; do not create final tags without
+  separate approval; never copy ignored sources,
   professor-owned code, credentials, correspondence, or retained private evidence.
 
 ## HUM-001 — Complete bilateral compatibility approvals

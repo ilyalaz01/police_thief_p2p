@@ -1,0 +1,66 @@
+{
+  "phase": "4D14E",
+  "classification": "PUBLIC_ROLE_REPOSITORY_ACCEPTANCE",
+  "status": "GREEN_PUBLIC_ROLE_REPOSITORIES",
+  "accepted_shared_source_commit": "cff96c44ee4a91f34f2fa6adbd2f83e3f1f9d0a3",
+  "repositories": {
+    "police": {
+      "url": "https://github.com/ilyalaz01/police_thief_p2p-police",
+      "branch": "main",
+      "commit": "42c5367d690abda6b01c6aa91499491526123ed8",
+      "counterpart_repository_url": "https://github.com/ilyalaz01/police_thief_p2p-thief",
+      "regular_file_count": 334,
+      "candidate_aggregate_sha256": "40288da6649bb12d54d3cf81aa64f11f6d630bf3b5a85e0ebfce7e036965cc67",
+      "repository_gate": "PASS",
+      "quality_gate": "PASS",
+      "coverage_percent": 91.09503616862061,
+      "public_ci": {
+        "status": "PASS",
+        "run_url": "https://github.com/ilyalaz01/police_thief_p2p-police/actions/runs/32230351200"
+      }
+    },
+    "thief": {
+      "url": "https://github.com/ilyalaz01/police_thief_p2p-thief",
+      "branch": "main",
+      "commit": "f279dc2c736df1b234f857de6e085e38fbdb73f1",
+      "counterpart_repository_url": "https://github.com/ilyalaz01/police_thief_p2p-police",
+      "regular_file_count": 334,
+      "candidate_aggregate_sha256": "1609bd2804a0fb43b620d7a5d3d72071b185ab97a811e33a3d41c5b6c3bd5e74",
+      "repository_gate": "PASS",
+      "quality_gate": "PASS",
+      "coverage_percent": 91.09503616862061,
+      "public_ci": {
+        "status": "PASS",
+        "run_url": "https://github.com/ilyalaz01/police_thief_p2p-thief/actions/runs/32230359324"
+      }
+    }
+  },
+  "public_visibility": "VERIFIED_BOTH",
+  "reciprocal_links": "VERIFIED_BOTH",
+  "published_historical_tags": ["team-baseline-v1"],
+  "baseline_tag": {
+    "object": "e8fea4afe22cb503503a2ce071b86a409c73db23",
+    "target": "96d3878ed1ac3776810284be7c23315ba3ad53e1",
+    "unchanged": true
+  },
+  "initial_ci_failure": {
+    "classification": "MISSING_ACCEPTED_HISTORICAL_TAG_ON_NEW_REMOTES",
+    "reproduced_in_fresh_public_clone": true,
+    "branch_commits_changed_by_correction": false,
+    "corrected_public_clone_governance": "5/5"
+  },
+  "rule_49": "DONE",
+  "rule_50": "DONE",
+  "final_submission_tags_created": false,
+  "external_operations_authorized": {
+    "gmail": false,
+    "opponent_contact": false,
+    "public_game_transport": false,
+    "warmup": false,
+    "counted_play": false,
+    "reporting": false,
+    "moodle_submission": false
+  },
+  "frozen_semantics_changed": false,
+  "decision": "ACCEPT_PUBLIC_ROLE_REPOSITORIES"
+}

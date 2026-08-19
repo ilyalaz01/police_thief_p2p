@@ -1,11 +1,11 @@
 # Offline Role Repository Assembly Runbook
 
-Status: `EXACT_URLS_APPROVED_PUBLIC_REPOSITORIES_EMPTY_PENDING_UPDATED_GATES`.
+Status: `PUBLICATION_COMPLETE_PENDING_FINAL_SUBMISSION_TAG_AUTHORIZATION`.
 
 This runbook defines the smallest safe sequence for preparing candidate Police and Thief trees.
-The exact reciprocal URLs are approved and both public repositories exist empty. The user
-authorized publishing verified candidates, but no tag or external game operation. Official Rules
-49/50 and the authority order in
+The exact reciprocal URLs are approved and both verified role candidates are publicly published.
+The user authorized that publication, but no final submission tag or external game operation.
+Official Rules 49/50 and the authority order in
 [`RULES_AND_INTEROP_BASELINE.md`](../RULES_AND_INTEROP_BASELINE.md) remain controlling.
 
 ## 1. Freeze the accepted shared commit
@@ -116,6 +116,13 @@ repositories and publication of candidates that pass the updated gates:
 Push each verified candidate non-forcibly to its matching `main`, verify the public reciprocal
 links and CI, and record exact public commit evidence. Stop before creating annotated
 `v1.0-submission` tags; tag authorization remains separate and the tags must never move silently.
+
+Phase 4D14E completed this sequence from accepted shared source `cff96c44...`: Police public
+`main` is `42c5367...`, Thief public `main` is `f279dc2...`, both exact repository and local quality
+gates passed, both reciprocal links are public, and both GitHub CI reruns passed. The initial CI
+attempts transparently failed because the existing annotated `team-baseline-v1` governance tag
+had not been published. Publishing that unchanged historical tag fixed clean-clone governance;
+no role branch byte or commit changed and no `v1.0-submission` tag was created.
 
 ## Hard stops and operation classes
 

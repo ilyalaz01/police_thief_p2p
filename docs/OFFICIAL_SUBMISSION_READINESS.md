@@ -23,11 +23,13 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
   sequential-capacity evidence without vendor-price invention;
 - inspectable branch/commit/PR governance, preserved partner authorship, full-history CI, and an
   annotated validated-baseline tag with explicit historical review exceptions;
-- public quality gate: pytest/coverage, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125, and
-  secret scan.
+- separate public Police and Thief repositories with reciprocal links, preserved history, pinned
+  conformance gitlink, exact public commits and passing public CI;
+- public quality gates: pytest/coverage, Ruff, Hcommit 5/5, frozen 7/7, conformance 125/125, and
+  secret scans.
 
-These facts do not prove another-team compatibility, counted authorization, final role-repository
-layout, Gmail reporting, or Moodle submission. Phase 4D13B proves the complete six-game flow only
+These facts prove the required role-repository layout, but not another-team compatibility,
+counted authorization, Gmail reporting, or Moodle submission. Phase 4D13B proves the complete six-game flow only
 as an uncounted localhost self-test with synthetic identities and approvals; it is not a real-team
 or counted-series acceptance.
 
@@ -35,10 +37,10 @@ or counted-series acceptance.
 
 | Requirement | Current evidence | Status | Owner / next evidence |
 |---|---|---|---|
-| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | The exact reciprocal URLs are approved and both public repositories exist empty; the shared overlays now pin the cross-links, while updated role candidates and public CI remain pending | IN_PROGRESS | `SUB-001`: integrate the accepted URL source into both role branches, rerun both gates, publish non-forcibly and verify both public links/CI; tags remain separate |
-| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Both history-preserving local trees contain and test the required layout, exact role README, `.gitmodules`, pinned gitlink and safe common content | DONE_LOCAL | Preserve the accepted candidate trees while completing the separate Rule 49 publication gate |
-| Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, and reviewed screenshot | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
-| Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game | DONE | `SUB-001`: carry the accepted viewer/evidence into both final role repositories |
+| Rule 49: two separate GitHub repositories, Police and Thief, with cross-links | Public Police `42c5367...` and Thief `f279dc2...` repositories preserve accepted history, cross-link each other exactly, and both public CI reruns pass | DONE | Preserve the exact public commits; `v1.0-submission` tags remain a separate blocked requirement |
+| Rule 50: README, `config/`, PRD, PLAN, TODO in each role repository | Both public role repositories contain the required layout, exact academic role README, `.gitmodules`, pinned gitlink and safe common content; exact repository gates pass | DONE | Preserve the verified public trees |
+| Live GUI showing the role-legal belief/scent state | Phase 4D7C runtime-fed local-truth heatmap, exact turn banners, strict no-opponent field boundary, reviewed screenshot, and publication in both verified role repositories | DONE | Preserve the published role-safe viewer/evidence |
+| Replay application showing `Verified OK` | Phase 4D7B verifier plus Phase 4D7C reviewed `Verified OK` screenshot from a synthetic completed localhost game, published in both verified role repositories | DONE | Preserve the published verified Replay evidence |
 | Fixed six-sub-game series with role/game provenance and one aggregate result | Phase 4D13B runs twelve independent loopback processes, verifies both peers in all six games, and emits two agreeing final results; the local fixture scores 75–75 and correctly stays blocked on series-tie settlement | DONE_LOCAL | Preserve this adapter; `HUM-001` supplies real approval before any other-team use |
 | full Appendix-B shared configuration, byte-identical and separately named from reference scopes | Both local role bundles contain byte-identical `config/game.json` bytes with SHA-256 `358f29d…f734`; twelve schema-1.1 config artifacts remain the separate flat-term scope | IN_PROGRESS | Obtain actual peer approval for the named full-config bytes/profile; the localhost transport is already proven |
 | Complete pre-game identity/declaration fields | The SDK consumes and validates each exact eight-character group ID, hardware, repositories, endpoints, max-token input and six exact commit maps; Phase 4D13B uses conspicuously synthetic `.invalid`/`example` fixtures only | IN_PROGRESS | Operators must supply real values and bilateral evidence; no placeholder becomes readiness |
@@ -69,12 +71,10 @@ pass readiness needs games against two different opponent teams.
 
 ## Smallest safe sequence
 
-1. Accept the exact reciprocal URL policy through shared CI, then integrate its accepted commit
-   into both history-preserving role branches (`SUB-001`).
-2. Rerun both exact repository and independent quality gates, publish each GREEN candidate
-   non-forcibly to its approved empty public repository, and verify both public links and CI.
-   Stop before tags (`SUB-001`).
-3. Stop for a separate explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
+1. Review the exact public Police `42c5367...` and Thief `f279dc2...` commits and both passing CI
+   reruns. Stop for a separate explicit decision before creating either annotated
+   `v1.0-submission` tag (`SUB-001`).
+2. Stop for a separate explicit user decision before beginning `MAIL-001`, opponent contact, tunnels,
    Gmail/OAuth, or counted play.
 
 Package/building-block/extension documentation, the internal ISO assessment, measured applicable
