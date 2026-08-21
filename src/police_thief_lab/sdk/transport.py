@@ -28,6 +28,11 @@ from ..interop.runtime_models import (
     config_from_profile,
     require_real_team_git_commit,
 )
+from ..interop.runtime_policies import (
+    DEFAULT_THIEF_POLICY,
+    build_thief_backend,
+    thief_policy_names,
+)
 from ..interop.transport import (
     McpPeerClient,
     PeerInboxes,
@@ -130,6 +135,9 @@ class TransportSDK:
     RateLimitConfig = RateLimitConfig
     TurnInbox = TurnInbox
     TurnMessage = TurnMessage
+    DEFAULT_THIEF_POLICY = DEFAULT_THIEF_POLICY
+    build_thief_backend = staticmethod(build_thief_backend)
+    thief_policy_names = staticmethod(thief_policy_names)
     build_server = staticmethod(build_server)
     action_to_wire = staticmethod(action_to_wire)
     config_from_profile = staticmethod(config_from_profile)

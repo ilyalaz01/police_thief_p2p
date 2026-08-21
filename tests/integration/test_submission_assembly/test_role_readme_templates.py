@@ -16,7 +16,7 @@ ROLE_READMES = {
 }
 ROLE_FACTS = {
     "police": ("ScentTacticalPolice", "FROZEN_ACCEPTED"),
-    "thief": ("RandomLegalThief", "CURRENT_DEFAULT_NOT_NEW_CHAMPION"),
+    "thief": ("LookaheadEvasionThief", "SELECTED_BY_MEASURED_EXPERIMENT"),
 }
 
 

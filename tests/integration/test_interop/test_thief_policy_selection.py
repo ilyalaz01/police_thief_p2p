@@ -11,7 +11,11 @@ from police_thief_lab.interop.runtime_policies import (
     build_thief_backend,
     thief_policy_names,
 )
-from police_thief_lab.policies import RandomLegalThief, ScentTacticalPolice
+from police_thief_lab.policies import (
+    LookaheadEvasionThief,
+    RandomLegalThief,
+    ScentTacticalPolice,
+)
 from tests.support.interop_test_support import free_port, profile
 
 
@@ -22,10 +26,11 @@ def _runtime(role: Role, tmp_path: Path, **kwargs: object) -> PeerRuntime:
     )
 
 
-def test_the_default_thief_policy_is_unchanged(tmp_path: Path) -> None:
-    assert DEFAULT_THIEF_POLICY == "RandomLegalThief"
-    assert isinstance(_runtime(Role.THIEF, tmp_path).backend, RandomLegalThief)
-    assert isinstance(build_thief_backend(None, 1), RandomLegalThief)
+def test_the_accepted_default_thief_policy_is_the_measured_one(tmp_path: Path) -> None:
+    assert DEFAULT_THIEF_POLICY == "LookaheadEvasionThief"
+    assert isinstance(_runtime(Role.THIEF, tmp_path).backend, LookaheadEvasionThief)
+    assert isinstance(build_thief_backend(None, 1), LookaheadEvasionThief)
+    assert isinstance(build_thief_backend("RandomLegalThief", 1), RandomLegalThief)
 
 
 @pytest.mark.parametrize("name", thief_policy_names())

@@ -109,7 +109,8 @@ and later audits/replays the game.
 Important fixed/verified behavior:
 
 - Frozen Police policy: `ScentTacticalPolice`.
-- Current deterministic Thief baseline: `RandomLegalThief`.
+- Deterministic Thief default: `LookaheadEvasionThief`, adopted 2026-08-21 through the Phase 4E
+  controlled experiment and explicit operator acceptance; `--thief-policy` overrides it.
 - Reference-v3 Hcommit, scent, MCP/retry, audit/replay, and schema-1.1 artifact behavior have
   regression coverage. See `docs/INTEROP_DECISIONS.md`.
 - **Rule 47 is mandatory:** a Thief with no legal move is captured, even though the professor

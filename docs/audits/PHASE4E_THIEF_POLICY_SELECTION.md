@@ -57,11 +57,18 @@ thief is better on this board against these pursuit shapes; it does not predict 
 
 ## What changed in the code
 
-`peer_cli` gained `--thief-policy`, resolved through `interop/runtime_policies.py`. The **default
-is deliberately unchanged**: without the flag the runtime still builds `RandomLegalThief`, so the
-published thief role repository README stays accurate and no silent competitive change occurs.
-The Police policy remains frozen and is not selectable; supplying `--thief-policy` for the police
-role is refused rather than ignored.
+`peer_cli` gained `--thief-policy`, resolved through `interop/runtime_policies.py`. The Police
+policy remains frozen and is not selectable; supplying `--thief-policy` for the police role is
+refused rather than ignored.
 
-Adopting a different default is a separate decision. It requires updating the role repository
-README and the policy-status label, and republishing the role repositories.
+## Acceptance
+
+The operator accepted this experiment on 2026-08-21 and the default moved from `RandomLegalThief`
+to `LookaheadEvasionThief`. `data/submission/role_content_policy.v1.json` now declares
+`LookaheadEvasionThief` with status `SELECTED_BY_MEASURED_EXPERIMENT`, the thief role README
+overlay states the same, and the role-content test ties the declared value to
+`DEFAULT_THIEF_POLICY` in the source rather than to a copied literal.
+
+Consequence: both public role repositories must be republished from the accepted source before
+their commits are quoted as final submission evidence. Until that happens the published thief
+repository still describes the previous default.

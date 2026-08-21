@@ -10,7 +10,7 @@ from ..policies.strong_thieves import (
 )
 from ..simulator import DecisionBackend
 
-DEFAULT_THIEF_POLICY = "RandomLegalThief"
+DEFAULT_THIEF_POLICY = "LookaheadEvasionThief"
 THIEF_POLICIES = {
     "RandomLegalThief": RandomLegalThief,
     "SpaceSeekingThief": SpaceSeekingThief,
