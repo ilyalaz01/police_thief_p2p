@@ -46,6 +46,18 @@ the operational config preserves the existing CLI behavior.
 
 ## Rate-limit policy
 
+## Declaration input
+
+`config/declaration.example.json` is a blank-valued template for the operator declaration file
+consumed by `--declaration`. It supplies the members, repository URLs, MCP identities, model and
+hardware fields that the schema-1.1 declaration artifact requires and that the peer cannot invent.
+
+Copy it outside the repository, fill in real values, and pass the copy. The loader refuses a file
+with any missing or unfilled value, so an incomplete declaration fails before gameplay instead of
+producing an artifact full of nulls. Without the flag the peer keeps its historical self-test
+identity, which is correct for local and public self-tests and insufficient for a counted game.
+A filled copy contains real member names and must never be committed.
+
 `config/rate_limits.v1.json` is a separate strict schema for external-call capacity. It currently
 defines the `fastmcp` minute/hour limits, worker concurrency, bounded queue depth, and bounded
 monitoring retention. Override only its path, not individual values, with:

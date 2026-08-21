@@ -84,12 +84,20 @@ def _runtime_contract() -> bytes:
 
 
 def test_runtime_symbols_and_behavioral_contract_are_exact() -> None:
+    """Pin the runtime contract; the pin moves only with a recorded deliberate change.
+
+    Last moved when ``PeerRuntime`` gained the optional ``declaration`` parameter and
+    ``run_peer`` gained optional ``declaration`` and ``hint`` parameters, so that operator
+    declaration input reaches the schema-1.1 artifacts. Both additions are keyword arguments
+    with defaults, so every existing call, phase, action encoding, audit-result mapping and
+    config value below is unchanged.
+    """
     assert runtime.PeerRuntime is PeerRuntime
     assert PeerRuntime.__module__ == "police_thief_lab.interop.runtime"
     payload = _runtime_contract()
-    assert len(payload) == 2403
+    assert len(payload) == 2520
     assert hashlib.sha256(payload).hexdigest() == (
-        "1da7d86790a4fef7cbf07c8ccd545b3b1a07969bff9b59d3b654eed240dd562f"
+        "241eaccc7bb5538cb5396b2cc0e9d6620d2e2a2ec87fe0ed213720bafaf972e8"
     )
 
 

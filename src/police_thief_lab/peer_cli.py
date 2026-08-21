@@ -42,6 +42,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--group-name", help="local group display-name metadata")
     parser.add_argument("--git-commit", help="exact opaque local commit identity")
     parser.add_argument(
+        "--declaration",
+        type=Path,
+        help="operator-supplied declaration JSON with members, repositories and hardware",
+    )
+    parser.add_argument("--hint", help="free-language hint sent with every turn")
+    parser.add_argument(
         "--real-team",
         action="store_true",
         help="enable stricter real-team preflight; this is not authorization",
@@ -83,6 +89,8 @@ def main() -> int:
         public=args.public,
         operational_config=args.operational_config,
         live_view=args.live_view,
+        declaration=args.declaration,
+        hint=args.hint,
     )
     return PoliceThiefSDK().transport.launch_peer(request)
 

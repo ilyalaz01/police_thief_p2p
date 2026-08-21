@@ -139,6 +139,8 @@ are input/delegation controls; no flag grants permission to contact an opponent 
 | `--group-id ID` | Local group identity metadata |
 | `--group-name NAME` | Local display-name metadata |
 | `--git-commit VALUE` | Exact opaque local commit identity |
+| `--declaration PATH` | Operator-supplied declaration JSON: members, repositories, hardware |
+| `--hint TEXT` | Free-language hint sent with every turn; capped at the negotiated word limit |
 | `--real-team` | Enable stricter commit preflight; not authorization |
 | `--operational-config PATH` | Strict versioned startup-classification JSON |
 | `--artifacts DIR` | Required output directory for schema 1.1 artifacts |

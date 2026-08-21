@@ -18,6 +18,7 @@ from ..league import (
     confirm_appendix_b_lock,
     coordinate_offline_series,
     derive_series_game_ids,
+    load_declaration_identity,
     run_localhost_series,
     series_reference_terms,
     series_token_totals,
@@ -45,6 +46,7 @@ class LeagueSDK:
     confirm_appendix_b_lock = staticmethod(confirm_appendix_b_lock)
     coordinate_offline_series = staticmethod(coordinate_offline_series)
     derive_series_game_ids = staticmethod(derive_series_game_ids)
+    load_declaration_identity = staticmethod(load_declaration_identity)
     series_reference_terms = staticmethod(series_reference_terms)
     series_token_totals = staticmethod(series_token_totals)
     run_localhost_series = staticmethod(run_localhost_series)

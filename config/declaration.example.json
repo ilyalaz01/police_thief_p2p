@@ -1,0 +1,22 @@
+{
+  "_note": "Operator-supplied declaration input. Copy this file OUTSIDE the repository, fill in real values, and pass it with --declaration. Never commit a filled copy.",
+  "group_id": "alpha001",
+  "group_name": "Alpha Team",
+  "members": [
+    "Student One",
+    "Student Two"
+  ],
+  "cop_repo": "https://github.com/example/cop",
+  "thief_repo": "https://github.com/example/thief",
+  "cop_mcp_url": "https://cop.example/mcp",
+  "thief_mcp_url": "https://thief.example/mcp",
+  "llm_model": "deterministic-python",
+  "hardware": {
+    "cpu_type": "Example CPU",
+    "cpu_freq_mhz": 2500,
+    "cpu_cores": 8,
+    "ram_gb": 16,
+    "gpu_model": "none",
+    "vram_gb": 0
+  }
+}

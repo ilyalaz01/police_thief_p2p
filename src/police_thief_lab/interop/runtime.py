@@ -18,6 +18,7 @@ from .runtime_artifacts import _RuntimeArtifactsMixin
 from .runtime_audit import _RuntimeAuditMixin
 from .runtime_board import _RuntimeBoardMixin
 from .runtime_entry import run_peer as run_peer
+from .runtime_identity import peer_identity_object
 from .runtime_lifecycle import _RuntimeLifecycleMixin
 from .runtime_presentation import _RuntimePresentationMixin
 from .runtime_sending import _RuntimeSendingMixin
@@ -59,6 +60,7 @@ class PeerRuntime(
         git_commit: str | None = None,
         real_team: bool = False,
         live_view_path: Path | None = None,
+        declaration: dict[str, Any] | None = None,
     ) -> None:
         """Initialize PeerRuntime with its validated setup values and private state."""
         self.role, self.profile, self.config = role, profile, config_from_profile(profile)
@@ -68,17 +70,9 @@ class PeerRuntime(
         self.opponent_url = redact_url(opponent_url)
         self.real_team = real_team
         self.git_commit = git_commit if git_commit is not None else UNRESOLVED_GIT_COMMIT
-        role_name = "cop" if role is Role.POLICE else "thief"
-        self.identity = {
-            "group_id": group_id or f"local-{role.value}",
-            "group_name": group_name or f"Local {role.value.title()}",
-            "members": [],
-            "repos": {"cop": "local-unpublished", "thief": "local-unpublished"},
-            "mcp_servers": {role_name: advertised_url},
-            "llm_model": "deterministic-python",
-            "spec": {},
-            "github_commit": self.git_commit,
-        }
+        self.identity = peer_identity_object(
+            role.value, advertised_url, self.git_commit, group_id, group_name, declaration
+        )
         self.started_at = datetime.now(UTC)
         self.hint = hint
         self.state = LocalGameState(
