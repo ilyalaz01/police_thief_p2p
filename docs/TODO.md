@@ -329,9 +329,12 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## HUM-001 — Complete bilateral compatibility approvals
 
-- Milestone: D4; Priority: P0; Status: BLOCKED; Owner role: Human/External Coordination
+- Milestone: D4; Priority: P0; Status: IN_PROGRESS; Owner role: Human/External Coordination
 - Dependencies: successful approved uncounted plan and another team's explicit responses;
-  Evidence for DONE: not applicable while BLOCKED.
+  Evidence so far: group `vm__fabi` answered every worksheet item in writing with ACCEPT and
+  reproduced both published hashes byte-exactly; three uncounted public games in both roles are
+  recorded in `docs/audits/PHASE4F_REAL_TEAM_UNCOUNTED_WARMUP.md`. Still missing for DONE: the
+  opponent's own consensus hashes for comparison and a counter-signed operator worksheet.
 - Definition of Done: every worksheet field/domain and Rule 47/scope decision has explicit
   bilateral evidence, with separate authorization for any activity.
 - Validation commands: offline worksheet validation only; no gameplay command is authorized.

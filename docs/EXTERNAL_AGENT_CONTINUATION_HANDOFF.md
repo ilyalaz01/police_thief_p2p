@@ -155,7 +155,9 @@ or opponent data. This is correct: those values must be operator supplied.
 
 ## 7. What is not done / not claimed
 
-- No real opponent has completed an uncounted warm-up with this project.
+- Superseded on 2026-08-21: three uncounted real-team games against `vm__fabi` completed in
+  both roles with verified audit, replay and artifacts. See
+  `docs/audits/PHASE4F_REAL_TEAM_UNCOUNTED_WARMUP.md`. Still uncounted and unreported.
 - No bilateral worksheet has been populated/approved.
 - No stable live real-team endpoints or real identity/declaration inputs have been supplied.
 - No counted match, league result, Gmail/OAuth implementation, or Gmail send has occurred.

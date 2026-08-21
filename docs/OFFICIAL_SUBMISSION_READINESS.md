@@ -15,6 +15,9 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
 - two-process local FastMCP, retry/deadline/duplicate/equivocation behavior;
 - commit-reveal, mutual audit, deterministic replay, and schema 1.1 artifacts;
 - historical inspectable public self-test through two HTTPS tunnels;
+- three uncounted public games against the real team `vm__fabi` on 2026-08-21, in both roles,
+  with verified audit, replay, artifacts and independently recomputed consensus hashes
+  (`docs/audits/PHASE4F_REAL_TEAM_UNCOUNTED_WARMUP.md`);
 - SDK, versioned configuration, Gatekeeper, concurrency/capacity, and offline release/security
   controls;
 - preregistered public-safe local sensitivity data, notebook-equivalent analysis, and accessible
@@ -64,7 +67,7 @@ exact commit identities, public endpoints, Rule 47, scent/profile domains, barri
 schema, and consensus scope. Missing or different responses block play. The local proposal is not
 bilateral approval. See the [warm-up runbook](REAL_TEAM_WARMUP_RUNBOOK.md).
 
-Before a counted game, a successful other-team uncounted warm-up must already exist, the user must
+A successful other-team uncounted warm-up now exists (Phase 4F). Before a counted game, the user must
 separately authorize counted operation, both sides must agree on the counted profile and reporting,
 and stable authenticated transport must be available. One opponent can count only once; official
 pass readiness needs games against two different opponent teams.
