@@ -40,12 +40,83 @@ mismatch, so the bytes must be the mutually agreed result, not a locally rebuilt
 prints exactly what would be sent and optionally writes the base64url raw message for inspection.
 It has no send switch by design.
 
+## The complete send path
+
+`credentials.py`, `http_client.py`, `gmail_transport.py` and `authorization.py` complete the
+chain with the Python standard library only — no third-party Google package is added, so the
+dependency boundary is unchanged.
+
+- `authorization.py` builds a consent URL that requests **only** `gmail.send`, catches the
+  loopback redirect once, and exchanges the code for a refresh token. If Google returns no
+  refresh token it fails loudly instead of storing a short-lived one.
+- `credentials.py` holds exactly three operator values, refuses an empty or placeholder value,
+  refuses a non-HTTPS endpoint, writes the file owner-readable where the OS allows it, and its
+  `redacted()` summary never contains a secret.
+- `gmail_transport.py` exchanges the refresh token for a short-lived access token and posts the
+  already-built `raw` message to `users.messages.send`. Any non-success status surfaces as a bare
+  status code, never a body.
+
+## Operator procedure, once and then per counted game
+
+### One time — create the send-only credential
+
+1. Open <https://console.cloud.google.com/> and create a project (any name).
+2. **APIs & Services → Library**, search **Gmail API**, press **Enable**.
+3. **APIs & Services → OAuth consent screen**: choose **External**, fill the app name, your user
+   support e-mail and developer e-mail, and save. Under **Audience / Test users** add the Gmail
+   address you will send from.
+4. **APIs & Services → Credentials → Create credentials → OAuth client ID**, application type
+   **Desktop app**. Download the JSON it offers; that file is the `--client-file` below.
+5. Run the one-time consent, from the repository root:
+
+   ```bash
+   uv run python -m police_thief_lab.mail_authorize_cli \
+     --client-file /path/to/downloaded_client.json \
+     --out ~/police-thief-secrets/gmail_credentials.json
+   ```
+
+   A browser opens. Google will warn that the app is unverified — that is expected for your own
+   desktop client; choose **Advanced → Go to … (unsafe)** and then **Allow**. The command prints a
+   redacted summary and writes the credential file.
+
+**Consent-screen caveat:** while the consent screen stays in **Testing**, Google expires the
+refresh token after seven days. Either publish the consent screen before relying on it, or
+re-run the one-time step if the send later fails with an invalid-grant status.
+
+### Per counted game
+
+1. Fill your copy of `config/reporting.example.json` with the official league address and your
+   sending address. Keep it outside the repository.
+2. Inspect first — this never sends:
+
+   ```bash
+   uv run python -m police_thief_lab.report_cli \
+     --result <artifacts>/result_<game_id>.json \
+     --reporting-config ~/police-thief-secrets/reporting.json
+   ```
+
+3. Confirm the printed body size, recipient, subject and attachment name, and that the result is
+   the one both teams agreed.
+4. Send exactly once, for an authorized counted game only:
+
+   ```bash
+   uv run python -m police_thief_lab.report_cli \
+     --result <artifacts>/result_<game_id>.json \
+     --reporting-config ~/police-thief-secrets/reporting.json \
+     --credentials ~/police-thief-secrets/gmail_credentials.json \
+     --send --audit <evidence>/mail_<game_id>.json
+   ```
+
+   The sender enforces one accepted send per `game_id` inside a run. The audit record holds the
+   provider message id and no credential.
+
 ## What is deliberately missing
 
-- No OAuth client, consent flow, refresh token or credential file exists anywhere in the tree.
-- No transport implementation talks to Google. The sender takes one as an argument, and the only
-  transports in the repository are test doubles.
-- Nothing has been sent. No mock result is operational evidence.
+- No credential, client file or refresh token exists anywhere in the repository, and none may be
+  committed: `.gitignore` already excludes `credentials*.json`, `secrets*.json` and `.env*`.
+- Nothing has been sent from this project. The code path is complete and tested against injected
+  transports; a passing test is not operational evidence of a delivered mail.
+- The first live send remains a separate operator decision for an authorized counted game.
 
 ## Recorded gap, not silently resolved
 
@@ -55,12 +126,3 @@ inputs: `games_played_including_this`, `first_meeting_between_groups` and
 opponent did not raise it because the warm-up was uncounted. Adding them changes an artifact both
 teams agreed on and touches the consensus scope, so it is a bilateral matter for `LGE-001` and the
 next opponent agreement — not a local edit to slip in before a counted series.
-
-## Operator steps, when a counted series is actually authorized
-
-1. Copy `config/reporting.example.json` outside the repository and fill in the real league address
-   and your sending address. Never commit the filled copy.
-2. Build and inspect the message with `report_cli` and confirm the body equals the agreed result.
-3. Only then, as a separate decision, set up a least-privilege send-only Gmail credential, supply a
-   transport that performs `users.messages.send` with the built `raw` value, and record the audit
-   result. That step is out of scope here and must not be started without explicit authorization.

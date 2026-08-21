@@ -1,7 +1,7 @@
 {
   "phase": "4G",
   "subject": "official_result_reporting",
-  "classification": "OFFLINE_IMPLEMENTATION_NO_SEND",
+  "classification": "OFFLINE_IMPLEMENTATION_COMPLETE_NO_SEND",
   "authorized_by_operator_on": "2026-08-21",
   "implemented": [
     "versioned reporting configuration (reporting-1.0)",
@@ -10,13 +10,16 @@
     "Gatekeeper-routed calls, exponential backoff on 429/500/502/503/504, immediate failure otherwise",
     "one accepted send per game_id",
     "audit record without credentials",
-    "report_cli dry-run entry point with no send switch"
+    "report_cli dry-run entry point with no send switch",
+    "stdlib-only HTTPS helper; no third-party dependency added",
+    "send-only Gmail REST transport: refresh-token exchange then users.messages.send",
+    "one-time loopback OAuth consent requesting only gmail.send",
+    "credential file validation, owner-only permissions and redacted summaries",
+    "report_cli --send guarded by an explicit credential path; mail_authorize_cli for consent"
   ],
   "not_implemented": [
-    "OAuth client or consent flow",
-    "any credential or token storage",
-    "any transport that contacts Google",
-    "any send, draft or live operation"
+    "any credential committed to the repository",
+    "any performed send; the code path is exercised only against injected transports"
   ],
   "recorded_gap": {
     "authority": "external/copthief-league-protocol/SPEC.md section 6.2",
@@ -28,7 +31,12 @@
     "status": "ABSENT_FROM_OUR_SCHEMA_1_1_RESULT",
     "note": "graded league inputs; adding them changes a bilaterally agreed artifact and the consensus scope, so it belongs to LGE-001 and the next opponent agreement"
   },
-  "tests": "tests/integration/test_reporting/test_result_reporting.py",
+  "tests": [
+    "tests/integration/test_reporting/test_result_reporting.py",
+    "tests/integration/test_reporting/test_gmail_transport.py"
+  ],
   "sends_performed": 0,
-  "credentials_present": false
+  "credentials_present": false,
+  "dependency_change": false,
+  "consent_screen_caveat": "a Testing-mode consent screen expires the refresh token after seven days"
 }

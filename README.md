@@ -157,10 +157,13 @@ uv run pytest -q tests/system/test_phase4a_process.py --no-cov
 
 ## Official result reporting
 
-The one official counted-series mail is built offline by
+The one official counted-series mail is built by
 `python -m police_thief_lab.report_cli --result <result.json> --reporting-config <config.json>`.
-It prints exactly what would be sent and never sends: there is no credential, no OAuth flow and no
-network call anywhere in that path. See [official result reporting](docs/OFFICIAL_RESULT_REPORTING.md).
+Without `--send` it only prints what would be sent, reads no credential and performs no network
+call. `python -m police_thief_lab.mail_authorize_cli` performs the one-time send-only Gmail
+consent, and `report_cli --send --credentials <file>` performs the authorized league report for a
+counted game. The full operator procedure, including the Google console steps, is in
+[official result reporting](docs/OFFICIAL_RESULT_REPORTING.md).
 
 ## Operational modes and authorization
 

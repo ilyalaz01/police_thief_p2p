@@ -1,6 +1,7 @@
 """Phase 4A in-process runtime and MCP surface checks."""
 
 import threading
+from dataclasses import replace
 from pathlib import Path
 
 from police_thief_lab import Role
@@ -11,8 +12,17 @@ from tests.support.interop_test_support import free_port, profile
 
 
 def test_complete_network_runtime_in_two_isolated_peer_objects(tmp_path: Path) -> None:
+    """Play one complete game over the real MCP surface with the accepted defaults.
+
+    The accepted Thief default survives to the move limit against the frozen Police, so this
+    game is a full-length one rather than the short capture the earlier integration default
+    produced. The per-turn and join budgets below are sized for that length on a slow loopback;
+    they bound the harness only and change no negotiated value.
+    """
     police_port, thief_port = free_port(), free_port()
-    shared = profile()
+    shared = replace(
+        profile(), timeouts={"connect": 20.0, "turn": 15.0, "audit": 10.0, "retry": 0.05}
+    )
     police = PeerRuntime(
         Role.POLICE,
         shared,
@@ -39,7 +49,7 @@ def test_complete_network_runtime_in_two_isolated_peer_objects(tmp_path: Path) -
     for thread in threads:
         thread.start()
     for thread in threads:
-        thread.join(20)
+        thread.join(180)
     assert not any(thread.is_alive() for thread in threads)
     assert results["police"]["ok"] and results["thief"]["ok"]
     assert results["police"]["config_sha256"] == results["thief"]["config_sha256"]

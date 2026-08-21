@@ -1,6 +1,6 @@
 # Phase 4G — Official Result Reporting, Offline
 
-Classification: **offline implementation, no send**. Authorized by the operator on 2026-08-21.
+Classification: **implementation complete, no send performed**. Authorized by the operator on 2026-08-21.
 No credential exists, no OAuth flow exists, no transport contacts Google, and nothing was sent.
 
 ## What was built
@@ -37,7 +37,21 @@ schema-1.1 result artifact does not carry them. Adding them changes an artifact 
 on and touches the consensus preimage, so it is an `LGE-001` and next-opponent-agreement matter,
 not a local edit before a counted series.
 
+## The send path is complete
+
+`credentials.py`, `http_client.py`, `gmail_transport.py` and `authorization.py` finish the chain
+using only the standard library, so the single-dependency boundary is unchanged. The transport
+exchanges the stored refresh token for a short-lived access token and posts the already-built raw
+message to `users.messages.send`; any non-success status surfaces as a bare status code.
+`mail_authorize_cli` performs the one-time consent for the `gmail.send` scope alone through a
+loopback redirect and refuses to store anything if Google returns no refresh token.
+`tests/integration/test_reporting/test_gmail_transport.py` covers the exchange order, the posted
+body, every failure status, consent-URL scope, credential round-trip and redaction.
+
 ## What still blocks a counted report
 
-A least-privilege send-only credential, a real transport, and a separate explicit authorization for
-the first live send. None of these may be started from this phase.
+Only operator actions: creating the Google OAuth client, granting the one-time consent, filling
+the reporting configuration with the official league address, and deciding that a specific counted
+game may be reported. The procedure is written out in `docs/OFFICIAL_RESULT_REPORTING.md`.
+A Testing-mode consent screen expires the refresh token after seven days; publish it or re-run the
+consent if a later send is refused with an invalid-grant status.
