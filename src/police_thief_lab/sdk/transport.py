@@ -60,6 +60,7 @@ class PeerLaunchRequest:
     live_view: Path | None = None
     declaration: Path | None = None
     hint: str | None = None
+    thief_policy: str | None = None
 
 
 def launch_peer(request: PeerLaunchRequest) -> int:
@@ -105,6 +106,7 @@ def launch_peer(request: PeerLaunchRequest) -> int:
         request.live_view,
         declaration.object() if declaration is not None else None,
         request.hint,
+        request.thief_policy,
     )
 
 

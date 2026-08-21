@@ -6,6 +6,7 @@ import argparse
 import os
 from pathlib import Path
 
+from .interop.runtime_policies import thief_policy_names
 from .sdk import PeerLaunchRequest, PoliceThiefSDK
 
 
@@ -47,6 +48,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="operator-supplied declaration JSON with members, repositories and hardware",
     )
     parser.add_argument("--hint", help="free-language hint sent with every turn")
+    parser.add_argument(
+        "--thief-policy",
+        choices=thief_policy_names(),
+        help="explicit Thief decision policy; the Police policy stays frozen",
+    )
     parser.add_argument(
         "--real-team",
         action="store_true",
@@ -91,6 +97,7 @@ def main() -> int:
         live_view=args.live_view,
         declaration=args.declaration,
         hint=args.hint,
+        thief_policy=args.thief_policy,
     )
     return PoliceThiefSDK().transport.launch_peer(request)
 

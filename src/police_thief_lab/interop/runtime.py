@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Any
 
 from ..models import Role
-from ..policies.baselines import RandomLegalThief
 from ..policies.tactical import ScentTacticalPolice
 from ..presentation import LiveViewPublisher, TurnBanner
 from . import runtime_models as _runtime_models
@@ -20,6 +19,7 @@ from .runtime_board import _RuntimeBoardMixin
 from .runtime_entry import run_peer as run_peer
 from .runtime_identity import peer_identity_object
 from .runtime_lifecycle import _RuntimeLifecycleMixin
+from .runtime_policies import build_thief_backend
 from .runtime_presentation import _RuntimePresentationMixin
 from .runtime_sending import _RuntimeSendingMixin
 from .transport import McpPeerClient, start_server
@@ -61,6 +61,7 @@ class PeerRuntime(
         real_team: bool = False,
         live_view_path: Path | None = None,
         declaration: dict[str, Any] | None = None,
+        thief_policy: str | None = None,
     ) -> None:
         """Initialize PeerRuntime with its validated setup values and private state."""
         self.role, self.profile, self.config = role, profile, config_from_profile(profile)
@@ -80,7 +81,12 @@ class PeerRuntime(
             self.config.police_start if role is Role.POLICE else self.config.thief_start,
             self.config.blocked_cells,
         )
-        self.backend = ScentTacticalPolice(seed) if role is Role.POLICE else RandomLegalThief(seed)
+        if role is Role.POLICE:
+            if thief_policy is not None:
+                raise ValueError("thief_policy does not apply to the frozen Police role")
+            self.backend = ScentTacticalPolice(seed)
+        else:
+            self.backend = build_thief_backend(thief_policy, seed)
         self.inboxes = None
         self.client = McpPeerClient(
             opponent_url,

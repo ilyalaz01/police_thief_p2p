@@ -1,0 +1,145 @@
+{
+  "phase": "4E",
+  "subject": "thief_policy_selection",
+  "classification": "OFFLINE_LOCAL_SIMULATOR_EXPERIMENT",
+  "configuration_source": "interop/fixtures/phase4a5_reference_profile.json",
+  "configuration": {
+    "board_size": 7,
+    "police_start": [
+      0,
+      0
+    ],
+    "thief_start": [
+      3,
+      3
+    ],
+    "barrier_quota": 14,
+    "survival_threshold": 35
+  },
+  "seeds": {
+    "first": 1,
+    "last": 200,
+    "count": 200
+  },
+  "games_total": 3000,
+  "elapsed_seconds": 112.3,
+  "scoring": {
+    "capture": {
+      "police": 20,
+      "thief": 5
+    },
+    "survival": {
+      "police": 5,
+      "thief": 10
+    }
+  },
+  "default_changed": false,
+  "frozen_police_changed": false,
+  "results": [
+    {
+      "police": "ScentTacticalPolice (ours, frozen)",
+      "thief": "RandomLegalThief (current default)",
+      "thief_survival_rate_percent": 0.5,
+      "mean_thief_points": 5.03,
+      "mean_thief_actions": 8.0
+    },
+    {
+      "police": "ScentTacticalPolice (ours, frozen)",
+      "thief": "SpaceSeekingThief",
+      "thief_survival_rate_percent": 0.0,
+      "mean_thief_points": 5.0,
+      "mean_thief_actions": 6.0
+    },
+    {
+      "police": "ScentTacticalPolice (ours, frozen)",
+      "thief": "BarrierAwareThief",
+      "thief_survival_rate_percent": 0.0,
+      "mean_thief_points": 5.0,
+      "mean_thief_actions": 8.3
+    },
+    {
+      "police": "ScentTacticalPolice (ours, frozen)",
+      "thief": "ScentEvasionThief",
+      "thief_survival_rate_percent": 14.5,
+      "mean_thief_points": 5.72,
+      "mean_thief_actions": 19.3
+    },
+    {
+      "police": "ScentTacticalPolice (ours, frozen)",
+      "thief": "LookaheadEvasionThief",
+      "thief_survival_rate_percent": 80.0,
+      "mean_thief_points": 9.0,
+      "mean_thief_actions": 32.2
+    },
+    {
+      "police": "ScentGreedyPolice (typical opponent shape)",
+      "thief": "RandomLegalThief (current default)",
+      "thief_survival_rate_percent": 0.0,
+      "mean_thief_points": 5.0,
+      "mean_thief_actions": 7.1
+    },
+    {
+      "police": "ScentGreedyPolice (typical opponent shape)",
+      "thief": "SpaceSeekingThief",
+      "thief_survival_rate_percent": 0.0,
+      "mean_thief_points": 5.0,
+      "mean_thief_actions": 6.0
+    },
+    {
+      "police": "ScentGreedyPolice (typical opponent shape)",
+      "thief": "BarrierAwareThief",
+      "thief_survival_rate_percent": 0.0,
+      "mean_thief_points": 5.0,
+      "mean_thief_actions": 8.9
+    },
+    {
+      "police": "ScentGreedyPolice (typical opponent shape)",
+      "thief": "ScentEvasionThief",
+      "thief_survival_rate_percent": 21.0,
+      "mean_thief_points": 6.05,
+      "mean_thief_actions": 19.8
+    },
+    {
+      "police": "ScentGreedyPolice (typical opponent shape)",
+      "thief": "LookaheadEvasionThief",
+      "thief_survival_rate_percent": 100.0,
+      "mean_thief_points": 10.0,
+      "mean_thief_actions": 35.0
+    },
+    {
+      "police": "RandomLegalPolice (weak opponent shape)",
+      "thief": "RandomLegalThief (current default)",
+      "thief_survival_rate_percent": 93.0,
+      "mean_thief_points": 9.65,
+      "mean_thief_actions": 33.2
+    },
+    {
+      "police": "RandomLegalPolice (weak opponent shape)",
+      "thief": "SpaceSeekingThief",
+      "thief_survival_rate_percent": 94.0,
+      "mean_thief_points": 9.7,
+      "mean_thief_actions": 34.0
+    },
+    {
+      "police": "RandomLegalPolice (weak opponent shape)",
+      "thief": "BarrierAwareThief",
+      "thief_survival_rate_percent": 99.5,
+      "mean_thief_points": 9.97,
+      "mean_thief_actions": 34.9
+    },
+    {
+      "police": "RandomLegalPolice (weak opponent shape)",
+      "thief": "ScentEvasionThief",
+      "thief_survival_rate_percent": 100.0,
+      "mean_thief_points": 10.0,
+      "mean_thief_actions": 35.0
+    },
+    {
+      "police": "RandomLegalPolice (weak opponent shape)",
+      "thief": "LookaheadEvasionThief",
+      "thief_survival_rate_percent": 100.0,
+      "mean_thief_points": 10.0,
+      "mean_thief_actions": 35.0
+    }
+  ]
+}

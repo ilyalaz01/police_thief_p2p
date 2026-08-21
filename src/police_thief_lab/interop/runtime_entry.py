@@ -28,6 +28,7 @@ def run_peer(
     live_view_path: Path | None = None,
     declaration: dict[str, Any] | None = None,
     hint: str | None = None,
+    thief_policy: str | None = None,
 ) -> int:
     """Load one profile, run one peer, and retain its result JSON."""
     from .runtime import PeerRuntime
@@ -52,6 +53,7 @@ def run_peer(
         real_team=real_team,
         live_view_path=live_view_path,
         declaration=declaration,
+        thief_policy=thief_policy,
         **optional,
     ).run()
     output_path.parent.mkdir(parents=True, exist_ok=True)
