@@ -155,6 +155,13 @@ The local two-process system test is the safest executable peer example:
 uv run pytest -q tests/system/test_phase4a_process.py --no-cov
 ```
 
+## Official result reporting
+
+The one official counted-series mail is built offline by
+`python -m police_thief_lab.report_cli --result <result.json> --reporting-config <config.json>`.
+It prints exactly what would be sent and never sends: there is no credential, no OAuth flow and no
+network call anywhere in that path. See [official result reporting](docs/OFFICIAL_RESULT_REPORTING.md).
+
 ## Operational modes and authorization
 
 Keep these operation classes distinct:

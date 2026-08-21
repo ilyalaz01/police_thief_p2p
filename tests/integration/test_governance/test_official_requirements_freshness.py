@@ -88,7 +88,7 @@ def test_open_official_delivery_implementation_is_not_hidden_as_human_only() -> 
     for phrase in (
         "six-sub-game series",
         "full Appendix-B shared configuration",
-        "Gmail API sender is not implemented",
+        "no credential, OAuth flow, real transport or send exists",
         "eight-character group ID",
     ):
         assert phrase in readiness

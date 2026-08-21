@@ -1,0 +1,34 @@
+{
+  "phase": "4G",
+  "subject": "official_result_reporting",
+  "classification": "OFFLINE_IMPLEMENTATION_NO_SEND",
+  "authorized_by_operator_on": "2026-08-21",
+  "implemented": [
+    "versioned reporting configuration (reporting-1.0)",
+    "deterministic message construction: body and single attachment carry identical result bytes",
+    "send-only sender refusing to act without an explicitly supplied transport",
+    "Gatekeeper-routed calls, exponential backoff on 429/500/502/503/504, immediate failure otherwise",
+    "one accepted send per game_id",
+    "audit record without credentials",
+    "report_cli dry-run entry point with no send switch"
+  ],
+  "not_implemented": [
+    "OAuth client or consent flow",
+    "any credential or token storage",
+    "any transport that contacts Google",
+    "any send, draft or live operation"
+  ],
+  "recorded_gap": {
+    "authority": "external/copthief-league-protocol/SPEC.md section 6.2",
+    "fields": [
+      "games_played_including_this",
+      "first_meeting_between_groups",
+      "diversity_reward_applied"
+    ],
+    "status": "ABSENT_FROM_OUR_SCHEMA_1_1_RESULT",
+    "note": "graded league inputs; adding them changes a bilaterally agreed artifact and the consensus scope, so it belongs to LGE-001 and the next opponent agreement"
+  },
+  "tests": "tests/integration/test_reporting/test_result_reporting.py",
+  "sends_performed": 0,
+  "credentials_present": false
+}

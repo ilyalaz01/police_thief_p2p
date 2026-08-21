@@ -8,6 +8,7 @@ from .domain import DomainSDK
 from .evaluation import EvaluationSDK
 from .league import LeagueSDK
 from .policies import PoliciesSDK
+from .reporting import ReportingSDK
 from .transport import TransportSDK
 
 
@@ -22,3 +23,4 @@ class PoliceThiefSDK:
     transport: TransportSDK = field(default_factory=TransportSDK)
     configuration: ConfigurationSDK = field(default_factory=ConfigurationSDK)
     league: LeagueSDK = field(default_factory=LeagueSDK)
+    reporting: ReportingSDK = field(default_factory=ReportingSDK)

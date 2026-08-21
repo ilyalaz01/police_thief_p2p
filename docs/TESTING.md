@@ -37,6 +37,7 @@ not recreate path-depth assumptions or leave helper modules at the test root.
 | `league/**` outer-series contracts | `tests/unit/test_league/` | Appendix-B bytes, six slots, identity/provenance, score and refusal paths |
 | Artifact and consensus builders | `tests/integration/test_artifacts/` | Exact bytes, hashes, schemas, scoring, and scope |
 | Runtime, crypto, transport, retry, audit/replay | `tests/integration/test_interop/` | Local component and FastMCP contracts |
+| Official result reporting boundary | `tests/integration/test_reporting/` | Message shape, authorization refusal, retry and secret handling |
 | SDK, frozen manifest, project governance | `tests/integration/test_governance/` | Cross-package and repository invariants |
 | Complete two-peer local process | `tests/system/` | End-to-end offline process completion |
 
