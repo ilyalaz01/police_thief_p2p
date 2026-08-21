@@ -98,7 +98,11 @@ class _RuntimeSendingMixin:
         }
         record = seal(payload)
         self.records.append(record)
-        response = {"caught": True, "reason": self.state.terminal}
+        response = {
+            "claim": [self.state.position.row, self.state.position.col],
+            "caught": True,
+            "reason": self.state.terminal,
+        }
         message = TurnMessage(
             step,
             self.role.value,
