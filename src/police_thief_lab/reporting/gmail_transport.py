@@ -49,8 +49,22 @@ class GmailApiTransport:
 
     def __call__(self, raw: str) -> dict[str, Any]:
         """Send one already-built message and return only its provider identifiers."""
+        return self._post(self.credentials.send_uri, {"raw": raw})
+
+    def create_draft(self, raw: str) -> dict[str, Any]:
+        """Place the identical message in the account's drafts without sending it.
+
+        The operator then reads the draft in Gmail and presses send by hand. This is the
+        book's own per-peer configuration default and the safest first counted report.
+        """
+        outcome = self._post(self.credentials.draft_uri, {"message": {"raw": raw}})
+        return {**outcome, "delivered": False, "awaiting_manual_send": True}
+
+    def _post(self, url: str, payload: dict[str, Any]) -> dict[str, Any]:
+        """Perform one authorized POST and return only provider identifiers."""
         token = self.access_token()
-        status, body = self.json_poster(self.credentials.send_uri, {"raw": raw}, token)
+        status, body = self.json_poster(url, payload, token)
         if status not in (200, 202):
             raise TransportStatusError(status)
-        return {"id": body.get("id", ""), "threadId": body.get("threadId", "")}
+        message = body.get("message") if isinstance(body.get("message"), dict) else body
+        return {"id": body.get("id", ""), "threadId": message.get("threadId", "")}

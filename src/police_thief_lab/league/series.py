@@ -12,7 +12,8 @@ from ..interop.profile import MatchProfile
 from .identity import validate_group_id
 
 KIT_SORTED_FIRST_POLICE_ODD_V1 = "kit_sorted_first_police_odd_v1"
-BLOCKED_TIE_STATUS = "BLOCKED_PENDING_EXPLICIT_BILATERAL_TIE_POLICY"
+OFFICIAL_TIE_SCORE = 2
+APPLIED_TIE_STATUS = "FINAL_OFFICIAL_TIE_SCORE_APPLIED"
 FINAL_NO_TIE_STATUS = "FINAL_NO_SERIES_TIE_POLICY_NEEDED"
 
 
@@ -102,7 +103,7 @@ def coordinate_offline_series(
 def aggregate_series_rows(
     rows: Sequence[dict[str, Any]], group_ids: Sequence[str]
 ) -> dict[str, Any]:
-    """Aggregate six scored rows while leaving a tied-series policy explicitly blocked."""
+    """Aggregate six scored rows and settle a level series by the official tie score."""
     groups = _two_groups(group_ids)
     if any(not isinstance(row, dict) for row in rows):
         raise ValueError("aggregate rows must be objects")
@@ -148,7 +149,8 @@ def aggregate_series_rows(
     return {
         "total_score": totals, "sub_games_won": wins, "ties": ties,
         "winner_group": None if series_tie else leaders[0], "series_tie": series_tie,
-        "settlement_status": BLOCKED_TIE_STATUS if series_tie else FINAL_NO_TIE_STATUS,
+        "settlement_status": APPLIED_TIE_STATUS if series_tie else FINAL_NO_TIE_STATUS,
+        "series_tie_score": dict.fromkeys(groups, OFFICIAL_TIE_SCORE) if series_tie else None,
     }
 
 

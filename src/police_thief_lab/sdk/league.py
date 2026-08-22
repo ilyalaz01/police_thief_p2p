@@ -13,6 +13,7 @@ from ..league import (
     SeriesSlot,
     TeamDeclarationIdentity,
     aggregate_series_rows,
+    assemble_public_series,
     build_appendix_b_candidate,
     build_series_schedule,
     confirm_appendix_b_lock,
@@ -46,6 +47,7 @@ class LeagueSDK:
     confirm_appendix_b_lock = staticmethod(confirm_appendix_b_lock)
     coordinate_offline_series = staticmethod(coordinate_offline_series)
     derive_series_game_ids = staticmethod(derive_series_game_ids)
+    assemble_public_series = staticmethod(assemble_public_series)
     load_declaration_identity = staticmethod(load_declaration_identity)
     series_reference_terms = staticmethod(series_reference_terms)
     series_token_totals = staticmethod(series_token_totals)

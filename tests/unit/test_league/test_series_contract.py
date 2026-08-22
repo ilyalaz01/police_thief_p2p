@@ -104,7 +104,8 @@ def test_offline_coordinator_runs_exactly_six_slots_and_validates_rows() -> None
         "ties": 0,
         "winner_group": None,
         "series_tie": True,
-        "settlement_status": "BLOCKED_PENDING_EXPLICIT_BILATERAL_TIE_POLICY",
+        "settlement_status": "FINAL_OFFICIAL_TIE_SCORE_APPLIED",
+        "series_tie_score": {GROUP_A: 2, GROUP_B: 2},
     }
     assert series_token_totals(rows, [GROUP_A, GROUP_B]) == {GROUP_A: 60, GROUP_B: 120}
 

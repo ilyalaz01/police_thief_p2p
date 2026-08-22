@@ -117,3 +117,18 @@ def test_placeholder_or_empty_credentials_are_refused(tmp_path: Path) -> None:
 def test_a_non_https_endpoint_is_refused() -> None:
     with pytest.raises(ValueError, match="HTTPS"):
         GmailCredentials("id", "secret", "refresh", token_uri="http://oauth.example/token")
+
+
+def test_a_draft_is_created_without_sending() -> None:
+    transport, calls = _transport()
+    outcome = transport.create_draft("cmF3")
+    assert outcome["delivered"] is False and outcome["awaiting_manual_send"] is True
+    assert calls[1][1].endswith("/drafts")
+    assert calls[1][2] == {"message": {"raw": "cmF3"}}
+
+
+def test_a_refused_draft_surfaces_its_status() -> None:
+    transport, _ = _transport(send_status=500)
+    with pytest.raises(TransportStatusError) as error:
+        transport.create_draft("cmF3")
+    assert error.value.status == 500

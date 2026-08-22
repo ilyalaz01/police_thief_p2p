@@ -139,3 +139,39 @@ def test_no_summary_field_can_carry_a_credential(tmp_path: Path) -> None:
     sender = GmailResultSender(config, transport=lambda raw: {"id": "x", "token": "SECRET"})
     outcome = sender.send(message)
     assert "SECRET" not in json.dumps(outcome)
+
+
+class _DraftTransport:
+    """Minimal transport double exposing only the draft boundary."""
+
+    def __init__(self) -> None:
+        """Record what the sender would place in drafts."""
+        self.drafted: list[str] = []
+
+    def create_draft(self, raw: str) -> dict[str, object]:
+        """Accept one draft and report a provider identifier."""
+        self.drafted.append(raw)
+        return {"id": "draft-1", "delivered": False, "awaiting_manual_send": True}
+
+    def __call__(self, raw: str) -> dict[str, object]:
+        """Refuse to send; this double exists to prove drafting never delivers."""
+        raise AssertionError("the draft path must never send")
+
+
+def test_drafting_never_delivers_and_never_counts_as_a_send(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    message = build_result_message(_result_bytes(), config)
+    transport = _DraftTransport()
+    sender = GmailResultSender(config, transport=transport)
+    record = sender.draft(message)
+    assert record["sent"] is False and record["delivered"] is False
+    assert record["provider_message_id"] == "draft-1"
+    assert transport.drafted == [message.raw]
+    assert sender.accepted == {}
+
+
+def test_drafting_without_a_draft_capable_transport_is_refused(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    message = build_result_message(_result_bytes(), config)
+    with pytest.raises(ReportingNotAuthorizedError):
+        GmailResultSender(config, transport=lambda raw: {"id": "x"}).draft(message)

@@ -12,6 +12,7 @@ from typing import Any
 SEND_SCOPE = "https://www.googleapis.com/auth/gmail.send"
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 SEND_URI = "https://gmail.googleapis.com/gmail/v1/users/me/messages/send"
+DRAFT_URI = "https://gmail.googleapis.com/gmail/v1/users/me/drafts"
 _REQUIRED = ("client_id", "client_secret", "refresh_token")
 
 
@@ -24,6 +25,7 @@ class GmailCredentials:
     refresh_token: str
     token_uri: str = TOKEN_URI
     send_uri: str = SEND_URI
+    draft_uri: str = DRAFT_URI
 
     def __post_init__(self) -> None:
         """Refuse an empty or placeholder credential before any network call."""
@@ -33,7 +35,7 @@ class GmailCredentials:
                 raise ValueError(f"gmail credential {field} is empty")
             if value.startswith("REPLACE_WITH"):
                 raise ValueError(f"gmail credential {field} is still the placeholder")
-        for field in ("token_uri", "send_uri"):
+        for field in ("token_uri", "send_uri", "draft_uri"):
             if not getattr(self, field).startswith("https://"):
                 raise ValueError(f"gmail {field} must be an HTTPS endpoint")
 
@@ -45,6 +47,7 @@ class GmailCredentials:
             "refresh_token": "<redacted>",
             "token_uri": self.token_uri,
             "send_uri": self.send_uri,
+            "draft_uri": self.draft_uri,
             "scope": SEND_SCOPE,
         }
 
@@ -63,6 +66,7 @@ def load_gmail_credentials(path: Path) -> GmailCredentials:
         refresh_token=raw["refresh_token"],
         token_uri=raw.get("token_uri", TOKEN_URI),
         send_uri=raw.get("send_uri", SEND_URI),
+        draft_uri=raw.get("draft_uri", DRAFT_URI),
     )
 
 
@@ -78,6 +82,7 @@ def save_gmail_credentials(path: Path, credentials: GmailCredentials) -> Path:
                 "refresh_token": credentials.refresh_token,
                 "token_uri": credentials.token_uri,
                 "send_uri": credentials.send_uri,
+                "draft_uri": credentials.draft_uri,
             },
             indent=2,
         )

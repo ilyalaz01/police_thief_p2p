@@ -52,6 +52,21 @@ class GmailResultSender:
         """Return exactly what would be sent without contacting any service."""
         return {"operation": "dry_run", "sent": False, **message.inspection()}
 
+    def draft(self, message: ResultMessage) -> dict[str, Any]:
+        """Place the message in the operator's drafts; nothing is delivered to the league."""
+        if self.transport is None or not hasattr(self.transport, "create_draft"):
+            raise ReportingNotAuthorizedError(
+                "no authorized transport with a draft boundary was supplied"
+            )
+        response = self.gatekeeper.execute(
+            self.transport.create_draft, message.raw, operation="gmail.drafts.create"
+        )
+        return {
+            "operation": "draft", "sent": False, "delivered": False,
+            "provider_message_id": str(response.get("id", "")),
+            **message.inspection(),
+        }
+
     def send(self, message: ResultMessage) -> dict[str, Any]:
         """Send one message through the supplied transport under the retry contract."""
         if self.transport is None:
