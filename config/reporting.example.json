@@ -1,12 +1,13 @@
 {
-  "_note": "Operator-supplied reporting boundary. Copy outside the repository, fill in the real league address, and pass it with --reporting-config. It holds no credential and never should.",
+  "_note": "Operator-supplied reporting boundary. Copy outside the repository, fill in your own sending address, and pass it with --reporting-config. It holds no credential and never should.",
   "schema_version": "reporting-1.0",
-  "league_recipient": "REPLACE_WITH_OFFICIAL_LEAGUE_ADDRESS@example.com",
+  "league_recipient": "rmisegal+uoh26finalgame@gmail.com",
   "sender_address": "REPLACE_WITH_YOUR_SENDING_ADDRESS@example.com",
   "subject_template": "Police-Thief P2P counted result {game_id}",
   "attachment_name_template": "result_{game_id}.json",
   "max_sends_per_game": 1,
   "retry_attempts": 4,
   "initial_backoff_seconds": 2,
-  "max_backoff_seconds": 30
+  "max_backoff_seconds": 30,
+  "_league_recipient_source": "Official book, Table 20 (printed p. 141): the agent reporting address."
 }

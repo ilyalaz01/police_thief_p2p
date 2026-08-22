@@ -27,6 +27,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--send", action="store_true", help="perform the authorized send; requires --credentials"
     )
+    parser.add_argument(
+        "--draft",
+        action="store_true",
+        help="place the identical message in your Gmail drafts instead of sending it",
+    )
     parser.add_argument("--credentials", type=Path, help="send-only Gmail credential file")
     parser.add_argument("--audit", type=Path, help="optional path for the retained send record")
     return parser
@@ -41,14 +46,16 @@ def main() -> int:
     if args.out is not None:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(message.raw, encoding="utf-8")
-    if not args.send:
+    if args.send and args.draft:
+        raise SystemExit("choose either --draft or --send, not both")
+    if not (args.send or args.draft):
         print(json.dumps(sdk.GmailResultSender(config).dry_run(message), indent=2))
         return 0
     if args.credentials is None:
-        raise SystemExit("--send requires --credentials; refusing to guess a credential location")
+        raise SystemExit("this mode requires --credentials; refusing to guess its location")
     credentials = sdk.load_gmail_credentials(args.credentials)
-    transport = sdk.GmailApiTransport(credentials)
-    record = sdk.GmailResultSender(config, transport=transport).send(message)
+    sender = sdk.GmailResultSender(config, transport=sdk.GmailApiTransport(credentials))
+    record = sender.draft(message) if args.draft else sender.send(message)
     print(json.dumps(record, indent=2))
     if args.audit is not None:
         args.audit.parent.mkdir(parents=True, exist_ok=True)

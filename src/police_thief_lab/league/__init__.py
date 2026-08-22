@@ -17,6 +17,7 @@ from .local_models import (
     LocalhostSeriesResult,
 )
 from .local_series import run_localhost_series
+from .public_assembly import assemble_public_series
 from .series import (
     KIT_SORTED_FIRST_POLICE_ODD_V1,
     SeriesSlot,
@@ -40,6 +41,7 @@ __all__ = [
     "LocalhostSeriesResult",
     "SeriesSlot",
     "TeamDeclarationIdentity",
+    "assemble_public_series",
     "load_declaration_identity",
     "UNCOUNTED_LOCALHOST_SELF_TEST",
     "aggregate_series_rows",

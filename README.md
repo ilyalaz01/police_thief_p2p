@@ -155,6 +155,13 @@ The local two-process system test is the safest executable peer example:
 uv run pytest -q tests/system/test_phase4a_process.py --no-cov
 ```
 
+## Counted series
+
+A counted match is six sub-games against one opponent. `python -m police_thief_lab.series_cli`
+assembles this team's bundle from its own six verified sub-game results and prints the aggregate
+and the consensus hashes to exchange. The full procedure is in
+[the counted series runbook](docs/COUNTED_SERIES_RUNBOOK.md).
+
 ## Official result reporting
 
 The one official counted-series mail is built by
