@@ -28,6 +28,11 @@ from ..interop.runtime_models import (
     config_from_profile,
     require_real_team_git_commit,
 )
+from ..interop.runtime_policies import (
+    DEFAULT_THIEF_POLICY,
+    build_thief_backend,
+    thief_policy_names,
+)
 from ..interop.transport import (
     McpPeerClient,
     PeerInboxes,
@@ -35,6 +40,7 @@ from ..interop.transport import (
     discover_tools,
     start_server,
 )
+from ..league.declaration_input import load_declaration_identity
 
 
 @dataclass(frozen=True, slots=True)
@@ -57,6 +63,9 @@ class PeerLaunchRequest:
     public: bool = False
     operational_config: Path | None = None
     live_view: Path | None = None
+    declaration: Path | None = None
+    hint: str | None = None
+    thief_policy: str | None = None
 
 
 def launch_peer(request: PeerLaunchRequest) -> int:
@@ -66,6 +75,11 @@ def launch_peer(request: PeerLaunchRequest) -> int:
         requested_mode = "real_team" if request.real_team else "self_test"
         if operational.operation_mode != requested_mode:
             raise ValueError("operational config mode does not match the requested peer operation")
+    declaration = (
+        load_declaration_identity(request.declaration)
+        if request.declaration is not None
+        else None
+    )
     advertised = request.advertised_url or f"http://{request.host}:{request.port}/mcp"
     timeouts = json.loads(request.profile.read_text(encoding="utf-8"))["timeouts"]
     EndpointConfig(
@@ -95,6 +109,9 @@ def launch_peer(request: PeerLaunchRequest) -> int:
         request.git_commit,
         request.real_team,
         request.live_view,
+        declaration.object() if declaration is not None else None,
+        request.hint,
+        request.thief_policy,
     )
 
 
@@ -118,6 +135,9 @@ class TransportSDK:
     RateLimitConfig = RateLimitConfig
     TurnInbox = TurnInbox
     TurnMessage = TurnMessage
+    DEFAULT_THIEF_POLICY = DEFAULT_THIEF_POLICY
+    build_thief_backend = staticmethod(build_thief_backend)
+    thief_policy_names = staticmethod(thief_policy_names)
     build_server = staticmethod(build_server)
     action_to_wire = staticmethod(action_to_wire)
     config_from_profile = staticmethod(config_from_profile)

@@ -289,10 +289,14 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## MAIL-001 — Implement and authorize official Gmail result reporting
 
-- Milestone: D4; Priority: P0; Status: BLOCKED; Owner role: Release Engineering / Human Operator
+- Milestone: D4; Priority: P0; Status: IN_PROGRESS; Owner role: Release Engineering / Human Operator
 - Dependencies: explicit user authorization to begin Gmail work, LGE-001 result bytes, HUM-001,
-  and least-privilege OAuth setup; Evidence today: no production Gmail API sender exists and no
-  credential or send operation has been authorized.
+  and least-privilege OAuth setup; Evidence so far: the operator authorized the work on
+  2026-08-21 and `src/police_thief_lab/reporting/` implements the versioned reporting boundary,
+  deterministic message construction and the send-only sender with mocked transports, covered by
+  `tests/integration/test_reporting/` and documented in `docs/OFFICIAL_RESULT_REPORTING.md`.
+  Still missing: no OAuth client, no credential, no real transport and no send has occurred, and
+  the three graded league fields named in kit SPEC 6.2 are absent from our result artifact.
 - Definition of Done: both roles can independently send the exact mutually agreed result JSON as
   an attachment through a send-only Gmail API boundary; quota, token-bucket, retry/backoff,
   queue/DOS protection, Table-19 configuration, secret handling, and deterministic mocked failure
@@ -329,9 +333,12 @@ PARTIAL. Only inspectable repository evidence supports DONE. Priority P0 is high
 
 ## HUM-001 — Complete bilateral compatibility approvals
 
-- Milestone: D4; Priority: P0; Status: BLOCKED; Owner role: Human/External Coordination
+- Milestone: D4; Priority: P0; Status: IN_PROGRESS; Owner role: Human/External Coordination
 - Dependencies: successful approved uncounted plan and another team's explicit responses;
-  Evidence for DONE: not applicable while BLOCKED.
+  Evidence so far: group `vm__fabi` answered every worksheet item in writing with ACCEPT and
+  reproduced both published hashes byte-exactly; three uncounted public games in both roles are
+  recorded in `docs/audits/PHASE4F_REAL_TEAM_UNCOUNTED_WARMUP.md`. Still missing for DONE: the
+  opponent's own consensus hashes for comparison and a counter-signed operator worksheet.
 - Definition of Done: every worksheet field/domain and Rule 47/scope decision has explicit
   bilateral evidence, with separate authorization for any activity.
 - Validation commands: offline worksheet validation only; no gameplay command is authorized.

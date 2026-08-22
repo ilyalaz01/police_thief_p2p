@@ -73,8 +73,8 @@ def test_policy_has_approved_urls_and_role_truth_is_observed() -> None:
     assert data["status"] == "EXACT_ROLE_URLS_APPROVED_FOR_PUBLICATION"
     assert roles["police"]["runtime_policy"] == "ScentTacticalPolice"
     assert roles["police"]["policy_status"] == "FROZEN_ACCEPTED"
-    assert roles["thief"]["runtime_policy"] == "RandomLegalThief"
-    assert roles["thief"]["policy_status"] == "CURRENT_DEFAULT_NOT_NEW_CHAMPION"
+    assert roles["thief"]["runtime_policy"] == "LookaheadEvasionThief"
+    assert roles["thief"]["policy_status"] == "SELECTED_BY_MEASURED_EXPERIMENT"
     assert {
         role: details["counterpart_repository_url"] for role, details in roles.items()
     } == COUNTERPART_URLS
@@ -117,7 +117,13 @@ def test_cutoff_and_runtime_defaults_are_inspectable() -> None:
         check=True,
     )
     runtime = (ROOT / "src/police_thief_lab/interop/runtime.py").read_text(encoding="utf-8")
-    assert "ScentTacticalPolice(seed) if role is Role.POLICE else RandomLegalThief(seed)" in runtime
+    assert "self.backend = ScentTacticalPolice(seed)" in runtime
+    assert "self.backend = build_thief_backend(thief_policy, seed)" in runtime
+    selection = (ROOT / "src/police_thief_lab/interop/runtime_policies.py").read_text(
+        encoding="utf-8"
+    )
+    declared = data["roles"]["thief"]["runtime_policy"]
+    assert f'DEFAULT_THIEF_POLICY = "{declared}"' in selection
 
 
 def test_publication_is_authorized_but_later_operations_remain_blocked() -> None:

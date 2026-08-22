@@ -59,6 +59,6 @@ def test_partial_status_is_honest_history_not_an_open_technical_gap() -> None:
 def test_live_todo_keeps_official_delivery_work_explicit() -> None:
     statuses = re.findall(r"Status: (DONE|IN_PROGRESS|PLANNED|BLOCKED)", TODO_PATH.read_text())
     assert statuses.count("DONE") == 21
-    assert statuses.count("IN_PROGRESS") == 2
-    assert statuses.count("BLOCKED") == 2
+    assert statuses.count("IN_PROGRESS") == 4
+    assert statuses.count("BLOCKED") == 0
     assert statuses.count("PLANNED") == 0

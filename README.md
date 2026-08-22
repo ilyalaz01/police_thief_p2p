@@ -139,6 +139,9 @@ are input/delegation controls; no flag grants permission to contact an opponent 
 | `--group-id ID` | Local group identity metadata |
 | `--group-name NAME` | Local display-name metadata |
 | `--git-commit VALUE` | Exact opaque local commit identity |
+| `--declaration PATH` | Operator-supplied declaration JSON: members, repositories, hardware |
+| `--hint TEXT` | Free-language hint sent with every turn; capped at the negotiated word limit |
+| `--thief-policy NAME` | Explicit Thief decision policy; the Police policy stays frozen |
 | `--real-team` | Enable stricter commit preflight; not authorization |
 | `--operational-config PATH` | Strict versioned startup-classification JSON |
 | `--artifacts DIR` | Required output directory for schema 1.1 artifacts |
@@ -151,6 +154,16 @@ The local two-process system test is the safest executable peer example:
 ```bash
 uv run pytest -q tests/system/test_phase4a_process.py --no-cov
 ```
+
+## Official result reporting
+
+The one official counted-series mail is built by
+`python -m police_thief_lab.report_cli --result <result.json> --reporting-config <config.json>`.
+Without `--send` it only prints what would be sent, reads no credential and performs no network
+call. `python -m police_thief_lab.mail_authorize_cli` performs the one-time send-only Gmail
+consent, and `report_cli --send --credentials <file>` performs the authorized league report for a
+counted game. The full operator procedure, including the Google console steps, is in
+[official result reporting](docs/OFFICIAL_RESULT_REPORTING.md).
 
 ## Operational modes and authorization
 

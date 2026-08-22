@@ -2,6 +2,7 @@
 .git/
 .agents/
 .codex/
+AGENTS.md
 
 # Python environments, bytecode, and tool caches
 .venv/

@@ -28,10 +28,12 @@ Replay viewer, public research evidence, tests, and release tooling. Duplicating
 shared implementation is safer than inventing divergent role copies. Role identity remains an
 explicit runtime input and a role-specific README/manifest concern.
 
-The Police role uses the frozen accepted `ScentTacticalPolice`. The current P2P Thief runtime uses
-`RandomLegalThief`; this is an observed integration default, **not** a newly selected champion and
-not permission to change competitive policy. Any future policy change requires a separately
-controlled experiment and explicit acceptance.
+The Police role uses the frozen accepted `ScentTacticalPolice`. The Thief runtime default is
+`LookaheadEvasionThief`, adopted on 2026-08-21 after the Phase 4E controlled experiment
+(`docs/audits/PHASE4E_THIEF_POLICY_SELECTION.md`) and explicit operator acceptance; it replaced the
+earlier integration default `RandomLegalThief`. `--thief-policy` selects any other offered policy
+explicitly, and the Police policy is not selectable. Any further policy change requires the same
+route: a separately controlled experiment, explicit acceptance, and republished role repositories.
 
 The common candidate retains:
 

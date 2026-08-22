@@ -1,0 +1,73 @@
+{
+  "phase": "4F",
+  "subject": "real_team_uncounted_warmup",
+  "classification": "UNCOUNTED_REAL_TEAM_WARMUP",
+  "date_utc": "2026-08-21",
+  "opponent_group_id": "vm__fabi",
+  "our_group_id": "il-nv-ai",
+  "game_id": "il-nv-ai-vs-vm__fabi",
+  "game_uid": "00aec465-1e83-befa-15ed-a5d427995ffc",
+  "config_sha256": "b97de3f6bb3e3aaed0c3f2e6ab2eee05d65aa1e7853e009ef448c42058c340c0",
+  "games": [
+    {
+      "run": "game1_run1",
+      "our_role": "thief",
+      "our_commit": "f279dc2c736df1b234f857de6e085e38fbdb73f1",
+      "peer_commit": "44225aecd84f2d6a4ac03aa5008d5ecb78a293d4",
+      "outcome": "barrier_on_thief",
+      "score": {
+        "il-nv-ai": 5,
+        "vm__fabi": 20
+      },
+      "records": 32,
+      "duplicates": 0,
+      "audit_verified": true,
+      "replay_verified": true,
+      "consensus_sha256": "def4df4d5f5c6d18272e78c6dc3de77bc7333cfe206ea89f324c12e253a893d8",
+      "peer_completed": false,
+      "peer_note": "peer crashed at mutual audit on an unguarded claim key"
+    },
+    {
+      "run": "game1_run2",
+      "our_role": "thief",
+      "our_commit": "f279dc2c736df1b234f857de6e085e38fbdb73f1",
+      "peer_commit": "c69a134bb14bf48fbd79c70ebe8bde48d31d43a0",
+      "outcome": "barrier_on_thief",
+      "score": {
+        "il-nv-ai": 5,
+        "vm__fabi": 20
+      },
+      "records": 32,
+      "duplicates": 0,
+      "audit_verified": true,
+      "replay_verified": true,
+      "consensus_sha256": "def4df4d5f5c6d18272e78c6dc3de77bc7333cfe206ea89f324c12e253a893d8",
+      "peer_completed": true
+    },
+    {
+      "run": "game2",
+      "our_role": "police",
+      "our_commit": "42c5367d690abda6b01c6aa91499491526123ed8",
+      "peer_commit": "0e463ce5c2769f8f163280b54b6bba5ec280e54c",
+      "outcome": "police_capture",
+      "score": {
+        "il-nv-ai": 20,
+        "vm__fabi": 5
+      },
+      "records": 20,
+      "duplicates": 0,
+      "audit_verified": true,
+      "replay_verified": true,
+      "consensus_sha256": "1be7dd12823e322891c2461d57594284869946faafe987f1445bf831818dde00",
+      "peer_completed": true
+    }
+  ],
+  "open": [
+    "opponent consensus hashes not yet compared",
+    "no bilateral counter-signed worksheet",
+    "single sub-game per run; no public six-sub-game series"
+  ],
+  "counted": false,
+  "mail_sent": false,
+  "lecturer_reported": false
+}

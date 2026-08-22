@@ -3,7 +3,10 @@
   "status": "EXACT_ROLE_URLS_APPROVED_FOR_PUBLICATION",
   "evidence_cutoff": "185988ee18203b4309cb856f8a8eeb816e9a787b",
   "authority": {
-    "official_rules": [49, 50],
+    "official_rules": [
+      49,
+      50
+    ],
     "baseline": "RULES_AND_INTEROP_BASELINE.md",
     "generic_guidelines_can_override_game_or_interop": false
   },
@@ -63,8 +66,8 @@
     },
     "thief": {
       "runtime_role": "thief",
-      "runtime_policy": "RandomLegalThief",
-      "policy_status": "CURRENT_DEFAULT_NOT_NEW_CHAMPION",
+      "runtime_policy": "LookaheadEvasionThief",
+      "policy_status": "SELECTED_BY_MEASURED_EXPERIMENT",
       "counterpart_repository_url": "https://github.com/ilyalaz01/police_thief_p2p-police",
       "readme_overlay": "submission/templates/thief/README.md"
     }

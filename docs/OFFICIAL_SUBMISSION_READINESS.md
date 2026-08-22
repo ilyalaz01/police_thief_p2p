@@ -15,6 +15,9 @@ Software Project Guidelines cannot weaken an official rule or a bilateral intero
 - two-process local FastMCP, retry/deadline/duplicate/equivocation behavior;
 - commit-reveal, mutual audit, deterministic replay, and schema 1.1 artifacts;
 - historical inspectable public self-test through two HTTPS tunnels;
+- three uncounted public games against the real team `vm__fabi` on 2026-08-21, in both roles,
+  with verified audit, replay, artifacts and independently recomputed consensus hashes
+  (`docs/audits/PHASE4F_REAL_TEAM_UNCOUNTED_WARMUP.md`);
 - SDK, versioned configuration, Gatekeeper, concurrency/capacity, and offline release/security
   controls;
 - preregistered public-safe local sensitivity data, notebook-equivalent analysis, and accessible
@@ -46,7 +49,7 @@ or counted-series acceptance.
 | Complete pre-game identity/declaration fields | The SDK consumes and validates each exact eight-character group ID, hardware, repositories, endpoints, max-token input and six exact commit maps; Phase 4D13B uses conspicuously synthetic `.invalid`/`example` fixtures only | IN_PROGRESS | Operators must supply real values and bilateral evidence; no placeholder becomes readiness |
 | Annotated Git tag `v1.0-submission` on each final repository | No final submission tag | BLOCKED | `SUB-001`: tag only after all final gates and exact commits are approved |
 | At least two counted games against two different opponent teams | No other-team counted game | BLOCKED | Human authorization after successful uncounted warm-ups and compatibility agreement |
-| Both teams independently send agreeing result JSON through Gmail API | The Gmail API sender is not implemented; no credentials, OAuth flow, or send operation exists | BLOCKED | `MAIL-001`: explicit authorization, offline sender/Gatekeeper implementation, least-privilege setup, then a separately approved audited send |
+| Both teams independently send agreeing result JSON through Gmail API | Offline reporting boundary, deterministic message construction and send-only sender exist with mocked-transport tests (`docs/OFFICIAL_RESULT_REPORTING.md`); no credential, OAuth flow, real transport or send exists | IN_PROGRESS | `MAIL-001`: least-privilege credential setup and a separately approved audited send; the three graded league fields of kit SPEC 6.2 are a bilateral `LGE-001` matter |
 | Exact per-game Git commit, config, logs, results, and token totals | Builders and local artifacts proven | BLOCKED | Real opponent evidence from an authorized operation |
 | Moodle PDF/form submission by each team member | No submission performed | BLOCKED | Human submission after final repository and league evidence review |
 
@@ -64,7 +67,7 @@ exact commit identities, public endpoints, Rule 47, scent/profile domains, barri
 schema, and consensus scope. Missing or different responses block play. The local proposal is not
 bilateral approval. See the [warm-up runbook](REAL_TEAM_WARMUP_RUNBOOK.md).
 
-Before a counted game, a successful other-team uncounted warm-up must already exist, the user must
+A successful other-team uncounted warm-up now exists (Phase 4F). Before a counted game, the user must
 separately authorize counted operation, both sides must agree on the counted profile and reporting,
 and stable authenticated transport must be available. One opponent can count only once; official
 pass readiness needs games against two different opponent teams.

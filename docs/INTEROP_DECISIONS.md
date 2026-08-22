@@ -36,6 +36,28 @@ Smallest open question: “Are actions alternating with Thief first, as in refer
 
 Evidence: professor `peer/runtime.py:3-7`, `domain/own_state.py:35-73`, `peer/turn_handler.py:41-60`; PDF Rules 13–16 and 46–47 (pp.144,149); fixtures in `interop/fixtures/turn_resolution_scenarios.json`.
 
+## Thief Terminal Concession
+
+STATUS: `VERIFIED_KIT_CONFORMANT`
+
+The thief's game-ending `caught: true` final carries
+`{"claim": [<thief's own final cell>], "caught": true, "reason": <terminal>}`. The `claim` cell is
+mandatory: the pinned kit states that a cop must corroborate rather than believe a thief-sent
+capture, and that a final naming the cop's claimed cell is an answer (co-location) while a final
+naming any other cell is a concession (Rule 46/47) that must be captured under the cop's own
+barrier record. A thief that omits the cell leaves a corroborating cop nothing to check.
+
+The extra `reason` key names the terminal family and is not required by the kit; unknown keys are
+tolerated on both sides, and receivers must not depend on it. Our receiver still defaults an
+absent `reason` to `police_capture`, which normalises to `capture`.
+
+The cell is also present in that step's sealed record `payload.position`, so the wire claim and the
+revealed trail must agree; the regression asserts exactly that.
+
+Evidence: kit `SPEC.md` section 3.1; live warm-up games against `vm__fabi` on 2026-08-21, where the
+opponent's thief sent the full shape and ours did not; regression
+`tests/integration/test_interop/test_terminal_concession.py`.
+
 ## MCP Wire
 
 STATUS: `VERIFIED_REFERENCE_INTEROP`

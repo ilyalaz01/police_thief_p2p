@@ -7,13 +7,19 @@ as the Police repository; the role identity and runtime policy below are the del
 ## Role identity
 
 - Runtime role: `thief`
-- Runtime policy: `RandomLegalThief`
-- Policy status: `CURRENT_DEFAULT_NOT_NEW_CHAMPION`
+- Runtime policy: `LookaheadEvasionThief`
+- Policy status: `SELECTED_BY_MEASURED_EXPERIMENT`
 
-`RandomLegalThief` is the observed current P2P runtime default. This label does not claim a new
-competitive champion. Integration and release work must not change it or the accepted physics,
-observations, Hcommit, scent, MCP, artifact, profile, consensus, retry, deadline, duplicate,
-audit, replay, or scoring semantics without a separate controlled experiment and acceptance.
+`LookaheadEvasionThief` replaced the earlier integration default `RandomLegalThief` after the
+Phase 4E experiment, which ran every candidate over 200 seeds per pairing on the exact negotiated
+match configuration. It is observation-only: it reads its own legal actions, its own position and
+the observed opponent scent, and never a hidden opponent coordinate. `--thief-policy` selects any
+other offered policy explicitly.
+
+The Police policy stays frozen and is not selectable. Integration and release work must not change
+the accepted physics, observations, Hcommit, scent, MCP, artifact, profile, consensus, retry,
+deadline, duplicate, audit, replay, or scoring semantics without a separate controlled experiment
+and acceptance.
 
 ## Install and validate offline
 

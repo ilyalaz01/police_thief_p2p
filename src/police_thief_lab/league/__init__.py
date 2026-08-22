@@ -9,6 +9,7 @@ from .config import (
     build_appendix_b_candidate,
     confirm_appendix_b_lock,
 )
+from .declaration_input import load_declaration_identity
 from .identity import HardwareIdentity, TeamDeclarationIdentity, validate_series_commits
 from .local_models import (
     UNCOUNTED_LOCALHOST_SELF_TEST,
@@ -39,6 +40,7 @@ __all__ = [
     "LocalhostSeriesResult",
     "SeriesSlot",
     "TeamDeclarationIdentity",
+    "load_declaration_identity",
     "UNCOUNTED_LOCALHOST_SELF_TEST",
     "aggregate_series_rows",
     "build_appendix_b_candidate",
